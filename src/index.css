@@ -1,6 +1,16 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/inter/700.css";
+@import "@fontsource/fraunces/400.css";
+@import "@fontsource/fraunces/500.css";
+@import "@fontsource/fraunces/600.css";
+@import "@fontsource/fraunces/700.css";
+@import "@fontsource/fraunces/400-italic.css";
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -32,6 +42,22 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
+  /* Nuru Commons semantic layer colors */
+  --color-clay: var(--clay);
+  --color-clay-foreground: var(--clay-foreground);
+  --color-clay-soft: var(--clay-soft);
+
+  --color-clinical: var(--clinical);
+  --color-clinical-foreground: var(--clinical-foreground);
+  --color-clinical-soft: var(--clinical-soft);
+
+  --color-plum: var(--plum);
+  --color-plum-foreground: var(--plum-foreground);
+  --color-plum-soft: var(--plum-soft);
+
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -47,6 +73,9 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
@@ -54,125 +83,182 @@
 
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-rise: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-fade-in: fade-in 0.9s ease both;
 
   @keyframes accordion-down {
-    from {
-      height: 0;
-    }
-    to {
-      height: var(--radix-accordion-content-height);
-    }
+    from { height: 0; }
+    to { height: var(--radix-accordion-content-height); }
   }
 
   @keyframes accordion-up {
-    from {
-      height: var(--radix-accordion-content-height);
-    }
-    to {
-      height: 0;
-    }
+    from { height: var(--radix-accordion-content-height); }
+    to { height: 0; }
+  }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
 }
 
 /* Container utility replacement for v4 (previously configured in tailwind.config) */
 @utility container {
   margin-inline: auto;
-  padding-inline: 2rem;
-  @media (width >= 1400px) {
-    max-width: 1400px;
+  padding-inline: 1.25rem;
+  @media (width >= 640px) {
+    padding-inline: 2rem;
+  }
+  @media (width >= 1280px) {
+    max-width: 1200px;
+  }
+}
+
+/* Editorial drop cap for article bodies */
+@utility drop-cap {
+  &::first-letter {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 3.4em;
+    line-height: 0.85;
+    float: left;
+    padding-right: 0.12em;
+    padding-top: 0.06em;
+    color: var(--primary);
   }
 }
 
 :root {
   --radius: 0.75rem;
 
-  --background: hsl(0 0% 100%);
-  --foreground: hsl(222.2 84% 4.9%);
+  /* Warm paper background, cocoa-plum ink */
+  --background: hsl(38 46% 96%);
+  --foreground: hsl(342 20% 15%);
 
-  --card: hsl(0 0% 100%);
-  --card-foreground: hsl(222.2 84% 4.9%);
+  --card: hsl(40 48% 98.5%);
+  --card-foreground: hsl(342 20% 15%);
 
-  --popover: hsl(0 0% 100%);
-  --popover-foreground: hsl(222.2 84% 4.9%);
+  --popover: hsl(40 48% 98.5%);
+  --popover-foreground: hsl(342 20% 15%);
 
-  --primary: hsl(222.2 47.4% 11.2%);
-  --primary-foreground: hsl(210 40% 98%);
+  /* Rosewood primary */
+  --primary: hsl(346 48% 36%);
+  --primary-foreground: hsl(40 48% 97%);
 
-  --secondary: hsl(210 40% 96.1%);
-  --secondary-foreground: hsl(222.2 47.4% 11.2%);
+  --secondary: hsl(34 34% 91%);
+  --secondary-foreground: hsl(342 22% 22%);
 
-  --muted: hsl(210 40% 96.1%);
-  --muted-foreground: hsl(215.4 16.3% 46.9%);
+  --muted: hsl(35 28% 91.5%);
+  --muted-foreground: hsl(340 9% 40%);
 
-  --accent: hsl(210 40% 96.1%);
-  --accent-foreground: hsl(222.2 47.4% 11.2%);
+  --accent: hsl(346 44% 92%);
+  --accent-foreground: hsl(346 48% 28%);
 
-  --destructive: hsl(0 84.2% 60.2%);
-  --destructive-foreground: hsl(210 40% 98%);
+  --destructive: hsl(0 62% 44%);
+  --destructive-foreground: hsl(40 48% 97%);
 
-  --border: hsl(214.3 31.8% 91.4%);
-  --input: hsl(214.3 31.8% 91.4%);
-  --ring: hsl(222.2 84% 4.9%);
+  --border: hsl(34 24% 85%);
+  --input: hsl(34 24% 82%);
+  --ring: hsl(346 48% 36%);
 
-  --chart-1: hsl(12 76% 61%);
-  --chart-2: hsl(173 58% 39%);
-  --chart-3: hsl(197 37% 24%);
-  --chart-4: hsl(43 74% 66%);
-  --chart-5: hsl(27 87% 67%);
+  /* Lived experience — warm terracotta clay */
+  --clay: hsl(20 66% 40%);
+  --clay-foreground: hsl(40 48% 97%);
+  --clay-soft: hsl(22 62% 93%);
 
-  --sidebar: hsl(0 0% 98%);
-  --sidebar-foreground: hsl(240 5.3% 26.1%);
-  --sidebar-primary: hsl(240 5.9% 10%);
-  --sidebar-primary-foreground: hsl(0 0% 98%);
-  --sidebar-accent: hsl(240 4.8% 95.9%);
-  --sidebar-accent-foreground: hsl(240 5.9% 10%);
-  --sidebar-border: hsl(220 13% 91%);
-  --sidebar-ring: hsl(217.2 91.2% 59.8%);
+  /* Clinical response — deep teal */
+  --clinical: hsl(176 58% 28%);
+  --clinical-foreground: hsl(40 48% 97%);
+  --clinical-soft: hsl(175 42% 91.5%);
+
+  /* Evidence — plum */
+  --plum: hsl(272 34% 40%);
+  --plum-foreground: hsl(40 48% 97%);
+  --plum-soft: hsl(272 38% 93.5%);
+
+  /* Nuru gold */
+  --gold: hsl(38 74% 44%);
+  --gold-soft: hsl(40 78% 92%);
+
+  --chart-1: hsl(346 48% 40%);
+  --chart-2: hsl(176 58% 32%);
+  --chart-3: hsl(20 66% 44%);
+  --chart-4: hsl(272 34% 46%);
+  --chart-5: hsl(38 74% 48%);
+
+  --sidebar: hsl(38 40% 94%);
+  --sidebar-foreground: hsl(342 20% 18%);
+  --sidebar-primary: hsl(346 48% 36%);
+  --sidebar-primary-foreground: hsl(40 48% 97%);
+  --sidebar-accent: hsl(34 30% 89%);
+  --sidebar-accent-foreground: hsl(342 20% 18%);
+  --sidebar-border: hsl(34 22% 84%);
+  --sidebar-ring: hsl(346 48% 36%);
 }
 
 .dark {
-  --background: hsl(222.2 84% 4.9%);
-  --foreground: hsl(210 40% 98%);
+  --background: hsl(340 18% 8.5%);
+  --foreground: hsl(38 28% 90%);
 
-  --card: hsl(222.2 84% 4.9%);
-  --card-foreground: hsl(210 40% 98%);
+  --card: hsl(340 15% 11.5%);
+  --card-foreground: hsl(38 28% 90%);
 
-  --popover: hsl(222.2 84% 4.9%);
-  --popover-foreground: hsl(210 40% 98%);
+  --popover: hsl(340 15% 11.5%);
+  --popover-foreground: hsl(38 28% 90%);
 
-  --primary: hsl(210 40% 98%);
-  --primary-foreground: hsl(222.2 47.4% 11.2%);
+  --primary: hsl(346 58% 64%);
+  --primary-foreground: hsl(340 20% 10%);
 
-  --secondary: hsl(217.2 32.6% 17.5%);
-  --secondary-foreground: hsl(210 40% 98%);
+  --secondary: hsl(340 12% 17%);
+  --secondary-foreground: hsl(38 28% 90%);
 
-  --muted: hsl(217.2 32.6% 17.5%);
-  --muted-foreground: hsl(215 20.2% 65.1%);
+  --muted: hsl(340 12% 17%);
+  --muted-foreground: hsl(340 8% 62%);
 
-  --accent: hsl(217.2 32.6% 17.5%);
-  --accent-foreground: hsl(210 40% 98%);
+  --accent: hsl(346 30% 20%);
+  --accent-foreground: hsl(346 60% 78%);
 
-  --destructive: hsl(0 62.8% 30.6%);
-  --destructive-foreground: hsl(210 40% 98%);
+  --destructive: hsl(0 58% 50%);
+  --destructive-foreground: hsl(40 48% 97%);
 
-  --border: hsl(217.2 32.6% 17.5%);
-  --input: hsl(217.2 32.6% 17.5%);
-  --ring: hsl(212.7 26.8% 83.9%);
+  --border: hsl(340 10% 20%);
+  --input: hsl(340 10% 24%);
+  --ring: hsl(346 58% 64%);
 
-  --chart-1: hsl(220 70% 50%);
-  --chart-2: hsl(160 60% 45%);
-  --chart-3: hsl(30 80% 55%);
-  --chart-4: hsl(280 65% 60%);
-  --chart-5: hsl(340 75% 55%);
+  --clay: hsl(20 72% 60%);
+  --clay-foreground: hsl(340 20% 10%);
+  --clay-soft: hsl(20 40% 17%);
 
-  --sidebar: hsl(240 5.9% 10%);
-  --sidebar-foreground: hsl(240 4.8% 95.9%);
-  --sidebar-primary: hsl(224.3 76.3% 48%);
-  --sidebar-primary-foreground: hsl(0 0% 100%);
-  --sidebar-accent: hsl(240 3.7% 15.9%);
-  --sidebar-accent-foreground: hsl(240 4.8% 95.9%);
-  --sidebar-border: hsl(240 3.7% 15.9%);
-  --sidebar-ring: hsl(217.2 91.2% 59.8%);
+  --clinical: hsl(176 52% 52%);
+  --clinical-foreground: hsl(340 20% 10%);
+  --clinical-soft: hsl(176 38% 15%);
+
+  --plum: hsl(272 48% 70%);
+  --plum-foreground: hsl(340 20% 10%);
+  --plum-soft: hsl(272 30% 17%);
+
+  --gold: hsl(38 78% 58%);
+  --gold-soft: hsl(38 40% 16%);
+
+  --chart-1: hsl(346 58% 62%);
+  --chart-2: hsl(176 52% 50%);
+  --chart-3: hsl(20 72% 58%);
+  --chart-4: hsl(272 48% 68%);
+  --chart-5: hsl(38 78% 56%);
+
+  --sidebar: hsl(340 16% 10%);
+  --sidebar-foreground: hsl(38 28% 90%);
+  --sidebar-primary: hsl(346 58% 64%);
+  --sidebar-primary-foreground: hsl(340 20% 10%);
+  --sidebar-accent: hsl(340 12% 16%);
+  --sidebar-accent-foreground: hsl(38 28% 90%);
+  --sidebar-border: hsl(340 10% 18%);
+  --sidebar-ring: hsl(346 58% 64%);
 }
 
 @layer base {
@@ -184,7 +270,31 @@
     border-color: var(--color-border, currentcolor);
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+    font-size: 1.0625rem;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--accent-foreground);
+  }
+}
+
+@layer components {
+  /* Subtle paper grain for hero surfaces */
+  .texture-dots {
+    background-image: radial-gradient(var(--border) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+
+  .texture-glow {
+    background:
+      radial-gradient(60rem 30rem at 85% -10%, var(--gold-soft), transparent 60%),
+      radial-gradient(50rem 28rem at -10% 20%, var(--accent), transparent 55%);
   }
 }

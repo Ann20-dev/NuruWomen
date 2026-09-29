@@ -1,0 +1,17 @@
+{
+  "name": "Nuru Commons — Women's Health Commons Africa",
+  "short_name": "Nuru Commons",
+  "description": "A privacy-first women's health knowledge commons: anonymous questions, lived experience, clinically reviewed evidence — separated and verifiable on Nostr.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f1e6",
+  "theme_color": "#7c2942",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
