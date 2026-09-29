@@ -12,8 +12,8 @@ export function SiteFooter() {
           </div>
           <p className="text-sm text-muted-foreground max-w-sm leading-relaxed">
             An open, privacy-first women’s health knowledge commons for Africa. Anonymous questions,
-            lived experience and clinically reviewed evidence — clearly separated, signed, and portable
-            on the Nostr protocol.
+            lived experience and clinically reviewed evidence — clearly separated, openly stored, and
+            free for any app to reuse.
           </p>
           <p className="text-xs text-muted-foreground flex items-center gap-1.5">
             <ShieldCheck className="size-3.5 shrink-0" />
@@ -36,9 +36,9 @@ export function SiteFooter() {
           <h3 className="text-sm font-semibold mb-3">Open infrastructure</h3>
           <ul className="space-y-2 text-sm text-muted-foreground">
             <li className="flex items-center gap-1.5">
-              <GitBranch className="size-3.5" /> Open source — fork it, localize it
+              <GitBranch className="size-3.5" /> Open source — adapt it for your community
             </li>
-            <li>Protocol documented in <code className="text-xs bg-muted px-1.5 py-0.5 rounded">NIP.md</code></li>
+            <li>Documented openly for developers (<code className="text-xs bg-muted px-1.5 py-0.5 rounded">NIP.md</code>)</li>
             <li>Content exportable as JSON &amp; Markdown</li>
             <li className="flex items-center gap-1.5">
               <HeartHandshake className="size-3.5" /> Built for Hack4Freedom

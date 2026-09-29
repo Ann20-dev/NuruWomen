@@ -80,11 +80,17 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 16px);
 
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
   --animate-rise: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
   --animate-fade-in: fade-in 0.9s ease both;
+  --animate-word-rise: word-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-float: float 13s ease-in-out infinite;
+  --animate-float-slow: float 17s ease-in-out 1.2s infinite;
+  --animate-drift: drift 26s ease-in-out infinite alternate;
 
   @keyframes accordion-down {
     from { height: 0; }
@@ -105,6 +111,25 @@
     from { opacity: 0; }
     to { opacity: 1; }
   }
+
+  @keyframes word-rise {
+    from { transform: translateY(115%); }
+    to { transform: translateY(0); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+    50% { transform: translate3d(0, -16px, 0) rotate(3deg); }
+  }
+
+  @keyframes drift {
+    from { transform: translate3d(-4%, 2%, 0) scale(1); }
+    to { transform: translate3d(5%, -4%, 0) scale(1.12); }
+  }
+}
+
+@keyframes shine {
+  to { background-position: 220% center; }
 }
 
 /* Container utility replacement for v4 (previously configured in tailwind.config) */
@@ -134,7 +159,7 @@
 }
 
 :root {
-  --radius: 0.75rem;
+  --radius: 1rem;
 
   /* Warm paper background, cocoa-plum ink */
   --background: hsl(38 46% 96%);
@@ -274,6 +299,20 @@
     scroll-behavior: smooth;
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
   body {
     @apply bg-background text-foreground font-sans antialiased;
     font-size: 1.0625rem;
@@ -296,5 +335,21 @@
     background:
       radial-gradient(60rem 30rem at 85% -10%, var(--gold-soft), transparent 60%),
       radial-gradient(50rem 28rem at -10% 20%, var(--accent), transparent 55%);
+  }
+
+  /* Animated gradient text — warm sweep across brand colors */
+  .text-shine {
+    background-image: linear-gradient(
+      100deg,
+      var(--primary) 15%,
+      var(--gold) 38%,
+      var(--clay) 62%,
+      var(--primary) 85%
+    );
+    background-size: 220% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shine 7s linear infinite;
   }
 }

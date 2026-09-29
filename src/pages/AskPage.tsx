@@ -6,6 +6,7 @@ import { useSeoMeta } from '@unhead/react';
 import { SiteLayout } from '@/components/nuru/SiteLayout';
 import { SafetyBanner } from '@/components/nuru/SafetyBanner';
 import { PrivacyCheckPanel } from '@/components/nuru/PrivacyCheckPanel';
+import { LottiePlayer } from '@/components/nuru/LottiePlayer';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -19,11 +20,12 @@ import { scanSafety, type SafetyFlag } from '@/lib/nuru/safety';
 import { classifyTopics } from '@/lib/nuru/classify';
 import { TOPICS } from '@/lib/nuru/topics';
 import { cn } from '@/lib/utils';
+import shieldAnimation from '@/assets/lottie/shield.json';
 
 export default function AskPage() {
   useSeoMeta({
     title: 'Ask anonymously — Nuru Commons',
-    description: 'Ask a sensitive women’s health question without an account, email or phone number. PII is stripped before anything is published.',
+    description: 'Ask a sensitive women’s health question without an account, email or phone number. Identifying details are removed before anything is published.',
   });
 
   const navigate = useNavigate();
@@ -44,13 +46,13 @@ export default function AskPage() {
   // Debounced live scan
   useEffect(() => {
     const text = `${title}\n${content}`.trim();
-    if (text.length < 12) {
-      setChecked(false);
-      setFindings([]);
-      setSafety([]);
-      return;
-    }
     const t = setTimeout(() => {
+      if (text.length < 12) {
+        setChecked(false);
+        setFindings([]);
+        setSafety([]);
+        return;
+      }
       setFindings(scanForPii(text));
       setSafety(scanSafety(text));
       setChecked(true);
@@ -58,13 +60,15 @@ export default function AskPage() {
     return () => clearTimeout(t);
   }, [title, content]);
 
-  // Auto-select top suggested topic if none chosen
-  useEffect(() => {
+  // Auto-select top suggested topic if none chosen (render-time state adjustment,
+  // see https://react.dev/learn/you-might-not-need-an-effect#adjusting-some-state-when-a-prop-changes)
+  const [prevSuggestions, setPrevSuggestions] = useState(suggestions);
+  if (prevSuggestions !== suggestions) {
+    setPrevSuggestions(suggestions);
     if (selectedTopics.length === 0 && suggestions.length > 0) {
       setSelectedTopics([suggestions[0].topic.slug]);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [suggestions]);
+  }
 
   const toggleTopic = (slug: string) => {
     setSelectedTopics((prev) =>
@@ -98,7 +102,7 @@ export default function AskPage() {
     } catch {
       toast({
         title: 'Could not publish',
-        description: 'No relay accepted the event. Check your connection and try again.',
+        description: 'Could not reach the network. Check your connection and try again.',
         variant: 'destructive',
       });
     }
@@ -204,10 +208,10 @@ export default function AskPage() {
                     )}
                   >
                     <span className="flex items-center gap-2 font-semibold text-sm">
-                      <Fingerprint className="size-4 text-primary" /> One-time anonymous key
+                      <Fingerprint className="size-4 text-primary" /> One-time anonymous identity
                     </span>
                     <span className="block text-xs text-muted-foreground leading-relaxed">
-                      A throwaway cryptographic identity is created for this question only. Nothing is stored.
+                      A throwaway identity is created for this question only. Nothing is saved, and nothing links back to you.
                     </span>
                   </button>
                   <button
@@ -221,12 +225,12 @@ export default function AskPage() {
                     )}
                   >
                     <span className="flex items-center gap-2 font-semibold text-sm">
-                      <KeyRound className="size-4 text-primary" /> My Nostr identity
+                      <KeyRound className="size-4 text-primary" /> My saved identity
                     </span>
                     <span className="block text-xs text-muted-foreground leading-relaxed">
                       {user
-                        ? 'Sign with your own key (NIP-07/nsec). Builds your pseudonymous presence.'
-                        : 'Log in from the header to answer under your persistent pseudonym.'}
+                        ? 'Post with the identity you already use. Builds your reputation under a nickname, not your name.'
+                        : 'Log in from the header to ask under your saved nickname.'}
                     </span>
                   </button>
                 </div>
@@ -248,14 +252,19 @@ export default function AskPage() {
 
           {/* Side rail: what happens next */}
           <aside className="space-y-5 lg:sticky lg:top-24">
+            <LottiePlayer
+              animationData={shieldAnimation}
+              className="mx-auto size-20"
+              label="Privacy shield — your words are checked before anything is posted"
+            />
             <Card>
               <CardContent className="p-5 space-y-4">
                 <h2 className="font-display font-semibold text-lg">What happens to your question</h2>
                 <ol className="space-y-3 text-sm text-muted-foreground">
                   {[
-                    ['Privacy check', 'Names, numbers, emails, IDs and locations are flagged before signing — you remove them, not us.'],
+                    ['Privacy check', 'Names, numbers, emails, IDs and locations are flagged before anything is posted — you remove them, not us.'],
                     ['Safety check', 'Red-flag symptoms get urgent-care guidance before community answers.'],
-                    ['Published to Nostr', 'The anonymized question is signed and sent to public relays. No account exists anywhere.'],
+                    ['Posted openly', 'Your anonymized question goes to the open network. No account exists anywhere.'],
                     ['Three layers respond', 'Lived experience, verified clinicians, and an evidence card — each clearly labelled.'],
                     ['It becomes a signal', 'Your question is counted in aggregate Blind Spot statistics — never individually.'],
                   ].map(([title, body], i) => (
@@ -274,7 +283,7 @@ export default function AskPage() {
               <CardContent className="p-5 space-y-2">
                 <h2 className="font-semibold text-sm">Honest limits</h2>
                 <p className="text-xs text-muted-foreground leading-relaxed">
-                  Public relays are public forever. Don’t include medical records or identifying details even
+                  Public posts stay public. Don’t include medical records or identifying details even
                   if our scan misses them. In an emergency, call 999 / 112 first — community answers come second.
                 </p>
                 <p className="text-xs text-muted-foreground leading-relaxed">

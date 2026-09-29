@@ -8,7 +8,7 @@ import type { Question } from '@/lib/nuru/types';
 
 export function QuestionCard({ question, answerCount }: { question: Question; answerCount?: number }) {
   return (
-    <Card className="group hover:shadow-md hover:border-primary/25 transition-all">
+    <Card className="group transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md hover:border-primary/25">
       <CardContent className="p-5 space-y-3">
         <div className="flex items-start justify-between gap-4">
           <Link to={`/question/${question.id}`} className="min-w-0">
