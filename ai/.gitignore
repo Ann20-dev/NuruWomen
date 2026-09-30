@@ -11,3 +11,7 @@ Thumbs.db
 *.log
 *.pem
 *.key
+
+# Generated local demo outputs
+/reports/demo_output.json
+/reports/five_topic_demo.json
