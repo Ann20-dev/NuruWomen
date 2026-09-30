@@ -1,0 +1,213 @@
+{
+  "version": "nuru-routing-v2",
+  "review_status": "unreviewed_demo",
+  "score_meaning": "keyword evidence count, not probability or diagnosis",
+  "topics": [
+    {
+      "slug": "irregular-periods",
+      "keywords": [
+        "irregular period",
+        "late period",
+        "missed period",
+        "cycle",
+        "period is late",
+        "periods are irregular",
+        "skipped period",
+        "hedhi isiyo ya kawaida",
+        "hedhi imechelewa",
+        "hedhi zisizo za kawaida"
+      ],
+      "broad_topic": "menstrual_health"
+    },
+    {
+      "slug": "severe-period-pain",
+      "keywords": [
+        "period pain",
+        "cramps",
+        "painful period",
+        "dysmenorrhea",
+        "pain during my period",
+        "period cramps",
+        "maumivu makali wakati wa hedhi",
+        "maumivu ya hedhi"
+      ],
+      "broad_topic": "menstrual_health"
+    },
+    {
+      "slug": "heavy-bleeding",
+      "keywords": [
+        "heavy bleeding",
+        "heavy period",
+        "flooding",
+        "soaking",
+        "clots",
+        "bleeding a lot",
+        "prolonged bleeding",
+        "bleeding for weeks",
+        "damu nyingi",
+        "kutokwa na damu nyingi",
+        "hedhi nzito"
+      ],
+      "broad_topic": "menstrual_health"
+    },
+    {
+      "slug": "pcos",
+      "keywords": [
+        "pcos",
+        "polycystic ovary syndrome"
+      ],
+      "broad_topic": "menstrual_health"
+    },
+    {
+      "slug": "endometriosis",
+      "keywords": [
+        "endometriosis",
+        "endo"
+      ],
+      "broad_topic": "menstrual_health"
+    },
+    {
+      "slug": "fibroids",
+      "keywords": [
+        "fibroid",
+        "fibroids",
+        "uvimbe kwenye mfuko wa uzazi"
+      ],
+      "broad_topic": "menstrual_health"
+    },
+    {
+      "slug": "painful-sex",
+      "keywords": [
+        "pain during sex",
+        "painful sex",
+        "pain during intercourse",
+        "dyspareunia",
+        "sex is painful",
+        "maumivu wakati wa ngono"
+      ],
+      "broad_topic": "sexual_health"
+    },
+    {
+      "slug": "contraception",
+      "keywords": [
+        "contraception",
+        "contraceptive",
+        "family planning",
+        "birth control",
+        "iud",
+        "depo",
+        "uzazi wa mpango"
+      ],
+      "broad_topic": "sexual_health"
+    },
+    {
+      "slug": "stis",
+      "keywords": [
+        "sti",
+        "stis",
+        "std",
+        "stds",
+        "sexually transmitted infection",
+        "maambukizi ya zinaa"
+      ],
+      "broad_topic": "sexual_health"
+    },
+    {
+      "slug": "fertility",
+      "keywords": [
+        "conceive",
+        "ovulation",
+        "trying for a baby",
+        "infertility",
+        "can't get pregnant",
+        "cant get pregnant",
+        "ugumba",
+        "kutafuta mtoto"
+      ],
+      "broad_topic": null
+    },
+    {
+      "slug": "pregnancy-warning-signs",
+      "keywords": [
+        "pregnancy warning signs",
+        "bleeding while pregnant",
+        "pregnant and bleeding",
+        "baby stopped moving",
+        "reduced fetal movement",
+        "damu wakati wa ujauzito"
+      ],
+      "broad_topic": null
+    },
+    {
+      "slug": "postpartum-anxiety",
+      "keywords": [
+        "postpartum depression",
+        "postpartum anxiety",
+        "postnatal depression",
+        "baby blues",
+        "huzuni baada ya kujifungua",
+        "wasiwasi baada ya kujifungua"
+      ],
+      "broad_topic": "postpartum"
+    },
+    {
+      "slug": "cervical-screening",
+      "keywords": [
+        "cervical screening",
+        "pap smear",
+        "hpv",
+        "smear test",
+        "uchunguzi wa saratani ya mlango wa kizazi"
+      ],
+      "broad_topic": null
+    },
+    {
+      "slug": "breast-health",
+      "keywords": [
+        "breast",
+        "breasts",
+        "nipple",
+        "matiti"
+      ],
+      "broad_topic": null
+    },
+    {
+      "slug": "perimenopause",
+      "keywords": [
+        "perimenopause",
+        "kipindi cha kuelekea ukomo wa hedhi"
+      ],
+      "broad_topic": "healthy_aging"
+    },
+    {
+      "slug": "menopause",
+      "keywords": [
+        "menopause",
+        "ukomo wa hedhi"
+      ],
+      "broad_topic": "healthy_aging"
+    },
+    {
+      "slug": "pms-pmdd",
+      "keywords": [
+        "pms",
+        "pmdd",
+        "mood before my period",
+        "angry before my period",
+        "crying before my period",
+        "mabadiliko ya hisia kabla ya hedhi"
+      ],
+      "broad_topic": "menstrual_health"
+    },
+    {
+      "slug": "pelvic-floor",
+      "keywords": [
+        "leaking urine",
+        "pelvic floor",
+        "prolapse",
+        "kuvuja mkojo"
+      ],
+      "broad_topic": null
+    }
+  ]
+}

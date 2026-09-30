@@ -1,0 +1,174 @@
+{
+  "en": {
+    "schema_version": "1.0",
+    "mode": "synthetic_demo",
+    "privacy": {
+      "redacted_text": "My name is [NAME], my number is [PHONE]. I have severe period pain.",
+      "spans": [
+        {
+          "kind": "NAME",
+          "start": 11,
+          "end": 22
+        },
+        {
+          "kind": "PHONE",
+          "start": 37,
+          "end": 47
+        }
+      ],
+      "offset_unit": "unicode_codepoints",
+      "contains_detected_identifiers": true,
+      "requires_user_confirmation": true,
+      "anonymity_guaranteed": false,
+      "warnings": [
+        "Patterns can miss names, workplaces, indirect locations, unusual numbers and identifying stories. User and human review are required."
+      ]
+    },
+    "safety": {
+      "status": "potential_urgent_concern",
+      "rule_ids": [
+        "severe_pain"
+      ],
+      "message": "DEMO NOTICE: If you may be in immediate danger or seriously unwell, seek urgent help from a local health service. Do not wait for an online reply. These prototype rules cannot assess your safety.",
+      "human_review_required": true,
+      "rule_review_status": "unreviewed_demo",
+      "clinically_validated": false,
+      "limitations": "No match is not reassurance. Negated, historical or quoted language may still trigger an alert; indirect urgent wording may be missed."
+    },
+    "classification": {
+      "primary_topic": "sexual_health",
+      "topics": [
+        {
+          "topic": "sexual_health",
+          "decision_score": 0.8061
+        }
+      ],
+      "language_guess": "en",
+      "needs_topic_review": true,
+      "method": "tfidf_logistic_regression",
+      "score_meaning": "uncalibrated decision scores, not clinical probabilities",
+      "decision_margin": 0.6675,
+      "model_version": "synthetic-five-topic-v3",
+      "training_examples": 120
+    },
+    "evidence": {
+      "approved_matches": [],
+      "demo_matches": [
+        {
+          "id": "period-pain-en",
+          "title": "Menstrual health demo",
+          "body": "Synthetic retrieval placeholder. No health guidance is provided. This content has not been clinically or linguistically approved.",
+          "language": "en",
+          "version": "2.0.0",
+          "source_version": "2.0.0",
+          "sources": [],
+          "ranking_score": 4,
+          "clinical_review_status": "draft",
+          "translation_review_status": "draft",
+          "eligible_for_publication": false,
+          "demo_only": true
+        }
+      ],
+      "language": "en",
+      "approved_answer_available": false,
+      "method": "keyword_and_topic_ranking",
+      "language_fallback_used": false
+    },
+    "publication_allowed": false,
+    "decision_owner": "human_moderator",
+    "notice": "Prototype assistance only. No diagnosis, verified anonymity or clinical clearance."
+  },
+  "sw": {
+    "schema_version": "1.0",
+    "mode": "synthetic_demo",
+    "privacy": {
+      "redacted_text": "Naitwa [NAME], nina maumivu makali wakati wa hedhi.",
+      "spans": [
+        {
+          "kind": "NAME",
+          "start": 7,
+          "end": 16
+        }
+      ],
+      "offset_unit": "unicode_codepoints",
+      "contains_detected_identifiers": true,
+      "requires_user_confirmation": true,
+      "anonymity_guaranteed": false,
+      "warnings": [
+        "Patterns can miss names, workplaces, indirect locations, unusual numbers and identifying stories. User and human review are required."
+      ]
+    },
+    "safety": {
+      "status": "potential_urgent_concern",
+      "rule_ids": [
+        "severe_pain"
+      ],
+      "message": "UJUMBE WA MAJARIBIO: Ikiwa uko hatarini au unaumwa sana, tafuta msaada wa haraka katika kituo cha afya. Usisubiri jibu mtandaoni. Mfumo huu wa majaribio hauwezi kutathmini usalama wako.",
+      "human_review_required": true,
+      "rule_review_status": "unreviewed_demo",
+      "clinically_validated": false,
+      "limitations": "No match is not reassurance. Negated, historical or quoted language may still trigger an alert; indirect urgent wording may be missed."
+    },
+    "classification": {
+      "primary_topic": "menstrual_health",
+      "topics": [
+        {
+          "topic": "menstrual_health",
+          "decision_score": 2.4499
+        }
+      ],
+      "language_guess": "sw",
+      "needs_topic_review": true,
+      "method": "tfidf_logistic_regression",
+      "score_meaning": "uncalibrated decision scores, not clinical probabilities",
+      "decision_margin": 2.7197,
+      "model_version": "synthetic-five-topic-v3",
+      "training_examples": 120
+    },
+    "evidence": {
+      "approved_matches": [],
+      "demo_matches": [
+        {
+          "id": "period-pain-sw",
+          "title": "Mfano wa afya ya hedhi",
+          "body": "Huu ni mfano wa majaribio ya utafutaji wa taarifa. Hakuna ushauri wa afya unaotolewa. Maudhui haya hayajaidhinishwa na mtaalamu wa afya au mhakiki wa lugha.",
+          "language": "sw",
+          "version": "2.0.0",
+          "source_version": "2.0.0",
+          "sources": [],
+          "ranking_score": 3,
+          "clinical_review_status": "draft",
+          "translation_review_status": "draft",
+          "eligible_for_publication": false,
+          "demo_only": true
+        }
+      ],
+      "language": "sw",
+      "approved_answer_available": false,
+      "method": "keyword_and_topic_ranking",
+      "language_fallback_used": false
+    },
+    "publication_allowed": false,
+    "decision_owner": "human_moderator",
+    "notice": "Prototype assistance only. No diagnosis, verified anonymity or clinical clearance."
+  },
+  "gap_board": {
+    "month": "2026-09",
+    "cells": [
+      {
+        "topic": "healthy_aging",
+        "language": "sw",
+        "question_submissions": 40,
+        "missing_approved_card": null,
+        "missing_percent": null,
+        "detail_suppressed": true,
+        "suggested_action": "editorial_review"
+      }
+    ],
+    "minimum_cell_size": 25,
+    "synthetic_only": true,
+    "unit": "question_submissions_not_people",
+    "public_release_allowed": false,
+    "limitations": "Internal synthetic demonstration only. No grand totals are released. Repeated queries can reveal small groups; threshold suppression alone is not a privacy guarantee."
+  }
+}

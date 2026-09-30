@@ -1,0 +1,280 @@
+{
+  "created_at_utc": "2026-09-25T13:03:18.843289+00:00",
+  "training_n": 120,
+  "heldout_n": 60,
+  "split_unit": "question family, including all three language variants",
+  "results": {
+    "en": {
+      "n": 20,
+      "accuracy": 0.6,
+      "per_topic": {
+        "menstrual_health": {
+          "precision": 0.5,
+          "recall": 0.4,
+          "f1-score": 0.4444444444444444,
+          "support": 5.0
+        },
+        "hormonal_health": {
+          "precision": 0.75,
+          "recall": 0.6,
+          "f1-score": 0.6666666666666666,
+          "support": 5.0
+        },
+        "perimenopause": {
+          "precision": 0.5,
+          "recall": 0.6,
+          "f1-score": 0.5454545454545454,
+          "support": 5.0
+        },
+        "care_navigation": {
+          "precision": 0.6666666666666666,
+          "recall": 0.8,
+          "f1-score": 0.7272727272727273,
+          "support": 5.0
+        },
+        "accuracy": 0.6,
+        "macro avg": {
+          "precision": 0.6041666666666666,
+          "recall": 0.6000000000000001,
+          "f1-score": 0.595959595959596,
+          "support": 20.0
+        },
+        "weighted avg": {
+          "precision": 0.6041666666666666,
+          "recall": 0.6,
+          "f1-score": 0.5959595959595959,
+          "support": 20.0
+        }
+      }
+    },
+    "sw": {
+      "n": 20,
+      "accuracy": 0.5,
+      "per_topic": {
+        "menstrual_health": {
+          "precision": 0.42857142857142855,
+          "recall": 0.6,
+          "f1-score": 0.5,
+          "support": 5.0
+        },
+        "hormonal_health": {
+          "precision": 0.5,
+          "recall": 0.2,
+          "f1-score": 0.2857142857142857,
+          "support": 5.0
+        },
+        "perimenopause": {
+          "precision": 0.5714285714285714,
+          "recall": 0.8,
+          "f1-score": 0.6666666666666666,
+          "support": 5.0
+        },
+        "care_navigation": {
+          "precision": 0.5,
+          "recall": 0.4,
+          "f1-score": 0.4444444444444444,
+          "support": 5.0
+        },
+        "accuracy": 0.5,
+        "macro avg": {
+          "precision": 0.5,
+          "recall": 0.5,
+          "f1-score": 0.4742063492063492,
+          "support": 20.0
+        },
+        "weighted avg": {
+          "precision": 0.5,
+          "recall": 0.5,
+          "f1-score": 0.4742063492063492,
+          "support": 20.0
+        }
+      }
+    },
+    "mixed": {
+      "n": 20,
+      "accuracy": 0.55,
+      "per_topic": {
+        "menstrual_health": {
+          "precision": 0.4,
+          "recall": 0.4,
+          "f1-score": 0.4,
+          "support": 5.0
+        },
+        "hormonal_health": {
+          "precision": 1.0,
+          "recall": 0.6,
+          "f1-score": 0.75,
+          "support": 5.0
+        },
+        "perimenopause": {
+          "precision": 0.42857142857142855,
+          "recall": 0.6,
+          "f1-score": 0.5,
+          "support": 5.0
+        },
+        "care_navigation": {
+          "precision": 0.6,
+          "recall": 0.6,
+          "f1-score": 0.6,
+          "support": 5.0
+        },
+        "accuracy": 0.55,
+        "macro avg": {
+          "precision": 0.6071428571428571,
+          "recall": 0.55,
+          "f1-score": 0.5625,
+          "support": 20.0
+        },
+        "weighted avg": {
+          "precision": 0.6071428571428571,
+          "recall": 0.55,
+          "f1-score": 0.5625,
+          "support": 20.0
+        }
+      }
+    }
+  },
+  "errors": [
+    {
+      "example_id": "menstrual_health-12-en",
+      "expected": "menstrual_health",
+      "predicted": "perimenopause"
+    },
+    {
+      "example_id": "menstrual_health-13-en",
+      "expected": "menstrual_health",
+      "predicted": "care_navigation"
+    },
+    {
+      "example_id": "menstrual_health-14-en",
+      "expected": "menstrual_health",
+      "predicted": "perimenopause"
+    },
+    {
+      "example_id": "hormonal_health-12-en",
+      "expected": "hormonal_health",
+      "predicted": "perimenopause"
+    },
+    {
+      "example_id": "hormonal_health-13-en",
+      "expected": "hormonal_health",
+      "predicted": "care_navigation"
+    },
+    {
+      "example_id": "perimenopause-10-en",
+      "expected": "perimenopause",
+      "predicted": "menstrual_health"
+    },
+    {
+      "example_id": "perimenopause-11-en",
+      "expected": "perimenopause",
+      "predicted": "hormonal_health"
+    },
+    {
+      "example_id": "care_navigation-11-en",
+      "expected": "care_navigation",
+      "predicted": "menstrual_health"
+    },
+    {
+      "example_id": "menstrual_health-11-sw",
+      "expected": "menstrual_health",
+      "predicted": "care_navigation"
+    },
+    {
+      "example_id": "menstrual_health-12-sw",
+      "expected": "menstrual_health",
+      "predicted": "perimenopause"
+    },
+    {
+      "example_id": "hormonal_health-10-sw",
+      "expected": "hormonal_health",
+      "predicted": "perimenopause"
+    },
+    {
+      "example_id": "hormonal_health-12-sw",
+      "expected": "hormonal_health",
+      "predicted": "menstrual_health"
+    },
+    {
+      "example_id": "hormonal_health-13-sw",
+      "expected": "hormonal_health",
+      "predicted": "care_navigation"
+    },
+    {
+      "example_id": "hormonal_health-14-sw",
+      "expected": "hormonal_health",
+      "predicted": "menstrual_health"
+    },
+    {
+      "example_id": "perimenopause-10-sw",
+      "expected": "perimenopause",
+      "predicted": "menstrual_health"
+    },
+    {
+      "example_id": "care_navigation-11-sw",
+      "expected": "care_navigation",
+      "predicted": "menstrual_health"
+    },
+    {
+      "example_id": "care_navigation-12-sw",
+      "expected": "care_navigation",
+      "predicted": "hormonal_health"
+    },
+    {
+      "example_id": "care_navigation-14-sw",
+      "expected": "care_navigation",
+      "predicted": "perimenopause"
+    },
+    {
+      "example_id": "menstrual_health-12-mixed",
+      "expected": "menstrual_health",
+      "predicted": "perimenopause"
+    },
+    {
+      "example_id": "menstrual_health-13-mixed",
+      "expected": "menstrual_health",
+      "predicted": "care_navigation"
+    },
+    {
+      "example_id": "menstrual_health-14-mixed",
+      "expected": "menstrual_health",
+      "predicted": "perimenopause"
+    },
+    {
+      "example_id": "hormonal_health-12-mixed",
+      "expected": "hormonal_health",
+      "predicted": "perimenopause"
+    },
+    {
+      "example_id": "hormonal_health-14-mixed",
+      "expected": "hormonal_health",
+      "predicted": "menstrual_health"
+    },
+    {
+      "example_id": "perimenopause-10-mixed",
+      "expected": "perimenopause",
+      "predicted": "menstrual_health"
+    },
+    {
+      "example_id": "perimenopause-12-mixed",
+      "expected": "perimenopause",
+      "predicted": "care_navigation"
+    },
+    {
+      "example_id": "care_navigation-11-mixed",
+      "expected": "care_navigation",
+      "predicted": "menstrual_health"
+    },
+    {
+      "example_id": "care_navigation-12-mixed",
+      "expected": "care_navigation",
+      "predicted": "perimenopause"
+    }
+  ],
+  "limitations": [
+    "Small author-created synthetic benchmark with unreviewed translations.",
+    "No independent clinical validation, demographic fairness evidence or calibrated probabilities.",
+    "Four routing categories only; out-of-domain rejection is limited.",
+    "Privacy and safety unit tests are separate and do not establish population-level recall."
+  ]
+}

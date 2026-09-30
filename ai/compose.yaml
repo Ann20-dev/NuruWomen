@@ -1,0 +1,15 @@
+services:
+  whc-ai:
+    build: .
+    environment:
+      WHC_API_KEY: ${WHC_API_KEY:?Set WHC_API_KEY before starting Compose}
+      WHC_DEMO_MODE: "true"
+    ports:
+      - "127.0.0.1:8000:8000"
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true

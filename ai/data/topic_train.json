@@ -1,0 +1,1082 @@
+[
+  {
+    "id": "menstrual_health-00-en",
+    "family_id": "menstrual_health-00",
+    "text": "Why do my periods hurt so much?",
+    "language": "en",
+    "topic": "menstrual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "menstrual_health-00-sw",
+    "family_id": "menstrual_health-00",
+    "text": "Kwa nini nina maumivu makali wakati wa hedhi?",
+    "language": "sw",
+    "topic": "menstrual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "menstrual_health-00-mixed",
+    "family_id": "menstrual_health-00",
+    "text": "My periods zina maumivu makali, kwa nini?",
+    "language": "mixed",
+    "topic": "menstrual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "menstrual_health-01-en",
+    "family_id": "menstrual_health-01",
+    "text": "I want information about heavy menstrual bleeding.",
+    "language": "en",
+    "topic": "menstrual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "menstrual_health-01-sw",
+    "family_id": "menstrual_health-01",
+    "text": "Nataka maelezo kuhusu damu nyingi wakati wa hedhi.",
+    "language": "sw",
+    "topic": "menstrual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "menstrual_health-01-mixed",
+    "family_id": "menstrual_health-01",
+    "text": "Nataka information about heavy bleeding wakati wa hedhi.",
+    "language": "mixed",
+    "topic": "menstrual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "menstrual_health-02-en",
+    "family_id": "menstrual_health-02",
+    "text": "My menstrual cramps interrupt my daily work.",
+    "language": "en",
+    "topic": "menstrual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "menstrual_health-02-sw",
+    "family_id": "menstrual_health-02",
+    "text": "Maumivu ya hedhi yanazuia kazi zangu za kila siku.",
+    "language": "sw",
+    "topic": "menstrual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "menstrual_health-02-mixed",
+    "family_id": "menstrual_health-02",
+    "text": "Menstrual cramps zinazuia kazi zangu kila siku.",
+    "language": "mixed",
+    "topic": "menstrual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "menstrual_health-03-en",
+    "family_id": "menstrual_health-03",
+    "text": "Can I discuss painful periods with a health worker?",
+    "language": "en",
+    "topic": "menstrual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "menstrual_health-03-sw",
+    "family_id": "menstrual_health-03",
+    "text": "Ninaweza kuzungumza na mhudumu wa afya kuhusu hedhi yenye maumivu?",
+    "language": "sw",
+    "topic": "menstrual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "menstrual_health-03-mixed",
+    "family_id": "menstrual_health-03",
+    "text": "Can I discuss hedhi yenye maumivu na mhudumu wa afya?",
+    "language": "mixed",
+    "topic": "menstrual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "menstrual_health-04-en",
+    "family_id": "menstrual_health-04",
+    "text": "What does menstrual health mean?",
+    "language": "en",
+    "topic": "menstrual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "menstrual_health-04-sw",
+    "family_id": "menstrual_health-04",
+    "text": "Afya ya hedhi ina maana gani?",
+    "language": "sw",
+    "topic": "menstrual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "menstrual_health-04-mixed",
+    "family_id": "menstrual_health-04",
+    "text": "What does afya ya hedhi mean?",
+    "language": "mixed",
+    "topic": "menstrual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "menstrual_health-05-en",
+    "family_id": "menstrual_health-05",
+    "text": "My cycle has become irregular.",
+    "language": "en",
+    "topic": "menstrual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "menstrual_health-05-sw",
+    "family_id": "menstrual_health-05",
+    "text": "Mzunguko wangu wa hedhi hauna mpangilio.",
+    "language": "sw",
+    "topic": "menstrual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "menstrual_health-05-mixed",
+    "family_id": "menstrual_health-05",
+    "text": "My cycle haina mpangilio wa kawaida.",
+    "language": "mixed",
+    "topic": "menstrual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "menstrual_health-06-en",
+    "family_id": "menstrual_health-06",
+    "text": "Where can I learn about menstrual hygiene?",
+    "language": "en",
+    "topic": "menstrual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "menstrual_health-06-sw",
+    "family_id": "menstrual_health-06",
+    "text": "Ninaweza kujifunza wapi kuhusu usafi wakati wa hedhi?",
+    "language": "sw",
+    "topic": "menstrual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "menstrual_health-06-mixed",
+    "family_id": "menstrual_health-06",
+    "text": "Where can I learn kuhusu usafi wakati wa hedhi?",
+    "language": "mixed",
+    "topic": "menstrual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "hormonal_health-01-en",
+    "family_id": "hormonal_health-01",
+    "text": "I would like an explanation of PCOS.",
+    "language": "en",
+    "topic": "menstrual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "hormonal_health-01-sw",
+    "family_id": "hormonal_health-01",
+    "text": "Ningependa maelezo kuhusu PCOS.",
+    "language": "sw",
+    "topic": "menstrual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "hormonal_health-01-mixed",
+    "family_id": "hormonal_health-01",
+    "text": "Ningependa an explanation of PCOS.",
+    "language": "mixed",
+    "topic": "menstrual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "healthy_aging-train-0-en",
+    "family_id": "healthy_aging-train-0",
+    "text": "Tell me about healthy aging for women.",
+    "language": "en",
+    "topic": "healthy_aging",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "healthy_aging-train-0-sw",
+    "family_id": "healthy_aging-train-0",
+    "text": "Nataka maelezo kuhusu afya wakati wa kuzeeka.",
+    "language": "sw",
+    "topic": "healthy_aging",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "healthy_aging-train-0-mixed",
+    "family_id": "healthy_aging-train-0",
+    "text": "Nataka information about healthy aging.",
+    "language": "mixed",
+    "topic": "healthy_aging",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "healthy_aging-train-1-en",
+    "family_id": "healthy_aging-train-1",
+    "text": "How can older women discuss bone health?",
+    "language": "en",
+    "topic": "healthy_aging",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "healthy_aging-train-1-sw",
+    "family_id": "healthy_aging-train-1",
+    "text": "Wanawake wazee wanawezaje kuuliza kuhusu afya ya mifupa?",
+    "language": "sw",
+    "topic": "healthy_aging",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "healthy_aging-train-1-mixed",
+    "family_id": "healthy_aging-train-1",
+    "text": "How can wanawake wazee discuss bone health?",
+    "language": "mixed",
+    "topic": "healthy_aging",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "healthy_aging-train-2-en",
+    "family_id": "healthy_aging-train-2",
+    "text": "What does menopause mean?",
+    "language": "en",
+    "topic": "healthy_aging",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "healthy_aging-train-2-sw",
+    "family_id": "healthy_aging-train-2",
+    "text": "Ukomo wa hedhi ni nini?",
+    "language": "sw",
+    "topic": "healthy_aging",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "healthy_aging-train-2-mixed",
+    "family_id": "healthy_aging-train-2",
+    "text": "What is ukomo wa hedhi?",
+    "language": "mixed",
+    "topic": "healthy_aging",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "healthy_aging-train-3-en",
+    "family_id": "healthy_aging-train-3",
+    "text": "I want to understand perimenopause.",
+    "language": "en",
+    "topic": "healthy_aging",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "healthy_aging-train-3-sw",
+    "family_id": "healthy_aging-train-3",
+    "text": "Nataka kuelewa kipindi cha kuelekea ukomo wa hedhi.",
+    "language": "sw",
+    "topic": "healthy_aging",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "healthy_aging-train-3-mixed",
+    "family_id": "healthy_aging-train-3",
+    "text": "Nataka kuelewa perimenopause.",
+    "language": "mixed",
+    "topic": "healthy_aging",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "healthy_aging-train-4-en",
+    "family_id": "healthy_aging-train-4",
+    "text": "What support is available during aging?",
+    "language": "en",
+    "topic": "healthy_aging",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "healthy_aging-train-4-sw",
+    "family_id": "healthy_aging-train-4",
+    "text": "Ni msaada gani unapatikana wakati wa kuzeeka?",
+    "language": "sw",
+    "topic": "healthy_aging",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "healthy_aging-train-4-mixed",
+    "family_id": "healthy_aging-train-4",
+    "text": "What support is available wakati wa kuzeeka?",
+    "language": "mixed",
+    "topic": "healthy_aging",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "healthy_aging-train-5-en",
+    "family_id": "healthy_aging-train-5",
+    "text": "I have questions about life after menopause.",
+    "language": "en",
+    "topic": "healthy_aging",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "healthy_aging-train-5-sw",
+    "family_id": "healthy_aging-train-5",
+    "text": "Nina maswali kuhusu maisha baada ya ukomo wa hedhi.",
+    "language": "sw",
+    "topic": "healthy_aging",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "healthy_aging-train-5-mixed",
+    "family_id": "healthy_aging-train-5",
+    "text": "Nina questions about life after menopause.",
+    "language": "mixed",
+    "topic": "healthy_aging",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "healthy_aging-train-6-en",
+    "family_id": "healthy_aging-train-6",
+    "text": "How do women approach physical activity as they age?",
+    "language": "en",
+    "topic": "healthy_aging",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "healthy_aging-train-6-sw",
+    "family_id": "healthy_aging-train-6",
+    "text": "Wanawake wanazungumziaje mazoezi wanapozeeka?",
+    "language": "sw",
+    "topic": "healthy_aging",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "healthy_aging-train-6-mixed",
+    "family_id": "healthy_aging-train-6",
+    "text": "How do women approach mazoezi wanapozeeka?",
+    "language": "mixed",
+    "topic": "healthy_aging",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "healthy_aging-train-7-en",
+    "family_id": "healthy_aging-train-7",
+    "text": "What should an older woman ask about healthy ageing?",
+    "language": "en",
+    "topic": "healthy_aging",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "healthy_aging-train-7-sw",
+    "family_id": "healthy_aging-train-7",
+    "text": "Mwanamke mzee aulize nini kuhusu afya wakati wa kuzeeka?",
+    "language": "sw",
+    "topic": "healthy_aging",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "healthy_aging-train-7-mixed",
+    "family_id": "healthy_aging-train-7",
+    "text": "What should mwanamke mzee ask about healthy ageing?",
+    "language": "mixed",
+    "topic": "healthy_aging",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "postpartum-train-0-en",
+    "family_id": "postpartum-train-0",
+    "text": "What is postpartum recovery?",
+    "language": "en",
+    "topic": "postpartum",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "postpartum-train-0-sw",
+    "family_id": "postpartum-train-0",
+    "text": "Kupona baada ya kujifungua ni nini?",
+    "language": "sw",
+    "topic": "postpartum",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "postpartum-train-0-mixed",
+    "family_id": "postpartum-train-0",
+    "text": "What is recovery baada ya kujifungua?",
+    "language": "mixed",
+    "topic": "postpartum",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "postpartum-train-1-en",
+    "family_id": "postpartum-train-1",
+    "text": "I need information about breastfeeding after birth.",
+    "language": "en",
+    "topic": "postpartum",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "postpartum-train-1-sw",
+    "family_id": "postpartum-train-1",
+    "text": "Ninahitaji maelezo kuhusu kunyonyesha baada ya kujifungua.",
+    "language": "sw",
+    "topic": "postpartum",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "postpartum-train-1-mixed",
+    "family_id": "postpartum-train-1",
+    "text": "Ninahitaji information about breastfeeding after birth.",
+    "language": "mixed",
+    "topic": "postpartum",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "postpartum-train-2-en",
+    "family_id": "postpartum-train-2",
+    "text": "How do I ask about postnatal care?",
+    "language": "en",
+    "topic": "postpartum",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "postpartum-train-2-sw",
+    "family_id": "postpartum-train-2",
+    "text": "Ninawezaje kuuliza kuhusu huduma baada ya kujifungua?",
+    "language": "sw",
+    "topic": "postpartum",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "postpartum-train-2-mixed",
+    "family_id": "postpartum-train-2",
+    "text": "How do I ask about huduma baada ya kujifungua?",
+    "language": "mixed",
+    "topic": "postpartum",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "postpartum-train-3-en",
+    "family_id": "postpartum-train-3",
+    "text": "I want to learn about rest after childbirth.",
+    "language": "en",
+    "topic": "postpartum",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "postpartum-train-3-sw",
+    "family_id": "postpartum-train-3",
+    "text": "Nataka kujifunza kuhusu kupumzika baada ya kujifungua.",
+    "language": "sw",
+    "topic": "postpartum",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "postpartum-train-3-mixed",
+    "family_id": "postpartum-train-3",
+    "text": "Nataka learn about rest after childbirth.",
+    "language": "mixed",
+    "topic": "postpartum",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "postpartum-train-4-en",
+    "family_id": "postpartum-train-4",
+    "text": "What questions can I ask at a postpartum visit?",
+    "language": "en",
+    "topic": "postpartum",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "postpartum-train-4-sw",
+    "family_id": "postpartum-train-4",
+    "text": "Ninaweza kuuliza maswali gani kwenye kliniki baada ya kujifungua?",
+    "language": "sw",
+    "topic": "postpartum",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "postpartum-train-4-mixed",
+    "family_id": "postpartum-train-4",
+    "text": "What questions can I ask baada ya kujifungua?",
+    "language": "mixed",
+    "topic": "postpartum",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "postpartum-train-5-en",
+    "family_id": "postpartum-train-5",
+    "text": "Where can I discuss feeding my baby?",
+    "language": "en",
+    "topic": "postpartum",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "postpartum-train-5-sw",
+    "family_id": "postpartum-train-5",
+    "text": "Ninaweza kujadili kunyonyesha mtoto wapi?",
+    "language": "sw",
+    "topic": "postpartum",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "postpartum-train-5-mixed",
+    "family_id": "postpartum-train-5",
+    "text": "Where can I discuss kunyonyesha mtoto?",
+    "language": "mixed",
+    "topic": "postpartum",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "postpartum-train-6-en",
+    "family_id": "postpartum-train-6",
+    "text": "I have questions about recovery after delivery.",
+    "language": "en",
+    "topic": "postpartum",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "postpartum-train-6-sw",
+    "family_id": "postpartum-train-6",
+    "text": "Nina maswali kuhusu kupona baada ya kujifungua.",
+    "language": "sw",
+    "topic": "postpartum",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "postpartum-train-6-mixed",
+    "family_id": "postpartum-train-6",
+    "text": "Nina questions about recovery after delivery.",
+    "language": "mixed",
+    "topic": "postpartum",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "postpartum-train-7-en",
+    "family_id": "postpartum-train-7",
+    "text": "I need information about postnatal pelvic recovery.",
+    "language": "en",
+    "topic": "postpartum",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "postpartum-train-7-sw",
+    "family_id": "postpartum-train-7",
+    "text": "Ninahitaji maelezo kuhusu kupona kwa nyonga baada ya kujifungua.",
+    "language": "sw",
+    "topic": "postpartum",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "postpartum-train-7-mixed",
+    "family_id": "postpartum-train-7",
+    "text": "Ninahitaji information about postnatal recovery.",
+    "language": "mixed",
+    "topic": "postpartum",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "sexual_health-train-0-en",
+    "family_id": "sexual_health-train-0",
+    "text": "What is sexual health?",
+    "language": "en",
+    "topic": "sexual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "sexual_health-train-0-sw",
+    "family_id": "sexual_health-train-0",
+    "text": "Afya ya kingono ni nini?",
+    "language": "sw",
+    "topic": "sexual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "sexual_health-train-0-mixed",
+    "family_id": "sexual_health-train-0",
+    "text": "What is afya ya kingono?",
+    "language": "mixed",
+    "topic": "sexual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "sexual_health-train-1-en",
+    "family_id": "sexual_health-train-1",
+    "text": "I want information about contraception.",
+    "language": "en",
+    "topic": "sexual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "sexual_health-train-1-sw",
+    "family_id": "sexual_health-train-1",
+    "text": "Nataka maelezo kuhusu uzazi wa mpango.",
+    "language": "sw",
+    "topic": "sexual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "sexual_health-train-1-mixed",
+    "family_id": "sexual_health-train-1",
+    "text": "Nataka information about contraception.",
+    "language": "mixed",
+    "topic": "sexual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "sexual_health-train-2-en",
+    "family_id": "sexual_health-train-2",
+    "text": "How can I learn about STI testing?",
+    "language": "en",
+    "topic": "sexual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "sexual_health-train-2-sw",
+    "family_id": "sexual_health-train-2",
+    "text": "Ninawezaje kujifunza kuhusu vipimo vya maambukizi ya zinaa?",
+    "language": "sw",
+    "topic": "sexual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "sexual_health-train-2-mixed",
+    "family_id": "sexual_health-train-2",
+    "text": "How can I learn about vipimo vya STI?",
+    "language": "mixed",
+    "topic": "sexual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "sexual_health-train-3-en",
+    "family_id": "sexual_health-train-3",
+    "text": "What does consent mean in a sexual relationship?",
+    "language": "en",
+    "topic": "sexual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "sexual_health-train-3-sw",
+    "family_id": "sexual_health-train-3",
+    "text": "Ridhaa katika uhusiano wa kingono ina maana gani?",
+    "language": "sw",
+    "topic": "sexual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "sexual_health-train-3-mixed",
+    "family_id": "sexual_health-train-3",
+    "text": "What does ridhaa mean in a sexual relationship?",
+    "language": "mixed",
+    "topic": "sexual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "sexual_health-train-4-en",
+    "family_id": "sexual_health-train-4",
+    "text": "I want information about abortion.",
+    "language": "en",
+    "topic": "sexual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "sexual_health-train-4-sw",
+    "family_id": "sexual_health-train-4",
+    "text": "Nataka maelezo kuhusu utoaji mimba.",
+    "language": "sw",
+    "topic": "sexual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "sexual_health-train-4-mixed",
+    "family_id": "sexual_health-train-4",
+    "text": "Nataka information about abortion.",
+    "language": "mixed",
+    "topic": "sexual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "sexual_health-train-5-en",
+    "family_id": "sexual_health-train-5",
+    "text": "Where can I read about termination of pregnancy?",
+    "language": "en",
+    "topic": "sexual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "sexual_health-train-5-sw",
+    "family_id": "sexual_health-train-5",
+    "text": "Ninaweza kusoma kuhusu kutoa mimba wapi?",
+    "language": "sw",
+    "topic": "sexual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "sexual_health-train-5-mixed",
+    "family_id": "sexual_health-train-5",
+    "text": "Where can I read about utoaji mimba?",
+    "language": "mixed",
+    "topic": "sexual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "sexual_health-train-6-en",
+    "family_id": "sexual_health-train-6",
+    "text": "I have a question about pain during sex.",
+    "language": "en",
+    "topic": "sexual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "sexual_health-train-6-sw",
+    "family_id": "sexual_health-train-6",
+    "text": "Nina swali kuhusu maumivu wakati wa ngono.",
+    "language": "sw",
+    "topic": "sexual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "sexual_health-train-6-mixed",
+    "family_id": "sexual_health-train-6",
+    "text": "Nina question about pain during sex.",
+    "language": "mixed",
+    "topic": "sexual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "sexual_health-train-7-en",
+    "family_id": "sexual_health-train-7",
+    "text": "How can I ask about family planning options?",
+    "language": "en",
+    "topic": "sexual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "sexual_health-train-7-sw",
+    "family_id": "sexual_health-train-7",
+    "text": "Ninawezaje kuuliza kuhusu njia za uzazi wa mpango?",
+    "language": "sw",
+    "topic": "sexual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "sexual_health-train-7-mixed",
+    "family_id": "sexual_health-train-7",
+    "text": "How can I ask about uzazi wa mpango?",
+    "language": "mixed",
+    "topic": "sexual_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "mental_health-train-0-en",
+    "family_id": "mental_health-train-0",
+    "text": "What is mental health?",
+    "language": "en",
+    "topic": "mental_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "mental_health-train-0-sw",
+    "family_id": "mental_health-train-0",
+    "text": "Afya ya akili ni nini?",
+    "language": "sw",
+    "topic": "mental_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "mental_health-train-0-mixed",
+    "family_id": "mental_health-train-0",
+    "text": "What is afya ya akili?",
+    "language": "mixed",
+    "topic": "mental_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "mental_health-train-1-en",
+    "family_id": "mental_health-train-1",
+    "text": "I need emotional support.",
+    "language": "en",
+    "topic": "mental_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "mental_health-train-1-sw",
+    "family_id": "mental_health-train-1",
+    "text": "Ninahitaji msaada wa kihisia.",
+    "language": "sw",
+    "topic": "mental_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "mental_health-train-1-mixed",
+    "family_id": "mental_health-train-1",
+    "text": "Ninahitaji emotional support.",
+    "language": "mixed",
+    "topic": "mental_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "mental_health-train-2-en",
+    "family_id": "mental_health-train-2",
+    "text": "Where can I discuss anxiety?",
+    "language": "en",
+    "topic": "mental_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "mental_health-train-2-sw",
+    "family_id": "mental_health-train-2",
+    "text": "Ninaweza kujadili wasiwasi wapi?",
+    "language": "sw",
+    "topic": "mental_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "mental_health-train-2-mixed",
+    "family_id": "mental_health-train-2",
+    "text": "Where can I discuss wasiwasi?",
+    "language": "mixed",
+    "topic": "mental_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "mental_health-train-3-en",
+    "family_id": "mental_health-train-3",
+    "text": "I want to learn about depression.",
+    "language": "en",
+    "topic": "mental_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "mental_health-train-3-sw",
+    "family_id": "mental_health-train-3",
+    "text": "Nataka kujifunza kuhusu huzuni na afya ya akili.",
+    "language": "sw",
+    "topic": "mental_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "mental_health-train-3-mixed",
+    "family_id": "mental_health-train-3",
+    "text": "Nataka learn about depression.",
+    "language": "mixed",
+    "topic": "mental_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "mental_health-train-4-en",
+    "family_id": "mental_health-train-4",
+    "text": "How can I talk about stress?",
+    "language": "en",
+    "topic": "mental_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "mental_health-train-4-sw",
+    "family_id": "mental_health-train-4",
+    "text": "Ninawezaje kuzungumza kuhusu msongo wa mawazo?",
+    "language": "sw",
+    "topic": "mental_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "mental_health-train-4-mixed",
+    "family_id": "mental_health-train-4",
+    "text": "How can I talk about msongo wa mawazo?",
+    "language": "mixed",
+    "topic": "mental_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "mental_health-train-5-en",
+    "family_id": "mental_health-train-5",
+    "text": "What does counselling involve?",
+    "language": "en",
+    "topic": "mental_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "mental_health-train-5-sw",
+    "family_id": "mental_health-train-5",
+    "text": "Ushauri kuhusu afya ya akili unahusu nini?",
+    "language": "sw",
+    "topic": "mental_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "mental_health-train-5-mixed",
+    "family_id": "mental_health-train-5",
+    "text": "What does counselling involve kwa afya ya akili?",
+    "language": "mixed",
+    "topic": "mental_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "mental_health-train-6-en",
+    "family_id": "mental_health-train-6",
+    "text": "I feel anxious and would like support.",
+    "language": "en",
+    "topic": "mental_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "mental_health-train-6-sw",
+    "family_id": "mental_health-train-6",
+    "text": "Nina wasiwasi na ningependa msaada.",
+    "language": "sw",
+    "topic": "mental_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "mental_health-train-6-mixed",
+    "family_id": "mental_health-train-6",
+    "text": "I feel anxious na ningependa msaada.",
+    "language": "mixed",
+    "topic": "mental_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "mental_health-train-7-en",
+    "family_id": "mental_health-train-7",
+    "text": "I have questions about sadness.",
+    "language": "en",
+    "topic": "mental_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "mental_health-train-7-sw",
+    "family_id": "mental_health-train-7",
+    "text": "Nina maswali kuhusu huzuni.",
+    "language": "sw",
+    "topic": "mental_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "mental_health-train-7-mixed",
+    "family_id": "mental_health-train-7",
+    "text": "Nina questions about sadness.",
+    "language": "mixed",
+    "topic": "mental_health",
+    "synthetic": true,
+    "review_status": "unreviewed"
+  }
+]

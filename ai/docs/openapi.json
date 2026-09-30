@@ -1,0 +1,626 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "WHC AI - synthetic demonstration",
+    "description": "Internal server-to-server API. All bundled health content/rules are unreviewed. Never send real health records to this demo.",
+    "version": "0.3.0"
+  },
+  "paths": {
+    "/health": {
+      "get": {
+        "summary": "Health",
+        "operationId": "health_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/nuru/topics": {
+      "get": {
+        "summary": "Topic Catalog",
+        "operationId": "topic_catalog_v1_nuru_topics_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      }
+    },
+    "/v1/privacy": {
+      "post": {
+        "summary": "Privacy",
+        "operationId": "privacy_v1_privacy_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TextRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      }
+    },
+    "/v1/classify": {
+      "post": {
+        "summary": "Classify",
+        "operationId": "classify_v1_classify_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TextRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      }
+    },
+    "/v1/retrieve": {
+      "post": {
+        "summary": "Search",
+        "operationId": "search_v1_retrieve_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AnalyzeRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      }
+    },
+    "/v1/analyze": {
+      "post": {
+        "summary": "Analyze",
+        "operationId": "analyze_v1_analyze_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AnalyzeRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      }
+    },
+    "/v1/translation-check": {
+      "post": {
+        "summary": "Translation",
+        "operationId": "translation_v1_translation_check_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TranslationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      }
+    },
+    "/v1/gaps": {
+      "post": {
+        "summary": "Gaps",
+        "operationId": "gaps_v1_gaps_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GapRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      }
+    },
+    "/v1/nuru/analyze": {
+      "post": {
+        "summary": "Nuru Analyze",
+        "operationId": "nuru_analyze_v1_nuru_analyze_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NuruRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AnalyzeRequest": {
+        "properties": {
+          "text": {
+            "type": "string",
+            "maxLength": 3000,
+            "minLength": 1,
+            "title": "Text"
+          },
+          "response_language": {
+            "type": "string",
+            "enum": [
+              "en",
+              "sw"
+            ],
+            "title": "Response Language",
+            "default": "en"
+          },
+          "synthetic_only": {
+            "type": "boolean",
+            "const": true,
+            "title": "Synthetic Only"
+          },
+          "include_demo_cards": {
+            "type": "boolean",
+            "title": "Include Demo Cards",
+            "default": false
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "text",
+          "synthetic_only"
+        ],
+        "title": "AnalyzeRequest"
+      },
+      "GapRecord": {
+        "properties": {
+          "submission_id": {
+            "type": "string",
+            "pattern": "^demo-[A-Za-z0-9-]{1,40}$",
+            "title": "Submission Id"
+          },
+          "topic": {
+            "type": "string",
+            "enum": [
+              "menstrual_health",
+              "healthy_aging",
+              "postpartum",
+              "sexual_health",
+              "mental_health"
+            ],
+            "title": "Topic"
+          },
+          "language": {
+            "type": "string",
+            "enum": [
+              "en",
+              "sw",
+              "mixed"
+            ],
+            "title": "Language"
+          },
+          "analytics_consent": {
+            "type": "boolean",
+            "title": "Analytics Consent"
+          },
+          "has_approved_card": {
+            "type": "boolean",
+            "title": "Has Approved Card"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "submission_id",
+          "topic",
+          "language",
+          "analytics_consent",
+          "has_approved_card"
+        ],
+        "title": "GapRecord"
+      },
+      "GapRequest": {
+        "properties": {
+          "month": {
+            "type": "string",
+            "pattern": "^20\\d{2}-(0[1-9]|1[0-2])$",
+            "title": "Month"
+          },
+          "records": {
+            "items": {
+              "$ref": "#/components/schemas/GapRecord"
+            },
+            "type": "array",
+            "maxItems": 200,
+            "title": "Records"
+          },
+          "synthetic_only": {
+            "type": "boolean",
+            "const": true,
+            "title": "Synthetic Only"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "month",
+          "records",
+          "synthetic_only"
+        ],
+        "title": "GapRequest"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "NuruRequest": {
+        "properties": {
+          "title": {
+            "type": "string",
+            "maxLength": 120,
+            "minLength": 1,
+            "title": "Title"
+          },
+          "content": {
+            "type": "string",
+            "maxLength": 2879,
+            "minLength": 1,
+            "title": "Content"
+          },
+          "response_language": {
+            "type": "string",
+            "enum": [
+              "en",
+              "sw"
+            ],
+            "title": "Response Language"
+          },
+          "synthetic_only": {
+            "type": "boolean",
+            "const": true,
+            "title": "Synthetic Only"
+          },
+          "include_demo_cards": {
+            "type": "boolean",
+            "title": "Include Demo Cards",
+            "default": false
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "title",
+          "content",
+          "response_language",
+          "synthetic_only"
+        ],
+        "title": "NuruRequest"
+      },
+      "TextRequest": {
+        "properties": {
+          "text": {
+            "type": "string",
+            "maxLength": 3000,
+            "minLength": 1,
+            "title": "Text"
+          },
+          "response_language": {
+            "type": "string",
+            "enum": [
+              "en",
+              "sw"
+            ],
+            "title": "Response Language",
+            "default": "en"
+          },
+          "synthetic_only": {
+            "type": "boolean",
+            "const": true,
+            "title": "Synthetic Only"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "text",
+          "synthetic_only"
+        ],
+        "title": "TextRequest"
+      },
+      "TranslationRequest": {
+        "properties": {
+          "source_text": {
+            "type": "string",
+            "maxLength": 3000,
+            "minLength": 1,
+            "title": "Source Text"
+          },
+          "target_text": {
+            "type": "string",
+            "maxLength": 3000,
+            "minLength": 1,
+            "title": "Target Text"
+          },
+          "source_version": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9._-]{1,32}$",
+            "title": "Source Version"
+          },
+          "translated_from_version": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9._-]{1,32}$",
+            "title": "Translated From Version"
+          },
+          "synthetic_only": {
+            "type": "boolean",
+            "const": true,
+            "title": "Synthetic Only"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "source_text",
+          "target_text",
+          "source_version",
+          "translated_from_version",
+          "synthetic_only"
+        ],
+        "title": "TranslationRequest"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    },
+    "securitySchemes": {
+      "APIKeyHeader": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-Key"
+      }
+    }
+  }
+}

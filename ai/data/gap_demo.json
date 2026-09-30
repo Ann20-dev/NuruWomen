@@ -1,0 +1,342 @@
+{
+  "month": "2026-09",
+  "synthetic_only": true,
+  "records": [
+    {
+      "submission_id": "demo-0",
+      "topic": "healthy_aging",
+      "language": "sw",
+      "analytics_consent": true,
+      "has_approved_card": false
+    },
+    {
+      "submission_id": "demo-1",
+      "topic": "healthy_aging",
+      "language": "sw",
+      "analytics_consent": true,
+      "has_approved_card": false
+    },
+    {
+      "submission_id": "demo-2",
+      "topic": "healthy_aging",
+      "language": "sw",
+      "analytics_consent": true,
+      "has_approved_card": false
+    },
+    {
+      "submission_id": "demo-3",
+      "topic": "healthy_aging",
+      "language": "sw",
+      "analytics_consent": true,
+      "has_approved_card": false
+    },
+    {
+      "submission_id": "demo-4",
+      "topic": "healthy_aging",
+      "language": "sw",
+      "analytics_consent": true,
+      "has_approved_card": false
+    },
+    {
+      "submission_id": "demo-5",
+      "topic": "healthy_aging",
+      "language": "sw",
+      "analytics_consent": true,
+      "has_approved_card": false
+    },
+    {
+      "submission_id": "demo-6",
+      "topic": "healthy_aging",
+      "language": "sw",
+      "analytics_consent": true,
+      "has_approved_card": false
+    },
+    {
+      "submission_id": "demo-7",
+      "topic": "healthy_aging",
+      "language": "sw",
+      "analytics_consent": true,
+      "has_approved_card": false
+    },
+    {
+      "submission_id": "demo-8",
+      "topic": "healthy_aging",
+      "language": "sw",
+      "analytics_consent": true,
+      "has_approved_card": false
+    },
+    {
+      "submission_id": "demo-9",
+      "topic": "healthy_aging",
+      "language": "sw",
+      "analytics_consent": true,
+      "has_approved_card": false
+    },
+    {
+      "submission_id": "demo-10",
+      "topic": "healthy_aging",
+      "language": "sw",
+      "analytics_consent": true,
+      "has_approved_card": false
+    },
+    {
+      "submission_id": "demo-11",
+      "topic": "healthy_aging",
+      "language": "sw",
+      "analytics_consent": true,
+      "has_approved_card": false
+    },
+    {
+      "submission_id": "demo-12",
+      "topic": "healthy_aging",
+      "language": "sw",
+      "analytics_consent": true,
+      "has_approved_card": false
+    },
+    {
+      "submission_id": "demo-13",
+      "topic": "healthy_aging",
+      "language": "sw",
+      "analytics_consent": true,
+      "has_approved_card": false
+    },
+    {
+      "submission_id": "demo-14",
+      "topic": "healthy_aging",
+      "language": "sw",
+      "analytics_consent": true,
+      "has_approved_card": false
+    },
+    {
+      "submission_id": "demo-15",
+      "topic": "healthy_aging",
+      "language": "sw",
+      "analytics_consent": true,
+      "has_approved_card": false
+    },
+    {
+      "submission_id": "demo-16",
+      "topic": "healthy_aging",
+      "language": "sw",
+      "analytics_consent": true,
+      "has_approved_card": false
+    },
+    {
+      "submission_id": "demo-17",
+      "topic": "healthy_aging",
+      "language": "sw",
+      "analytics_consent": true,
+      "has_approved_card": false
+    },
+    {
+      "submission_id": "demo-18",
+      "topic": "healthy_aging",
+      "language": "sw",
+      "analytics_consent": true,
+      "has_approved_card": false
+    },
+    {
+      "submission_id": "demo-19",
+      "topic": "healthy_aging",
+      "language": "sw",
+      "analytics_consent": true,
+      "has_approved_card": false
+    },
+    {
+      "submission_id": "demo-20",
+      "topic": "healthy_aging",
+      "language": "sw",
+      "analytics_consent": true,
+      "has_approved_card": true
+    },
+    {
+      "submission_id": "demo-21",
+      "topic": "healthy_aging",
+      "language": "sw",
+      "analytics_consent": true,
+      "has_approved_card": true
+    },
+    {
+      "submission_id": "demo-22",
+      "topic": "healthy_aging",
+      "language": "sw",
+      "analytics_consent": true,
+      "has_approved_card": true
+    },
+    {
+      "submission_id": "demo-23",
+      "topic": "healthy_aging",
+      "language": "sw",
+      "analytics_consent": true,
+      "has_approved_card": true
+    },
+    {
+      "submission_id": "demo-24",
+      "topic": "healthy_aging",
+      "language": "sw",
+      "analytics_consent": true,
+      "has_approved_card": true
+    },
+    {
+      "submission_id": "demo-25",
+      "topic": "healthy_aging",
+      "language": "sw",
+      "analytics_consent": true,
+      "has_approved_card": true
+    },
+    {
+      "submission_id": "demo-26",
+      "topic": "healthy_aging",
+      "language": "sw",
+      "analytics_consent": true,
+      "has_approved_card": true
+    },
+    {
+      "submission_id": "demo-27",
+      "topic": "healthy_aging",
+      "language": "sw",
+      "analytics_consent": true,
+      "has_approved_card": true
+    },
+    {
+      "submission_id": "demo-28",
+      "topic": "healthy_aging",
+      "language": "sw",
+      "analytics_consent": true,
+      "has_approved_card": true
+    },
+    {
+      "submission_id": "demo-29",
+      "topic": "healthy_aging",
+      "language": "sw",
+      "analytics_consent": true,
+      "has_approved_card": true
+    },
+    {
+      "submission_id": "demo-30",
+      "topic": "healthy_aging",
+      "language": "sw",
+      "analytics_consent": true,
+      "has_approved_card": true
+    },
+    {
+      "submission_id": "demo-31",
+      "topic": "healthy_aging",
+      "language": "sw",
+      "analytics_consent": true,
+      "has_approved_card": true
+    },
+    {
+      "submission_id": "demo-32",
+      "topic": "healthy_aging",
+      "language": "sw",
+      "analytics_consent": true,
+      "has_approved_card": true
+    },
+    {
+      "submission_id": "demo-33",
+      "topic": "healthy_aging",
+      "language": "sw",
+      "analytics_consent": true,
+      "has_approved_card": true
+    },
+    {
+      "submission_id": "demo-34",
+      "topic": "healthy_aging",
+      "language": "sw",
+      "analytics_consent": true,
+      "has_approved_card": true
+    },
+    {
+      "submission_id": "demo-35",
+      "topic": "healthy_aging",
+      "language": "sw",
+      "analytics_consent": true,
+      "has_approved_card": true
+    },
+    {
+      "submission_id": "demo-36",
+      "topic": "healthy_aging",
+      "language": "sw",
+      "analytics_consent": true,
+      "has_approved_card": true
+    },
+    {
+      "submission_id": "demo-37",
+      "topic": "healthy_aging",
+      "language": "sw",
+      "analytics_consent": true,
+      "has_approved_card": true
+    },
+    {
+      "submission_id": "demo-38",
+      "topic": "healthy_aging",
+      "language": "sw",
+      "analytics_consent": true,
+      "has_approved_card": true
+    },
+    {
+      "submission_id": "demo-39",
+      "topic": "healthy_aging",
+      "language": "sw",
+      "analytics_consent": true,
+      "has_approved_card": true
+    },
+    {
+      "submission_id": "demo-small-0",
+      "topic": "sexual_health",
+      "language": "en",
+      "analytics_consent": true,
+      "has_approved_card": false
+    },
+    {
+      "submission_id": "demo-small-1",
+      "topic": "sexual_health",
+      "language": "en",
+      "analytics_consent": true,
+      "has_approved_card": false
+    },
+    {
+      "submission_id": "demo-small-2",
+      "topic": "sexual_health",
+      "language": "en",
+      "analytics_consent": true,
+      "has_approved_card": false
+    },
+    {
+      "submission_id": "demo-small-3",
+      "topic": "sexual_health",
+      "language": "en",
+      "analytics_consent": true,
+      "has_approved_card": false
+    },
+    {
+      "submission_id": "demo-small-4",
+      "topic": "sexual_health",
+      "language": "en",
+      "analytics_consent": true,
+      "has_approved_card": false
+    },
+    {
+      "submission_id": "demo-small-5",
+      "topic": "sexual_health",
+      "language": "en",
+      "analytics_consent": true,
+      "has_approved_card": false
+    },
+    {
+      "submission_id": "demo-small-6",
+      "topic": "sexual_health",
+      "language": "en",
+      "analytics_consent": true,
+      "has_approved_card": false
+    },
+    {
+      "submission_id": "demo-small-7",
+      "topic": "sexual_health",
+      "language": "en",
+      "analytics_consent": true,
+      "has_approved_card": false
+    }
+  ]
+}
