@@ -1,0 +1,522 @@
+[
+  {
+    "id": "period-pain-en",
+    "language": "en",
+    "version": "2.0.0",
+    "source_card_id": null,
+    "source_version": "2.0.0",
+    "title": "Menstrual health demo",
+    "body": "Synthetic retrieval placeholder. No health guidance is provided. This content has not been clinically or linguistically approved.",
+    "topic": "menstrual_health",
+    "keywords": [
+      "menstrual",
+      "menstruation",
+      "period",
+      "periods",
+      "period pain",
+      "cramps",
+      "hedhi",
+      "pcos",
+      "endometriosis",
+      "fibroids",
+      "pms",
+      "pmdd"
+    ],
+    "sources": [],
+    "demo_only": true,
+    "withdrawn": false,
+    "clinical_review": {
+      "status": "draft",
+      "reviewer_id": null,
+      "reviewed_version": null,
+      "content_sha256": null,
+      "reviewed_at": null,
+      "valid_until": null
+    },
+    "translation_review": {
+      "status": "draft",
+      "reviewer_id": null,
+      "reviewed_version": null,
+      "content_sha256": null,
+      "reviewed_at": null,
+      "valid_until": null
+    },
+    "subtopics": []
+  },
+  {
+    "id": "period-pain-sw",
+    "language": "sw",
+    "version": "2.0.0",
+    "source_card_id": "period-pain-en",
+    "source_version": "2.0.0",
+    "title": "Mfano wa afya ya hedhi",
+    "body": "Huu ni mfano wa majaribio ya utafutaji wa taarifa. Hakuna ushauri wa afya unaotolewa. Maudhui haya hayajaidhinishwa na mtaalamu wa afya au mhakiki wa lugha.",
+    "topic": "menstrual_health",
+    "keywords": [
+      "menstrual",
+      "menstruation",
+      "period",
+      "periods",
+      "period pain",
+      "cramps",
+      "hedhi",
+      "pcos",
+      "endometriosis",
+      "fibroids",
+      "pms",
+      "pmdd"
+    ],
+    "sources": [],
+    "demo_only": true,
+    "withdrawn": false,
+    "clinical_review": {
+      "status": "draft",
+      "reviewer_id": null,
+      "reviewed_version": null,
+      "content_sha256": null,
+      "reviewed_at": null,
+      "valid_until": null
+    },
+    "translation_review": {
+      "status": "draft",
+      "reviewer_id": null,
+      "reviewed_version": null,
+      "content_sha256": null,
+      "reviewed_at": null,
+      "valid_until": null
+    },
+    "subtopics": []
+  },
+  {
+    "id": "healthy-aging-en",
+    "language": "en",
+    "version": "2.0.0",
+    "source_card_id": null,
+    "source_version": "2.0.0",
+    "title": "Healthy aging demo",
+    "body": "Synthetic retrieval placeholder. No health guidance is provided. This content has not been clinically or linguistically approved.",
+    "topic": "healthy_aging",
+    "keywords": [
+      "healthy aging",
+      "healthy ageing",
+      "aging",
+      "ageing",
+      "menopause",
+      "perimenopause",
+      "older women",
+      "ukomo wa hedhi",
+      "kuzeeka",
+      "wanawake wazee"
+    ],
+    "sources": [],
+    "demo_only": true,
+    "withdrawn": false,
+    "clinical_review": {
+      "status": "draft",
+      "reviewer_id": null,
+      "reviewed_version": null,
+      "content_sha256": null,
+      "reviewed_at": null,
+      "valid_until": null
+    },
+    "translation_review": {
+      "status": "draft",
+      "reviewer_id": null,
+      "reviewed_version": null,
+      "content_sha256": null,
+      "reviewed_at": null,
+      "valid_until": null
+    },
+    "subtopics": []
+  },
+  {
+    "id": "healthy-aging-sw",
+    "language": "sw",
+    "version": "2.0.0",
+    "source_card_id": "healthy-aging-en",
+    "source_version": "2.0.0",
+    "title": "Mfano wa afya wakati wa kuzeeka",
+    "body": "Huu ni mfano wa majaribio ya utafutaji wa taarifa. Hakuna ushauri wa afya unaotolewa. Maudhui haya hayajaidhinishwa na mtaalamu wa afya au mhakiki wa lugha.",
+    "topic": "healthy_aging",
+    "keywords": [
+      "healthy aging",
+      "healthy ageing",
+      "aging",
+      "ageing",
+      "menopause",
+      "perimenopause",
+      "older women",
+      "ukomo wa hedhi",
+      "kuzeeka",
+      "wanawake wazee"
+    ],
+    "sources": [],
+    "demo_only": true,
+    "withdrawn": false,
+    "clinical_review": {
+      "status": "draft",
+      "reviewer_id": null,
+      "reviewed_version": null,
+      "content_sha256": null,
+      "reviewed_at": null,
+      "valid_until": null
+    },
+    "translation_review": {
+      "status": "draft",
+      "reviewer_id": null,
+      "reviewed_version": null,
+      "content_sha256": null,
+      "reviewed_at": null,
+      "valid_until": null
+    },
+    "subtopics": []
+  },
+  {
+    "id": "postpartum-en",
+    "language": "en",
+    "version": "2.0.0",
+    "source_card_id": null,
+    "source_version": "2.0.0",
+    "title": "Postpartum demo",
+    "body": "Synthetic retrieval placeholder. No health guidance is provided. This content has not been clinically or linguistically approved.",
+    "topic": "postpartum",
+    "keywords": [
+      "postpartum",
+      "postnatal",
+      "after birth",
+      "after childbirth",
+      "after delivery",
+      "breastfeeding",
+      "baada ya kujifungua",
+      "kunyonyesha"
+    ],
+    "sources": [],
+    "demo_only": true,
+    "withdrawn": false,
+    "clinical_review": {
+      "status": "draft",
+      "reviewer_id": null,
+      "reviewed_version": null,
+      "content_sha256": null,
+      "reviewed_at": null,
+      "valid_until": null
+    },
+    "translation_review": {
+      "status": "draft",
+      "reviewer_id": null,
+      "reviewed_version": null,
+      "content_sha256": null,
+      "reviewed_at": null,
+      "valid_until": null
+    },
+    "subtopics": []
+  },
+  {
+    "id": "postpartum-sw",
+    "language": "sw",
+    "version": "2.0.0",
+    "source_card_id": "postpartum-en",
+    "source_version": "2.0.0",
+    "title": "Mfano wa afya baada ya kujifungua",
+    "body": "Huu ni mfano wa majaribio ya utafutaji wa taarifa. Hakuna ushauri wa afya unaotolewa. Maudhui haya hayajaidhinishwa na mtaalamu wa afya au mhakiki wa lugha.",
+    "topic": "postpartum",
+    "keywords": [
+      "postpartum",
+      "postnatal",
+      "after birth",
+      "after childbirth",
+      "after delivery",
+      "breastfeeding",
+      "baada ya kujifungua",
+      "kunyonyesha"
+    ],
+    "sources": [],
+    "demo_only": true,
+    "withdrawn": false,
+    "clinical_review": {
+      "status": "draft",
+      "reviewer_id": null,
+      "reviewed_version": null,
+      "content_sha256": null,
+      "reviewed_at": null,
+      "valid_until": null
+    },
+    "translation_review": {
+      "status": "draft",
+      "reviewer_id": null,
+      "reviewed_version": null,
+      "content_sha256": null,
+      "reviewed_at": null,
+      "valid_until": null
+    },
+    "subtopics": []
+  },
+  {
+    "id": "sexual-health-en",
+    "language": "en",
+    "version": "2.0.0",
+    "source_card_id": null,
+    "source_version": "2.0.0",
+    "title": "Sexual health demo",
+    "body": "Synthetic retrieval placeholder. No health guidance is provided. This content has not been clinically or linguistically approved.",
+    "topic": "sexual_health",
+    "keywords": [
+      "sexual health",
+      "sex",
+      "contraception",
+      "contraceptive",
+      "sti",
+      "stis",
+      "sexually transmitted",
+      "consent",
+      "abortion",
+      "termination of pregnancy",
+      "kingono",
+      "ngono",
+      "uzazi wa mpango",
+      "utoaji mimba",
+      "kutoa mimba"
+    ],
+    "sources": [],
+    "demo_only": true,
+    "withdrawn": false,
+    "clinical_review": {
+      "status": "draft",
+      "reviewer_id": null,
+      "reviewed_version": null,
+      "content_sha256": null,
+      "reviewed_at": null,
+      "valid_until": null
+    },
+    "translation_review": {
+      "status": "draft",
+      "reviewer_id": null,
+      "reviewed_version": null,
+      "content_sha256": null,
+      "reviewed_at": null,
+      "valid_until": null
+    },
+    "subtopics": []
+  },
+  {
+    "id": "sexual-health-sw",
+    "language": "sw",
+    "version": "2.0.0",
+    "source_card_id": "sexual-health-en",
+    "source_version": "2.0.0",
+    "title": "Mfano wa afya ya kingono",
+    "body": "Huu ni mfano wa majaribio ya utafutaji wa taarifa. Hakuna ushauri wa afya unaotolewa. Maudhui haya hayajaidhinishwa na mtaalamu wa afya au mhakiki wa lugha.",
+    "topic": "sexual_health",
+    "keywords": [
+      "sexual health",
+      "sex",
+      "contraception",
+      "contraceptive",
+      "sti",
+      "stis",
+      "sexually transmitted",
+      "consent",
+      "abortion",
+      "termination of pregnancy",
+      "kingono",
+      "ngono",
+      "uzazi wa mpango",
+      "utoaji mimba",
+      "kutoa mimba"
+    ],
+    "sources": [],
+    "demo_only": true,
+    "withdrawn": false,
+    "clinical_review": {
+      "status": "draft",
+      "reviewer_id": null,
+      "reviewed_version": null,
+      "content_sha256": null,
+      "reviewed_at": null,
+      "valid_until": null
+    },
+    "translation_review": {
+      "status": "draft",
+      "reviewer_id": null,
+      "reviewed_version": null,
+      "content_sha256": null,
+      "reviewed_at": null,
+      "valid_until": null
+    },
+    "subtopics": []
+  },
+  {
+    "id": "mental-health-en",
+    "language": "en",
+    "version": "2.0.0",
+    "source_card_id": null,
+    "source_version": "2.0.0",
+    "title": "Mental health demo",
+    "body": "Synthetic retrieval placeholder. No health guidance is provided. This content has not been clinically or linguistically approved.",
+    "topic": "mental_health",
+    "keywords": [
+      "mental health",
+      "depression",
+      "depressed",
+      "anxiety",
+      "anxious",
+      "emotional support",
+      "counselling",
+      "counseling",
+      "stress",
+      "stressed",
+      "sad",
+      "sadness",
+      "afya ya akili",
+      "huzuni",
+      "wasiwasi",
+      "msongo",
+      "msaada wa kihisia"
+    ],
+    "sources": [],
+    "demo_only": true,
+    "withdrawn": false,
+    "clinical_review": {
+      "status": "draft",
+      "reviewer_id": null,
+      "reviewed_version": null,
+      "content_sha256": null,
+      "reviewed_at": null,
+      "valid_until": null
+    },
+    "translation_review": {
+      "status": "draft",
+      "reviewer_id": null,
+      "reviewed_version": null,
+      "content_sha256": null,
+      "reviewed_at": null,
+      "valid_until": null
+    },
+    "subtopics": []
+  },
+  {
+    "id": "mental-health-sw",
+    "language": "sw",
+    "version": "2.0.0",
+    "source_card_id": "mental-health-en",
+    "source_version": "2.0.0",
+    "title": "Mfano wa afya ya akili",
+    "body": "Huu ni mfano wa majaribio ya utafutaji wa taarifa. Hakuna ushauri wa afya unaotolewa. Maudhui haya hayajaidhinishwa na mtaalamu wa afya au mhakiki wa lugha.",
+    "topic": "mental_health",
+    "keywords": [
+      "mental health",
+      "depression",
+      "depressed",
+      "anxiety",
+      "anxious",
+      "emotional support",
+      "counselling",
+      "counseling",
+      "stress",
+      "stressed",
+      "sad",
+      "sadness",
+      "afya ya akili",
+      "huzuni",
+      "wasiwasi",
+      "msongo",
+      "msaada wa kihisia"
+    ],
+    "sources": [],
+    "demo_only": true,
+    "withdrawn": false,
+    "clinical_review": {
+      "status": "draft",
+      "reviewer_id": null,
+      "reviewed_version": null,
+      "content_sha256": null,
+      "reviewed_at": null,
+      "valid_until": null
+    },
+    "translation_review": {
+      "status": "draft",
+      "reviewer_id": null,
+      "reviewed_version": null,
+      "content_sha256": null,
+      "reviewed_at": null,
+      "valid_until": null
+    },
+    "subtopics": []
+  },
+  {
+    "id": "abortion-en",
+    "language": "en",
+    "version": "2.0.0",
+    "source_card_id": null,
+    "source_version": "2.0.0",
+    "title": "Abortion information placeholder",
+    "body": "Synthetic retrieval placeholder. No health guidance is provided. This content has not been clinically or linguistically approved.",
+    "topic": "sexual_health",
+    "keywords": [
+      "abortion",
+      "termination of pregnancy",
+      "utoaji mimba",
+      "kutoa mimba"
+    ],
+    "sources": [],
+    "demo_only": true,
+    "withdrawn": false,
+    "clinical_review": {
+      "status": "draft",
+      "reviewer_id": null,
+      "reviewed_version": null,
+      "content_sha256": null,
+      "reviewed_at": null,
+      "valid_until": null
+    },
+    "translation_review": {
+      "status": "draft",
+      "reviewer_id": null,
+      "reviewed_version": null,
+      "content_sha256": null,
+      "reviewed_at": null,
+      "valid_until": null
+    },
+    "subtopics": [
+      "abortion"
+    ]
+  },
+  {
+    "id": "abortion-sw",
+    "language": "sw",
+    "version": "2.0.0",
+    "source_card_id": "abortion-en",
+    "source_version": "2.0.0",
+    "title": "Rasimu ya taarifa kuhusu utoaji mimba",
+    "body": "Huu ni mfano wa majaribio ya utafutaji wa taarifa. Hakuna ushauri wa afya unaotolewa. Maudhui haya hayajaidhinishwa na mtaalamu wa afya au mhakiki wa lugha.",
+    "topic": "sexual_health",
+    "keywords": [
+      "abortion",
+      "termination of pregnancy",
+      "utoaji mimba",
+      "kutoa mimba"
+    ],
+    "sources": [],
+    "demo_only": true,
+    "withdrawn": false,
+    "clinical_review": {
+      "status": "draft",
+      "reviewer_id": null,
+      "reviewed_version": null,
+      "content_sha256": null,
+      "reviewed_at": null,
+      "valid_until": null
+    },
+    "translation_review": {
+      "status": "draft",
+      "reviewer_id": null,
+      "reviewed_version": null,
+      "content_sha256": null,
+      "reviewed_at": null,
+      "valid_until": null
+    },
+    "subtopics": [
+      "abortion"
+    ]
+  }
+]

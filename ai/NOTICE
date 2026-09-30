@@ -1,0 +1,13 @@
+Women's Health Commons Africa AI demonstration, version 0.1.0
+Copyright 2026 Women's Health Commons Africa contributors.
+
+Original code is provided under Apache-2.0; see LICENSE.
+Original synthetic datasets and draft content are also distributed under that
+license for prototype reuse. This differs from the blueprint's proposed future
+CC BY 4.0 license for the clinically reviewed public content library. The team
+should establish that separate content license when it publishes reviewed packs.
+Linked third-party publications and installed dependencies retain their own
+licenses; this package does not relicense them. No third-party article text,
+model weights, real health records or reviewer endorsements are bundled.
+
+This is an unreviewed synthetic demonstration, not a clinical service.

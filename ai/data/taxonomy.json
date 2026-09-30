@@ -1,0 +1,149 @@
+{
+  "version": "nuru-demo-topics-v2",
+  "review_status": "unreviewed_demo",
+  "topics": [
+    {
+      "id": "menstrual_health",
+      "label_en": "Menstrual health",
+      "label_sw_draft": "Afya ya hedhi",
+      "library_area": "menstrual-health",
+      "keywords": [
+        "menstrual",
+        "menstruation",
+        "period",
+        "periods",
+        "period pain",
+        "cramps",
+        "hedhi",
+        "pcos",
+        "endometriosis",
+        "fibroids",
+        "pms",
+        "pmdd"
+      ],
+      "ignore_phrases": [
+        "ukomo wa hedhi"
+      ]
+    },
+    {
+      "id": "healthy_aging",
+      "label_en": "Healthy aging",
+      "label_sw_draft": "Afya wakati wa kuzeeka",
+      "library_area": "healthy-ageing",
+      "keywords": [
+        "healthy aging",
+        "healthy ageing",
+        "aging",
+        "ageing",
+        "menopause",
+        "perimenopause",
+        "older women",
+        "ukomo wa hedhi",
+        "kuzeeka",
+        "wanawake wazee"
+      ],
+      "ignore_phrases": []
+    },
+    {
+      "id": "postpartum",
+      "label_en": "Postpartum",
+      "label_sw_draft": "Afya baada ya kujifungua",
+      "library_area": "postpartum",
+      "keywords": [
+        "postpartum",
+        "postnatal",
+        "after birth",
+        "after childbirth",
+        "after delivery",
+        "breastfeeding",
+        "baada ya kujifungua",
+        "kunyonyesha"
+      ],
+      "ignore_phrases": []
+    },
+    {
+      "id": "sexual_health",
+      "label_en": "Sexual health",
+      "label_sw_draft": "Afya ya kingono",
+      "library_area": "sexual-health",
+      "keywords": [
+        "sexual health",
+        "sex",
+        "contraception",
+        "contraceptive",
+        "sti",
+        "stis",
+        "sexually transmitted",
+        "consent",
+        "abortion",
+        "termination of pregnancy",
+        "kingono",
+        "ngono",
+        "uzazi wa mpango",
+        "utoaji mimba",
+        "kutoa mimba",
+        "maambukizi ya zinaa"
+      ],
+      "ignore_phrases": []
+    },
+    {
+      "id": "mental_health",
+      "label_en": "Mental health",
+      "label_sw_draft": "Afya ya akili",
+      "library_area": "mental-health",
+      "keywords": [
+        "mental health",
+        "depression",
+        "depressed",
+        "anxiety",
+        "anxious",
+        "emotional support",
+        "counselling",
+        "counseling",
+        "stress",
+        "stressed",
+        "sad",
+        "sadness",
+        "afya ya akili",
+        "huzuni",
+        "wasiwasi",
+        "msongo",
+        "msaada wa kihisia"
+      ],
+      "ignore_phrases": []
+    }
+  ],
+  "unknown_output": "uncertain",
+  "scope": "Educational routing only; category mention is not diagnosis or a personal disclosure.",
+  "subtopics": [
+    {
+      "id": "abortion",
+      "parent_topic": "sexual_health",
+      "related_topic": "mental_health",
+      "related_topic_condition": "Only when mental-health or emotional-support wording is also explicitly present. No automatic mental-illness label.",
+      "keywords": [
+        "abortion",
+        "termination of pregnancy",
+        "utoaji mimba",
+        "kutoa mimba"
+      ]
+    }
+  ],
+  "ambiguous_pregnancy_loss_terms": [
+    "mimba kutoka",
+    "kuharibika kwa mimba",
+    "mimba kuharibika"
+  ],
+  "out_of_scope_keywords": [
+    "fertility",
+    "infertility",
+    "trying to conceive",
+    "pregnancy",
+    "pregnant",
+    "ujauzito",
+    "mjamzito",
+    "cancer",
+    "saratani"
+  ],
+  "translation_status": "Kiswahili labels are drafts requiring a Kenyan Swahili reviewer."
+}

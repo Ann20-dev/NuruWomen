@@ -1,91 +1,59 @@
-/**
- * Client-side PII detection. Runs before any event is signed so personal
- * identifiers never reach a public relay. Heuristic by design — it errs
- * toward over-flagging and always leaves the final decision to the user.
- */
-
+/** Local suggestions only. No scan can certify anonymity or authorise publishing. */
 export type PiiType = 'name' | 'phone' | 'email' | 'location' | 'id-number' | 'handle';
-
 export interface PiiFinding {
   type: PiiType;
   label: string;
   match: string;
+  /** UTF-16 offsets into the exact scanned string, unlike Python codepoint offsets. */
+  start: number;
+  end: number;
 }
-
-const PHONE_RE = /(?:\+?254[\s-]?|0)(7\d{2}|1\d{2})[\s-]?\d{3}[\s-]?\d{3}\b/g;
-const LONG_NUMBER_RE = /\b\d{10,12}\b/g;
-const ID_NUMBER_RE = /\b\d{7,9}\b/g;
-const EMAIL_RE = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b/g;
-const HANDLE_RE = /@[A-Za-z0-9_.]{3,}\b/g;
-const NAME_RE = /(?:my name is|i am called|jina langu ni|mimi ni|call me)\s+([A-Z][A-Za-z'’.-]{1,20}(?:\s+[A-Z][A-Za-z'’.-]{1,20}){0,2})/gi;
-
-/** Kenyan places commonly typed into questions (towns, cities, estates). */
-const LOCATIONS = [
-  'nairobi', 'mombasa', 'kisumu', 'nakuru', 'eldoret', 'thika', 'kitale', 'kakamega',
-  'kisii', 'nyeri', 'machakos', 'meru', 'kilifi', 'malindi', 'garissa', 'isiolo',
-  'busia', 'homa bay', 'migori', 'kericho', 'bomet', 'narok', 'kajiado', 'kitui',
-  'embu', 'nanyuki', 'bungoma', 'voi', 'lamu', 'diani', 'watamu', 'ruaka', 'kikuyu',
-  'rongai', 'ngong', 'kiambu', 'ruiru', 'juja', 'athi river', 'kibera', 'kawangware',
-  'karen', 'westlands', 'eastleigh', 'kilimani', 'lavington', 'roysambu', 'kasarani',
-  'embakasi', 'dagoretti', 'langata', 'umoja', 'buruburu', 'donholm', 'syokimau',
+interface Pattern { type: PiiType; label: string; re: RegExp; group: number }
+const patterns: Pattern[] = [
+  { type: 'email', label: 'Possible email', re: /(?<![\w.+-])[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}/gi, group: 0 },
+  { type: 'phone', label: 'Possible phone', re: /(?<!\w)(?:(?:\+?254|00254)[\s.-]?[17]|0[17])(?:[\s.-]?\d){8}(?!\d)/g, group: 0 },
+  { type: 'id-number', label: 'Possible identifier', re: /\b(?:national\s*id|id\s*(?:number|no\.?)?|kitambulisho|passport)\s*[:#=-]?\s*([A-Z0-9-]{5,20})\b/gi, group: 1 },
+  { type: 'name', label: 'Possible name', re: /\b(?:my name is|i am called|jina langu ni|ninaitwa|naitwa)\s+([\p{L}\p{N}_'-]+(?:[ \t]+[\p{L}\p{N}_'-]+){0,2})/giu, group: 1 },
+  { type: 'location', label: 'Possible address', re: /\b(?:i live (?:at|in)|my address is|ninaishi(?:\s+(?:katika|mtaa\s+wa))?)\s+([^\n,.!?;]{2,70})/gi, group: 1 },
+  { type: 'handle', label: 'Possible handle', re: /(?<!\w)@[A-Za-z0-9_]{3,30}\b/g, group: 0 },
 ];
-
+const stopWords = new Set(['i', 'and', 'but', 'have', 'am', 'na', 'nina', 'ninaumwa', 'ninahisi', 'mjamzito', 'maumivu', 'hedhi', 'damu']);
 export function scanForPii(text: string): PiiFinding[] {
-  const findings: PiiFinding[] = [];
-  const seen = new Set<string>();
-  const push = (f: PiiFinding) => {
-    const key = `${f.type}:${f.match.toLowerCase()}`;
-    if (!seen.has(key)) {
-      seen.add(key);
-      findings.push(f);
+  const candidates: PiiFinding[] = [];
+  for (const pattern of patterns) {
+    for (const m of text.matchAll(pattern.re)) {
+      let fragment = m[pattern.group];
+      if (!fragment) continue;
+      const start = m.index + (pattern.group ? m[0].lastIndexOf(fragment) : 0);
+      if (pattern.type === 'name') {
+        for (const word of fragment.matchAll(/[\p{L}\p{N}_'-]+/gu)) {
+          if (stopWords.has(word[0].toLowerCase())) {
+            fragment = fragment.slice(0, word.index).trimEnd();
+            break;
+          }
+        }
+      }
+      if (fragment) candidates.push({ type: pattern.type, label: pattern.label, match: fragment, start, end: start + fragment.length });
     }
-  };
-
-  for (const m of text.matchAll(PHONE_RE)) {
-    push({ type: 'phone', label: 'Phone number', match: m[0] });
   }
-  for (const m of text.matchAll(EMAIL_RE)) {
-    push({ type: 'email', label: 'Email address', match: m[0] });
+  const accepted: PiiFinding[] = [];
+  candidates.sort((a, b) => (b.end - b.start) - (a.end - a.start) || a.start - b.start);
+  for (const item of candidates) {
+    if (!accepted.some((x) => item.start < x.end && x.start < item.end)) accepted.push(item);
   }
-  for (const m of text.matchAll(HANDLE_RE)) {
-    push({ type: 'handle', label: 'Social handle', match: m[0] });
-  }
-  for (const m of text.matchAll(NAME_RE)) {
-    if (m[1]) push({ type: 'name', label: 'Possible name', match: m[1] });
-  }
-  for (const m of text.matchAll(LONG_NUMBER_RE)) {
-    push({ type: 'phone', label: 'Possible phone / account number', match: m[0] });
-  }
-  // 7–9 digit runs that are not part of an already-flagged longer number
-  for (const m of text.matchAll(ID_NUMBER_RE)) {
-    const already = findings.some((f) => f.match.includes(m[0]));
-    if (!already) push({ type: 'id-number', label: 'Possible ID number', match: m[0] });
-  }
-
-  const lower = text.toLowerCase();
-  for (const place of LOCATIONS) {
-    const re = new RegExp(`\\b${place.replace(' ', '\\s')}\\b`, 'i');
-    const m = lower.match(re);
-    if (m) push({ type: 'location', label: 'Location', match: m[0] });
-  }
-
-  return findings;
+  return accepted.sort((a, b) => a.start - b.start);
 }
-
-/** Replace every detected fragment with a neutral placeholder. */
+/** Refuse stale/invalid spans instead of replacing arbitrary matching words elsewhere. */
 export function redactPii(text: string, findings: PiiFinding[]): string {
-  let out = text;
-  const sorted = [...findings].sort((a, b) => b.match.length - a.match.length);
-  for (const f of sorted) {
-    out = out.split(f.match).join('[removed]');
-    // also try case-insensitive replacement for locations
-    const re = new RegExp(escapeRegExp(f.match), 'gi');
-    out = out.replace(re, '[removed]');
+  const ordered = [...findings].sort((a, b) => a.start - b.start);
+  for (let i = 0; i < ordered.length; i++) {
+    const f = ordered[i];
+    if (!Number.isInteger(f.start) || !Number.isInteger(f.end) || f.start < 0 || f.end <= f.start ||
+        f.end > text.length || text.slice(f.start, f.end) !== f.match || (i > 0 && ordered[i - 1].end > f.start)) {
+      throw new Error('Text changed or findings are invalid. Run the privacy scan again.');
+    }
   }
-  // Tidy duplicated placeholders
-  return out.replace(/(\[removed\]\s*){2,}/g, '[removed] ').trim();
-}
-
-function escapeRegExp(s: string): string {
-  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  let result = text;
+  for (const f of ordered.reverse()) result = result.slice(0, f.start) + '[removed]' + result.slice(f.end);
+  return result;
 }

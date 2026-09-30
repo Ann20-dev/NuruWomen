@@ -1,0 +1,77 @@
+[
+  {
+    "en": "menstruation",
+    "sw_draft": "hedhi",
+    "review_status": "unreviewed"
+  },
+  {
+    "en": "hormones",
+    "sw_draft": "homoni",
+    "review_status": "unreviewed"
+  },
+  {
+    "en": "menopause",
+    "sw_draft": "ukomo wa hedhi",
+    "review_status": "unreviewed"
+  },
+  {
+    "en": "perimenopause",
+    "sw_draft": "kipindi cha kuelekea ukomo wa hedhi",
+    "review_status": "unreviewed"
+  },
+  {
+    "en": "sleep",
+    "sw_draft": "usingizi",
+    "review_status": "unreviewed"
+  },
+  {
+    "en": "health worker",
+    "sw_draft": "mhudumu wa afya",
+    "review_status": "unreviewed"
+  },
+  {
+    "en": "heavy bleeding",
+    "sw_draft": "kutokwa na damu nyingi",
+    "review_status": "unreviewed"
+  },
+  {
+    "en": "healthy aging",
+    "sw_draft": "afya wakati wa kuzeeka",
+    "review_status": "unreviewed"
+  },
+  {
+    "en": "postpartum",
+    "sw_draft": "baada ya kujifungua",
+    "review_status": "unreviewed"
+  },
+  {
+    "en": "sexual health",
+    "sw_draft": "afya ya kingono",
+    "review_status": "unreviewed"
+  },
+  {
+    "en": "mental health",
+    "sw_draft": "afya ya akili",
+    "review_status": "unreviewed"
+  },
+  {
+    "en": "abortion",
+    "sw_draft": "utoaji mimba",
+    "review_status": "unreviewed"
+  },
+  {
+    "en": "miscarriage",
+    "sw_draft": "kuharibika kwa mimba",
+    "review_status": "unreviewed"
+  },
+  {
+    "en": "emotional support",
+    "sw_draft": "msaada wa kihisia",
+    "review_status": "unreviewed"
+  },
+  {
+    "en": "consent",
+    "sw_draft": "ridhaa",
+    "review_status": "unreviewed"
+  }
+]

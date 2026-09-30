@@ -1,0 +1,10 @@
+{
+  "nuru_analyze_http": 200,
+  "real_http_server": true,
+  "health": 200,
+  "unauthenticated_request": 401,
+  "authenticated_analyze": 200,
+  "swahili_demo_cards_returned": true,
+  "publication_allowed": false,
+  "python": "3.12.10"
+}

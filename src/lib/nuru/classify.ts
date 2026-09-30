@@ -1,30 +1,21 @@
-/**
- * Keyword-based topic classification. Deliberately simple and transparent —
- * it suggests tags; the user always confirms them. On the server roadmap this
- * is where clustering and multilingual models plug in.
- */
-
+/** Bilingual tag suggestions. Counts are keyword evidence, never diagnostic probabilities. */
 import { TOPICS, type Topic } from './topics';
-
-export interface TopicMatch {
-  topic: Topic;
-  score: number;
-}
-
+import { NURU_TAXONOMY } from './aiRules';
+import { scanForPii, redactPii } from './privacy';
+export interface TopicMatch { topic: Topic; score: number }
+const escape = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 export function classifyTopics(text: string, max = 3): TopicMatch[] {
-  const lower = text.toLowerCase();
+  if (!Number.isFinite(max) || max <= 0) return [];
+  const cleaned = redactPii(text, scanForPii(text)).normalize('NFKC').replace(/\p{Cf}/gu, '').toLowerCase();
   const matches: TopicMatch[] = [];
-
-  for (const topic of TOPICS) {
-    let score = 0;
-    for (const kw of topic.keywords) {
-      if (lower.includes(kw.toLowerCase())) {
-        // Longer keyword phrases are stronger signals
-        score += kw.length >= 12 ? 3 : kw.length >= 6 ? 2 : 1;
-      }
-    }
-    if (score > 0) matches.push({ topic, score });
+  for (const row of NURU_TAXONOMY.topics) {
+    const topic = TOPICS.find((t) => t.slug === row.slug);
+    if (!topic) continue;
+    const score = row.keywords.filter((kw) => {
+      const phrase = kw.split(/\s+/).map(escape).join('\\s+');
+      return new RegExp(`(?<![\\p{L}\\p{N}_])${phrase}(?![\\p{L}\\p{N}_])`, 'u').test(cleaned);
+    }).length;
+    if (score) matches.push({ topic, score });
   }
-
-  return matches.sort((a, b) => b.score - a.score).slice(0, max);
+  return matches.sort((a, b) => b.score - a.score || (a.topic.slug < b.topic.slug ? -1 : 1)).slice(0, Math.min(3, Math.floor(max)));
 }

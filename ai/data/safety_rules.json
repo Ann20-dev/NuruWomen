@@ -1,0 +1,75 @@
+{
+  "version": "draft-v2-nuru",
+  "review_status": "unreviewed_demo",
+  "rules": [
+    {
+      "id": "heavy_bleeding",
+      "patterns": [
+        "\\bbleeding (?:very )?heavily\\b",
+        "\\bheavy bleeding\\b",
+        "\\bdamu nyingi\\b"
+      ]
+    },
+    {
+      "id": "fainting",
+      "patterns": [
+        "\\b(?:fainted|fainting|feel faint|feeling faint|unconscious)\\b",
+        "\\b(?:kuzimia|nimezimia|ninazimia|nazimia|napoteza fahamu)\\b"
+      ]
+    },
+    {
+      "id": "severe_pain",
+      "patterns": [
+        "\\bsevere (?:abdominal |pelvic |chest |period |menstrual )?pain\\b",
+        "\\bmaumivu makali\\b"
+      ]
+    },
+    {
+      "id": "breathing",
+      "patterns": [
+        "\\b(?:cannot|can.t|unable to) breathe\\b",
+        "\\b(?:difficulty breathing|shortness of breath)\\b",
+        "\\b(?:siwezi kupumua|shida ya kupumua)\\b"
+      ]
+    },
+    {
+      "id": "self_harm",
+      "patterns": [
+        "\\b(?:kill myself|end my life|hurt myself|suicid\\w*)\\b",
+        "\\b(?:kujiua|kujidhuru)\\b"
+      ]
+    },
+    {
+      "id": "immediate_threat",
+      "patterns": [
+        "\\b(?:in immediate danger|being attacked|threatening to kill)\\b",
+        "\\b(?:niko hatarini|ananishambulia)\\b"
+      ]
+    },
+    {
+      "id": "violence_assault",
+      "patterns": [
+        "\\b(?:rape|raped|sexual assault|forced me|forced himself|beat me|beats me)\\b",
+        "\\b(?:ubakaji|nimebakwa|amenibaka|ananipiga)\\b"
+      ]
+    },
+    {
+      "id": "pregnancy_concern",
+      "patterns": [
+        "\\b(?:pregnant|pregnancy|mjamzito|ujauzito|mimba)\\b"
+      ],
+      "all_patterns": [
+        "\\b(?:bleeding|bleed|damu|severe headache|blurred vision|reduced movement|baby stopped moving|maumivu makali)\\b"
+      ]
+    },
+    {
+      "id": "postpartum_concern",
+      "patterns": [
+        "\\b(?:postpartum|after birth|after giving birth|since delivery|baada ya kujifungua)\\b"
+      ],
+      "all_patterns": [
+        "\\b(?:bleeding|bleed|fever|chest pain|difficulty breathing|damu|homa|kupumua)\\b"
+      ]
+    }
+  ]
+}

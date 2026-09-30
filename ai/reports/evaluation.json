@@ -1,0 +1,204 @@
+{
+  "created_at_utc": "2026-09-30T06:50:07.248798+00:00",
+  "training_n": 120,
+  "heldout_n": 60,
+  "split_unit": "question family, including all three language variants",
+  "results": {
+    "en": {
+      "n": 20,
+      "accuracy": 0.85,
+      "per_topic": {
+        "menstrual_health": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1-score": 0.6666666666666666,
+          "support": 4.0
+        },
+        "healthy_aging": {
+          "precision": 0.8,
+          "recall": 1.0,
+          "f1-score": 0.8888888888888888,
+          "support": 4.0
+        },
+        "postpartum": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 4.0
+        },
+        "sexual_health": {
+          "precision": 1.0,
+          "recall": 0.75,
+          "f1-score": 0.8571428571428571,
+          "support": 4.0
+        },
+        "mental_health": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 4.0
+        },
+        "micro avg": {
+          "precision": 0.9444444444444444,
+          "recall": 0.85,
+          "f1-score": 0.8947368421052632,
+          "support": 20.0
+        },
+        "macro avg": {
+          "precision": 0.96,
+          "recall": 0.85,
+          "f1-score": 0.8825396825396826,
+          "support": 20.0
+        },
+        "weighted avg": {
+          "precision": 0.96,
+          "recall": 0.85,
+          "f1-score": 0.8825396825396826,
+          "support": 20.0
+        }
+      }
+    },
+    "sw": {
+      "n": 20,
+      "accuracy": 0.95,
+      "per_topic": {
+        "menstrual_health": {
+          "precision": 1.0,
+          "recall": 0.75,
+          "f1-score": 0.8571428571428571,
+          "support": 4.0
+        },
+        "healthy_aging": {
+          "precision": 0.8,
+          "recall": 1.0,
+          "f1-score": 0.8888888888888888,
+          "support": 4.0
+        },
+        "postpartum": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 4.0
+        },
+        "sexual_health": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 4.0
+        },
+        "mental_health": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 4.0
+        },
+        "accuracy": 0.95,
+        "macro avg": {
+          "precision": 0.96,
+          "recall": 0.95,
+          "f1-score": 0.9492063492063492,
+          "support": 20.0
+        },
+        "weighted avg": {
+          "precision": 0.96,
+          "recall": 0.95,
+          "f1-score": 0.9492063492063492,
+          "support": 20.0
+        }
+      }
+    },
+    "mixed": {
+      "n": 20,
+      "accuracy": 0.9,
+      "per_topic": {
+        "menstrual_health": {
+          "precision": 1.0,
+          "recall": 0.75,
+          "f1-score": 0.8571428571428571,
+          "support": 4.0
+        },
+        "healthy_aging": {
+          "precision": 0.8,
+          "recall": 1.0,
+          "f1-score": 0.8888888888888888,
+          "support": 4.0
+        },
+        "postpartum": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 4.0
+        },
+        "sexual_health": {
+          "precision": 1.0,
+          "recall": 0.75,
+          "f1-score": 0.8571428571428571,
+          "support": 4.0
+        },
+        "mental_health": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 4.0
+        },
+        "micro avg": {
+          "precision": 0.9473684210526315,
+          "recall": 0.9,
+          "f1-score": 0.9230769230769231,
+          "support": 20.0
+        },
+        "macro avg": {
+          "precision": 0.96,
+          "recall": 0.9,
+          "f1-score": 0.9206349206349206,
+          "support": 20.0
+        },
+        "weighted avg": {
+          "precision": 0.96,
+          "recall": 0.9,
+          "f1-score": 0.9206349206349206,
+          "support": 20.0
+        }
+      }
+    }
+  },
+  "errors": [
+    {
+      "example_id": "menstrual_health-12-en",
+      "expected": "menstrual_health",
+      "predicted": "healthy_aging"
+    },
+    {
+      "example_id": "menstrual_health-13-en",
+      "expected": "menstrual_health",
+      "predicted": "uncertain"
+    },
+    {
+      "example_id": "sexual_health-eval-3-en",
+      "expected": "sexual_health",
+      "predicted": "uncertain"
+    },
+    {
+      "example_id": "menstrual_health-12-sw",
+      "expected": "menstrual_health",
+      "predicted": "healthy_aging"
+    },
+    {
+      "example_id": "menstrual_health-12-mixed",
+      "expected": "menstrual_health",
+      "predicted": "healthy_aging"
+    },
+    {
+      "example_id": "sexual_health-eval-3-mixed",
+      "expected": "sexual_health",
+      "predicted": "uncertain"
+    }
+  ],
+  "limitations": [
+    "Small author-created synthetic benchmark with unreviewed translations.",
+    "No independent clinical validation, demographic fairness evidence or calibrated probabilities.",
+    "This evaluation set was inspected during baseline development; it is held out from fitting, not a blind final benchmark. Collect a new independently reviewed test set before pilot claims.",
+    "Five routing categories only; out-of-domain rejection is limited.",
+    "Privacy and safety unit tests are separate and do not establish population-level recall."
+  ]
+}

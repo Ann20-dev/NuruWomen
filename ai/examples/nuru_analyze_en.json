@@ -1,0 +1,7 @@
+{
+  "title": "Synthetic period question",
+  "content": "My name is Demo Person, I have severe period pain.",
+  "response_language": "en",
+  "synthetic_only": true,
+  "include_demo_cards": true
+}

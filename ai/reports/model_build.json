@@ -1,0 +1,8 @@
+{
+  "method": "TF-IDF + logistic regression",
+  "examples": 120,
+  "vocabulary_size": 384,
+  "training_sha256": "938a4f650e366d147080b57e0955d79e15b6fcc55caa498c59bb1189d97b1469",
+  "persisted_model": false,
+  "reason": "The small model is rebuilt from the bundled training data on startup."
+}

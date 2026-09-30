@@ -1,0 +1,134 @@
+{
+  "schema_version": "nuru-ai-v2",
+  "mode": "synthetic_demo",
+  "privacy": {
+    "title": {
+      "redacted_text": "Swali la mfano kuhusu hedhi",
+      "spans": [],
+      "offset_unit": "unicode_codepoints",
+      "contains_detected_identifiers": false,
+      "requires_user_confirmation": true,
+      "anonymity_guaranteed": false,
+      "warnings": [
+        "Patterns can miss names, workplaces, indirect locations, unusual numbers and identifying stories. User and human review are required."
+      ]
+    },
+    "content": {
+      "redacted_text": "Nina maumivu makali wakati wa hedhi. Naitwa [NAME], simu [PHONE].",
+      "spans": [
+        {
+          "kind": "NAME",
+          "start": 44,
+          "end": 53
+        },
+        {
+          "kind": "PHONE",
+          "start": 60,
+          "end": 70
+        }
+      ],
+      "offset_unit": "unicode_codepoints",
+      "contains_detected_identifiers": true,
+      "requires_user_confirmation": true,
+      "anonymity_guaranteed": false,
+      "warnings": [
+        "Patterns can miss names, workplaces, indirect locations, unusual numbers and identifying stories. User and human review are required."
+      ]
+    }
+  },
+  "safety": {
+    "status": "potential_urgent_concern",
+    "rule_ids": [
+      "severe_pain"
+    ],
+    "message": "UJUMBE WA MAJARIBIO: Ikiwa uko hatarini au unaumwa sana, tafuta msaada wa haraka katika kituo cha afya. Usisubiri jibu mtandaoni. Mfumo huu wa majaribio hauwezi kutathmini usalama wako.",
+    "human_review_required": true,
+    "rule_review_status": "unreviewed_demo",
+    "clinically_validated": false,
+    "limitations": "No match is not reassurance. Negated, historical or quoted language may still trigger an alert; indirect urgent wording may be missed."
+  },
+  "review": {
+    "required": true,
+    "reason_codes": [
+      "topic_confirmation",
+      "identifier_review",
+      "potential_urgent_concern",
+      "no_approved_answer_in_requested_language"
+    ],
+    "knowledge_status": "no_approved_answer",
+    "clinical_authority_verified_by_ai": false
+  },
+  "routing": {
+    "taxonomy_version": "nuru-demo-topics-v2",
+    "categories": [
+      {
+        "id": "menstrual_health",
+        "score": 1,
+        "matched_cues": [
+          "hedhi"
+        ]
+      }
+    ],
+    "category_ids": [
+      "menstrual_health"
+    ],
+    "subtopic_ids": [],
+    "ambiguous_pregnancy_loss_wording": false,
+    "outside_demo_cue": false,
+    "scope_status": "in_demo",
+    "needs_topic_review": true,
+    "diagnosis": false,
+    "method": "explicit_bilingual_cues",
+    "legacy_taxonomy_version": "nuru-routing-v2",
+    "suggestions": [
+      {
+        "slug": "severe-period-pain",
+        "score": 1,
+        "broad_topic": "menstrual_health"
+      }
+    ],
+    "broad_topic_for_retrieval": "menstrual_health"
+  },
+  "classification": {
+    "primary_topic": "menstrual_health",
+    "topics": [
+      {
+        "topic": "menstrual_health",
+        "decision_score": 2.3544
+      }
+    ],
+    "language_guess": "sw",
+    "needs_topic_review": true,
+    "method": "tfidf_logistic_regression",
+    "score_meaning": "uncalibrated decision scores, not clinical probabilities",
+    "decision_margin": 2.5866,
+    "model_version": "synthetic-five-topic-v3",
+    "training_examples": 120
+  },
+  "evidence": {
+    "approved_matches": [],
+    "demo_matches": [
+      {
+        "id": "period-pain-sw",
+        "title": "Mfano wa afya ya hedhi",
+        "body": "Huu ni mfano wa majaribio ya utafutaji wa taarifa. Hakuna ushauri wa afya unaotolewa. Maudhui haya hayajaidhinishwa na mtaalamu wa afya au mhakiki wa lugha.",
+        "language": "sw",
+        "version": "2.0.0",
+        "source_version": "2.0.0",
+        "sources": [],
+        "ranking_score": 3,
+        "clinical_review_status": "draft",
+        "translation_review_status": "draft",
+        "eligible_for_publication": false,
+        "demo_only": true
+      }
+    ],
+    "language": "sw",
+    "approved_answer_available": false,
+    "method": "keyword_and_topic_ranking",
+    "language_fallback_used": false
+  },
+  "publication_allowed": false,
+  "decision_owner": "human_moderator",
+  "notice": "Unreviewed prototype. Suggestions do not establish anonymity, safety or a diagnosis."
+}

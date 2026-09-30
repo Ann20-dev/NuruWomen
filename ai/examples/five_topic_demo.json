@@ -1,0 +1,158 @@
+[
+  {
+    "expected_categories": [
+      "menstrual_health"
+    ],
+    "request": {
+      "title": "Synthetic example",
+      "content": "Please explain menstrual health.",
+      "response_language": "en",
+      "synthetic_only": true,
+      "include_demo_cards": true
+    }
+  },
+  {
+    "expected_categories": [
+      "menstrual_health"
+    ],
+    "request": {
+      "title": "Mfano wa majaribio",
+      "content": "Nataka maelezo kuhusu afya ya hedhi.",
+      "response_language": "sw",
+      "synthetic_only": true,
+      "include_demo_cards": true
+    }
+  },
+  {
+    "expected_categories": [
+      "healthy_aging"
+    ],
+    "request": {
+      "title": "Synthetic example",
+      "content": "Tell me about healthy aging for women.",
+      "response_language": "en",
+      "synthetic_only": true,
+      "include_demo_cards": true
+    }
+  },
+  {
+    "expected_categories": [
+      "healthy_aging"
+    ],
+    "request": {
+      "title": "Mfano wa majaribio",
+      "content": "Nataka maelezo kuhusu afya wakati wa kuzeeka.",
+      "response_language": "sw",
+      "synthetic_only": true,
+      "include_demo_cards": true
+    }
+  },
+  {
+    "expected_categories": [
+      "postpartum"
+    ],
+    "request": {
+      "title": "Synthetic example",
+      "content": "What is postpartum recovery?",
+      "response_language": "en",
+      "synthetic_only": true,
+      "include_demo_cards": true
+    }
+  },
+  {
+    "expected_categories": [
+      "postpartum"
+    ],
+    "request": {
+      "title": "Mfano wa majaribio",
+      "content": "Kupona baada ya kujifungua ni nini?",
+      "response_language": "sw",
+      "synthetic_only": true,
+      "include_demo_cards": true
+    }
+  },
+  {
+    "expected_categories": [
+      "sexual_health"
+    ],
+    "request": {
+      "title": "Synthetic example",
+      "content": "What is sexual health?",
+      "response_language": "en",
+      "synthetic_only": true,
+      "include_demo_cards": true
+    }
+  },
+  {
+    "expected_categories": [
+      "sexual_health"
+    ],
+    "request": {
+      "title": "Mfano wa majaribio",
+      "content": "Afya ya kingono ni nini?",
+      "response_language": "sw",
+      "synthetic_only": true,
+      "include_demo_cards": true
+    }
+  },
+  {
+    "expected_categories": [
+      "mental_health"
+    ],
+    "request": {
+      "title": "Synthetic example",
+      "content": "What is mental health?",
+      "response_language": "en",
+      "synthetic_only": true,
+      "include_demo_cards": true
+    }
+  },
+  {
+    "expected_categories": [
+      "mental_health"
+    ],
+    "request": {
+      "title": "Mfano wa majaribio",
+      "content": "Afya ya akili ni nini?",
+      "response_language": "sw",
+      "synthetic_only": true,
+      "include_demo_cards": true
+    }
+  },
+  {
+    "expected_categories": [
+      "sexual_health",
+      "mental_health"
+    ],
+    "request": {
+      "title": "Synthetic example",
+      "content": "I need emotional support after an abortion.",
+      "response_language": "en",
+      "synthetic_only": true,
+      "include_demo_cards": true
+    }
+  },
+  {
+    "expected_categories": [
+      "postpartum",
+      "mental_health"
+    ],
+    "request": {
+      "title": "Synthetic example",
+      "content": "Nina wasiwasi baada ya kujifungua.",
+      "response_language": "en",
+      "synthetic_only": true,
+      "include_demo_cards": true
+    }
+  },
+  {
+    "expected_categories": [],
+    "request": {
+      "title": "Synthetic example",
+      "content": "Tell me about quantum computing.",
+      "response_language": "en",
+      "synthetic_only": true,
+      "include_demo_cards": true
+    }
+  }
+]
