@@ -65,9 +65,8 @@ export default function Index() {
               <AnimatedWords text="What were you never taught about your body?" highlight={['never', 'taught']} highlightClassName="hero-word" />
             </h1>
             <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-xl animate-fade-in" style={{ animationDelay: '0.55s' }}>
-              Nuru Commons is a women’s health knowledge commons for Africa — where you can ask sensitive
-              questions anonymously, hear other women’s lived experience, and read clinically reviewed
-              evidence, with each kind of knowledge clearly labelled and never blurred together.
+              Ask sensitive health questions anonymously. Get real stories from women who’ve lived it
+              and answers checked by clinicians — clearly labelled, never mixed up.
             </p>
             <div className="flex flex-wrap items-center gap-3 animate-fade-in" style={{ animationDelay: '0.7s' }}>
               <Button asChild size="lg" className="rounded-full text-base px-6">
@@ -110,9 +109,7 @@ export default function Index() {
             Three kinds of knowledge. <span className="text-primary">Never confused.</span>
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            The problem isn’t that women lack health information — it’s that medical evidence, personal
-            experience, misinformation and advertising all arrive looking the same. Nuru keeps them apart,
-            on purpose.
+            Online, stories, medicine and advertising all look the same. Here, they never mix.
           </p>
         </div>
         </Reveal>
@@ -122,7 +119,7 @@ export default function Index() {
             {
               layer: 'lived-experience' as const,
               title: 'Lived experience',
-              body: '“I have endometriosis and this is what happened to me.” Real women, real stories — honoured as experience, never dressed up as medical fact.',
+              body: '“This happened to me.” Real stories, honoured as experience — never sold as medical fact.',
               Icon: MessagesSquare,
               accent: 'text-clay',
               rule: 'border-clay/60',
@@ -130,7 +127,7 @@ export default function Index() {
             {
               layer: 'clinical-response' as const,
               title: 'Clinical response',
-              body: '“According to current clinical guidance, these symptoms can have several causes…” Verified health professionals, clearly badged, education not diagnosis.',
+              body: '“Here’s what clinical guidance says.” Verified professionals — education, not diagnosis.',
               Icon: Stethoscope,
               accent: 'text-clinical',
               rule: 'border-clinical/60',
@@ -138,7 +135,7 @@ export default function Index() {
             {
               layer: 'evidence-card' as const,
               title: 'Evidence card',
-              body: 'Structured, reviewed summaries: common causes, red flags, what to ask your clinician, sources and the date of the last medical review.',
+              body: 'Reviewed summaries: causes, warning signs, what to ask, sources, review date.',
               Icon: BookOpenCheck,
               accent: 'text-plum',
               rule: 'border-plum/60',
@@ -158,9 +155,8 @@ export default function Index() {
 
         <Reveal delay={200}>
         <p className="mt-8 text-center text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-          A doctor may say a side effect is uncommon while 200 women describe living it. Both matter.
-          One is clinical evidence; the other is a signal worth investigating. We preserve both — without
-          ever mixing them up.
+          A doctor may call a side effect rare while 200 women describe living it. Both belong here —
+          clearly labelled.
         </p>
         </Reveal>
       </section>
@@ -272,8 +268,7 @@ export default function Index() {
                 />
               )}
               <p className="text-sm text-muted-foreground leading-relaxed px-1">
-                Every thread keeps the same promise: stories stay stories, clinical education stays
-                clinical, and evidence stays sourced — labelled and shaded so the three never blur.{' '}
+                Stories stay stories. Clinical answers stay clinical. Evidence stays sourced.{' '}
                 <Link to="/about" className="text-primary font-medium hover:underline">How it works</Link>
               </p>
             </Reveal>
@@ -289,9 +284,8 @@ export default function Index() {
             We don’t just answer one woman. <span className="text-gold">We measure what women were never taught.</span>
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Every anonymous question is classified and counted — in aggregate, never individually. What
-            emerges is a live map of the questions the health system keeps failing to explain, useful to
-            educators, clinicians, NGOs and county health teams.
+            Anonymous questions are counted together — never individually — building a live map of what
+            the health system keeps failing to explain.
           </p>
           <Button asChild className="rounded-full" variant="outline">
             <Link to="/blind-spots">
@@ -342,8 +336,7 @@ export default function Index() {
                 The knowledge library, across a woman’s whole life
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                From first periods to healthy ageing — clinician-reviewed, source-linked, and exportable
-                as open knowledge packs.
+                From first periods to healthy ageing — reviewed by clinicians, linked to sources.
               </p>
             </div>
             <Button asChild variant="outline" className="rounded-full">
@@ -375,9 +368,8 @@ export default function Index() {
             Ask without handing yourself over
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Your identity here is a private key that lives on your device — not an account on our
-            servers. A woman can ask “is pain during sex normal?” without handing her name, number
-            or email to anyone — including us.
+            No account. No email. No phone number. Ask “is pain during sex normal?” without telling
+            anyone who you are — including us.
           </p>
         </div>
 
@@ -386,17 +378,17 @@ export default function Index() {
             {
               Icon: Fingerprint,
               title: 'One-time identity',
-              body: 'One tap creates a throwaway identity that exists only for this question. When you leave, there is no account to leak, hack or trace back to you.',
+              body: 'One tap creates a throwaway identity for your question. Nothing links back to you.',
             },
             {
               Icon: KeyRound,
               title: 'Your identity stays yours',
-              body: 'Already have a Nostr identity? Sign in with your browser extension — your private key never touches this site. Keep a consistent nickname if you want a community presence.',
+              body: 'Already have a key? Sign in with your browser — it never touches this site.',
             },
             {
               Icon: Users,
               title: 'Verified professionals',
-              body: 'Clinicians are verified manually against professional registers, then badged. Technology proves who posted; our process proves the profession. Neither pretends to do the other’s job.',
+              body: 'Clinicians are checked against professional registers before they’re badged.',
             },
           ].map(({ Icon, title, body }, i) => (
             <Reveal key={title} delay={i * 130}>
@@ -418,10 +410,9 @@ export default function Index() {
           <CardContent className="p-5 sm:p-6 flex items-start gap-3">
             <ShieldCheck className="size-5 text-destructive shrink-0 mt-0.5" />
             <p className="text-sm text-muted-foreground leading-relaxed">
-              <strong className="text-foreground">Honest limits:</strong> the open network is public. Nuru removes
-              names, numbers and locations before anything is posted, publishes statistics only as safe
-              totals, and never puts medical records online. Anonymity here is strong — but no web
-              platform should ever promise perfect anonymity, and we won’t.
+              <strong className="text-foreground">Honest limits:</strong> the open network is public, and no
+              website can promise perfect anonymity. So we remove names, numbers and locations before
+              anything is posted — and never store medical records.
             </p>
           </CardContent>
         </Card>
