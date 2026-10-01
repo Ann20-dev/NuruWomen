@@ -1,14 +1,24 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { MessageSquare, TrendingUp } from 'lucide-react';
+import { ChevronDown, MessageCircle, TrendingUp } from 'lucide-react';
 
 import { Card, CardContent } from '@/components/ui/card';
 import { TopicChips } from '@/components/nuru/TopicChips';
+import { QuestionComments } from '@/components/nuru/QuestionComments';
 import { timeAgo } from '@/lib/nuru/format';
+import { cn } from '@/lib/utils';
 import type { Question } from '@/lib/nuru/types';
 
 export function QuestionCard({ question, answerCount }: { question: Question; answerCount?: number }) {
+  const [open, setOpen] = useState(false);
+
+  const countLabel =
+    typeof answerCount === 'number'
+      ? `${answerCount} ${answerCount === 1 ? 'answer' : 'answers'}`
+      : 'Answers';
+
   return (
-    <Card className="group hover:shadow-md hover:border-primary/25 transition-all">
+    <Card className="group transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md hover:border-primary/25">
       <CardContent className="p-5 space-y-3">
         <div className="flex items-start justify-between gap-4">
           <Link to={`/question/${question.id}`} className="min-w-0">
@@ -35,14 +45,38 @@ export function QuestionCard({ question, answerCount }: { question: Question; an
 
         <div className="flex items-center justify-between gap-3 flex-wrap">
           <TopicChips slugs={question.topics} />
-          <div className="flex items-center gap-3 text-xs text-muted-foreground">
-            {typeof answerCount === 'number' && (
-              <span className="inline-flex items-center gap-1">
-                <MessageSquare className="size-3.5" />
-                {answerCount} {answerCount === 1 ? 'answer' : 'answers'}
-              </span>
-            )}
+          <div className="flex items-center gap-2 text-xs text-muted-foreground">
+            <button
+              type="button"
+              onClick={() => setOpen((v) => !v)}
+              aria-expanded={open}
+              aria-label={open ? 'Hide answers' : `Show ${countLabel}`}
+              className={cn(
+                'inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 font-semibold transition-colors',
+                open ? 'bg-accent text-accent-foreground' : 'hover:bg-muted hover:text-foreground',
+              )}
+            >
+              <MessageCircle className="size-3.5" />
+              {countLabel}
+              <ChevronDown className={cn('size-3.5 transition-transform duration-300', open && 'rotate-180')} />
+            </button>
             <time>{timeAgo(question.createdAt)}</time>
+          </div>
+        </div>
+
+        {/* Comments dropdown — answers nested under their question */}
+        <div
+          className={cn(
+            'grid transition-all duration-300 ease-out',
+            open ? '[grid-template-rows:1fr] opacity-100' : '[grid-template-rows:0fr] opacity-0',
+          )}
+        >
+          <div className="overflow-hidden">
+            {open && (
+              <div className="mt-1 rounded-xl bg-muted/40 border p-4">
+                <QuestionComments questionId={question.id} />
+              </div>
+            )}
           </div>
         </div>
       </CardContent>

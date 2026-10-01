@@ -61,7 +61,7 @@ export default function QuestionDetailPage() {
       queryClient.invalidateQueries({ queryKey: ['nuru-answers', question.id] });
       toast({ title: 'Experience shared', description: 'Asante for adding your voice — it will be labelled as lived experience.' });
     } catch {
-      toast({ title: 'Could not publish', description: 'Check your relay connection and try again.', variant: 'destructive' });
+      toast({ title: 'Could not publish', description: 'Check your connection and try again.', variant: 'destructive' });
     }
   };
 
@@ -140,7 +140,7 @@ export default function QuestionDetailPage() {
                     />
                     <div className="flex items-center justify-between gap-3 flex-wrap">
                       <p className="text-xs text-muted-foreground">
-                        Posted as <strong>lived experience</strong>{user ? '' : ' with a one-time anonymous key'} — never as medical advice.
+                        Posted as <strong>lived experience</strong>{user ? '' : ' with a one-time anonymous identity'} — never as medical advice.
                       </p>
                       <Button
                         onClick={shareExperience}
@@ -197,7 +197,7 @@ export default function QuestionDetailPage() {
                         <p className="text-sm text-muted-foreground leading-relaxed">
                           <strong className="text-foreground">Reserved for verified clinicians.</strong> Health
                           professionals are verified manually against professional registers (KMPDC, Nursing
-                          Council of Kenya, PPB), then badged — a Nostr key proves identity, our process proves
+                          Council of Kenya, PPB), then badged — technology proves who posted, our process proves
                           the profession. <Link to="/about#volunteer" className="text-clinical font-medium hover:underline">Volunteer as a clinician</Link>.
                         </p>
                       </>
@@ -217,7 +217,7 @@ export default function QuestionDetailPage() {
                     <Stethoscope className="size-5 text-plum shrink-0 mt-0.5" />
                     <p className="text-sm text-muted-foreground leading-relaxed">
                       An evidence card for this topic is being prepared by the clinical review panel.
-                      Until it is reviewed and signed, we don’t publish it.
+                      Until it is reviewed and approved, we don’t publish it.
                     </p>
                   </CardContent>
                 </Card>
@@ -229,7 +229,7 @@ export default function QuestionDetailPage() {
                   <p><span className="font-semibold text-clay">Clay</span> = lived experience. Real stories, not advice.</p>
                   <p><span className="font-semibold text-clinical">Teal</span> = verified clinical education.</p>
                   <p><span className="font-semibold text-plum">Plum</span> = reviewed evidence with sources.</p>
-                  <p className="pt-1 text-xs">Asked {timeAgo(question.createdAt)} · answers are kind-1 Nostr replies with NIP-32 labels.</p>
+                  <p className="pt-1 text-xs">Asked {timeAgo(question.createdAt)} · every answer is labelled, so the three layers never blur.</p>
                 </CardContent>
               </Card>
             </aside>
