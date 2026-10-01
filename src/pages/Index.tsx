@@ -2,16 +2,12 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowRight,
-  BookOpenCheck,
   Fingerprint,
   GitFork,
   KeyRound,
   MessageCircleQuestion,
-  MessagesSquare,
   ShieldCheck,
-  Stethoscope,
   TrendingUp,
-  Users,
 } from 'lucide-react';
 import { useSeoMeta } from '@unhead/react';
 
@@ -27,12 +23,12 @@ import { Reveal } from '@/components/nuru/Reveal';
 import { AnimatedWords } from '@/components/nuru/AnimatedWords';
 import { HeroScene } from '@/components/nuru/hero/HeroScene';
 import { LottiePlayer } from '@/components/nuru/LottiePlayer';
+import { CountUp } from '@/components/nuru/CountUp';
 import heartPulseAnimation from '@/assets/lottie/heart-pulse.json';
 import { SEED_QUESTIONS } from '@/data/questions';
 import { evidenceCardBySlug } from '@/data/evidenceCards';
-import { BLIND_SPOTS } from '@/data/blindspots';
-import { AREAS } from '@/lib/nuru/topics';
-import { formatNumber, timeAgo } from '@/lib/nuru/format';
+import { BLIND_SPOT_TOTAL } from '@/data/blindspots';
+import { timeAgo } from '@/lib/nuru/format';
 
 const DEMO_QUESTION = SEED_QUESTIONS[0];
 const DEMO_EVIDENCE = evidenceCardBySlug(DEMO_QUESTION.evidenceCard ?? '');
@@ -47,9 +43,6 @@ export default function Index() {
   });
 
   const [askHover, setAskHover] = useState(false);
-
-  const topBlindSpots = [...BLIND_SPOTS].sort((a, b) => b.count - a.count).slice(0, 6);
-  const maxCount = topBlindSpots[0]?.count ?? 1;
 
   return (
     <SiteLayout>
@@ -101,74 +94,14 @@ export default function Index() {
         </div>
       </section>
 
-      {/* ── Why three layers ─────────────────────────────── */}
-      <section className="container py-16 sm:py-24">
-        <Reveal>
-        <div className="max-w-2xl space-y-4 mb-12">
-          <h2 className="font-display font-semibold text-3xl sm:text-4xl tracking-tight">
-            Three kinds of knowledge. <span className="text-primary">Never confused.</span>
-          </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            Online, stories, medicine and advertising all look the same. Here, they never mix.
-          </p>
-        </div>
-        </Reveal>
-
-        <div className="grid gap-10 md:grid-cols-3 md:gap-8">
-          {[
-            {
-              layer: 'lived-experience' as const,
-              title: 'Lived experience',
-              body: '“This happened to me.” Real stories, honoured as experience — never sold as medical fact.',
-              Icon: MessagesSquare,
-              accent: 'text-clay',
-              rule: 'border-clay/60',
-            },
-            {
-              layer: 'clinical-response' as const,
-              title: 'Clinical response',
-              body: '“Here’s what clinical guidance says.” Verified professionals — education, not diagnosis.',
-              Icon: Stethoscope,
-              accent: 'text-clinical',
-              rule: 'border-clinical/60',
-            },
-            {
-              layer: 'evidence-card' as const,
-              title: 'Evidence card',
-              body: 'Reviewed summaries: causes, warning signs, what to ask, sources, review date.',
-              Icon: BookOpenCheck,
-              accent: 'text-plum',
-              rule: 'border-plum/60',
-            },
-          ].map(({ layer, title, body, Icon, accent, rule }, i) => (
-            <Reveal key={layer} delay={i * 130}>
-              <div className={`border-t-2 ${rule} pt-6 space-y-4`}>
-                <span className={`inline-flex items-center gap-2 ${accent}`}>
-                  <Icon className="size-5" />
-                  <span className="text-xs font-bold uppercase tracking-[0.12em]">{title}</span>
-                </span>
-                <p className="text-muted-foreground leading-relaxed text-[0.97rem]">{body}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-
-        <Reveal delay={200}>
-        <p className="mt-8 text-center text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-          A doctor may call a side effect rare while 200 women describe living it. Both belong here —
-          clearly labelled.
-        </p>
-        </Reveal>
-      </section>
-
       {/* ── Live demo thread ─────────────────────────────── */}
       <section className="border-y bg-secondary/40">
         <div className="container py-16 sm:py-24">
           <Reveal>
           <div className="max-w-2xl space-y-3 mb-10">
-            <p className="text-xs font-bold uppercase tracking-[0.14em] text-primary">A real thread, one question</p>
+            <p className="text-xs font-bold uppercase tracking-[0.14em] text-primary">A real thread</p>
             <h2 className="font-display font-semibold text-3xl sm:text-4xl tracking-tight">
-              Watch the three layers answer together
+              One question, three kinds of answers
             </h2>
           </div>
           </Reveal>
@@ -276,146 +209,28 @@ export default function Index() {
         </div>
       </section>
 
-      {/* ── Blind Spots preview ──────────────────────────── */}
-      <section className="container py-16 sm:py-24 grid gap-10 lg:grid-cols-[1fr_1.2fr] items-center">
-        <Reveal className="space-y-5">
-          <p className="text-xs font-bold uppercase tracking-[0.14em] text-gold">Women’s Health Blind Spots</p>
-          <h2 className="font-display font-semibold text-3xl sm:text-4xl tracking-tight">
-            We don’t just answer one woman. <span className="text-gold">We measure what women were never taught.</span>
-          </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            Anonymous questions are counted together — never individually — building a live map of what
-            the health system keeps failing to explain.
-          </p>
-          <Button asChild className="rounded-full" variant="outline">
-            <Link to="/blind-spots">
-              <TrendingUp className="size-4" />
-              Open the Blind Spot dashboard
-            </Link>
-          </Button>
-        </Reveal>
-
-        <Reveal delay={180}>
-        <Card className="shadow-sm">
-          <CardContent className="p-6 space-y-4">
-            <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-              Questions this month · aggregate only
-            </p>
-            <div className="space-y-3">
-              {topBlindSpots.map((s) => (
-                <Link key={s.topic} to={`/topics/${s.topic}`} className="block group">
-                  <div className="flex items-baseline justify-between gap-3 mb-1">
-                    <span className="text-sm font-medium group-hover:text-primary transition-colors">{s.label}</span>
-                    <span className="text-xs text-muted-foreground tabular-nums">
-                      {formatNumber(s.count)} · <span className="text-gold font-semibold">+{s.deltaPct}%</span>
-                    </span>
-                  </div>
-                  <div className="h-2.5 rounded-full bg-muted overflow-hidden">
-                    <div
-                      className="h-full rounded-full bg-gradient-to-r from-primary to-gold transition-all"
-                      style={{ width: `${Math.round((s.count / maxCount) * 100)}%` }}
-                    />
-                  </div>
-                </Link>
-              ))}
-            </div>
-            <p className="text-xs text-muted-foreground">
-              Numbers only appear once at least 25 women have asked similar questions. No small groups, no individuals, no locations.
-            </p>
-          </CardContent>
-        </Card>
-        </Reveal>
-      </section>
-
-      {/* ── Library across the lifecycle ─────────────────── */}
+      {/* ── Blind Spots teaser ───────────────────────────── */}
       <section className="border-y bg-card">
-        <div className="container py-16 sm:py-24">
-          <div className="flex flex-wrap items-end justify-between gap-6 mb-10">
-            <div className="max-w-xl space-y-3">
-              <h2 className="font-display font-semibold text-3xl sm:text-4xl tracking-tight">
-                The knowledge library, across a woman’s whole life
-              </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                From first periods to healthy ageing — reviewed by clinicians, linked to sources.
-              </p>
+        <Reveal className="container py-10 sm:py-12">
+          <Link to="/blind-spots" className="group flex flex-wrap items-center justify-between gap-x-8 gap-y-4">
+            <div className="flex items-center gap-4 min-w-0">
+              <span className="inline-flex size-11 shrink-0 items-center justify-center rounded-full bg-gold-soft text-gold">
+                <TrendingUp className="size-5" />
+              </span>
+              <div className="min-w-0">
+                <p className="font-display font-semibold text-xl sm:text-2xl leading-snug">
+                  <CountUp value={BLIND_SPOT_TOTAL} /> anonymous questions this month
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  Counted together, never individually — a live map of what women were never taught.
+                </p>
+              </div>
             </div>
-            <Button asChild variant="outline" className="rounded-full">
-              <Link to="/library">Browse all topics <ArrowRight className="size-4" /></Link>
-            </Button>
-          </div>
-
-          <Reveal className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-            {AREAS.map((area) => (
-              <Link
-                key={area.slug}
-                to={`/library?area=${area.slug}`}
-                className="group rounded-xl border bg-background p-4 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-md"
-              >
-                <h3 className="font-semibold text-sm group-hover:text-primary transition-colors">{area.name}</h3>
-                {area.swahili && <p className="text-xs text-gold font-medium mt-0.5">{area.swahili}</p>}
-                <p className="text-xs text-muted-foreground mt-1.5 leading-relaxed line-clamp-2">{area.description}</p>
-              </Link>
-            ))}
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ── Identity & privacy ───────────────────────────── */}
-      <section className="container py-16 sm:py-24">
-        <div className="max-w-2xl space-y-4 mb-12">
-          <p className="text-xs font-bold uppercase tracking-[0.14em] text-primary">Identity without exposure</p>
-          <h2 className="font-display font-semibold text-3xl sm:text-4xl tracking-tight">
-            Ask without handing yourself over
-          </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            No account. No email. No phone number. Ask “is pain during sex normal?” without telling
-            anyone who you are — including us.
-          </p>
-        </div>
-
-        <div className="grid gap-5 md:grid-cols-3">
-          {[
-            {
-              Icon: Fingerprint,
-              title: 'One-time identity',
-              body: 'One tap creates a throwaway identity for your question. Nothing links back to you.',
-            },
-            {
-              Icon: KeyRound,
-              title: 'Your identity stays yours',
-              body: 'Already have a key? Sign in with your browser — it never touches this site.',
-            },
-            {
-              Icon: Users,
-              title: 'Verified professionals',
-              body: 'Clinicians are checked against professional registers before they’re badged.',
-            },
-          ].map(({ Icon, title, body }, i) => (
-            <Reveal key={title} delay={i * 130}>
-              <Card className="h-full transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg">
-                <CardContent className="p-6 space-y-3">
-                  <span className="inline-flex size-11 items-center justify-center rounded-xl bg-accent text-accent-foreground">
-                    <Icon className="size-5.5" />
-                  </span>
-                  <h3 className="font-display font-semibold text-xl">{title}</h3>
-                  <p className="text-muted-foreground leading-relaxed text-[0.95rem]">{body}</p>
-                </CardContent>
-              </Card>
-            </Reveal>
-          ))}
-        </div>
-
-        <Reveal delay={200}>
-        <Card className="mt-8 border-destructive/25">
-          <CardContent className="p-5 sm:p-6 flex items-start gap-3">
-            <ShieldCheck className="size-5 text-destructive shrink-0 mt-0.5" />
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              <strong className="text-foreground">Honest limits:</strong> the open network is public, and no
-              website can promise perfect anonymity. So we remove names, numbers and locations before
-              anything is posted — and never store medical records.
-            </p>
-          </CardContent>
-        </Card>
+            <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
+              See the Blind Spot dashboard
+              <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+            </span>
+          </Link>
         </Reveal>
       </section>
 
