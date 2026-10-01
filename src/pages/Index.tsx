@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowRight,
@@ -23,9 +24,8 @@ import { HelpfulButton } from '@/components/nuru/HelpfulButton';
 import { CommunitySignal } from '@/components/nuru/CommunitySignal';
 import { TopicChips } from '@/components/nuru/TopicChips';
 import { Reveal } from '@/components/nuru/Reveal';
-import { TiltCard } from '@/components/nuru/TiltCard';
 import { AnimatedWords } from '@/components/nuru/AnimatedWords';
-import { FloatingOrbs } from '@/components/nuru/FloatingOrbs';
+import { HeroScene } from '@/components/nuru/hero/HeroScene';
 import { LottiePlayer } from '@/components/nuru/LottiePlayer';
 import heartPulseAnimation from '@/assets/lottie/heart-pulse.json';
 import { SEED_QUESTIONS } from '@/data/questions';
@@ -46,6 +46,8 @@ export default function Index() {
       'A privacy-first, open women’s health knowledge commons for Africa. Anonymous questions, lived experience and clinically reviewed evidence — clearly separated, never mixed up.',
   });
 
+  const [askHover, setAskHover] = useState(false);
+
   const topBlindSpots = [...BLIND_SPOTS].sort((a, b) => b.count - a.count).slice(0, 6);
   const maxCount = topBlindSpots[0]?.count ?? 1;
 
@@ -53,24 +55,29 @@ export default function Index() {
     <SiteLayout>
       {/* ── Hero ─────────────────────────────────────────── */}
       <section className="relative texture-glow border-b overflow-hidden">
-        <FloatingOrbs />
-        <div className="container relative py-16 sm:py-24 grid gap-12 lg:grid-cols-[1.15fr_1fr] items-center">
-          <div className="space-y-7 animate-rise">
-            <p className="inline-flex items-center gap-2 rounded-full border bg-card px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-primary">
+        <div className="container relative py-14 sm:py-20 lg:py-24 grid gap-10 lg:grid-cols-[1.05fr_0.95fr] items-center">
+          <div className="relative z-10 space-y-7">
+            <p className="inline-flex items-center gap-2 rounded-full border bg-card px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-primary animate-rise">
               <ShieldCheck className="size-3.5" />
               Private by design · Free &amp; open · Community owned
             </p>
             <h1 className="font-display font-semibold text-[2.6rem] leading-[1.05] sm:text-6xl tracking-tight">
-              <AnimatedWords text="What were you never taught about your body?" highlight={['never', 'taught']} />
+              <AnimatedWords text="What were you never taught about your body?" highlight={['never', 'taught']} highlightClassName="hero-word" />
             </h1>
-            <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-xl">
+            <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-xl animate-fade-in" style={{ animationDelay: '0.55s' }}>
               Nuru Commons is a women’s health knowledge commons for Africa — where you can ask sensitive
               questions anonymously, hear other women’s lived experience, and read clinically reviewed
               evidence, with each kind of knowledge clearly labelled and never blurred together.
             </p>
-            <div className="flex flex-wrap items-center gap-3">
+            <div className="flex flex-wrap items-center gap-3 animate-fade-in" style={{ animationDelay: '0.7s' }}>
               <Button asChild size="lg" className="rounded-full text-base px-6">
-                <Link to="/ask">
+                <Link
+                  to="/ask"
+                  onMouseEnter={() => setAskHover(true)}
+                  onMouseLeave={() => setAskHover(false)}
+                  onFocus={() => setAskHover(true)}
+                  onBlur={() => setAskHover(false)}
+                >
                   <MessageCircleQuestion className="size-5" />
                   Ask anonymously
                 </Link>
@@ -82,42 +89,16 @@ export default function Index() {
                 </Link>
               </Button>
             </div>
-            <div className="flex flex-wrap gap-x-6 gap-y-2 pt-1 text-sm text-muted-foreground">
-              <span className="inline-flex items-center gap-1.5"><Fingerprint className="size-4 text-primary" /> No email, phone or ID required</span>
-              <span className="inline-flex items-center gap-1.5"><KeyRound className="size-4 text-primary" /> Your identity stays yours</span>
-              <span className="inline-flex items-center gap-1.5"><GitFork className="size-4 text-primary" /> Open for anyone to build on</span>
+            {/* Quiet reassurance, not feature cards */}
+            <div className="flex flex-wrap gap-x-7 gap-y-2 pt-2 text-[0.82rem] text-muted-foreground/90 animate-fade-in" style={{ animationDelay: '0.85s' }}>
+              <span className="inline-flex items-center gap-1.5"><Fingerprint className="size-3.5 text-primary/70" /> No email, phone or ID required</span>
+              <span className="inline-flex items-center gap-1.5"><KeyRound className="size-3.5 text-primary/70" /> Your identity stays yours</span>
+              <span className="inline-flex items-center gap-1.5"><GitFork className="size-3.5 text-primary/70" /> Open for anyone to build on</span>
             </div>
           </div>
 
-          {/* Hero visual: the three layers, stacked */}
-          <div className="hidden lg:block animate-fade-in" aria-hidden>
-            <TiltCard className="relative rounded-3xl" max={4}>
-            <div className="absolute inset-0 texture-dots rounded-3xl" />
-            <div className="relative space-y-4 p-2">
-              <Card className="rotate-[-1.5deg] shadow-lg border-clay/40">
-                <CardContent className="p-5 space-y-2">
-                  <LayerBadge layer="lived-experience" />
-                  <p className="font-display text-lg leading-snug">“I lived through this. Here is what happened to me.”</p>
-                  <p className="text-xs text-muted-foreground">Shared, believed, and clearly marked as experience — not advice.</p>
-                </CardContent>
-              </Card>
-              <Card className="rotate-[1deg] shadow-lg border-clinical/40 ml-8">
-                <CardContent className="p-5 space-y-2">
-                  <LayerBadge layer="clinical-response" />
-                  <p className="font-display text-lg leading-snug">“Here is what clinical guidance says — and what to ask next.”</p>
-                  <p className="text-xs text-muted-foreground">Verified professionals, manually checked against professional registers.</p>
-                </CardContent>
-              </Card>
-              <Card className="rotate-[-0.5deg] shadow-lg border-plum/40 ml-3">
-                <CardContent className="p-5 space-y-2">
-                  <LayerBadge layer="evidence-card" />
-                  <p className="font-display text-lg leading-snug">Structured evidence. Sources, warning signs, review date — all shown.</p>
-                  <p className="text-xs text-muted-foreground">Saved in an open format any app can read and reuse.</p>
-                </CardContent>
-              </Card>
-            </div>
-            </TiltCard>
-          </div>
+          {/* The knowledge object — slightly entering the headline's space */}
+          <HeroScene askHover={askHover} className="lg:-ml-14" />
         </div>
       </section>
 

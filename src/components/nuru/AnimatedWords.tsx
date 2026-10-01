@@ -3,8 +3,10 @@ import { cn } from '@/lib/utils';
 interface AnimatedWordsProps {
   text: string;
   className?: string;
-  /** Words to highlight with the animated gradient (case-insensitive, punctuation ignored) */
+  /** Words to highlight (case-insensitive, punctuation ignored) */
   highlight?: string[];
+  /** Class applied to highlighted words */
+  highlightClassName?: string;
   /** Delay between words, in milliseconds */
   step?: number;
   /** Delay before the first word, in milliseconds */
@@ -21,6 +23,7 @@ export function AnimatedWords({
   text,
   className,
   highlight = [],
+  highlightClassName = 'text-shine',
   step = 70,
   startDelay = 150,
 }: AnimatedWordsProps) {
@@ -39,7 +42,7 @@ export function AnimatedWords({
             className="inline-block overflow-hidden align-bottom pb-[0.1em] -mb-[0.1em]"
           >
             <span
-              className={cn('inline-block animate-word-rise will-change-transform', isHighlight && 'text-shine')}
+              className={cn('inline-block animate-word-rise will-change-transform', isHighlight && highlightClassName)}
               style={{ animationDelay: `${startDelay + i * step}ms` }}
             >
               {word}

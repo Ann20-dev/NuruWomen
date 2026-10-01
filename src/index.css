@@ -91,6 +91,17 @@
   --animate-float: float 13s ease-in-out infinite;
   --animate-float-slow: float 17s ease-in-out 1.2s infinite;
   --animate-drift: drift 26s ease-in-out infinite alternate;
+  --animate-breathe: breathe 9s ease-in-out infinite;
+  --animate-spin-slower: spin-slower 80s linear infinite;
+
+  @keyframes breathe {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.035) rotate(1.2deg); }
+  }
+
+  @keyframes spin-slower {
+    to { transform: rotate(360deg); }
+  }
 
   @keyframes accordion-down {
     from { height: 0; }
@@ -130,6 +141,64 @@
 
 @keyframes shine {
   to { background-position: 220% center; }
+}
+
+/* The knowledge object emerges from depth on first load */
+@keyframes hero-emerge {
+  from { opacity: 0; transform: scale(0.94); filter: blur(14px); }
+  to { opacity: 1; transform: scale(1); filter: blur(0); }
+}
+
+/* A warm ripple travelling outward through the object (CTA hover) */
+@keyframes hero-ripple {
+  from { transform: scale(0.35); opacity: 0.55; }
+  to { transform: scale(1.55); opacity: 0; }
+}
+
+/* Headline accent words — quiet editorial hover life */
+.hero-word {
+  position: relative;
+  display: inline-block;
+  color: var(--primary);
+  transition: color 0.5s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-word::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.04em;
+  height: 0.075em;
+  background: currentColor;
+  opacity: 0.35;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-word:hover {
+  color: var(--gold);
+  transform: translateY(-3px) scale(1.015);
+}
+
+.hero-word:hover::after {
+  transform: scaleX(1);
+}
+
+/* The membrane layers "open" when the ask CTA is hovered */
+.membrane {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-open] .m-outer { transform: scale(1.06); }
+[data-open] .m-mid { transform: scale(1.1) rotate(4deg); }
+[data-open] .m-seed { transform: scale(1.14); }
+
+.hero-ripple {
+  animation: hero-ripple 1.6s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 /* Container utility replacement for v4 (previously configured in tailwind.config) */
