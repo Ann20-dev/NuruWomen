@@ -55,8 +55,13 @@ const versionTag = z
 export const AnalyzeRequestSchema = z.strictObject({
   title: freeText(120),
   content: freeText(2879),
-  response_language: z.enum(['en', 'sw']),
-  synthetic_only: z.literal(true),
+  response_language: z.enum(['en', 'sw'], {
+    message: 'Must be "en" or "sw".',
+  }),
+  synthetic_only: z.literal(true, {
+    message:
+      'Must be true. This service accepts synthetic demonstration text only.',
+  }),
   include_demo_cards: z.boolean().optional(),
 });
 
@@ -66,7 +71,10 @@ export const TranslationCheckRequestSchema = z.strictObject({
   target_text: freeText(3000),
   source_version: versionTag,
   translated_from_version: versionTag,
-  synthetic_only: z.literal(true),
+  synthetic_only: z.literal(true, {
+    message:
+      'Must be true. This service accepts synthetic demonstration text only.',
+  }),
 });
 
 export type AnalyzeRequest = z.infer<typeof AnalyzeRequestSchema>;
