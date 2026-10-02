@@ -7,6 +7,7 @@ import { ArticleCard } from '@/components/nuru/ArticleCard';
 import { EvidenceCardView } from '@/components/nuru/EvidenceCardView';
 import { QuestionCard } from '@/components/nuru/QuestionCard';
 import { EmptyState } from '@/components/nuru/EmptyState';
+import { Reveal } from '@/components/nuru/Reveal';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { useNuruQuestions } from '@/hooks/useNuruQuestions';
@@ -60,6 +61,7 @@ export default function TopicPage() {
         <div className="grid gap-10 lg:grid-cols-[1.5fr_1fr] items-start">
           <div className="space-y-12">
             {/* Clinical overview */}
+            <Reveal>
             <section className="space-y-4">
               <div className="border-b pb-2">
                 <h2 className="font-display font-semibold text-2xl flex items-center gap-2">
@@ -77,8 +79,10 @@ export default function TopicPage() {
                 </div>
               )}
             </section>
+            </Reveal>
 
             {/* Common questions */}
+            <Reveal>
             <section className="space-y-4">
               <div className="border-b pb-2">
                 <h2 className="font-display font-semibold text-2xl flex items-center gap-2">
@@ -99,9 +103,11 @@ export default function TopicPage() {
                 <Link to="/ask">Ask your own question <ArrowRight className="size-4" /></Link>
               </Button>
             </section>
+            </Reveal>
           </div>
 
-          <aside className="space-y-6 lg:sticky lg:top-24">
+          <Reveal className="space-y-6 lg:sticky lg:top-24" delay={150}>
+          <aside className="space-y-6">
             {/* Community experiences */}
             <Card className="border-clay/35 bg-clay-soft/50">
               <CardContent className="p-5 space-y-3">
@@ -131,6 +137,7 @@ export default function TopicPage() {
               </div>
             )}
           </aside>
+          </Reveal>
         </div>
 
         {/* Sibling topics */}

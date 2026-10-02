@@ -38,3 +38,13 @@ global.ResizeObserver = vi.fn().mockImplementation((_callback) => ({
   unobserve: vi.fn(),
   disconnect: vi.fn(),
 }));
+
+// Stub lottie-react: lottie-web touches canvas at import time, which jsdom
+// does not implement. The animation is decorative; tests see a plain div.
+vi.mock('lottie-react', async () => {
+  const { createElement } = await import('react');
+  return {
+    LottieLight: ({ className }: { className?: string }) =>
+      createElement('div', { 'data-testid': 'lottie-stub', className }),
+  };
+});

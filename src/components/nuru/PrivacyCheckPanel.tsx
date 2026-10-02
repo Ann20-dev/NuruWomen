@@ -49,7 +49,7 @@ export function PrivacyCheckPanel({ findings, onApplyRedaction, checked }: Priva
             ))}
           </ul>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            Health questions on Nostr are public and permanent. Remove identifying details before posting —
+            Health questions here are public and permanent. Remove identifying details before posting —
             your care does not depend on your name.
           </p>
           {onApplyRedaction && (
