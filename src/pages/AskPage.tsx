@@ -21,6 +21,7 @@ import { classifyTopics } from '@/lib/nuru/classify';
 import { TOPICS } from '@/lib/nuru/topics';
 import { cn } from '@/lib/utils';
 import shieldAnimation from '@/assets/lottie/shield.json';
+import DOMPurify from 'dompurify';
 
 export default function AskPage() {
   useSeoMeta({
@@ -89,8 +90,8 @@ export default function AskPage() {
     if (!canPublish) return;
     try {
       const event = await askQuestion.mutateAsync({
-        title: title.trim(),
-        content: content.trim(),
+        title: DOMPurify.sanitize(title.trim()),
+        content: DOMPurify.sanitize(content.trim()),
         topics: selectedTopics,
         anonymous: identity === 'anonymous' || !user,
       });
@@ -107,6 +108,16 @@ export default function AskPage() {
       });
     }
   };
+
+  <Textarea
+  id="q-body"
+  value={content}
+  onChange={(e) => setContent(e.target.value)}
+  placeholder="Share as much as you need. If you accidentally include your name, estate, phone number or ID, we’ll catch it below before you post."
+  rows={7}
+  maxLength={5000} // <--- ADD THIS LINE HERE
+  className="text-base leading-relaxed"
+/>
 
   return (
     <SiteLayout>
