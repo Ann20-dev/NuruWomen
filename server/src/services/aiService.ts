@@ -5,6 +5,7 @@ import { config } from '../config.js';
  *
  * Must stay below the browser's own 10s timeout in src/lib/nuru/aiClient.ts,
  * so that we fail before the caller gives up on us.
+ * 
  */
 const UPSTREAM_TIMEOUT_MS = 8_000;
 
@@ -46,6 +47,11 @@ export class AiServiceError extends Error {
  * JSON to be preserved end to end.
  *
  * Never log `body`, and never attach an upstream response body to an error.
+ * 
+ * Note: some environments (WSL2 among them) drop packets to closed ports
+ * rather than sending a TCP reset, so a dead upstream surfaces as 'timeout'
+ * rather than 'unreachable'. Both branches are correct; which one fires
+ * depends on the network stack.
  */
 export async function callAiService(
   route: UpstreamRoute,
