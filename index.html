@@ -4,13 +4,21 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self' wss: https: http://localhost:*;">        <meta name="description" content="A privacy-first, open women's health knowledge commons for Africa. Anonymous questions, lived experience, and clinically reviewed evidence — clearly separated, never mixed up.">
+
+        <!-- Referrer Policy: Prevents private question URLs from leaking to external websites -->
+        <meta name="referrer" content="no-referrer">
+
+        <!-- Hardened Content Security Policy (with 'unsafe-eval' for Vite dev tools) -->
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self' wss: https: http://localhost:*; object-src 'none'; base-uri 'self'; frame-src 'none';">
+
+        <meta name="description" content="A privacy-first, open women's health knowledge commons for Africa. Anonymous questions, lived experience, and clinically reviewed evidence — clearly separated, never mixed up.">
         <meta property="og:type" content="website">
         <meta property="og:title" content="Nuru Commons — Women's Health Commons Africa">
         <meta property="og:description" content="Ask sensitive women's health questions anonymously. Real stories, verified clinical answers, and reviewed evidence — clearly separated.">
         
         <link rel="manifest" href="/manifest.webmanifest">
         <meta name="theme-color" content="#7c2942">
+    </head>
     <body>
         <div id="root"></div>
         <script type="module" src="/src/main.tsx"></script>
