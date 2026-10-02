@@ -1,0 +1,415 @@
+{
+  "library_name": "NuruWomen Clinical Evidence Seed Library",
+  "date_compiled": "2026-10-02",
+  "selection_rule": "Published 2020 or later; peer-reviewed clinical review/systematic review/meta-analysis/guideline synthesis or major evidence-based clinical position statement; preference for open-access and Africa/LMIC relevance.",
+  "topics": [
+    "menstrual_health",
+    "healthy_aging",
+    "postpartum",
+    "sexual_health",
+    "mental_health"
+  ],
+  "papers": [
+    {
+      "topic": "menstrual_health",
+      "title": "Worldwide prevalence of dysmenorrhea: a systematic review and meta-analysis across 70 countries",
+      "year": 2025,
+      "journal_or_source": "Pain",
+      "evidence_type": "Systematic review and meta-analysis",
+      "pmid": "41031966",
+      "pmcid": null,
+      "doi": null,
+      "access_url": "https://pubmed.ncbi.nlm.nih.gov/41031966/",
+      "open_access": "Check publisher/PubMed full-text links",
+      "library_tags": [
+        "dysmenorrhea",
+        "prevalence",
+        "menstrual-pain",
+        "global"
+      ],
+      "clinical_use": "Burden and prevalence context; useful for explaining how common dysmenorrhea is and why persistent/severe symptoms merit assessment."
+    },
+    {
+      "topic": "menstrual_health",
+      "title": "Heavy menstrual bleeding and dysmenorrhea in adolescents: A systematic review of self-management strategies, quality of life, and unmet needs",
+      "year": 2024,
+      "journal_or_source": "International Journal of Gynecology & Obstetrics",
+      "evidence_type": "Systematic review",
+      "pmid": "38654586",
+      "pmcid": null,
+      "doi": "10.1002/ijgo.15554",
+      "access_url": "https://pubmed.ncbi.nlm.nih.gov/38654586/",
+      "open_access": "Check publisher/PubMed full-text links",
+      "library_tags": [
+        "heavy-menstrual-bleeding",
+        "dysmenorrhea",
+        "adolescents",
+        "quality-of-life"
+      ],
+      "clinical_use": "Self-care, quality-of-life impact and unmet needs in younger users."
+    },
+    {
+      "topic": "menstrual_health",
+      "title": "Interventions for heavy menstrual bleeding; overview of Cochrane reviews and network meta-analysis",
+      "year": 2022,
+      "journal_or_source": "Cochrane Database of Systematic Reviews",
+      "evidence_type": "Overview of Cochrane reviews and network meta-analysis",
+      "pmid": "35638592",
+      "pmcid": "PMC9153244",
+      "doi": "10.1002/14651858.CD013180.pub2",
+      "access_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9153244/",
+      "open_access": "Yes",
+      "library_tags": [
+        "heavy-menstrual-bleeding",
+        "treatment",
+        "LNG-IUS",
+        "antifibrinolytics",
+        "NSAIDs"
+      ],
+      "clinical_use": "High-level evidence on treatment options for heavy menstrual bleeding."
+    },
+    {
+      "topic": "menstrual_health",
+      "title": "Primary Dysmenorrhea: Assessment and Treatment",
+      "year": 2020,
+      "journal_or_source": "Revista Brasileira de Ginecologia e Obstetrícia",
+      "evidence_type": "Clinical review",
+      "pmid": "32559803",
+      "pmcid": "PMC10309238",
+      "doi": "10.1055/s-0040-1712131",
+      "access_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10309238/",
+      "open_access": "Yes",
+      "library_tags": [
+        "dysmenorrhea",
+        "assessment",
+        "treatment",
+        "red-flags"
+      ],
+      "clinical_use": "Clinical overview of assessment, differential diagnosis and treatment of primary dysmenorrhea."
+    },
+    {
+      "topic": "healthy_aging",
+      "title": "A systematic review and critical appraisal of menopause guidelines",
+      "year": 2024,
+      "journal_or_source": "BMJ Sexual & Reproductive Health",
+      "evidence_type": "Systematic review and guideline appraisal",
+      "pmid": "38336466",
+      "pmcid": null,
+      "doi": "10.1136/bmjsrh-2023-202099",
+      "access_url": "https://pubmed.ncbi.nlm.nih.gov/38336466/",
+      "open_access": "Free article",
+      "library_tags": [
+        "menopause",
+        "guidelines",
+        "clinical-practice",
+        "healthy-aging"
+      ],
+      "clinical_use": "Compares current menopause guidance and identifies the more robust guideline recommendations."
+    },
+    {
+      "topic": "healthy_aging",
+      "title": "The role of menopausal symptoms on future health and longevity: A systematic scoping review of longitudinal evidence",
+      "year": 2024,
+      "journal_or_source": "Maturitas",
+      "evidence_type": "Systematic scoping review",
+      "pmid": "39366170",
+      "pmcid": null,
+      "doi": "10.1016/j.maturitas.2024.108130",
+      "access_url": "https://pubmed.ncbi.nlm.nih.gov/39366170/",
+      "open_access": "Free article",
+      "library_tags": [
+        "menopause",
+        "healthspan",
+        "longevity",
+        "cardiometabolic",
+        "bone-health"
+      ],
+      "clinical_use": "Links menopausal symptoms with later health outcomes and healthy-aging considerations."
+    },
+    {
+      "topic": "healthy_aging",
+      "title": "The 2022 hormone therapy position statement of The North American Menopause Society",
+      "year": 2022,
+      "journal_or_source": "Menopause",
+      "evidence_type": "Evidence-based clinical position statement",
+      "pmid": "35797481",
+      "pmcid": null,
+      "doi": "10.1097/GME.0000000000002028",
+      "access_url": "https://pubmed.ncbi.nlm.nih.gov/35797481/",
+      "open_access": "Check publisher/PubMed full-text links",
+      "library_tags": [
+        "menopause",
+        "hormone-therapy",
+        "vasomotor-symptoms",
+        "bone-health",
+        "GSM"
+      ],
+      "clinical_use": "Core clinical source for benefits, risks, indications and individualized use of menopausal hormone therapy."
+    },
+    {
+      "topic": "healthy_aging",
+      "title": "The Efficacy of Strength Exercises for Reducing the Symptoms of Menopause: A Systematic Review",
+      "year": 2023,
+      "journal_or_source": "Journal of Clinical Medicine",
+      "evidence_type": "Systematic review",
+      "pmid": "36675477",
+      "pmcid": "PMC9864448",
+      "doi": "10.3390/jcm12020548",
+      "access_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9864448/",
+      "open_access": "Yes",
+      "library_tags": [
+        "menopause",
+        "exercise",
+        "strength-training",
+        "bone-density",
+        "cardiometabolic-health"
+      ],
+      "clinical_use": "Evidence on strength training for menopausal symptoms, physical function and bone/metabolic outcomes."
+    },
+    {
+      "topic": "postpartum",
+      "title": "What delivery-related factors affect postpartum recovery? A systematic review",
+      "year": 2025,
+      "journal_or_source": "AJOG Global Reports",
+      "evidence_type": "Systematic review",
+      "pmid": "40458539",
+      "pmcid": null,
+      "doi": "10.1016/j.xagr.2025.100496",
+      "access_url": "https://pubmed.ncbi.nlm.nih.gov/40458539/",
+      "open_access": "Check publisher/PubMed full-text links",
+      "library_tags": [
+        "postpartum",
+        "recovery",
+        "delivery",
+        "maternal-health"
+      ],
+      "clinical_use": "Recent synthesis of delivery-related factors that influence postpartum recovery."
+    },
+    {
+      "topic": "postpartum",
+      "title": "Postpartum Care up to 1 Year After Pregnancy: A Systematic Review and Meta-Analysis",
+      "year": 2023,
+      "journal_or_source": "Agency for Healthcare Research and Quality (Comparative Effectiveness Review No. 261)",
+      "evidence_type": "Systematic review and meta-analysis",
+      "pmid": "37315166",
+      "pmcid": null,
+      "doi": "10.23970/AHRQEPCCER261",
+      "access_url": "https://www.ncbi.nlm.nih.gov/books/NBK592637/",
+      "open_access": "Yes, public-domain NCBI Bookshelf",
+      "library_tags": [
+        "postpartum",
+        "care-delivery",
+        "maternal-health",
+        "contraception",
+        "mental-health"
+      ],
+      "clinical_use": "Comprehensive evidence review of postpartum care strategies through one year after pregnancy."
+    },
+    {
+      "topic": "postpartum",
+      "title": "Postpartum care indications and methodological quality: a systematic review of guidelines",
+      "year": 2022,
+      "journal_or_source": "Journal of Public Health",
+      "evidence_type": "Systematic review of clinical guidelines",
+      "pmid": "34306970",
+      "pmcid": "PMC8288832",
+      "doi": "10.1007/s10389-021-01629-4",
+      "access_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8288832/",
+      "open_access": "Yes",
+      "library_tags": [
+        "postpartum",
+        "guidelines",
+        "breastfeeding",
+        "nutrition",
+        "contraception",
+        "mental-health"
+      ],
+      "clinical_use": "Compares postpartum clinical guidance and highlights recommended care domains and gaps."
+    },
+    {
+      "topic": "postpartum",
+      "title": "Postpartum care content and delivery throughout the African continent: An integrative review",
+      "year": 2021,
+      "journal_or_source": "Midwifery",
+      "evidence_type": "Integrative review",
+      "pmid": "33740519",
+      "pmcid": "PMC8985233",
+      "doi": "10.1016/j.midw.2021.102976",
+      "access_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8985233/",
+      "open_access": "Yes",
+      "library_tags": [
+        "postpartum",
+        "Africa",
+        "maternal-health",
+        "family-planning",
+        "health-literacy"
+      ],
+      "clinical_use": "Directly relevant African evidence on postpartum care content, delivery models and service gaps."
+    },
+    {
+      "topic": "sexual_health",
+      "title": "The influence of gender norms on women's sexual and reproductive health outcomes: a systematic review",
+      "year": 2025,
+      "journal_or_source": "BMC Women's Health",
+      "evidence_type": "Systematic review",
+      "pmid": "40361075",
+      "pmcid": "PMC12076893",
+      "doi": "10.1186/s12905-025-03768-2",
+      "access_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12076893/",
+      "open_access": "Yes",
+      "library_tags": [
+        "sexual-health",
+        "reproductive-health",
+        "gender-norms",
+        "family-planning",
+        "maternal-health"
+      ],
+      "clinical_use": "Useful contextual evidence for how gender norms influence sexual and reproductive health behaviors and outcomes."
+    },
+    {
+      "topic": "sexual_health",
+      "title": "Sexually transmitted infections and female reproductive health",
+      "year": 2022,
+      "journal_or_source": "Nature Reviews Microbiology",
+      "evidence_type": "Clinical/scientific review",
+      "pmid": "35918418",
+      "pmcid": "PMC9362696",
+      "doi": "10.1038/s41564-022-01177-x",
+      "access_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9362696/",
+      "open_access": "Yes",
+      "library_tags": [
+        "sexual-health",
+        "STI",
+        "reproductive-health",
+        "diagnosis",
+        "treatment",
+        "prevention"
+      ],
+      "clinical_use": "Strong clinical review of STI burden, complications, diagnosis, treatment and prevention in women."
+    },
+    {
+      "topic": "sexual_health",
+      "title": "Behavioral Therapies for Treating Female Sexual Dysfunctions: A State-of-the-Art Review",
+      "year": 2022,
+      "journal_or_source": "Journal of Clinical Medicine",
+      "evidence_type": "State-of-the-art clinical review",
+      "pmid": "35628920",
+      "pmcid": "PMC9144766",
+      "doi": "10.3390/jcm11102794",
+      "access_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9144766/",
+      "open_access": "Yes",
+      "library_tags": [
+        "sexual-health",
+        "sexual-dysfunction",
+        "CBT",
+        "mindfulness",
+        "sexual-pain"
+      ],
+      "clinical_use": "Evidence-based overview of behavioral treatment approaches for female sexual dysfunction."
+    },
+    {
+      "topic": "sexual_health",
+      "title": "A scoping review on women’s sexual health in the postpartum period: opportunities for research and practice within low-and middle-income countries",
+      "year": 2022,
+      "journal_or_source": "Reproductive Health",
+      "evidence_type": "Scoping review",
+      "pmid": "35527298",
+      "pmcid": "PMC9079206",
+      "doi": "10.1186/s12978-022-01399-6",
+      "access_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9079206/",
+      "open_access": "Yes",
+      "library_tags": [
+        "sexual-health",
+        "postpartum",
+        "LMIC",
+        "dyspareunia",
+        "sexual-function"
+      ],
+      "clinical_use": "LMIC-focused evidence on postpartum sexual function, dysfunction and counseling needs."
+    },
+    {
+      "topic": "mental_health",
+      "title": "Optimizing Mental Health for Women: Recognizing and Treating Mood Disorders Throughout the Lifespan",
+      "year": 2023,
+      "journal_or_source": "Journal of Clinical Psychiatry",
+      "evidence_type": "Clinical review",
+      "pmid": "37728480",
+      "pmcid": null,
+      "doi": "10.4088/JCP.vtsmdd2136ahc",
+      "access_url": "https://pubmed.ncbi.nlm.nih.gov/37728480/",
+      "open_access": "Free article",
+      "library_tags": [
+        "mental-health",
+        "depression",
+        "mood-disorders",
+        "pregnancy",
+        "postpartum",
+        "menopause"
+      ],
+      "clinical_use": "Life-course framing for recognizing and treating mood disorders in women."
+    },
+    {
+      "topic": "mental_health",
+      "title": "Sex hormone fluctuation and increased female risk for depression and anxiety disorders: From clinical evidence to molecular mechanisms",
+      "year": 2022,
+      "journal_or_source": "Frontiers in Neuroendocrinology",
+      "evidence_type": "Clinical/scientific review",
+      "pmid": "35716803",
+      "pmcid": "PMC9715398",
+      "doi": "10.1016/j.yfrne.2022.101010",
+      "access_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9715398/",
+      "open_access": "Yes",
+      "library_tags": [
+        "mental-health",
+        "depression",
+        "anxiety",
+        "hormones",
+        "menstrual-cycle",
+        "menopause"
+      ],
+      "clinical_use": "Explains female-specific biological vulnerability to depression and anxiety across hormonal transitions."
+    },
+    {
+      "topic": "mental_health",
+      "title": "Screening for Anxiety in Adolescent and Adult Women: A Systematic Review for the Women's Preventive Services Initiative",
+      "year": 2020,
+      "journal_or_source": "Annals of Internal Medicine",
+      "evidence_type": "Systematic review",
+      "pmid": "32510989",
+      "pmcid": null,
+      "doi": "10.7326/M20-0579",
+      "access_url": "https://pubmed.ncbi.nlm.nih.gov/32510989/",
+      "open_access": "Check publisher/PubMed full-text links",
+      "library_tags": [
+        "mental-health",
+        "anxiety",
+        "screening",
+        "women",
+        "primary-care"
+      ],
+      "clinical_use": "Evidence base for anxiety screening in adolescent girls and adult women."
+    },
+    {
+      "topic": "mental_health",
+      "title": "Effectiveness of Digital Mental Health Tools to Reduce Depressive and Anxiety Symptoms in Low- and Middle-Income Countries: Systematic Review and Meta-analysis",
+      "year": 2023,
+      "journal_or_source": "JMIR Mental Health",
+      "evidence_type": "Systematic review and meta-analysis",
+      "pmid": "36939820",
+      "pmcid": "PMC10131603",
+      "doi": "10.2196/43066",
+      "access_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10131603/",
+      "open_access": "Yes",
+      "library_tags": [
+        "mental-health",
+        "LMIC",
+        "digital-health",
+        "depression",
+        "anxiety",
+        "mHealth"
+      ],
+      "clinical_use": "Especially relevant to NuruWomen as evidence for digital mental-health interventions in LMIC settings."
+    }
+  ],
+  "safety_note": "Use these sources to support educational information and retrieval-augmented generation. They do not replace clinician assessment. Preserve source citations, publication year, evidence type, and uncertainty in generated answers."
+}
