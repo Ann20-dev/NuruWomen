@@ -1,10 +1,16 @@
-import { Card, CardContent } from '@/components/ui/card';
+import type { ReactNode } from 'react';
 
-export function EmptyState({ message }: { message: string }) {
+import { Card, CardContent } from '@/components/ui/card';
+import { LottiePlayer } from '@/components/nuru/LottiePlayer';
+import emptyBoxAnimation from '@/assets/lottie/empty-box.json';
+
+export function EmptyState({ message, action }: { message: string; action?: ReactNode }) {
   return (
     <Card className="border-dashed">
-      <CardContent className="py-12 px-8 text-center">
-        <p className="text-muted-foreground max-w-sm mx-auto">{message}</p>
+      <CardContent className="py-10 px-8 text-center space-y-4">
+        <LottiePlayer animationData={emptyBoxAnimation} className="mx-auto size-28" />
+        <p className="text-muted-foreground max-w-sm mx-auto leading-relaxed">{message}</p>
+        {action && <div>{action}</div>}
       </CardContent>
     </Card>
   );

@@ -9,7 +9,7 @@ export function ArticleCard({ article }: { article: Article }) {
   const area = getArea(article.area);
 
   return (
-    <Card className="group h-full hover:shadow-md hover:border-primary/25 transition-all">
+    <Card className="group h-full transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md hover:border-primary/25">
       <CardContent className="p-5 flex flex-col h-full gap-3">
         <div className="flex items-center gap-2 text-[0.7rem] font-semibold uppercase tracking-wide text-muted-foreground">
           <span className="text-primary">{area?.name ?? article.area}</span>

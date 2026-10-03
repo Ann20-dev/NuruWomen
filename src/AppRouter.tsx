@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ScrollToTop } from "./components/ScrollToTop";
+import { useInactivityTimeout } from "./hooks/useInactivityTimeout";
 
 import Index from "./pages/Index";
 import AskPage from "./pages/AskPage";
@@ -13,9 +14,16 @@ import AboutPage from "./pages/AboutPage";
 import { NIP19Page } from "./pages/NIP19Page";
 import NotFound from "./pages/NotFound";
 
-export function AppRouter() {
+// Helper component to execute the hook inside BrowserRouter context
+function InactivityListener() {
+  useInactivityTimeout();
+  return null;
+}
+
+export default function AppRouter() {
   return (
     <BrowserRouter>
+      <InactivityListener />
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Index />} />
@@ -35,4 +43,3 @@ export function AppRouter() {
     </BrowserRouter>
   );
 }
-export default AppRouter;
