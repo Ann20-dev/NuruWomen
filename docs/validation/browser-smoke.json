@@ -1,0 +1,46 @@
+{
+  "checks": [
+    {
+      "name": "research_catalogue_renders",
+      "passed": true
+    },
+    {
+      "name": "research_search",
+      "passed": true
+    },
+    {
+      "name": "coverage_view_renders",
+      "passed": true
+    },
+    {
+      "name": "save_blocked_before_analysis",
+      "passed": true
+    },
+    {
+      "name": "local_question_saved",
+      "passed": true
+    },
+    {
+      "name": "reload_clears_local_question",
+      "passed": true
+    },
+    {
+      "name": "swahili_browser_analysis",
+      "passed": true
+    },
+    {
+      "name": "mobile_no_horizontal_overflow",
+      "passed": true
+    },
+    {
+      "name": "no_public_relay_connections",
+      "passed": true
+    },
+    {
+      "name": "no_browser_runtime_errors",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "websockets": []
+}

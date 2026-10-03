@@ -28,7 +28,7 @@ export function seedId(seed: string): string {
   return out.slice(0, 64);
 }
 
-/** Deterministic pubkey-looking hex for demo personas. */
+/** Deterministic pubkey-looking hex for bundled personas. */
 export function seedPubkey(seed: string): string {
   return seedId(`pk:${seed}`);
 }

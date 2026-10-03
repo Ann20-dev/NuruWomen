@@ -7,6 +7,7 @@ export function useAuthor(pubkey: string | undefined) {
 
   return useQuery<{ event?: NostrEvent; metadata?: NostrMetadata }>({
     queryKey: ['nostr', 'author', pubkey ?? ''],
+    enabled: Boolean(pubkey),
     queryFn: async () => {
       if (!pubkey) {
         return {};

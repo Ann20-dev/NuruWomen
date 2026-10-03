@@ -26,15 +26,29 @@ export function QuestionCard({ question, answerCount }: { question: Question; an
               {question.title}
             </h3>
           </Link>
-          {question.signal && (
-            <span
-              className="hidden sm:inline-flex items-center gap-1 shrink-0 rounded-full bg-gold-soft text-gold px-2.5 py-1 text-[0.7rem] font-semibold"
-              title="Similar questions asked in the commons"
-            >
-              <TrendingUp className="size-3" />
-              {question.signal.similarCount.toLocaleString()} similar
-            </span>
-          )}
+          <span className="flex items-center gap-1.5 shrink-0">
+            {!question.isSeed && (
+              <span
+                className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-clinical/30 bg-clinical-soft text-clinical px-2.5 py-1 text-[0.7rem] font-semibold"
+                title="Published live by the community"
+              >
+                <span className="relative flex size-1.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-clinical opacity-60 motion-reduce:hidden" />
+                  <span className="relative inline-flex size-1.5 rounded-full bg-clinical" />
+                </span>
+                Live
+              </span>
+            )}
+            {question.signal && (
+              <span
+                className="hidden sm:inline-flex items-center gap-1 rounded-full bg-gold-soft text-gold px-2.5 py-1 text-[0.7rem] font-semibold"
+                title="Similar questions asked in the commons"
+              >
+                <TrendingUp className="size-3" />
+                {question.signal.similarCount.toLocaleString()} similar
+              </span>
+            )}
+          </span>
         </div>
 
         <Link to={`/question/${question.id}`} className="block">

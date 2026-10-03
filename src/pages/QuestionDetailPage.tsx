@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { BadgeCheck, Loader2, Lock, MessagesSquare, Send, Stethoscope } from 'lucide-react';
 import { useSeoMeta } from '@unhead/react';
@@ -22,6 +22,11 @@ import { useNuruQuestion } from '@/hooks/useNuruQuestions';
 import { useNuruAnswers } from '@/hooks/useNuruAnswers';
 import { useNuruPublish } from '@/hooks/useNuruPublish';
 import { evidenceCardBySlug } from '@/data/evidenceCards';
+import { ClinicianArt } from '@/components/nuru/art/ClinicianArt';
+import { SafetyBanner } from '@/components/nuru/SafetyBanner';
+import { RelatedReading } from '@/components/nuru/RelatedReading';
+import { retrieveForTopics } from '@/lib/nuru/retrieve';
+import { scanSafety, type SafetyFlag } from '@/lib/nuru/safety';
 import { CLINICIAN_PUBKEYS } from '@/data/clinicians';
 import { timeAgo } from '@/lib/nuru/format';
 import NotFound from '@/pages/NotFound';
@@ -36,9 +41,18 @@ export default function QuestionDetailPage() {
   const queryClient = useQueryClient();
 
   const [draft, setDraft] = useState('');
+  const [draftSafety, setDraftSafety] = useState<SafetyFlag[]>([]);
+
+  // Warn on red-flag wording before an answer is published.
+  useEffect(() => {
+    const t = setTimeout(() => {
+      setDraftSafety(draft.trim().length >= 12 ? scanSafety(draft) : []);
+    }, 600);
+    return () => clearTimeout(t);
+  }, [draft]);
 
   useSeoMeta({
-    title: question ? `${question.title} — Nuru Commons` : 'Question — Nuru Commons',
+    title: question ? `${question.title} — NuruWomen` : 'Question — NuruWomen',
     description: question?.content.slice(0, 150),
   });
 
@@ -55,11 +69,12 @@ export default function QuestionDetailPage() {
         questionPubkey: question.authorPubkey,
         text: draft.trim(),
         type: 'lived-experience',
+        topics: question.topics,
         anonymous: !user,
       });
       setDraft('');
       queryClient.invalidateQueries({ queryKey: ['nuru-answers', question.id] });
-      toast({ title: 'Experience shared', description: 'Asante for adding your voice — it will be labelled as lived experience.' });
+      toast({ title: 'Response published', description: 'Shared as lived experience — thank you.' });
     } catch {
       toast({ title: 'Could not publish', description: 'Check your connection and try again.', variant: 'destructive' });
     }
@@ -135,20 +150,21 @@ export default function QuestionDetailPage() {
                     <Textarea
                       value={draft}
                       onChange={(e) => setDraft(e.target.value)}
-                      placeholder="What happened to you? What do you wish someone had told you? (No names, numbers or locations — stay anonymous.)"
+                      placeholder="Write your response. Do not include real names, phone numbers or other identifying details."
                       rows={4}
                     />
+                    <SafetyBanner flags={draftSafety} />
                     <div className="flex items-center justify-between gap-3 flex-wrap">
-                      <p className="text-xs text-muted-foreground">
-                        Posted as <strong>lived experience</strong>{user ? '' : ' with a one-time anonymous identity'} — never as medical advice.
-                      </p>
+                        <p className="text-xs text-muted-foreground">
+                          Shared as <strong>lived experience</strong> — never as medical advice.
+                        </p>
                       <Button
                         onClick={shareExperience}
                         disabled={draft.trim().length < 10 || postAnswer.isPending}
                         className="rounded-full bg-clay text-clay-foreground hover:bg-clay/90"
                       >
                         {postAnswer.isPending ? <Loader2 className="size-4 animate-spin" /> : <Send className="size-4" />}
-                        Share
+                        Publish response
                       </Button>
                     </div>
                   </CardContent>
@@ -161,7 +177,7 @@ export default function QuestionDetailPage() {
                   <div className="space-y-1">
                     <LayerBadge layer="clinical-response" />
                     <p className="text-xs text-muted-foreground">
-                      Health education from manually verified professionals. Not a personal consultation.
+                      Clinical education reviewed by the panel — general education, not a personal consultation.
                     </p>
                   </div>
                   <span className="text-sm font-semibold text-clinical tabular-nums">
@@ -181,13 +197,14 @@ export default function QuestionDetailPage() {
                   </div>
                 )}
 
-                <Card className="border-clinical/30 bg-clinical-soft/40">
+                <Card className="border-clinical/30 bg-clinical-soft/40 overflow-hidden">
+                  <ClinicianArt className="w-full aspect-[3/2] max-h-44 border-b border-clinical/20" />
                   <CardContent className="p-5 flex items-start gap-3">
                     {isClinician ? (
                       <>
                         <BadgeCheck className="size-5 text-clinical shrink-0 mt-0.5" />
                         <p className="text-sm text-muted-foreground">
-                          You are signed in as a verified clinician. Clinical responses you post are
+                          This release has no verified clinical identities. Clinical responses you post are
                           automatically labelled and badged.
                         </p>
                       </>
@@ -195,10 +212,9 @@ export default function QuestionDetailPage() {
                       <>
                         <Lock className="size-5 text-clinical shrink-0 mt-0.5" />
                         <p className="text-sm text-muted-foreground leading-relaxed">
-                          <strong className="text-foreground">Reserved for verified clinicians.</strong> Health
-                          professionals are verified manually against professional registers (KMPDC, Nursing
-                          Council of Kenya, PPB), then badged — technology proves who posted, our process proves
-                          the profession. <Link to="/about#volunteer" className="text-clinical font-medium hover:underline">Volunteer as a clinician</Link>.
+                          <strong className="text-foreground">Clinical answers come from verified health professionals.</strong>{' '}
+                          Every clinician is checked against official registers before they can respond.{' '}
+                          <Link to="/about#volunteer" className="text-clinical font-medium hover:underline">Volunteer as a clinician</Link>.
                         </p>
                       </>
                     )}
@@ -217,11 +233,12 @@ export default function QuestionDetailPage() {
                     <Stethoscope className="size-5 text-plum shrink-0 mt-0.5" />
                     <p className="text-sm text-muted-foreground leading-relaxed">
                       An evidence card for this topic is being prepared by the clinical review panel.
-                      Until it is reviewed and approved, we don’t publish it.
                     </p>
                   </CardContent>
                 </Card>
               )}
+
+              <RelatedReading retrieval={retrieveForTopics(question.topics)} />
 
               <Card>
                 <CardContent className="p-5 space-y-2 text-sm text-muted-foreground">

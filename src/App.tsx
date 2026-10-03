@@ -6,7 +6,6 @@ import { createHead, UnheadProvider } from '@unhead/react/client';
 import { InferSeoMetaPlugin } from 'unhead/plugins';
 import { Suspense } from 'react';
 import NostrProvider from '@/components/NostrProvider';
-import { NostrSync } from '@/components/NostrSync';
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { NostrLoginProvider } from '@nostrify/react/login';
@@ -52,10 +51,9 @@ export function App() {
         <QueryClientProvider client={queryClient}>
           <NostrLoginProvider storageKey='nostr:login'>
             <NostrProvider>
-              <NostrSync />
               <TooltipProvider>
                 <Toaster />
-                <Suspense>
+                <Suspense fallback={<div role="status" className="p-8 text-center">Loading NuruWomen...</div>}>
                   <AppRouter />
                 </Suspense>
               </TooltipProvider>

@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NuruWomen Clinical Evidence Record",
+  "type": "object",
+  "required": [
+    "topic",
+    "title",
+    "year",
+    "evidence_type",
+    "access_url"
+  ],
+  "properties": {
+    "topic": {
+      "type": "string",
+      "enum": [
+        "menstrual_health",
+        "healthy_aging",
+        "postpartum",
+        "sexual_health",
+        "mental_health"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "year": {
+      "type": "integer",
+      "minimum": 2020
+    },
+    "journal_or_source": {
+      "type": "string"
+    },
+    "evidence_type": {
+      "type": "string"
+    },
+    "pmid": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "pmcid": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "doi": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "access_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "open_access": {
+      "type": "string"
+    },
+    "clinical_use": {
+      "type": "string"
+    },
+    "library_tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": true
+}

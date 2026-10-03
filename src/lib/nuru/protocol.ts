@@ -1,5 +1,5 @@
 /**
- * Nuru Commons protocol constants. See NIP.md for the full specification.
+ * NuruWomen protocol constants. See NIP.md for the full specification.
  */
 
 /** `t` tag marking content that belongs to the commons. */
@@ -27,9 +27,8 @@ export type AnswerType = 'lived-experience' | 'clinical-response';
 export const ANSWER_TYPES: AnswerType[] = ['lived-experience', 'clinical-response'];
 
 /**
- * Demo authority key for the commons. In production this is the project's
- * published key; evidence cards and the clinician registry are only trusted
- * when authored by it.
+ * Project authority key for the commons. Evidence cards and the clinician
+ * registry are only trusted when authored by it.
  */
 export const COMMONS_PUBKEY =
   '2c4a8f6e0d1b3a597c8e2f4a6b8d0c1e3a5b7d9f1c3e5a7b9d1f3c5e7a9b1d3f5a';

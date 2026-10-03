@@ -5,20 +5,27 @@ import {
   type NuruAnalysis,
   type NuruRequest,
 } from '@/lib/nuru/aiClient';
+import { analyzeLocally } from '@/lib/nuru/localAnalysis';
 
 type Status = 'idle' | 'checking' | 'ready' | 'failed';
 
+/** Where the completed analysis ran: the AI gateway, or on-device rules. */
+export type AnalysisSource = 'server' | 'local';
+
 /**
- * Runs the server-side privacy and safety check.
+ * Runs the privacy, safety and routing check. The server-side analysis is
+ * tried first; when the gateway is unreachable (e.g. a static deployment),
+ * the same exported rules run on-device so categorization still works.
  *
- * A failed or stale check must never look like a passed one, so the result
- * is cleared the moment the text changes. Callers invalidate on every edit.
+ * A stale result must never look like a fresh one, so the result is cleared
+ * the moment the text changes. Callers invalidate on every edit.
  */
 export function useNuruAnalysis() {
   const analyzer = useMemo(() => createLatestAnalyzer(), []);
 
   const [status, setStatus] = useState<Status>('idle');
   const [analysis, setAnalysis] = useState<NuruAnalysis | null>(null);
+  const [source, setSource] = useState<AnalysisSource | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   // Abort any in-flight request when the component unmounts.
@@ -28,6 +35,7 @@ export function useNuruAnalysis() {
     analyzer.invalidate();
     setStatus('idle');
     setAnalysis(null);
+    setSource(null);
     setError(null);
   }, [analyzer]);
 
@@ -35,6 +43,7 @@ export function useNuruAnalysis() {
     async (payload: NuruRequest) => {
       analyzer.invalidate();
       setAnalysis(null);
+      setSource(null);
       setError(null);
       setStatus('checking');
 
@@ -46,14 +55,23 @@ export function useNuruAnalysis() {
         if (result === null) return;
 
         setAnalysis(result);
+        setSource('server');
         setStatus('ready');
       } catch {
-        setError('The privacy check could not complete. Nothing has been published.');
-        setStatus('failed');
+        // Gateway unreachable — run the same exported rules on-device.
+        try {
+          const local = analyzeLocally(payload);
+          setAnalysis(local);
+          setSource('local');
+          setStatus('ready');
+        } catch {
+          setError('The privacy check could not complete. Nothing has been published.');
+          setStatus('failed');
+        }
       }
     },
     [analyzer],
   );
 
-  return { status, analysis, error, analyze, invalidate };
+  return { status, analysis, source, error, analyze, invalidate };
 }

@@ -2,15 +2,15 @@ import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Menu, MessageCircleQuestion } from 'lucide-react';
 
-import { LoginArea } from '@/components/auth/LoginArea';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
 
 const NAV = [
   { to: '/questions', label: 'Questions' },
   { to: '/library', label: 'Library' },
-  { to: '/blind-spots', label: 'Blind Spots' },
+  { to: '/research', label: 'Research' },
+  { to: '/blind-spots', label: 'Coverage' },
   { to: '/about', label: 'About' },
 ];
 
@@ -21,9 +21,9 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 border-b bg-background/85 backdrop-blur-md">
       <div className="container flex h-16 items-center justify-between gap-3">
         <Link to="/" className="flex items-center gap-2.5 shrink-0 group">
-          <img src="/favicon.svg" alt="Nuru Commons" className="size-9 rounded-xl shadow-sm" />
+          <img src="/favicon.svg" alt="NuruWomen" className="size-9 rounded-xl shadow-sm" />
           <span className="leading-tight">
-            <span className="block font-display font-semibold text-lg tracking-tight">Nuru Commons</span>
+            <span className="block font-display font-semibold text-lg tracking-tight">NuruWomen</span>
             <span className="hidden sm:block text-[0.68rem] uppercase tracking-[0.14em] text-muted-foreground">
               Women’s Health Commons · Africa
             </span>
@@ -53,10 +53,9 @@ export function SiteHeader() {
           <Button asChild size="sm" className="hidden lg:inline-flex rounded-full whitespace-nowrap">
             <Link to="/ask">
               <MessageCircleQuestion className="size-4" />
-              Ask anonymously
+              Ask a question
             </Link>
           </Button>
-          <LoginArea className="max-w-36" />
 
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
@@ -65,6 +64,8 @@ export function SiteHeader() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-72">
+              <SheetTitle className="sr-only">Menu</SheetTitle>
+              <SheetDescription className="sr-only">Site navigation</SheetDescription>
               <nav className="mt-8 flex flex-col gap-1" aria-label="Mobile">
                 {NAV.map((item) => (
                   <NavLink
@@ -84,7 +85,7 @@ export function SiteHeader() {
                 <Button asChild className="mt-4 rounded-full">
                   <Link to="/ask" onClick={() => setOpen(false)}>
                     <MessageCircleQuestion className="size-4" />
-                    Ask anonymously
+                    Ask a question
                   </Link>
                 </Button>
               </nav>

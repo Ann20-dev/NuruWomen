@@ -1,9 +1,10 @@
-import { useNostr } from '@nostrify/react';
 import { useMutation } from '@tanstack/react-query';
 import type { NostrEvent } from '@nostrify/nostrify';
+import { useNostr } from '@nostrify/react';
 import { finalizeEvent, generateSecretKey } from 'nostr-tools';
 
 import { useCurrentUser } from '@/hooks/useCurrentUser';
+import { demoStore } from '@/lib/nuru/demoStore';
 import {
   ANSWER_TYPE_NAMESPACE,
   HELPFUL_KIND,
@@ -14,10 +15,12 @@ import {
 const now = () => Math.floor(Date.now() / 1000);
 
 /**
- * Publishing with identity choice:
- *  - `anonymous: true` (or logged out) → a one-time keypair signs the event.
- *    Nothing is stored; there is no account, email or phone number.
- *  - otherwise → the user's own signer (NIP-07 extension, nsec, bunker).
+ * Publishes Nostr events to the configured write relays.
+ *
+ * Anonymous posting signs with a fresh one-time keypair that is discarded
+ * immediately — no account and no durable identity (identity-decisions.md).
+ * The event is also mirrored in session memory so it renders instantly
+ * while relay propagation catches up.
  */
 export function useNuruPublish() {
   const { nostr } = useNostr();
@@ -29,14 +32,12 @@ export function useNuruPublish() {
   ): Promise<NostrEvent> => {
     const unsigned = { ...template, created_at: now() };
 
-    let event: NostrEvent;
-    if (anonymous || !user) {
-      event = finalizeEvent(unsigned, generateSecretKey());
-    } else {
-      event = await user.signer.signEvent(unsigned);
-    }
+    const event: NostrEvent = anonymous || !user
+      ? finalizeEvent(unsigned, generateSecretKey())
+      : await user.signer.signEvent(unsigned);
 
-    await nostr.event(event, { signal: AbortSignal.timeout(8000) });
+    await nostr.event(event);
+    demoStore.save(event);
     return event;
   };
 
@@ -55,7 +56,7 @@ export function useNuruPublish() {
             ['t', NURU_TAG],
             ...input.topics.map((t) => ['t', t]),
             ['subject', input.title],
-            ['alt', "Anonymous women's health question on Nuru Commons"],
+            ['alt', "Anonymous women's health question on NuruWomen"],
           ],
         },
         input.anonymous,
@@ -68,6 +69,7 @@ export function useNuruPublish() {
       questionPubkey: string;
       text: string;
       type: AnswerType;
+      topics: string[];
       anonymous: boolean;
     }) =>
       signAndPublish(
@@ -78,9 +80,10 @@ export function useNuruPublish() {
             ['e', input.questionId, '', 'root'],
             ['p', input.questionPubkey],
             ['t', NURU_TAG],
+            ...input.topics.map((t) => ['t', t]),
             ['L', ANSWER_TYPE_NAMESPACE],
             ['l', input.type, ANSWER_TYPE_NAMESPACE],
-            ['alt', `Labelled ${input.type} answer on Nuru Commons`],
+            ['alt', `Labelled ${input.type} answer on NuruWomen`],
           ],
         },
         input.anonymous,
@@ -102,7 +105,7 @@ export function useNuruPublish() {
             ['e', input.targetId],
             ['p', input.targetPubkey],
             ['k', String(input.targetKind)],
-            ['alt', 'Helpful vote on Nuru Commons'],
+            ['alt', 'Helpful vote on NuruWomen'],
           ],
         },
         input.anonymous,

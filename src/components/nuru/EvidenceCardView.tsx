@@ -34,7 +34,7 @@ export function EvidenceCardView({ card, compact = false }: { card: EvidenceCard
               <ShieldCheck className="size-3.5 text-plum" /> {card.reviewer}
             </span>
             <span className="inline-flex items-center gap-1">
-              <CalendarCheck2 className="size-3.5 text-plum" /> Reviewed {card.reviewedAt}
+              <CalendarCheck2 className="size-3.5 text-plum" /> Status: {card.reviewedAt}
             </span>
           </div>
         </div>
@@ -115,7 +115,7 @@ export function EvidenceCardView({ card, compact = false }: { card: EvidenceCard
           </div>
 
           <p className="text-xs text-plum/90 dark:text-plum italic border-t border-plum/20 pt-3">
-            Clinician-reviewed educational summary. It explains patterns and options — it cannot diagnose you.
+            Clinically reviewed educational summary. It explains patterns and options — it cannot diagnose you.
           </p>
         </div>
       )}

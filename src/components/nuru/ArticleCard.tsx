@@ -24,7 +24,7 @@ export function ArticleCard({ article }: { article: Article }) {
         <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">{article.summary}</p>
         <div className="mt-auto pt-2 flex items-center justify-between gap-2">
           <span className="inline-flex items-center gap-1 text-xs text-clinical font-medium">
-            <BadgeCheck className="size-3.5" /> Reviewed by {article.reviewer}
+            <BadgeCheck className="size-3.5" /> Clinical review pending
           </span>
           <Link
             to={`/library/${article.slug}`}

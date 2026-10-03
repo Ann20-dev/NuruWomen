@@ -23,7 +23,7 @@ export default function ArticlePage() {
   const { toast } = useToast();
 
   useSeoMeta({
-    title: article ? `${article.title} — Nuru Commons` : 'Article — Nuru Commons',
+    title: article ? `${article.title} — NuruWomen` : 'Article — NuruWomen',
     description: article?.summary,
   });
 
@@ -40,7 +40,7 @@ export default function ArticlePage() {
       '',
       `> ${article.summary}`,
       '',
-      `Area: ${area?.name ?? article.area} · Reviewed by ${article.reviewer} (${article.reviewerRole}), ${article.reviewedAt}`,
+      `Area: ${area?.name ?? article.area} · Author ${article.reviewer} (${article.reviewerRole}), ${article.reviewedAt}`,
       '',
     ];
     for (const s of article.sections) {
@@ -51,7 +51,7 @@ export default function ArticlePage() {
     }
     lines.push('## Sources');
     for (const s of article.sources) lines.push(`- [${s.label}](${s.url})`);
-    lines.push('', '---', 'Exported from Nuru Commons — open women’s health knowledge. Educational only.');
+    lines.push('', '---', 'Exported from NuruWomen — open women’s health knowledge. Educational only.');
 
     const blob = new Blob([lines.join('\n')], { type: 'text/markdown' });
     const url = URL.createObjectURL(blob);
@@ -60,7 +60,7 @@ export default function ArticlePage() {
     a.download = `${article.slug}.md`;
     a.click();
     URL.revokeObjectURL(url);
-    toast({ title: 'Knowledge pack downloaded', description: 'Markdown — fork it, translate it, republish it.' });
+    toast({ title: 'Article downloaded', description: 'Share it, translate it, reuse it.' });
   };
 
   return (
@@ -153,7 +153,7 @@ export default function ArticlePage() {
                 })}
               </ul>
               <p className="text-xs text-muted-foreground border-t pt-3">
-                Educational content, reviewed as labelled above. It cannot replace personal medical advice —
+                Educational content. It cannot replace personal medical advice —
                 if symptoms worry you, see a clinician.
               </p>
             </CardContent>

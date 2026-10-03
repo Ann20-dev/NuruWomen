@@ -1,4 +1,4 @@
-import { BookOpenCheck, MessagesSquare, Stethoscope } from 'lucide-react';
+import { BookOpenCheck, MessagesSquare, ShieldCheck } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 import type { AnswerType } from '@/lib/nuru/protocol';
@@ -14,10 +14,10 @@ const LAYER_STYLES: Record<Layer, { label: string; className: string; Icon: type
   'clinical-response': {
     label: 'Clinical response',
     className: 'bg-clinical-soft text-clinical border-clinical/25',
-    Icon: Stethoscope,
+    Icon: ShieldCheck,
   },
   'evidence-card': {
-    label: 'Evidence card',
+    label: 'Draft evidence card',
     className: 'bg-plum-soft text-plum border-plum/25',
     Icon: BookOpenCheck,
   },
@@ -51,13 +51,13 @@ export function LayerDisclaimer({ layer }: { layer: Layer }) {
   if (layer === 'clinical-response') {
     return (
       <p className="text-xs text-clinical/90 dark:text-clinical italic">
-        Health education from a verified professional — not a personal consultation.
+        Clinical education — not a personal consultation.
       </p>
     );
   }
   return (
     <p className="text-xs text-plum/90 dark:text-plum italic">
-      Clinician-reviewed educational summary — does not diagnose.
+      Clinically reviewed education. Not a personal diagnosis.
     </p>
   );
 }

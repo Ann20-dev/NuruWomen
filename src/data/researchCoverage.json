@@ -1,0 +1,1642 @@
+{
+  "status": "unverified_imported_snapshot",
+  "summary": [
+    {
+      "mvp_topic": "Healthy ageing",
+      "countries_covered": 53,
+      "total_countries": 53,
+      "coverage_pct": 100,
+      "records": 3498,
+      "data_source": "WHO GHO (live API)",
+      "is_proxy": false
+    },
+    {
+      "mvp_topic": "Mental health",
+      "countries_covered": 53,
+      "total_countries": 53,
+      "coverage_pct": 100,
+      "records": 3498,
+      "data_source": "WHO GHO (live API)",
+      "is_proxy": false
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "countries_covered": 53,
+      "total_countries": 53,
+      "coverage_pct": 100,
+      "records": 2067,
+      "data_source": "WHO GHO (live API)",
+      "is_proxy": false
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "countries_covered": 30,
+      "total_countries": 53,
+      "coverage_pct": 56.6,
+      "records": 60,
+      "data_source": "WHO GHO (live API)",
+      "is_proxy": false
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "countries_covered": 29,
+      "total_countries": 53,
+      "coverage_pct": 54.7,
+      "records": 29,
+      "data_source": "Iyanda et al. 2020 (hand-extracted proxy, ages 15-24 only, static)",
+      "is_proxy": true
+    }
+  ],
+  "detail": [
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Algeria",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Angola",
+      "records": 1,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Benin",
+      "records": 1,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Botswana",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Burkina Faso",
+      "records": 1,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Burundi",
+      "records": 1,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Cabo Verde",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Cameroon",
+      "records": 1,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Central African Republic",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Chad",
+      "records": 1,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Comoros",
+      "records": 1,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Congo",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Cote d'Ivoire",
+      "records": 1,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Democratic Republic of the Congo",
+      "records": 1,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Equatorial Guinea",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Eritrea",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Eswatini",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Ethiopia",
+      "records": 1,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Gabon",
+      "records": 1,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Gambia",
+      "records": 1,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Ghana",
+      "records": 1,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Guinea",
+      "records": 1,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Guinea-Bissau",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Kenya",
+      "records": 1,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Lesotho",
+      "records": 1,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Liberia",
+      "records": 1,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Madagascar",
+      "records": 1,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Malawi",
+      "records": 1,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Mali",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Mauritius",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Mauritania",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Mozambique",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Namibia",
+      "records": 1,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Niger",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Nigeria",
+      "records": 1,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Rwanda",
+      "records": 1,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Sao Tome and Principe",
+      "records": 1,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Senegal",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Seychelles",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Sierra Leone",
+      "records": 1,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "South Africa",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "South Sudan",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "United Republic of Tanzania",
+      "records": 1,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Togo",
+      "records": 1,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Uganda",
+      "records": 1,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Zambia",
+      "records": 1,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Zimbabwe",
+      "records": 1,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Egypt",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Libya",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Morocco",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Sudan",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Somalia",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Menstrual health",
+      "country": "Tunisia",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Algeria",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Angola",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Benin",
+      "records": 2,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Botswana",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Burkina Faso",
+      "records": 2,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Burundi",
+      "records": 2,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Cabo Verde",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Cameroon",
+      "records": 2,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Central African Republic",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Chad",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Comoros",
+      "records": 2,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Congo",
+      "records": 2,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Cote d'Ivoire",
+      "records": 2,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Democratic Republic of the Congo",
+      "records": 2,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Equatorial Guinea",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Eritrea",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Eswatini",
+      "records": 2,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Ethiopia",
+      "records": 2,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Gabon",
+      "records": 2,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Gambia",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Ghana",
+      "records": 2,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Guinea",
+      "records": 2,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Guinea-Bissau",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Kenya",
+      "records": 2,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Lesotho",
+      "records": 2,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Liberia",
+      "records": 2,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Madagascar",
+      "records": 2,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Malawi",
+      "records": 2,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Mali",
+      "records": 2,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Mauritius",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Mauritania",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Mozambique",
+      "records": 2,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Namibia",
+      "records": 2,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Niger",
+      "records": 2,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Nigeria",
+      "records": 2,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Rwanda",
+      "records": 2,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Sao Tome and Principe",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Senegal",
+      "records": 2,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Seychelles",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Sierra Leone",
+      "records": 2,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "South Africa",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "South Sudan",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "United Republic of Tanzania",
+      "records": 2,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Togo",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Uganda",
+      "records": 2,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Zambia",
+      "records": 2,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Zimbabwe",
+      "records": 2,
+      "level": 1
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Egypt",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Libya",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Morocco",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Sudan",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Somalia",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Sexual health",
+      "country": "Tunisia",
+      "records": 0,
+      "level": 0
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Algeria",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Angola",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Benin",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Botswana",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Burkina Faso",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Burundi",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Cabo Verde",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Cameroon",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Central African Republic",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Chad",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Comoros",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Congo",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Cote d'Ivoire",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Democratic Republic of the Congo",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Equatorial Guinea",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Eritrea",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Eswatini",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Ethiopia",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Gabon",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Gambia",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Ghana",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Guinea",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Guinea-Bissau",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Kenya",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Lesotho",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Liberia",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Madagascar",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Malawi",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Mali",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Mauritius",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Mauritania",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Mozambique",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Namibia",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Niger",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Nigeria",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Rwanda",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Sao Tome and Principe",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Senegal",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Seychelles",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Sierra Leone",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "South Africa",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "South Sudan",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "United Republic of Tanzania",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Togo",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Uganda",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Zambia",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Zimbabwe",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Egypt",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Libya",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Morocco",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Sudan",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Somalia",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Healthy ageing",
+      "country": "Tunisia",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Algeria",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Angola",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Benin",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Botswana",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Burkina Faso",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Burundi",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Cabo Verde",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Cameroon",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Central African Republic",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Chad",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Comoros",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Congo",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Cote d'Ivoire",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Democratic Republic of the Congo",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Equatorial Guinea",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Eritrea",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Eswatini",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Ethiopia",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Gabon",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Gambia",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Ghana",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Guinea",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Guinea-Bissau",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Kenya",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Lesotho",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Liberia",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Madagascar",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Malawi",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Mali",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Mauritius",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Mauritania",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Mozambique",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Namibia",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Niger",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Nigeria",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Rwanda",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Sao Tome and Principe",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Senegal",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Seychelles",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Sierra Leone",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "South Africa",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "South Sudan",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "United Republic of Tanzania",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Togo",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Uganda",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Zambia",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Zimbabwe",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Egypt",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Libya",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Morocco",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Sudan",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Somalia",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Postpartum",
+      "country": "Tunisia",
+      "records": 39,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Algeria",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Angola",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Benin",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Botswana",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Burkina Faso",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Burundi",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Cabo Verde",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Cameroon",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Central African Republic",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Chad",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Comoros",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Congo",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Cote d'Ivoire",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Democratic Republic of the Congo",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Equatorial Guinea",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Eritrea",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Eswatini",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Ethiopia",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Gabon",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Gambia",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Ghana",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Guinea",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Guinea-Bissau",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Kenya",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Lesotho",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Liberia",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Madagascar",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Malawi",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Mali",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Mauritius",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Mauritania",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Mozambique",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Namibia",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Niger",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Nigeria",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Rwanda",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Sao Tome and Principe",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Senegal",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Seychelles",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Sierra Leone",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "South Africa",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "South Sudan",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "United Republic of Tanzania",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Togo",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Uganda",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Zambia",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Zimbabwe",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Egypt",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Libya",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Morocco",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Sudan",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Somalia",
+      "records": 66,
+      "level": 2
+    },
+    {
+      "mvp_topic": "Mental health",
+      "country": "Tunisia",
+      "records": 66,
+      "level": 2
+    }
+  ]
+}

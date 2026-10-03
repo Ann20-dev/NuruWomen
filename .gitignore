@@ -33,3 +33,9 @@ yarn.lock
 .env
 .env.*
 !.env.example
+
+# Python and verification output
+.venv/
+**/__pycache__/
+**/.pytest_cache/
+artifacts/

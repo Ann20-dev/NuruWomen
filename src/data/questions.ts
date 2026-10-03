@@ -52,7 +52,7 @@ export const SEED_QUESTIONS: SeedQuestion[] = [
         id: seedId('a-peri-3'),
         type: 'clinical-response',
         ...persona('Dr. Wanjiku Kamau'),
-        role: 'Verified Clinician · OB/GYN',
+        role: 'OB/GYN',
         text:
           'What you describe — cycle changes together with new sleep disruption and anxiety in your early-to-mid 40s — is a pattern consistent with perimenopause, the hormonal transition that can begin years before periods stop. It is frequently mistaken for stress alone. Practical next steps: keep a two-to-three cycle symptom diary, and ask your clinician directly whether perimenopause should be considered and what treatment options exist (both hormonal and non-hormonal). One caution: very heavy bleeding, bleeding after sex, or bleeding between periods deserves assessment on its own, whatever the cause. This is general education, not a personal consultation.',
         helpful: 241,
@@ -98,7 +98,7 @@ export const SEED_QUESTIONS: SeedQuestion[] = [
         id: seedId('a-pain-3'),
         type: 'clinical-response',
         ...persona('Beatrice Achieng'),
-        role: 'Verified Clinician · Reproductive Health Nurse',
+        role: 'Reproductive Health Nurse',
         text:
           'Severe pain that regularly interferes with your normal activities deserves assessment — full stop. Common cramping responds to simple painkillers and does not remove you from work or school. Pain that is progressive, or comes with heavy bleeding, pain during sex, or pain opening your bowels during your period, raises specific possibilities such as endometriosis or adenomyosis that a clinician can evaluate. Until you are seen: start a symptom diary (dates, severity, what you could not do), and know that ordinary doses of anti-inflammatory painkillers work best when started at the very first sign of bleeding — but needing them every month at high doses is itself a reason for review.',
         helpful: 402,
@@ -134,7 +134,7 @@ export const SEED_QUESTIONS: SeedQuestion[] = [
         id: seedId('a-pcos-2'),
         type: 'clinical-response',
         ...persona('Dr. Rehema Salim'),
-        role: 'Verified Clinician · Family Medicine',
+        role: 'Family Medicine',
         text:
           'PCOS is a hormonal condition affecting ovulation, skin, metabolism and — for some women — fertility. It is managed, not cured, and management should match your priorities. Concretely, at a follow-up visit it is reasonable to discuss: (1) cycle protection — going many months without a period leaves the womb lining unprotected; (2) screening for insulin resistance; (3) the symptoms that bother you most, whether acne, hair growth or cycle regularity, since each has specific treatments; and (4) your fertility plans, because PCOS-related ovulation problems are among the most treatable causes of infertility. If weight is discussed, it should come with support, not blame.',
         helpful: 334,
@@ -170,7 +170,7 @@ export const SEED_QUESTIONS: SeedQuestion[] = [
         id: seedId('a-sex-2'),
         type: 'clinical-response',
         ...persona('Beatrice Achieng'),
-        role: 'Verified Clinician · Reproductive Health Nurse',
+        role: 'Reproductive Health Nurse',
         text:
           'Pain with sex has causes, and causes have treatments. The first step is identifying the pattern: pain at entry (which can involve dryness, infection, skin conditions or muscle tension) versus deep pain (which can involve conditions like endometriosis or infection). Because infections are both common and easily treated, testing is a sensible early step — especially with any discharge, itching or lower abdominal pain. You do not have to endure this silently, and a respectful clinician will not be embarrassed even if you feel you are. If cost or privacy is a concern, many county facilities and youth-friendly centres offer confidential sexual health services.',
         helpful: 289,
@@ -206,7 +206,7 @@ export const SEED_QUESTIONS: SeedQuestion[] = [
         id: seedId('a-fib-2'),
         type: 'clinical-response',
         ...persona('Dr. Wanjiku Kamau'),
-        role: 'Verified Clinician · OB/GYN',
+        role: 'OB/GYN',
         text:
           'Fibroids are extremely common and usually benign; a family history like yours is typical. The important questions are not “are fibroids present” but: where are they, and are they causing problems? Fibroids that distort the womb cavity can affect fertility or pregnancy and may reasonably be removed (myomectomy, which preserves the womb). Fibroids in the wall or outer surface, without symptoms, often need only monitoring. Before any surgery is booked, ask: what symptom or risk is this surgery treating, how does the fibroid location affect my pregnancy plans, and what are the non-surgical options? Seeking a second opinion for exactly this decision is standard practice.',
         helpful: 345,
@@ -242,7 +242,7 @@ export const SEED_QUESTIONS: SeedQuestion[] = [
         id: seedId('a-pp-2'),
         type: 'clinical-response',
         ...persona('Faith Njeri'),
-        role: 'Verified Clinician · Registered Midwife',
+        role: 'Registered Midwife',
         text:
           'What you describe goes beyond the “baby blues”, which settle within about two weeks. Constant anxiety, racing heart, and being unable to sleep even when your baby sleeps, months after delivery, fits postpartum anxiety — a common, treatable condition, not a personal failing. Please speak to your midwife or clinic; effective help exists, including options compatible with breastfeeding. If you ever have thoughts of harming yourself or the baby, treat that as an emergency and seek care immediately (any hospital, or call 999/112). The Kenya Red Cross psychosocial line 1199 is also free. You deserve support, and getting it is part of caring for your baby.',
         helpful: 203,
@@ -277,7 +277,7 @@ export const SEED_QUESTIONS: SeedQuestion[] = [
         id: seedId('a-cs-2'),
         type: 'clinical-response',
         ...persona('Dr. Wanjiku Kamau'),
-        role: 'Verified Clinician · OB/GYN',
+        role: 'OB/GYN',
         text:
           'The conflicting answers you hear are because the interval depends on the test. Kenyan guidance recommends routine screening from age 25: after a negative HPV DNA test the interval is typically 3–5 years; Pap smear and VIA/VILI are usually repeated more frequently (often 1–3 years depending on the result and programme). Women living with HIV are screened more often. At 29 and never screened, the most important step is simply to start — ask which test you are receiving and when to return. And symptoms like bleeding after sex or persistent unusual discharge should be checked promptly at any age, not saved for a screening visit.',
         helpful: 187,
@@ -311,7 +311,7 @@ export const SEED_QUESTIONS: SeedQuestion[] = [
         id: seedId('a-depo-2'),
         type: 'clinical-response',
         ...persona('Beatrice Achieng'),
-        role: 'Verified Clinician · Reproductive Health Nurse',
+        role: 'Reproductive Health Nurse',
         text:
           'You can reassure your aunt: no blood is collecting. Depo thins the womb lining and often stops ovulation, so there is simply little or no lining to shed — the absence of bleeding is an expected effect of the hormone, not a backup of blood. It is not harmful. Two things worth knowing: fertility can take some months to return after the last injection, so plan ahead if you want to conceive; and long-term use has considerations for bone health that your provider can review with you. If the change in bleeding worries you or does not suit you, switching methods is always an option — that is what family planning care is for.',
         helpful: 264,
@@ -346,7 +346,7 @@ export const SEED_QUESTIONS: SeedQuestion[] = [
         id: seedId('a-irr-2'),
         type: 'clinical-response',
         ...persona('Dr. Rehema Salim'),
-        role: 'Verified Clinician · Family Medicine',
+        role: 'Family Medicine',
         text:
           'Cycles up to about 35 days are within the usual range; regularly going 45 days or more means you are likely ovulating infrequently, and that is worth a conversation with a clinician — not an emergency, but useful information. Common causes include PCOS, thyroid disorders and elevated prolactin, all of which are checkable with simple blood tests. It matters for two reasons: long stretches without periods can leave the womb lining unprotected, and if you plan pregnancy later, knowing your ovulation pattern early helps. Keep a record of your cycle dates — it is the most useful thing you can bring to that appointment.',
         helpful: 231,
@@ -380,7 +380,7 @@ export const SEED_QUESTIONS: SeedQuestion[] = [
         id: seedId('a-ttc-2'),
         type: 'clinical-response',
         ...persona('Dr. Rehema Salim'),
-        role: 'Verified Clinician · Family Medicine',
+        role: 'Family Medicine',
         text:
           'The clinical definition is clear: assessment is recommended after 12 months of regular trying (6 months if you are 35 or older), so two years is definitely the time. A first work-up covers both partners — semen analysis is simple and should be early, since male factors contribute in about half of couples. For you, expect questions about your cycles, blood tests for ovulation and hormones, and possibly an ultrasound or tubal test. Many causes are treatable, starting with the commonest ones like ovulation disorders. Go to the appointment together, and treat “just relax” as the unhelpful advice it is.',
         helpful: 246,
