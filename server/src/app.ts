@@ -1,6 +1,8 @@
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { randomUUID } from 'node:crypto';
 import express from 'express';
-
+import { existsSync } from 'node:fs';
 import { errorHandler } from './middleware/errorHandler.js';
 import { originCheck } from './middleware/originCheck.js';
 import { aiRateLimit } from './middleware/rateLimit.js';
@@ -45,6 +47,23 @@ export function createApp() {
   app.use('/api', (_req, res) => {
     res.status(404).json({ error: { code: 'not_found', message: 'Unknown endpoint.' } });
   });
+
+    // Serve the built React app. The API is registered above, so /api never
+  // reaches this. In development Vite serves the frontend instead and this
+  // directory does not exist, hence the guard.
+  const here = path.dirname(fileURLToPath(import.meta.url));
+  const clientDir = path.resolve(here, '../../dist');
+
+  if (existsSync(clientDir)) {
+    app.use(express.static(clientDir, { index: false, maxAge: '1h' }));
+
+    // Client-side routing: any non-API path returns index.html so React
+    // Router can handle it. Without this, a refresh on /ask returns 404.
+    app.get(/.*/, (_req, res) => {
+      res.setHeader('Cache-Control', 'no-store');
+      res.sendFile(path.join(clientDir, 'index.html'));
+    });
+  }
 
   // Last, always.
   app.use(errorHandler);
