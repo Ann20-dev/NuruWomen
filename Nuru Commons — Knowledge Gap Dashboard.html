@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<!-- saved from url=(0091)file:///C:/Users/PC/Downloads/Nuru%20Commons%20%E2%80%94%20Knowledge%20Gap%20Dashboard.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nuru Commons — Knowledge Gap Dashboard</title>
+<style>
+  :root {
+    --brand: #7c2942;
+    --bg: #faf6f7;
+    --card-bg: #ffffff;
+    --text: #2b2b2b;
+    --muted: #6b6b6b;
+    --border: #e8dde0;
+    --covered: #7c2942;
+    --partial: #d99aae;
+    --gap: #f1e3e7;
+    --proxy: #c9922f;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    box-sizing: border-box;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1c1416; --card-bg: #2a1e21; --text: #f2e9eb;
+      --muted: #b8a5aa; --border: #3d2d31; --gap: #3a2a2e;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1c1416; --card-bg: #2a1e21; --text: #f2e9eb;
+    --muted: #b8a5aa; --border: #3d2d31; --gap: #3a2a2e;
+  }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
+    padding: 24px 20px 40px;
+  }
+  header { max-width: 1100px; margin: 0 auto 16px; }
+  h1 { color: var(--brand); font-size: 1.5rem; margin: 0 0 4px; }
+  .sub { color: var(--muted); font-size: 0.9rem; margin: 0 0 4px; }
+  .wrap { max-width: 1100px; margin: 0 auto; }
+
+  .upload-bar {
+    display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+    background: var(--card-bg); border: 1px dashed var(--border);
+    border-radius: 10px; padding: 12px 14px; margin-bottom: 16px; font-size: 0.82rem;
+  }
+  .upload-bar label {
+    display: inline-flex; align-items: center; gap: 6px; cursor: pointer;
+    background: var(--brand); color: #fff; padding: 6px 12px; border-radius: 8px;
+    font-size: 0.78rem; white-space: nowrap;
+  }
+  .upload-bar input[type=file] { display: none; }
+  .file-status { color: var(--muted); font-size: 0.76rem; }
+  .mode-badge {
+    margin-left: auto; font-size: 0.72rem; padding: 3px 9px; border-radius: 999px;
+    background: var(--gap); color: var(--muted);
+  }
+  .mode-badge.live { background: var(--covered); color: #fff; }
+
+  .stats {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 10px; margin: 0 0 20px;
+  }
+  .stat-card {
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px;
+    padding: 12px; text-align: center; position: relative;
+  }
+  .stat-card.proxy { border-color: var(--proxy); }
+  .stat-card .pct { font-size: 1.3rem; font-weight: 700; color: var(--brand); }
+  .stat-card .label { font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
+  .proxy-tag {
+    position: absolute; top: 6px; right: 6px; font-size: 0.6rem; font-weight: 700;
+    color: var(--proxy); border: 1px solid var(--proxy); border-radius: 4px; padding: 1px 4px;
+  }
+
+  .grid-scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: 10px; background: var(--card-bg); }
+  table { border-collapse: collapse; width: 100%; font-size: 0.76rem; min-width: 700px; }
+  th, td { padding: 6px 7px; text-align: center; border: 1px solid var(--border); }
+  th { background: var(--card-bg); color: var(--text); font-weight: 600; white-space: nowrap; }
+  td.topic-name { text-align: left; font-weight: 600; white-space: nowrap; background: var(--card-bg); position: sticky; left: 0; }
+  .cell { cursor: pointer; border-radius: 4px; }
+  .legend { display: flex; gap: 16px; flex-wrap: wrap; margin: 14px 0 6px; font-size: 0.76rem; color: var(--muted); align-items: center; }
+  .swatch { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 5px; vertical-align: middle; }
+  #detail {
+    margin-top: 16px; padding: 12px 14px; border-radius: 10px; background: var(--card-bg);
+    border: 1px solid var(--border); font-size: 0.85rem; min-height: 20px;
+  }
+  #detail b { color: var(--brand); }
+</style>
+</head>
+<body>
+<header>
+  <h1>Nuru Commons — Knowledge Gap Dashboard</h1>
+  <p class="sub">Coverage of credible data across the MVP topics and African countries.</p>
+</header>
+
+<div class="wrap">
+  <div class="upload-bar">
+    <label>Upload topic_coverage_summary.csv
+      <input type="file" id="summaryFile" accept=".csv">
+    </label>
+    <label>Upload topic_country_detail.csv
+      <input type="file" id="detailFile" accept=".csv">
+    </label>
+    <span class="file-status" id="fileStatus">Loaded: summary ✓ / detail ✓</span>
+    <span class="mode-badge live" id="modeBadge">REAL DATA</span>
+  </div>
+
+  <div class="stats" id="stats"><div class="stat-card ">
+        
+        <div class="pct">55%</div>
+        <div class="label">Menstrual health</div>
+      </div><div class="stat-card ">
+        
+        <div class="pct">57%</div>
+        <div class="label">Sexual health</div>
+      </div><div class="stat-card ">
+        
+        <div class="pct">100%</div>
+        <div class="label">Healthy ageing</div>
+      </div><div class="stat-card ">
+        
+        <div class="pct">100%</div>
+        <div class="label">Postpartum</div>
+      </div><div class="stat-card ">
+        
+        <div class="pct">100%</div>
+        <div class="label">Mental health</div>
+      </div></div>
+
+  <div class="legend">
+    <span><span class="swatch" style="background:var(--covered)"></span>Well covered</span>
+    <span><span class="swatch" style="background:var(--partial)"></span>Partial data</span>
+    <span><span class="swatch" style="background:var(--gap)"></span>Gap — no data</span>
+    <span><span class="swatch" style="background:var(--proxy)"></span>Proxy / hand-extracted source</span>
+    <span style="margin-left:auto;">Click a cell for detail</span>
+  </div>
+
+  <div class="grid-scroll">
+    <table id="heatmap"><tbody><tr><th>Topic \ Country</th><th>Algeria</th><th>Angola</th><th>Benin</th><th>Botswana</th><th>Burkina Faso</th><th>Burundi</th><th>Cabo Verde</th><th>Cameroon</th><th>Central African Republic</th><th>Chad</th><th>Comoros</th><th>Congo</th><th>Cote d'Ivoire</th><th>Democratic Republic of the Congo</th><th>Egypt</th><th>Equatorial Guinea</th><th>Eritrea</th><th>Eswatini</th><th>Ethiopia</th><th>Gabon</th><th>Gambia</th><th>Ghana</th><th>Guinea</th><th>Guinea-Bissau</th><th>Kenya</th><th>Lesotho</th><th>Liberia</th><th>Libya</th><th>Madagascar</th><th>Malawi</th><th>Mali</th><th>Mauritania</th><th>Mauritius</th><th>Morocco</th><th>Mozambique</th><th>Namibia</th><th>Niger</th><th>Nigeria</th><th>Rwanda</th><th>Sao Tome and Principe</th><th>Senegal</th><th>Seychelles</th><th>Sierra Leone</th><th>Somalia</th><th>South Africa</th><th>South Sudan</th><th>Sudan</th><th>Togo</th><th>Tunisia</th><th>Uganda</th><th>United Republic of Tanzania</th><th>Zambia</th><th>Zimbabwe</th></tr><tr><td class="topic-name">Menstrual health</td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Menstrual health','Algeria',0)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Menstrual health','Angola',1)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Menstrual health','Benin',1)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Menstrual health','Botswana',0)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Menstrual health','Burkina Faso',1)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Menstrual health','Burundi',1)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Menstrual health','Cabo Verde',0)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Menstrual health','Cameroon',1)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Menstrual health','Central African Republic',0)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Menstrual health','Chad',1)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Menstrual health','Comoros',1)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Menstrual health','Congo',0)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Menstrual health','Cote d\'Ivoire',1)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Menstrual health','Democratic Republic of the Congo',1)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Menstrual health','Egypt',0)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Menstrual health','Equatorial Guinea',0)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Menstrual health','Eritrea',0)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Menstrual health','Eswatini',0)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Menstrual health','Ethiopia',1)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Menstrual health','Gabon',1)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Menstrual health','Gambia',1)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Menstrual health','Ghana',1)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Menstrual health','Guinea',1)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Menstrual health','Guinea-Bissau',0)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Menstrual health','Kenya',1)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Menstrual health','Lesotho',1)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Menstrual health','Liberia',1)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Menstrual health','Libya',0)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Menstrual health','Madagascar',1)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Menstrual health','Malawi',1)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Menstrual health','Mali',0)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Menstrual health','Mauritania',0)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Menstrual health','Mauritius',0)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Menstrual health','Morocco',0)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Menstrual health','Mozambique',0)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Menstrual health','Namibia',1)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Menstrual health','Niger',0)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Menstrual health','Nigeria',1)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Menstrual health','Rwanda',1)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Menstrual health','Sao Tome and Principe',1)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Menstrual health','Senegal',0)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Menstrual health','Seychelles',0)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Menstrual health','Sierra Leone',1)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Menstrual health','Somalia',0)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Menstrual health','South Africa',0)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Menstrual health','South Sudan',0)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Menstrual health','Sudan',0)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Menstrual health','Togo',1)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Menstrual health','Tunisia',0)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Menstrual health','Uganda',1)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Menstrual health','United Republic of Tanzania',1)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Menstrual health','Zambia',1)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Menstrual health','Zimbabwe',1)"></div></td></tr><tr><td class="topic-name">Sexual health</td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Sexual health','Algeria',0)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Sexual health','Angola',0)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Sexual health','Benin',1)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Sexual health','Botswana',0)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Sexual health','Burkina Faso',1)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Sexual health','Burundi',1)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Sexual health','Cabo Verde',0)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Sexual health','Cameroon',1)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Sexual health','Central African Republic',0)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Sexual health','Chad',0)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Sexual health','Comoros',1)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Sexual health','Congo',1)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Sexual health','Cote d\'Ivoire',1)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Sexual health','Democratic Republic of the Congo',1)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Sexual health','Egypt',0)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Sexual health','Equatorial Guinea',0)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Sexual health','Eritrea',0)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Sexual health','Eswatini',1)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Sexual health','Ethiopia',1)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Sexual health','Gabon',1)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Sexual health','Gambia',0)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Sexual health','Ghana',1)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Sexual health','Guinea',1)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Sexual health','Guinea-Bissau',0)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Sexual health','Kenya',1)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Sexual health','Lesotho',1)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Sexual health','Liberia',1)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Sexual health','Libya',0)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Sexual health','Madagascar',1)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Sexual health','Malawi',1)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Sexual health','Mali',1)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Sexual health','Mauritania',0)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Sexual health','Mauritius',0)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Sexual health','Morocco',0)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Sexual health','Mozambique',1)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Sexual health','Namibia',1)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Sexual health','Niger',1)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Sexual health','Nigeria',1)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Sexual health','Rwanda',1)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Sexual health','Sao Tome and Principe',0)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Sexual health','Senegal',1)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Sexual health','Seychelles',0)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Sexual health','Sierra Leone',1)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Sexual health','Somalia',0)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Sexual health','South Africa',0)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Sexual health','South Sudan',0)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Sexual health','Sudan',0)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Sexual health','Togo',0)"></div></td><td><div class="cell" style="background:var(--gap);height:22px;" onclick="showDetail('Sexual health','Tunisia',0)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Sexual health','Uganda',1)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Sexual health','United Republic of Tanzania',1)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Sexual health','Zambia',1)"></div></td><td><div class="cell" style="background:var(--partial);height:22px;" onclick="showDetail('Sexual health','Zimbabwe',1)"></div></td></tr><tr><td class="topic-name">Healthy ageing</td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Algeria',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Angola',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Benin',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Botswana',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Burkina Faso',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Burundi',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Cabo Verde',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Cameroon',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Central African Republic',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Chad',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Comoros',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Congo',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Cote d\'Ivoire',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Democratic Republic of the Congo',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Egypt',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Equatorial Guinea',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Eritrea',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Eswatini',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Ethiopia',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Gabon',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Gambia',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Ghana',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Guinea',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Guinea-Bissau',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Kenya',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Lesotho',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Liberia',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Libya',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Madagascar',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Malawi',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Mali',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Mauritania',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Mauritius',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Morocco',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Mozambique',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Namibia',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Niger',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Nigeria',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Rwanda',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Sao Tome and Principe',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Senegal',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Seychelles',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Sierra Leone',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Somalia',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','South Africa',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','South Sudan',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Sudan',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Togo',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Tunisia',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Uganda',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','United Republic of Tanzania',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Zambia',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Healthy ageing','Zimbabwe',2)"></div></td></tr><tr><td class="topic-name">Postpartum</td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Algeria',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Angola',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Benin',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Botswana',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Burkina Faso',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Burundi',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Cabo Verde',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Cameroon',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Central African Republic',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Chad',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Comoros',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Congo',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Cote d\'Ivoire',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Democratic Republic of the Congo',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Egypt',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Equatorial Guinea',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Eritrea',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Eswatini',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Ethiopia',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Gabon',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Gambia',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Ghana',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Guinea',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Guinea-Bissau',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Kenya',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Lesotho',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Liberia',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Libya',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Madagascar',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Malawi',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Mali',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Mauritania',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Mauritius',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Morocco',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Mozambique',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Namibia',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Niger',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Nigeria',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Rwanda',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Sao Tome and Principe',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Senegal',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Seychelles',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Sierra Leone',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Somalia',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','South Africa',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','South Sudan',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Sudan',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Togo',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Tunisia',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Uganda',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','United Republic of Tanzania',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Zambia',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Postpartum','Zimbabwe',2)"></div></td></tr><tr><td class="topic-name">Mental health</td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Algeria',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Angola',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Benin',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Botswana',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Burkina Faso',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Burundi',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Cabo Verde',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Cameroon',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Central African Republic',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Chad',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Comoros',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Congo',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Cote d\'Ivoire',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Democratic Republic of the Congo',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Egypt',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Equatorial Guinea',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Eritrea',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Eswatini',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Ethiopia',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Gabon',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Gambia',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Ghana',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Guinea',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Guinea-Bissau',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Kenya',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Lesotho',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Liberia',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Libya',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Madagascar',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Malawi',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Mali',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Mauritania',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Mauritius',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Morocco',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Mozambique',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Namibia',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Niger',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Nigeria',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Rwanda',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Sao Tome and Principe',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Senegal',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Seychelles',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Sierra Leone',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Somalia',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','South Africa',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','South Sudan',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Sudan',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Togo',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Tunisia',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Uganda',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','United Republic of Tanzania',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Zambia',2)"></div></td><td><div class="cell" style="background:var(--covered);height:22px;" onclick="showDetail('Mental health','Zimbabwe',2)"></div></td></tr></tbody></table>
+  </div>
+
+  <div id="detail"><b>Healthy ageing — Algeria:</b> Reasonable data coverage found. Source: WHO GHO (live API).</div>
+</div>
+
+<script>
+// ---- Sample/fallback data (shown until real CSVs are uploaded) ----
+const SAMPLE_TOPICS = ["Menstrual health", "Sexual health", "Healthy ageing", "Postpartum", "Mental health"];
+const SAMPLE_COUNTRIES = ["Kenya","Nigeria","Ghana","Ethiopia","Uganda","Tanzania","South Africa","Senegal"];
+
+function sampleLevel(topic, country) {
+  let seed = 0;
+  for (const ch of topic + country) seed += ch.charCodeAt(0);
+  const r = seed % 5;
+  return r <= 1 ? 0 : (r <= 3 ? 1 : 2);
+}
+
+let state = {
+  mode: "sample",          // "sample" | "live"
+  summary: null,           // [{mvp_topic, coverage_pct, is_proxy, data_source, ...}]
+  detail: null,            // [{mvp_topic, country, level, records}]
+};
+
+// ---- Minimal CSV parser (fine for simple, comma-separated, unquoted fields) ----
+function parseCSV(text) {
+  const lines = text.trim().split(/\r?\n/);
+  const headers = lines[0].split(",").map(h => h.trim());
+  return lines.slice(1).filter(l => l.trim().length).map(line => {
+    const cells = line.split(",");
+    const row = {};
+    headers.forEach((h, i) => { row[h] = (cells[i] ?? "").trim(); });
+    return row;
+  });
+}
+
+function handleFile(file, key) {
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const rows = parseCSV(e.target.result);
+      state[key] = rows;
+      document.getElementById("fileStatus").textContent =
+        `Loaded: ${state.summary ? "summary ✓" : "summary –"} / ${state.detail ? "detail ✓" : "detail –"}`;
+      if (state.summary && state.detail) {
+        state.mode = "live";
+        document.getElementById("modeBadge").textContent = "REAL DATA";
+        document.getElementById("modeBadge").classList.add("live");
+      }
+      render();
+    } catch (err) {
+      document.getElementById("fileStatus").textContent = "Could not parse that file — check it's the right CSV.";
+    }
+  };
+  reader.readAsText(file);
+}
+
+document.getElementById("summaryFile").addEventListener("change", e => {
+  if (e.target.files[0]) handleFile(e.target.files[0], "summary");
+});
+document.getElementById("detailFile").addEventListener("change", e => {
+  if (e.target.files[0]) handleFile(e.target.files[0], "detail");
+});
+
+const NOTES = {
+  0: "No credible dataset found for this pairing — flag for sourcing.",
+  1: "Some data exists but is thin (small sample, indirect proxy, or outdated).",
+  2: "Reasonable data coverage found."
+};
+const COLORS = { 0: "var(--gap)", 1: "var(--partial)", 2: "var(--covered)" };
+
+function getTopicsAndCountries() {
+  if (state.mode === "live") {
+    const topics = [...new Set(state.detail.map(r => r.mvp_topic))];
+    const countries = [...new Set(state.detail.map(r => r.country))].sort();
+    return { topics, countries };
+  }
+  return { topics: SAMPLE_TOPICS, countries: SAMPLE_COUNTRIES };
+}
+
+function getLevel(topic, country) {
+  if (state.mode === "live") {
+    const row = state.detail.find(r => r.mvp_topic === topic && r.country === country);
+    return row ? Number(row.level) : 0;
+  }
+  return sampleLevel(topic, country);
+}
+
+function getTopicMeta(topic) {
+  if (state.mode === "live" && state.summary) {
+    const row = state.summary.find(r => r.mvp_topic === topic);
+    if (row) {
+      return {
+        pct: Math.round(parseFloat(row.coverage_pct)),
+        isProxy: String(row.is_proxy).toLowerCase() === "true",
+        source: row.data_source || "",
+      };
+    }
+  }
+  return { pct: null, isProxy: false, source: "" };
+}
+
+function render() {
+  const { topics, countries } = getTopicsAndCountries();
+  const table = document.getElementById("heatmap");
+
+  let thead = "<tr><th>Topic \\ Country</th>" + countries.map(c => `<th>${c}</th>`).join("") + "</tr>";
+  let rows = "";
+
+  const statsEl = document.getElementById("stats");
+  let statsHtml = "";
+
+  topics.forEach(topic => {
+    let row = `<tr><td class="topic-name">${topic}</td>`;
+    let coveredCount = 0;
+    countries.forEach(country => {
+      const level = getLevel(topic, country);
+      if (level === 2) coveredCount++;
+      const safeTopic = topic.replace(/'/g, "\\'");
+      const safeCountry = country.replace(/'/g, "\\'");
+      row += `<td><div class="cell" style="background:${COLORS[level]};height:22px;"
+                onclick="showDetail('${safeTopic}','${safeCountry}',${level})"></div></td>`;
+    });
+    row += "</tr>";
+    rows += row;
+
+    const meta = getTopicMeta(topic);
+    const pct = meta.pct !== null ? meta.pct : Math.round((coveredCount / countries.length) * 100);
+    statsHtml += `<div class="stat-card ${meta.isProxy ? "proxy" : ""}">
+        ${meta.isProxy ? '<span class="proxy-tag">PROXY</span>' : ""}
+        <div class="pct">${pct}%</div>
+        <div class="label">${topic}</div>
+      </div>`;
+  });
+
+  table.innerHTML = thead + rows;
+  statsEl.innerHTML = statsHtml;
+}
+
+function showDetail(topic, country, level) {
+  const meta = getTopicMeta(topic);
+  const sourceNote = meta.source ? ` Source: ${meta.source}.` : "";
+  document.getElementById("detail").innerHTML =
+    `<b>${topic} — ${country}:</b> ${NOTES[level]}${sourceNote}`;
+}
+
+render();
+</script>
+
+
+</body></html>

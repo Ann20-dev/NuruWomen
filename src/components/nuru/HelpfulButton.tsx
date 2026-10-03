@@ -45,7 +45,7 @@ export function HelpfulButton({ targetId, targetPubkey, targetKind, questionId, 
       queryClient.invalidateQueries({ queryKey: ['nuru-answers', questionId] });
       toast({ title: 'Marked as helpful', description: 'Asante — your feedback guides other readers.' });
     } catch {
-      toast({ title: 'Could not publish vote', description: 'Check your relay connection and try again.', variant: 'destructive' });
+      toast({ title: 'Could not publish vote', description: 'Check your connection and try again.', variant: 'destructive' });
     } finally {
       setPending(false);
     }

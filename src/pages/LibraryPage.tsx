@@ -1,11 +1,12 @@
 import { useMemo, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { LibraryBig, Search } from 'lucide-react';
+import { Link, useSearchParams } from 'react-router-dom';
+import { LibraryBig, MessageCircleQuestion, Search, X } from 'lucide-react';
 import { useSeoMeta } from '@unhead/react';
 
 import { SiteLayout } from '@/components/nuru/SiteLayout';
 import { ArticleCard } from '@/components/nuru/ArticleCard';
 import { EmptyState } from '@/components/nuru/EmptyState';
+import { Reveal } from '@/components/nuru/Reveal';
 import { Input } from '@/components/ui/input';
 import { ARTICLES } from '@/data/articles';
 import { AREAS } from '@/lib/nuru/topics';
@@ -47,28 +48,39 @@ export default function LibraryPage() {
           </p>
           <h1 className="font-display font-semibold text-3xl sm:text-4xl tracking-tight">The knowledge library</h1>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Women’s health across the whole lifecycle — each article reviewed, signed and dated by a named
+            Women’s health across the whole lifecycle — each article reviewed and dated by a named
             clinician, with sources you can check yourself.
           </p>
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-3">
-          <div className="relative flex-1 max-w-md">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
+        <div className="space-y-4">
+          <div className="relative max-w-xl">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 size-4.5 text-muted-foreground pointer-events-none" />
             <Input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search the library…"
-              className="pl-9"
+              placeholder="Search a symptom, topic or question…"
+              className="h-12 rounded-full pl-11 pr-11 text-base shadow-sm bg-card focus-visible:shadow-md transition-shadow"
               aria-label="Search articles"
             />
+            {query && (
+              <button
+                type="button"
+                onClick={() => setQuery('')}
+                aria-label="Clear search"
+                className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full p-1.5 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+              >
+                <X className="size-4" />
+              </button>
+            )}
           </div>
-          <div className="flex flex-wrap gap-1.5">
+
+          <div className="flex flex-wrap items-center gap-1.5">
             <button
               onClick={() => setParams({})}
               className={cn(
-                'rounded-full border px-3 py-1.5 text-xs font-medium transition-colors',
-                area === 'all' ? 'bg-primary text-primary-foreground border-primary' : 'bg-secondary/60 hover:bg-accent',
+                'rounded-full border px-3.5 py-1.5 text-xs font-medium transition-colors',
+                area === 'all' ? 'bg-primary text-primary-foreground border-primary' : 'bg-card hover:bg-accent',
               )}
             >
               All
@@ -78,22 +90,40 @@ export default function LibraryPage() {
                 key={a.slug}
                 onClick={() => setParams({ area: a.slug })}
                 className={cn(
-                  'rounded-full border px-3 py-1.5 text-xs font-medium transition-colors',
-                  area === a.slug ? 'bg-primary text-primary-foreground border-primary' : 'bg-secondary/60 hover:bg-accent',
+                  'rounded-full border px-3.5 py-1.5 text-xs font-medium transition-colors',
+                  area === a.slug ? 'bg-primary text-primary-foreground border-primary' : 'bg-card hover:bg-accent',
                 )}
               >
                 {a.name}
               </button>
             ))}
           </div>
+
+          <p aria-live="polite" className="text-sm text-muted-foreground">
+            {query || area !== 'all'
+              ? `${visible.length} of ${ARTICLES.length} articles`
+              : `${ARTICLES.length} articles across ${AREAS.length} stages of life`}
+          </p>
         </div>
 
         {areasWithContent.length === 0 ? (
-          <EmptyState message="Nothing matches that search yet. Try a different term — or ask the community anonymously." />
+          <EmptyState
+            message="Nothing matches that search yet. Try a different word — or ask the community anonymously."
+            action={
+              <Link
+                to="/ask"
+                className="inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+              >
+                <MessageCircleQuestion className="size-4" />
+                Ask anonymously
+              </Link>
+            }
+          />
         ) : (
           <div className="space-y-12">
-            {areasWithContent.map((a) => (
-              <section key={a.slug} className="space-y-4">
+            {areasWithContent.map((a, i) => (
+              <Reveal key={a.slug} delay={Math.min(i * 100, 300)}>
+              <section className="space-y-4">
                 <div className="border-b pb-2">
                   <h2 className="font-display font-semibold text-2xl">
                     {a.name}
@@ -107,6 +137,7 @@ export default function LibraryPage() {
                   ))}
                 </div>
               </section>
+              </Reveal>
             ))}
           </div>
         )}

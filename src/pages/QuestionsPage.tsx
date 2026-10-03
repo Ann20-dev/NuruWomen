@@ -6,6 +6,9 @@ import { useSeoMeta } from '@unhead/react';
 import { SiteLayout } from '@/components/nuru/SiteLayout';
 import { QuestionCard } from '@/components/nuru/QuestionCard';
 import { EmptyState, QuestionCardSkeleton } from '@/components/nuru/EmptyState';
+import { Reveal } from '@/components/nuru/Reveal';
+import { LottiePlayer } from '@/components/nuru/LottiePlayer';
+import questionAnimation from '@/assets/lottie/question.json';
 import { Button } from '@/components/ui/button';
 import { useNuruQuestions } from '@/hooks/useNuruQuestions';
 import { SEED_QUESTIONS } from '@/data/questions';
@@ -38,10 +41,13 @@ export default function QuestionsPage() {
       <div className="container py-10 sm:py-14 space-y-8">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div className="space-y-2 max-w-xl">
-            <h1 className="font-display font-semibold text-3xl sm:text-4xl tracking-tight">Community questions</h1>
+            <h1 className="font-display font-semibold text-3xl sm:text-4xl tracking-tight flex items-center gap-3">
+              Community questions
+              <LottiePlayer animationData={questionAnimation} className="size-9 sm:size-11 shrink-0" />
+            </h1>
             <p className="text-muted-foreground leading-relaxed">
               Anonymous questions from women across the commons — each answered in three clearly separated
-              layers. Live questions stream in from Nostr relays.
+              layers. New questions appear here as they’re asked.
             </p>
           </div>
           <Button asChild className="rounded-full">
@@ -80,16 +86,25 @@ export default function QuestionsPage() {
             <QuestionCardSkeleton />
           </div>
         ) : filtered.length === 0 ? (
-          <EmptyState message="No questions in this topic yet. Be the first to ask — anonymously, in under a minute." />
+          <EmptyState
+            message="No questions in this topic yet. Be the first to ask — anonymously, in under a minute."
+            action={
+              <Button asChild className="rounded-full">
+                <Link to="/ask"><MessageCircleQuestion className="size-4" /> Ask anonymously</Link>
+              </Button>
+            }
+          />
         ) : (
           <div className="space-y-4">
             <p className="text-xs text-muted-foreground inline-flex items-center gap-1.5">
               <Rss className="size-3.5" />
               {filtered.length} question{filtered.length === 1 ? '' : 's'}
-              {topic !== 'all' && ' in this topic'} · live events merged with curated threads
+              {topic !== 'all' && ' in this topic'} · newest first, alongside curated threads
             </p>
-            {filtered.map((q) => (
-              <QuestionCard key={q.id} question={q} answerCount={seedAnswerCounts[q.id]} />
+            {filtered.map((q, i) => (
+              <Reveal key={q.id} delay={Math.min(i * 80, 400)}>
+                <QuestionCard question={q} answerCount={seedAnswerCounts[q.id]} />
+              </Reveal>
             ))}
           </div>
         )}

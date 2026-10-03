@@ -16,6 +16,7 @@ import {
 import { useSeoMeta } from '@unhead/react';
 
 import { SiteLayout } from '@/components/nuru/SiteLayout';
+import { Reveal } from '@/components/nuru/Reveal';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { CLINICIANS } from '@/data/clinicians';
@@ -39,13 +40,14 @@ const PUBLIC_LIST = ['Anonymous questions', 'Reviewed health articles', 'Clinica
 export default function AboutPage() {
   useSeoMeta({
     title: 'How it works — Nuru Commons',
-    description: 'The model behind Nuru Commons: three separated knowledge layers, privacy-first Nostr identity, verified clinicians, and open forkable knowledge.',
+    description: 'The model behind Nuru Commons: three clearly separated kinds of knowledge, privacy-first identity, verified clinicians, and knowledge anyone can reuse.',
   });
 
   return (
     <SiteLayout>
       <div className="container py-10 sm:py-14 space-y-16 max-w-5xl">
         {/* Intro */}
+        <Reveal>
         <div className="max-w-2xl space-y-4">
           <h1 className="font-display font-semibold text-3xl sm:text-5xl tracking-tight">
             Not another health app. <span className="text-primary">Knowledge infrastructure.</span>
@@ -62,8 +64,10 @@ export default function AboutPage() {
             humans remain responsible for medical interpretation.
           </p>
         </div>
+        </Reveal>
 
         {/* Three layers */}
+        <Reveal>
         <section className="space-y-6">
           <h2 className="font-display font-semibold text-2xl sm:text-3xl">The Three-Layer Answer</h2>
           <div className="grid gap-5 md:grid-cols-3">
@@ -89,15 +93,17 @@ export default function AboutPage() {
             The platform preserves both forms of knowledge without confusing them.
           </p>
         </section>
+        </Reveal>
 
         {/* Privacy architecture */}
+        <Reveal>
         <section className="space-y-6">
           <h2 className="font-display font-semibold text-2xl sm:text-3xl">The privacy architecture</h2>
           <div className="grid gap-5 md:grid-cols-2">
             <Card className="border-clinical/35 bg-clinical-soft/40">
               <CardContent className="p-6 space-y-3">
                 <h3 className="font-semibold flex items-center gap-2">
-                  <ShieldCheck className="size-5 text-clinical" /> Public Nostr relays
+                  <ShieldCheck className="size-5 text-clinical" /> Public by design
                 </h3>
                 <ul className="space-y-1.5 text-sm text-muted-foreground">
                   {PUBLIC_LIST.map((item) => (
@@ -128,9 +134,10 @@ export default function AboutPage() {
               <CardContent className="p-6 space-y-3">
                 <h3 className="font-semibold flex items-center gap-2"><KeyRound className="size-5 text-primary" /> Identity without surrender</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Nostr identities are cryptographic keys, not platform accounts. Ask with a one-time throwaway
-                  key — no email, phone or ID — or keep a persistent pseudonym. NIP-07 signers let existing
-                  Nostr users sign without this site ever seeing their private key.
+                  Nuru is built on Nostr, an open network no single company owns. Your identity is a private
+                  key that stays on your device — not an account we hold. Ask with a one-time anonymous
+                  identity — no email, phone or ID — or keep a consistent nickname. Browser extensions let
+                  existing users sign in without this site ever seeing their private key.
                 </p>
               </CardContent>
             </Card>
@@ -138,16 +145,18 @@ export default function AboutPage() {
               <CardContent className="p-6 space-y-3">
                 <h3 className="font-semibold flex items-center gap-2"><BadgeCheck className="size-5 text-clinical" /> Clinician verification, honestly</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  NIP-05 proves a key belongs to an identifier — it does <em>not</em> prove someone is a doctor.
+                  A username on the internet does <em>not</em> prove someone is a doctor.
                   Clinicians here are verified manually against professional registers (KMPDC, Nursing Council
-                  of Kenya, PPB) and then badged. Cryptography proves the key; our process proves the profession.
+                  of Kenya, PPB) and then badged. Technology proves who posted; our process proves the profession.
                 </p>
               </CardContent>
             </Card>
           </div>
         </section>
+        </Reveal>
 
         {/* Verified panel */}
+        <Reveal>
         <section className="space-y-6">
           <h2 className="font-display font-semibold text-2xl sm:text-3xl">The clinical review panel <span className="text-sm font-sans font-normal text-muted-foreground">(demo registry)</span></h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -165,12 +174,14 @@ export default function AboutPage() {
             ))}
           </div>
           <p className="text-xs text-muted-foreground max-w-2xl">
-            In production this registry is a NIP-51 list (kind 30000) published by the commons key; any app
-            can read the same attestations. Demo personas shown here illustrate the model.
+            On the live network this registry is published openly, so any app can read the same list of
+            verified clinicians. The people shown here are demo personas illustrating the model.
           </p>
         </section>
+        </Reveal>
 
         {/* Reputation */}
+        <Reveal>
         <section className="space-y-6">
           <h2 className="font-display font-semibold text-2xl sm:text-3xl">Reputation, not likes</h2>
           <Card>
@@ -188,81 +199,82 @@ export default function AboutPage() {
             </CardContent>
           </Card>
         </section>
+        </Reveal>
 
         {/* Volunteers */}
+        <Reveal>
         <section id="volunteer" className="space-y-6 scroll-mt-24">
           <h2 className="font-display font-semibold text-2xl sm:text-3xl">Who makes this work</h2>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="grid gap-x-10 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
             {VOLUNTEER_ROLES.map((v) => (
-              <Card key={v.role}>
-                <CardContent className="p-5 space-y-1">
-                  <p className="font-semibold text-sm flex items-center gap-2">
-                    <HeartHandshake className="size-4 text-primary" /> {v.role}
-                  </p>
-                  <p className="text-xs text-muted-foreground leading-relaxed">{v.work}</p>
-                </CardContent>
-              </Card>
+              <li key={v.role} className="border-t border-border pt-4 space-y-1">
+                <p className="font-semibold text-sm flex items-center gap-2">
+                  <HeartHandshake className="size-4 text-primary" /> {v.role}
+                </p>
+                <p className="text-sm text-muted-foreground leading-relaxed">{v.work}</p>
+              </li>
             ))}
-          </div>
+          </ul>
           <p className="text-muted-foreground leading-relaxed max-w-3xl">
             Every answer displays the responder’s role, so “a nurse’s education” and “a sister’s experience”
             are never ambiguous. Want to volunteer? <Link to="/questions" className="text-primary font-medium hover:underline">Start by sharing what you know</Link> —
             clinical verification happens offline before any badge is issued.
           </p>
         </section>
+        </Reveal>
 
         {/* Open knowledge */}
+        <Reveal>
         <section className="space-y-6">
           <h2 className="font-display font-semibold text-2xl sm:text-3xl">A digital public good</h2>
-          <div className="grid gap-5 md:grid-cols-3">
-            <Card>
-              <CardContent className="p-6 space-y-3">
-                <Download className="size-6 text-primary" />
-                <h3 className="font-semibold">Open export</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Reviewed knowledge is exportable as Markdown, JSON and signed Nostr events — knowledge packs
-                  any clinic, CHP or NGO can reuse offline.
-                </p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-6 space-y-3">
-                <GitFork className="size-6 text-primary" />
-                <h3 className="font-semibold">Forkable</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Deploy Women’s Health Commons Kenya, Uganda or Nigeria: swap referral directories, languages
-                  and guidelines without rebuilding the platform.
-                </p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-6 space-y-3">
-                <Users className="size-6 text-primary" />
-                <h3 className="font-semibold">Portable</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Questions, answers, labels and reviews are standard Nostr events. Other apps can read,
-                  interpret and build on the same protocol (<code className="text-xs bg-muted px-1.5 py-0.5 rounded">NIP.md</code>).
-                </p>
-              </CardContent>
-            </Card>
+          <div className="grid gap-10 md:grid-cols-3 md:gap-8">
+            {[
+              {
+                Icon: Download,
+                title: 'Open export',
+                body: 'Reviewed knowledge exports as Markdown, JSON and open data packs any clinic, community health promoter or NGO can reuse — even offline.',
+              },
+              {
+                Icon: GitFork,
+                title: 'Make it yours',
+                body: 'Start a Women’s Health Commons for Kenya, Uganda or Nigeria: swap referral directories, languages and guidelines without rebuilding anything.',
+              },
+              {
+                Icon: Users,
+                title: 'Portable',
+                body: 'Questions, answers, labels and reviews use an open standard, so other apps can read and build on the same format — documented for developers in NIP.md.',
+              },
+            ].map(({ Icon, title, body }) => (
+              <div key={title} className="border-t-2 border-primary/40 pt-6 space-y-3">
+                <span className="inline-flex items-center gap-2 text-primary">
+                  <Icon className="size-5" />
+                  <span className="text-xs font-bold uppercase tracking-[0.12em]">{title}</span>
+                </span>
+                <p className="text-muted-foreground leading-relaxed text-[0.97rem]">{body}</p>
+              </div>
+            ))}
           </div>
         </section>
+        </Reveal>
 
         {/* Honest limits */}
+        <Reveal>
         <Card className="border-destructive/25">
           <CardContent className="p-6 space-y-3">
             <h2 className="font-display font-semibold text-xl flex items-center gap-2">
               <ShieldCheck className="size-5 text-destructive" /> Honest limits
             </h2>
             <ul className="space-y-2 text-sm text-muted-foreground leading-relaxed max-w-3xl">
-              <li>· Nostr is not perfect anonymity: relays see timestamps and metadata; private messaging (NIP-44/NIP-17) lacks forward secrecy. We say so plainly.</li>
+              <li>· No web platform offers perfect anonymity: the open network can see when something was posted, and private messages are not perfectly future-proof. We say so plainly.</li>
               <li>· Nothing here is medical advice or diagnosis. Red-flag symptoms are routed to urgent care, not to the crowd.</li>
               <li>· Blind-spot statistics are aggregate-only with minimum group sizes — no small-community exposure.</li>
               <li>· Kenya’s Data Protection Act treats health data as sensitive personal data. Our answer is architectural: don’t collect it in the first place.</li>
             </ul>
           </CardContent>
         </Card>
+        </Reveal>
 
+        <Reveal>
         <div className="flex flex-wrap gap-3 pb-4">
           <Button asChild size="lg" className="rounded-full">
             <Link to="/ask">Ask anonymously</Link>
@@ -271,6 +283,7 @@ export default function AboutPage() {
             <Link to="/blind-spots">See the blind spots</Link>
           </Button>
         </div>
+        </Reveal>
       </div>
     </SiteLayout>
   );
