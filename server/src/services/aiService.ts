@@ -95,7 +95,7 @@ export async function callAiService(
   try {
     return (await response.json()) as unknown;
   } catch {
-    logUpstreamFailure('analyze', 'malformed_response', response.status);
+    logUpstreamFailure(route, 'malformed_response', response.status);
     throw new AiServiceError('malformed_response', response.status);
   }
 }

@@ -139,8 +139,29 @@ export const errorHandler: ErrorRequestHandler = (err, _req, res, next) => {
     return;
   }
 
-  // Anything unanticipated. Log for us, say nothing useful to the caller.
-  console.error(`[request ${requestId}] unhandled error:`, err);
+  // Other body-parser rejections (unsupported charset or encoding, aborted
+  // upload). These are the caller's fault, so report their 4xx rather than
+  // a 500. The status comes from body-parser; the message is ours.
+  const status = (err as { status?: unknown } | null)?.status;
+  if (typeof status === 'number' && status >= 400 && status < 500) {
+    console.warn(`[request ${requestId}] rejected: body ${status}`);
+    res.status(status).json({
+      error: { code: 'invalid_request', message: 'The request body could not be read.' },
+      request_id: requestId,
+    });
+    return;
+  }
+
+  // Anything unanticipated. Log the error class only: a message, stack or
+  // attached property can carry request text (JSON.parse messages quote
+  // the input, body-parser errors carry the raw body), and question text
+  // must never reach the logs.
+  const name = err instanceof Error ? err.name : typeof err;
+  const type =
+    typeof err === 'object' && err !== null && typeof (err as { type?: unknown }).type === 'string'
+      ? ` type=${(err as { type: string }).type}`
+      : '';
+  console.error(`[request ${requestId}] unhandled error: ${name}${type}`);
   res.status(500).json({
     error: { code: 'server_error', message: 'Something went wrong.' },
     request_id: requestId,

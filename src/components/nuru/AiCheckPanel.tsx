@@ -50,12 +50,15 @@ export function AiCheckPanel({ status, analysis, error, onApplySuggestion }: AiC
 
   return (
     <div className="space-y-3">
-      {urgent && analysis.safety.message && (
+      {urgent && (
         <div className="rounded-xl border border-destructive/50 bg-destructive/10 p-4 flex items-start gap-3" role="alert">
           <TriangleAlert className="size-5 text-destructive shrink-0 mt-0.5" />
           <div className="space-y-1">
             <p className="font-semibold text-sm">Please read this first</p>
-            <p className="text-sm leading-relaxed">{analysis.safety.message}</p>
+            <p className="text-sm leading-relaxed">
+              {analysis.safety.message ??
+                'If you may be in immediate danger or seriously unwell, seek urgent help from a local health service. Do not wait for an online reply.'}
+            </p>
           </div>
         </div>
       )}
