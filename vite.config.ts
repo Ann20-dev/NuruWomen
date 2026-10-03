@@ -9,6 +9,14 @@ export default defineConfig(() => ({
   server: {
     host: "::",
     port: 8080,
+    proxy: {
+      // Same-origin in development. Anything under /api goes to the backend
+      // so the browser never makes a cross-origin request.
+      '/api': {
+        target: 'http://127.0.0.1:3000',
+        changeOrigin: false,
+      },
+    },
   },
   plugins: [
     react(),

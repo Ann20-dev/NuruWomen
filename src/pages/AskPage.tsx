@@ -6,6 +6,8 @@ import { useSeoMeta } from '@unhead/react';
 import { SiteLayout } from '@/components/nuru/SiteLayout';
 import { SafetyBanner } from '@/components/nuru/SafetyBanner';
 import { PrivacyCheckPanel } from '@/components/nuru/PrivacyCheckPanel';
+import { AiCheckPanel } from '@/components/nuru/AiCheckPanel';
+import { useNuruAnalysis } from '@/hooks/useNuruAnalysis';
 import { LottiePlayer } from '@/components/nuru/LottiePlayer';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -41,6 +43,8 @@ export default function AskPage() {
   const [safety, setSafety] = useState<SafetyFlag[]>([]);
   const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
   const [identity, setIdentity] = useState<'anonymous' | 'account'>('anonymous');
+  const [responseLanguage, setResponseLanguage] = useState<'en' | 'sw'>('en');
+  const { status: aiStatus, analysis, error: aiError, analyze, invalidate } = useNuruAnalysis();
 
   const suggestions = useMemo(() => classifyTopics(`${title} ${content}`), [title, content]);
 
@@ -83,8 +87,32 @@ export default function AskPage() {
     toast({ title: 'Anonymous version applied', description: 'Identifying details were replaced with [removed]. Review it before posting.' });
   };
 
+  const runAiCheck = () => {
+    void analyze({
+      title: title.trim(),
+      content: content.trim(),
+      response_language: responseLanguage,
+      synthetic_only: true,
+      include_demo_cards: true,
+    });
+  };
+
+  const applyAiSuggestion = (nextTitle: string, nextContent: string) => {
+    setTitle(nextTitle);
+    setContent(nextContent);
+    invalidate();
+    toast({
+      title: 'Suggested version applied',
+      description: 'Read it through, then run the check again before posting.',
+    });
+  };
+
   const canPublish =
-    title.trim().length >= 8 && content.trim().length >= 20 && selectedTopics.length > 0 && !askQuestion.isPending;
+    title.trim().length >= 8 &&
+    content.trim().length >= 20 &&
+    selectedTopics.length > 0 &&
+    aiStatus === 'ready' &&
+    !askQuestion.isPending;
 
   const publish = async () => {
     if (!canPublish) return;
@@ -112,12 +140,12 @@ export default function AskPage() {
   <Textarea
   id="q-body"
   value={content}
-  onChange={(e) => setContent(e.target.value)}
-  placeholder="Share as much as you need. If you accidentally include your name, estate, phone number or ID, we’ll catch it below before you post."
+  onChange={(e) => { setContent(e.target.value); invalidate(); }}  placeholder="Share as much as you need. If you accidentally include your name, estate, phone number or ID, we’ll catch it below before you post."
   rows={7}
-  maxLength={5000} // <--- ADD THIS LINE HERE
+  maxLength={2879} 
   className="text-base leading-relaxed"
 />
+
 
   return (
     <SiteLayout>
@@ -139,8 +167,7 @@ export default function AskPage() {
               <Input
                 id="q-title"
                 value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                placeholder="e.g. Is it normal for periods to be this painful?"
+                onChange={(e) => { setTitle(e.target.value); invalidate(); }}                placeholder="e.g. Is it normal for periods to be this painful?"
                 maxLength={120}
                 className="text-base"
               />
@@ -151,8 +178,7 @@ export default function AskPage() {
               <Textarea
                 id="q-body"
                 value={content}
-                onChange={(e) => setContent(e.target.value)}
-                placeholder="Share as much as you need. If you accidentally include your name, estate, phone number or ID, we’ll catch it below before you post."
+                onChange={(e) => { setContent(e.target.value); invalidate(); }}                placeholder="Share as much as you need. If you accidentally include your name, estate, phone number or ID, we’ll catch it below before you post."
                 rows={7}
                 className="text-base leading-relaxed"
               />
@@ -160,6 +186,45 @@ export default function AskPage() {
 
             <PrivacyCheckPanel findings={findings} checked={checked} onApplyRedaction={findings.length > 0 ? applyRedaction : undefined} />
             <SafetyBanner flags={safety} />
+            <div className="space-y-3">
+              <div className="flex flex-wrap items-center gap-2">
+                <Button
+                  type="button"
+                  variant="secondary"
+                  size="sm"
+                  className="rounded-full"
+                  onClick={runAiCheck}
+                  disabled={aiStatus === 'checking' || title.trim().length < 8 || content.trim().length < 20}
+                >
+                  <ScanSearch className="size-4" />
+                  Run privacy check
+                </Button>
+                <div className="flex gap-1.5">
+                  {(['en', 'sw'] as const).map((lang) => (
+                    <button
+                      key={lang}
+                      type="button"
+                      onClick={() => { setResponseLanguage(lang); invalidate(); }}
+                      className={cn(
+                        'rounded-full border px-3 py-1 text-xs font-medium transition-colors',
+                        responseLanguage === lang
+                          ? 'bg-primary text-primary-foreground border-primary'
+                          : 'bg-secondary/60 hover:bg-accent',
+                      )}
+                    >
+                      {lang === 'en' ? 'English' : 'Kiswahili'}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <AiCheckPanel
+                status={aiStatus}
+                analysis={analysis}
+                error={aiError}
+                onApplySuggestion={applyAiSuggestion}
+              />
+            </div>
 
             {/* Topic classification */}
             <div className="space-y-3">
