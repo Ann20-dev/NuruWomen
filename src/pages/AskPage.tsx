@@ -25,6 +25,9 @@ import { cn } from '@/lib/utils';
 import shieldAnimation from '@/assets/lottie/shield.json';
 import DOMPurify from 'dompurify';
 
+/** Matches the content limit in ai/app/schemas.py and server/src/schemas/aiRequests.ts. */
+const BODY_MAX_CODEPOINTS = 2879;
+
 export default function AskPage() {
   useSeoMeta({
     title: 'Ask anonymously — Nuru Commons',
@@ -45,6 +48,10 @@ export default function AskPage() {
   const [identity, setIdentity] = useState<'anonymous' | 'account'>('anonymous');
   const [responseLanguage, setResponseLanguage] = useState<'en' | 'sw'>('en');
   const { status: aiStatus, analysis, error: aiError, analyze, invalidate } = useNuruAnalysis();
+
+  // Python's len() counts codepoints; .length counts UTF-16 units and would
+  // over-count emoji and some scripts.
+  const bodyLength = Array.from(content).length;
 
   const suggestions = useMemo(() => classifyTopics(`${title} ${content}`), [title, content]);
 
@@ -137,16 +144,6 @@ export default function AskPage() {
     }
   };
 
-  <Textarea
-  id="q-body"
-  value={content}
-  onChange={(e) => { setContent(e.target.value); invalidate(); }}  placeholder="Share as much as you need. If you accidentally include your name, estate, phone number or ID, we’ll catch it below before you post."
-  rows={7}
-  maxLength={2879} 
-  className="text-base leading-relaxed"
-/>
-
-
   return (
     <SiteLayout>
       <div className="container py-10 sm:py-14">
@@ -167,7 +164,8 @@ export default function AskPage() {
               <Input
                 id="q-title"
                 value={title}
-                onChange={(e) => { setTitle(e.target.value); invalidate(); }}                placeholder="e.g. Is it normal for periods to be this painful?"
+                onChange={(e) => { setTitle(e.target.value); invalidate(); }}
+                placeholder="e.g. Is it normal for periods to be this painful?"
                 maxLength={120}
                 className="text-base"
               />
@@ -178,10 +176,22 @@ export default function AskPage() {
               <Textarea
                 id="q-body"
                 value={content}
-                onChange={(e) => { setContent(e.target.value); invalidate(); }}                placeholder="Share as much as you need. If you accidentally include your name, estate, phone number or ID, we’ll catch it below before you post."
+                onChange={(e) => { setContent(e.target.value); invalidate(); }}
+                placeholder="Share as much as you need. If you accidentally include your name, estate, phone number or ID, we’ll catch it below before you post."
                 rows={7}
+                maxLength={BODY_MAX_CODEPOINTS}
+                aria-describedby="q-body-count"
                 className="text-base leading-relaxed"
               />
+              <p
+                id="q-body-count"
+                className={cn(
+                  'text-xs text-right tabular-nums',
+                  bodyLength >= BODY_MAX_CODEPOINTS ? 'text-destructive' : 'text-muted-foreground',
+                )}
+              >
+                {bodyLength} / {BODY_MAX_CODEPOINTS}
+              </p>
             </div>
 
             <PrivacyCheckPanel findings={findings} checked={checked} onApplyRedaction={findings.length > 0 ? applyRedaction : undefined} />
