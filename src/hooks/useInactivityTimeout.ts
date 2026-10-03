@@ -1,14 +1,22 @@
 import { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useQueryClient } from '@tanstack/react-query';
+import { demoStore } from '@/lib/nuru/demoStore';
 
 // 15 minutes in milliseconds
 const TIMEOUT_DURATION = 15 * 60 * 1000; 
 
 export const useInactivityTimeout = () => {
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
+  useEffect(() => {
   const handleTimeout = () => {
+    demoStore.clear();
+    queryClient.removeQueries({ queryKey: ['nuru-questions'] });
+    queryClient.removeQueries({ queryKey: ['nuru-question'] });
+    queryClient.removeQueries({ queryKey: ['nuru-answers'] });
     // Clear temporary unsaved draft session data
     sessionStorage.removeItem('unsaved_question_draft');
     sessionStorage.removeItem('unsaved_post_draft');
@@ -24,7 +32,6 @@ export const useInactivityTimeout = () => {
     timerRef.current = setTimeout(handleTimeout, TIMEOUT_DURATION);
   };
 
-  useEffect(() => {
     // Activity listeners to track user engagement
     const events = ['mousemove', 'keydown', 'click', 'scroll', 'touchstart'];
 
@@ -45,5 +52,5 @@ export const useInactivityTimeout = () => {
         window.removeEventListener(event, resetTimer);
       });
     };
-  }, [navigate]);
+  }, [navigate, queryClient]);
 };

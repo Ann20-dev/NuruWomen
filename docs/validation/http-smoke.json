@@ -1,0 +1,62 @@
+[
+  {
+    "name": "combined_readiness",
+    "passed": true
+  },
+  {
+    "name": "spa_/",
+    "passed": true
+  },
+  {
+    "name": "spa_/ask",
+    "passed": true
+  },
+  {
+    "name": "spa_/research",
+    "passed": true
+  },
+  {
+    "name": "spa_/blind-spots",
+    "passed": true
+  },
+  {
+    "name": "spa_/library/your-cycle-explained",
+    "passed": true
+  },
+  {
+    "name": "english_analysis",
+    "passed": true
+  },
+  {
+    "name": "swahili_analysis",
+    "passed": true
+  },
+  {
+    "name": "reject_non_synthetic",
+    "passed": true
+  },
+  {
+    "name": "reject_foreign_origin",
+    "passed": true
+  },
+  {
+    "name": "unknown_api_json",
+    "passed": true
+  },
+  {
+    "name": "translation_review_contract",
+    "passed": true
+  },
+  {
+    "name": "script_csp",
+    "passed": true
+  },
+  {
+    "name": "graceful_supervisor_shutdown",
+    "passed": true
+  },
+  {
+    "name": "child_failure_stops_service",
+    "passed": true
+  }
+]

@@ -1,16 +1,18 @@
+import { lazy } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { useInactivityTimeout } from "./hooks/useInactivityTimeout";
 
 import Index from "./pages/Index";
-import AskPage from "./pages/AskPage";
-import QuestionsPage from "./pages/QuestionsPage";
-import QuestionDetailPage from "./pages/QuestionDetailPage";
-import LibraryPage from "./pages/LibraryPage";
-import ArticlePage from "./pages/ArticlePage";
-import TopicPage from "./pages/TopicPage";
-import BlindSpotsPage from "./pages/BlindSpotsPage";
-import AboutPage from "./pages/AboutPage";
+const AskPage = lazy(() => import("./pages/AskPage"));
+const QuestionsPage = lazy(() => import("./pages/QuestionsPage"));
+const QuestionDetailPage = lazy(() => import("./pages/QuestionDetailPage"));
+const LibraryPage = lazy(() => import("./pages/LibraryPage"));
+const ResearchPage = lazy(() => import("./pages/ResearchPage"));
+const ArticlePage = lazy(() => import("./pages/ArticlePage"));
+const TopicPage = lazy(() => import("./pages/TopicPage"));
+const BlindSpotsPage = lazy(() => import("./pages/BlindSpotsPage"));
+const AboutPage = lazy(() => import("./pages/AboutPage"));
 import { NIP19Page } from "./pages/NIP19Page";
 import NotFound from "./pages/NotFound";
 
@@ -31,6 +33,7 @@ export default function AppRouter() {
         <Route path="/questions" element={<QuestionsPage />} />
         <Route path="/question/:id" element={<QuestionDetailPage />} />
         <Route path="/library" element={<LibraryPage />} />
+        <Route path="/research" element={<ResearchPage />} />
         <Route path="/library/:slug" element={<ArticlePage />} />
         <Route path="/topics/:slug" element={<TopicPage />} />
         <Route path="/blind-spots" element={<BlindSpotsPage />} />

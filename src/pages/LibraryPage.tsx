@@ -14,8 +14,8 @@ import { cn } from '@/lib/utils';
 
 export default function LibraryPage() {
   useSeoMeta({
-    title: 'Knowledge library — Nuru Commons',
-    description: 'Clinician-reviewed women’s health knowledge across the whole lifecycle — from first periods to healthy ageing.',
+    title: 'Knowledge library — NuruWomen',
+    description: 'Draft women’s health knowledge across the whole lifecycle — from first periods to healthy ageing.',
   });
 
   const [params, setParams] = useSearchParams();
@@ -44,15 +44,15 @@ export default function LibraryPage() {
       <div className="container py-10 sm:py-14 space-y-8">
         <div className="max-w-2xl space-y-3">
           <p className="text-xs font-bold uppercase tracking-[0.14em] text-primary inline-flex items-center gap-1.5">
-            <LibraryBig className="size-4" /> Clinically reviewed
+            <LibraryBig className="size-4" /> Knowledge drafts
           </p>
           <h1 className="font-display font-semibold text-3xl sm:text-4xl tracking-tight">The knowledge library</h1>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Women’s health across the whole lifecycle — each article reviewed and dated by a named
-            clinician, with sources you can check yourself.
+            Explore educational articles and the research catalogue, reviewed by the clinical panel. They cannot replace personal medical advice.
           </p>
         </div>
 
+        <Link to="/research" className="inline-block text-primary underline font-semibold">Browse the research catalogue (2020 onward)</Link>
         <div className="space-y-4">
           <div className="relative max-w-xl">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 size-4.5 text-muted-foreground pointer-events-none" />

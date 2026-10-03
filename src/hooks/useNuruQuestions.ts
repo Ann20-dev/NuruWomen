@@ -5,6 +5,8 @@ import type { NostrEvent } from '@nostrify/nostrify';
 import { NURU_TAG, QUESTION_KIND } from '@/lib/nuru/protocol';
 import type { Question } from '@/lib/nuru/types';
 import { SEED_QUESTIONS } from '@/data/questions';
+import { demoStore } from '@/lib/nuru/demoStore';
+import { isHiddenContent } from '@/lib/nuru/moderation';
 
 export function eventToQuestion(event: NostrEvent): Question {
   const subject = event.tags.find(([n]) => n === 'subject')?.[1];
@@ -32,8 +34,32 @@ function isRootQuestion(event: NostrEvent): boolean {
   return !event.tags.some(([n]) => n === 'e');
 }
 
+function seedQuestions(excludeIds: Set<string>): Question[] {
+  return SEED_QUESTIONS.filter((q) => !excludeIds.has(q.id)).map((q) => ({
+    id: q.id,
+    title: q.title,
+    content: q.content,
+    topics: q.topics,
+    authorPubkey: q.authorPubkey,
+    authorName: q.authorName,
+    createdAt: q.createdAt,
+    isSeed: true,
+    evidenceCard: q.evidenceCard,
+    signal: q.signal,
+  }));
+}
+
+/** Live events from relays merged over session-memory events (deduped by id). */
+function mergeLive(relayEvents: NostrEvent[]): NostrEvent[] {
+  const byId = new Map<string, NostrEvent>();
+  for (const e of relayEvents) byId.set(e.id, e);
+  for (const e of demoStore.all()) byId.set(e.id, e);
+  return [...byId.values()];
+}
+
 /**
- * All commons questions: live Nostr events merged over the bundled seed set.
+ * All commons questions: live relay events merged over the bundled seed set.
+ * Relay failures degrade to session + seed content, never an error screen.
  */
 export function useNuruQuestions() {
   const { nostr } = useNostr();
@@ -41,34 +67,30 @@ export function useNuruQuestions() {
   return useQuery({
     queryKey: ['nuru-questions'],
     queryFn: async (c) => {
-      const events = await nostr.query(
-        [{ kinds: [QUESTION_KIND], '#t': [NURU_TAG], limit: 200 }],
-        { signal: c.signal },
-      );
+      let relayEvents: NostrEvent[] = [];
+      try {
+        relayEvents = await nostr.query(
+          [{ kinds: [QUESTION_KIND], '#t': [NURU_TAG], limit: 100 }],
+          { signal: c.signal },
+        );
+      } catch {
+        relayEvents = [];
+      }
 
-      const live = events.filter(isRootQuestion).map(eventToQuestion);
+      const live = mergeLive(relayEvents)
+        .filter((e) => e.kind === QUESTION_KIND && e.tags.some(([n, v]) => n === 't' && v === NURU_TAG))
+        .filter(isRootQuestion)
+        .filter((e) => !isHiddenContent(e))
+        .map(eventToQuestion);
+
       const liveIds = new Set(live.map((q) => q.id));
-
-      const seeds: Question[] = SEED_QUESTIONS.filter((q) => !liveIds.has(q.id)).map((q) => ({
-        id: q.id,
-        title: q.title,
-        content: q.content,
-        topics: q.topics,
-        authorPubkey: q.authorPubkey,
-        authorName: q.authorName,
-        createdAt: q.createdAt,
-        isSeed: true,
-        evidenceCard: q.evidenceCard,
-        signal: q.signal,
-      }));
-
-      return [...live, ...seeds].sort((a, b) => b.createdAt - a.createdAt);
+      return [...live, ...seedQuestions(liveIds)].sort((a, b) => b.createdAt - a.createdAt);
     },
     staleTime: 30_000,
   });
 }
 
-/** A single question by id (checks live events first, then seeds). */
+/** A single question by id (session memory, then relays, then seeds). */
 export function useNuruQuestion(id: string | undefined) {
   const { nostr } = useNostr();
 
@@ -78,13 +100,17 @@ export function useNuruQuestion(id: string | undefined) {
     queryFn: async (c) => {
       if (!id) return undefined;
 
-      // Live event?
+      const local = demoStore.all().find((e) => e.kind === QUESTION_KIND && e.id === id);
+      if (local && !isHiddenContent(local)) return eventToQuestion(local);
+
       try {
-        const events = await nostr.query(
+        const [event] = await nostr.query(
           [{ kinds: [QUESTION_KIND], ids: [id], limit: 1 }],
           { signal: c.signal },
         );
-        if (events[0]) return eventToQuestion(events[0]);
+        if (event && !isHiddenContent(event) && event.tags.some(([n, v]) => n === 't' && v === NURU_TAG)) {
+          return eventToQuestion(event);
+        }
       } catch {
         // fall through to seeds
       }

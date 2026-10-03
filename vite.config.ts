@@ -40,8 +40,12 @@ export default defineConfig(() => ({
     },
   },
   resolve: {
-    alias: {
-      "@": path.resolve(import.meta.dirname, "./src"),
-    },
+    alias: [
+      { find: "@", replacement: path.resolve(import.meta.dirname, "./src") },
+      // lottie-react's export barrel can include full/svg engines. Keep every
+      // imported engine on the expression-free build to preserve script CSP.
+      { find: /^lottie-web$/, replacement: path.resolve(import.meta.dirname, "node_modules/lottie-web/build/player/lottie_light.js") },
+      { find: /^lottie-web\/build\/player\/lottie_svg\.js$/, replacement: path.resolve(import.meta.dirname, "node_modules/lottie-web/build/player/lottie_light.js") },
+    ],
   },
 }));

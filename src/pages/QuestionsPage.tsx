@@ -17,7 +17,7 @@ import { cn } from '@/lib/utils';
 
 export default function QuestionsPage() {
   useSeoMeta({
-    title: 'Community questions — Nuru Commons',
+    title: 'Community questions — NuruWomen',
     description: 'Anonymous women’s health questions answered through three separated layers: lived experience, clinical response and evidence.',
   });
 

@@ -1,6 +1,6 @@
-# NIP.md — Nuru Commons Protocol Extensions
+# NIP.md — NuruWomen Protocol Extensions
 
-Nuru Commons (Women's Health Commons Africa) is a privacy-first women's health
+NuruWomen (Women's Health Commons Africa) is a privacy-first women's health
 knowledge commons built on Nostr. This document describes how the app uses
 existing NIPs and where it extends the protocol.
 
@@ -39,7 +39,7 @@ existing NIPs and where it extends the protocol.
     ["t", "nuru-commons"],          // commons marker — filterable
     ["t", "perimenopause"],         // one or more topic tags
     ["subject", "Short question title"],
-    ["alt", "Anonymous women's health question on Nuru Commons"]
+    ["alt", "Anonymous women's health question on NuruWomen"]
   ]
 }
 ```
@@ -59,7 +59,7 @@ without an `e` tag; replies carry NIP-10 markers.
     ["t", "nuru-commons"],
     ["L", "nuru.answer-type"],
     ["l", "lived-experience", "nuru.answer-type"],   // or "clinical-response"
-    ["alt", "Labelled answer on Nuru Commons"]
+    ["alt", "Labelled answer on NuruWomen"]
   ]
 }
 ```

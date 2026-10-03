@@ -2,7 +2,7 @@ import { seedPubkey } from '@/lib/nuru/ids';
 import type { Clinician } from '@/lib/nuru/types';
 
 /**
- * Demo verified-clinician registry. In production this list is a NIP-51
+ * Verified-clinician registry. In production this list is a NIP-51
  * follow set (kind 30000, d=nuru-verified-clinicians) published by the
  * commons authority key after manual verification against professional
  * registers (KMPDC, Nursing Council of Kenya, PPB).
@@ -13,7 +13,7 @@ export const CLINICIANS: Clinician[] = [
     pubkey: seedPubkey('dr-wanjiku-kamau'),
     role: 'Obstetrician & Gynaecologist',
     specialty: 'Obstetrics & Gynaecology',
-    org: 'KMPDC-registered · Nairobi',
+    org: 'Clinical volunteer · Nairobi',
     verifiedSince: 'July 2026',
   },
   {
@@ -21,7 +21,7 @@ export const CLINICIANS: Clinician[] = [
     pubkey: seedPubkey('beatrice-achieng'),
     role: 'Reproductive Health Nurse',
     specialty: 'Reproductive & Sexual Health',
-    org: 'Nursing Council of Kenya · Kisumu',
+    org: 'Clinical volunteer · Kisumu',
     verifiedSince: 'July 2026',
   },
   {
@@ -29,7 +29,7 @@ export const CLINICIANS: Clinician[] = [
     pubkey: seedPubkey('dr-rehema-salim'),
     role: 'Family Medicine Physician',
     specialty: 'Family Medicine',
-    org: 'KMPDC-registered · Mombasa',
+    org: 'Clinical volunteer · Mombasa',
     verifiedSince: 'August 2026',
   },
   {
@@ -37,7 +37,7 @@ export const CLINICIANS: Clinician[] = [
     pubkey: seedPubkey('faith-njeri'),
     role: 'Registered Midwife',
     specialty: 'Midwifery & Postpartum Care',
-    org: 'Nursing Council of Kenya · Eldoret',
+    org: 'Clinical volunteer · Eldoret',
     verifiedSince: 'August 2026',
   },
   {
@@ -50,8 +50,9 @@ export const CLINICIANS: Clinician[] = [
   },
 ];
 
-export const CLINICIAN_PUBKEYS = new Set(CLINICIANS.map((c) => c.pubkey));
+// Seed personas must never grant authority to a live event.
+export const CLINICIAN_PUBKEYS = new Set<string>();
 
 export function clinicianForPubkey(pubkey: string): Clinician | undefined {
-  return CLINICIANS.find((c) => c.pubkey === pubkey);
+  return CLINICIAN_PUBKEYS.has(pubkey) ? CLINICIANS.find((c) => c.pubkey === pubkey) : undefined;
 }

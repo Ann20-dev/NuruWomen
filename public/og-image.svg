@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <pattern id="kitenge" width="48" height="28" patternUnits="userSpaceOnUse">
+      <rect width="48" height="28" fill="#5d1f33"/>
+      <path d="M0 14 L12 2 L24 14 L12 26 Z" fill="#d9a441"/>
+      <path d="M24 14 L36 2 L48 14 L36 26 Z" fill="#b0532e"/>
+      <circle cx="12" cy="14" r="2.5" fill="#faf6f0"/>
+      <circle cx="36" cy="14" r="2.5" fill="#7a9b76"/>
+    </pattern>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#d9a441" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#d9a441" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- wine field -->
+  <rect width="1200" height="630" fill="#7c2942"/>
+  <circle cx="300" cy="290" r="320" fill="url(#glow)"/>
+
+  <!-- subtle kitenge corner geometry -->
+  <g opacity="0.14" fill="none" stroke="#faf6f0" stroke-width="1.5">
+    <path d="M80 96 l24 -40 l24 40 Z"/>
+    <path d="M1072 500 l24 -40 l24 40 Z"/>
+    <circle cx="1090" cy="130" r="26"/>
+    <circle cx="96" cy="530" r="18"/>
+  </g>
+
+  <!-- lamp / rising-sun mark -->
+  <g transform="translate(190 250)">
+    <circle r="120" fill="#5d1f33"/>
+    <g stroke="#e8b13f" stroke-width="9" stroke-linecap="round">
+      <line x1="0" y1="-92" x2="0" y2="-68"/>
+      <line x1="-65" y1="-65" x2="-48" y2="-48"/>
+      <line x1="65" y1="-65" x2="48" y2="-48"/>
+      <line x1="-92" y1="0" x2="-68" y2="0"/>
+      <line x1="92" y1="0" x2="68" y2="0"/>
+    </g>
+    <path d="M-52 34 a52 52 0 0 1 104 0 Z" fill="#e8b13f"/>
+    <rect x="-72" y="36" width="144" height="10" rx="5" fill="#f6ead8"/>
+    <rect x="-50" y="58" width="100" height="10" rx="5" fill="#f6ead8" opacity="0.72"/>
+  </g>
+
+  <!-- wordmark + tagline -->
+  <g font-family="Fraunces, Georgia, 'Times New Roman', serif" fill="#faf6f0">
+    <text x="380" y="268" font-size="104" font-weight="600" letter-spacing="-2">NuruWomen</text>
+    <text x="384" y="348" font-size="44" font-style="italic" fill="#e8b13f">Every question deserves a safe answer.</text>
+    <text x="384" y="424" font-size="30" font-family="Inter, Arial, sans-serif" fill="#f6ead8" opacity="0.85">Private, anonymous women’s health commons · Africa</text>
+  </g>
+
+  <!-- kitenge strip -->
+  <rect x="0" y="588" width="1200" height="42" fill="url(#kitenge)"/>
+</svg>

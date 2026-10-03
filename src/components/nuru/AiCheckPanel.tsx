@@ -1,29 +1,34 @@
-import { Loader2, ShieldAlert, ShieldCheck, TriangleAlert, Wand2 } from 'lucide-react';
+import { Loader2, Route, ShieldAlert, ShieldCheck, TriangleAlert, Wand2 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
+import { DEMO_TOPICS } from '@/lib/nuru/demoTopics';
 import type { NuruAnalysis } from '@/lib/nuru/aiClient';
+import type { AnalysisSource } from '@/hooks/useNuruAnalysis';
 
 interface AiCheckPanelProps {
   status: 'idle' | 'checking' | 'ready' | 'failed';
   analysis: NuruAnalysis | null;
+  source: AnalysisSource | null;
   error: string | null;
   onApplySuggestion: (title: string, content: string) => void;
 }
 
+const CATEGORY_LABELS = new Map(DEMO_TOPICS.map((t) => [t.id, t.label_en] as const));
+
 /**
- * Server-side privacy and safety check results.
+ * Privacy, safety and topic-routing check results.
  *
  * A failed check renders as visibly incomplete. It must never be mistaken
  * for a passed one, because publishing to a relay cannot be undone.
  */
-export function AiCheckPanel({ status, analysis, error, onApplySuggestion }: AiCheckPanelProps) {
+export function AiCheckPanel({ status, analysis, source, error, onApplySuggestion }: AiCheckPanelProps) {
   if (status === 'idle') return null;
 
   if (status === 'checking') {
     return (
       <div className="rounded-xl border bg-muted/40 p-4 flex items-center gap-3" role="status">
         <Loader2 className="size-4 animate-spin text-muted-foreground" />
-        <p className="text-sm text-muted-foreground">Running the privacy and safety check...</p>
+        <p className="text-sm text-muted-foreground">Running the privacy, safety and topic check...</p>
       </div>
     );
   }
@@ -107,8 +112,41 @@ export function AiCheckPanel({ status, analysis, error, onApplySuggestion }: AiC
         </div>
       )}
 
+      {/* Topic routing — the five broad categories */}
+      <div className="rounded-xl border bg-card p-4 space-y-2">
+        <p className="font-semibold text-sm flex items-center gap-2">
+          <Route className="size-4 text-primary" /> Where your question belongs
+        </p>
+        {analysis.routing.categories.length > 0 ? (
+          <div className="flex flex-wrap gap-1.5">
+            {analysis.routing.categories.map((c) => (
+              <span
+                key={c.id}
+                className="rounded-full bg-primary/10 text-primary border border-primary/25 px-2.5 py-0.5 text-xs font-semibold"
+              >
+                {CATEGORY_LABELS.get(c.id) ?? c.id}
+              </span>
+            ))}
+          </div>
+        ) : (
+          <p className="text-sm text-muted-foreground">
+            No topic matched — our team will place it for you.
+          </p>
+        )}
+        <p className="text-xs text-muted-foreground leading-relaxed">
+          This only guides where your question appears — it is never a diagnosis.
+          {analysis.routing.scope_status === 'mixed_scope' &&
+            ' Part of your question sits outside our main topics and will be reviewed.'}
+          {analysis.routing.ambiguous_pregnancy_loss_wording &&
+            ' Wording around pregnancy loss always gets careful human review.'}
+        </p>
+      </div>
+
       <p className="text-xs text-muted-foreground">
-        Suggestions only, not a diagnosis. Answers are reviewed by people, not by this check.
+        {source === 'local'
+          ? 'Checked privately on your device.'
+          : 'Checked by the NuruWomen safety service.'}{' '}
+        Suggestions only — never a diagnosis.
       </p>
     </div>
   );

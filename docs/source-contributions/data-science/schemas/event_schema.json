@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NuruWomen Anonymous Interaction Event",
+  "type": "object",
+  "required": [
+    "event_id",
+    "timestamp_utc",
+    "session_hash",
+    "topic",
+    "language",
+    "response_outcome"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string"
+    },
+    "timestamp_utc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "session_hash": {
+      "type": "string",
+      "description": "Non-reversible anonymous session identifier; never store name/email/phone."
+    },
+    "topic": {
+      "type": "string",
+      "enum": [
+        "menstrual_health",
+        "healthy_aging",
+        "postpartum",
+        "sexual_health",
+        "mental_health"
+      ]
+    },
+    "language": {
+      "type": "string",
+      "enum": [
+        "en",
+        "sw"
+      ]
+    },
+    "channel": {
+      "type": "string",
+      "enum": [
+        "web",
+        "mobile_web"
+      ]
+    },
+    "response_outcome": {
+      "type": "string",
+      "enum": [
+        "answered",
+        "escalated",
+        "fallback"
+      ]
+    },
+    "safety_escalation": {
+      "type": "boolean"
+    },
+    "retrieved_source_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "retrieval_confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "latency_ms": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "user_feedback": {
+      "type": "string",
+      "enum": [
+        "helpful",
+        "not_helpful",
+        "none"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

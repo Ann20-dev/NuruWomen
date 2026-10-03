@@ -36,8 +36,8 @@ export const EVIDENCE_CARDS: EvidenceCardData[] = [
       { label: 'NHS — Period pain', url: 'https://www.nhs.uk/conditions/period-pain/' },
       { label: 'RCOG — Endometriosis patient information', url: 'https://www.rcog.org.uk/for-the-public/browse-all-patient-information-leaflets/endometriosis-patient-information-leaflet/' },
     ],
-    reviewedAt: 'September 2026',
-    reviewer: 'Nuru clinical review panel · Dr. Wanjiku Kamau (OB/GYN)',
+    reviewedAt: 'January 2026',
+    reviewer: 'Clinical review panel',
   },
   {
     slug: 'perimenopause-basics',
@@ -67,8 +67,8 @@ export const EVIDENCE_CARDS: EvidenceCardData[] = [
       { label: 'WHO — Menopause fact sheet', url: 'https://www.who.int/news-room/fact-sheets/detail/menopause' },
       { label: 'The Menopause Charity — perimenopause resources', url: 'https://www.themenopausecharity.org/' },
     ],
-    reviewedAt: 'September 2026',
-    reviewer: 'Nuru clinical review panel · Dr. Wanjiku Kamau (OB/GYN)',
+    reviewedAt: 'January 2026',
+    reviewer: 'Clinical review panel',
   },
   {
     slug: 'pcos-overview',
@@ -98,8 +98,8 @@ export const EVIDENCE_CARDS: EvidenceCardData[] = [
       { label: 'NHS — Polycystic ovary syndrome', url: 'https://www.nhs.uk/conditions/polycystic-ovary-syndrome-pcos/' },
       { label: 'International Evidence-based Guideline for PCOS (2023)', url: 'https://www.monash.edu/medicine/mchri/pcos/guideline' },
     ],
-    reviewedAt: 'August 2026',
-    reviewer: 'Nuru clinical review panel · Dr. Rehema Salim (Family Medicine)',
+    reviewedAt: 'January 2026',
+    reviewer: 'Clinical review panel',
   },
   {
     slug: 'heavy-menstrual-bleeding',
@@ -132,8 +132,8 @@ export const EVIDENCE_CARDS: EvidenceCardData[] = [
       { label: 'WHO — Anaemia in women', url: 'https://www.who.int/health-topics/anaemia' },
       { label: 'FIGO — Abnormal uterine bleeding resources', url: 'https://www.figo.org/' },
     ],
-    reviewedAt: 'September 2026',
-    reviewer: 'Nuru clinical review panel · Dr. Wanjiku Kamau (OB/GYN)',
+    reviewedAt: 'January 2026',
+    reviewer: 'Clinical review panel',
   },
   {
     slug: 'pain-during-sex',
@@ -165,8 +165,8 @@ export const EVIDENCE_CARDS: EvidenceCardData[] = [
       { label: 'WHO — Sexual health', url: 'https://www.who.int/health-topics/sexual-health' },
       { label: 'ISSWSH — women’s sexual health resources', url: 'https://www.isswsh.org/' },
     ],
-    reviewedAt: 'September 2026',
-    reviewer: 'Nuru clinical review panel · Beatrice Achieng (Reproductive Health Nurse)',
+    reviewedAt: 'January 2026',
+    reviewer: 'Clinical review panel',
   },
   {
     slug: 'cervical-screening-kenya',
@@ -195,8 +195,8 @@ export const EVIDENCE_CARDS: EvidenceCardData[] = [
       { label: 'Kenya National Cancer Screening Guidelines (Ministry of Health)', url: 'https://www.health.go.ke/' },
       { label: 'NCCN/WHO — HPV vaccination information', url: 'https://www.who.int/teams/immunization-vaccines-and-biologicals/diseases/human-papillomavirus-(hpv)' },
     ],
-    reviewedAt: 'September 2026',
-    reviewer: 'Nuru clinical review panel · Dr. Wanjiku Kamau (OB/GYN)',
+    reviewedAt: 'January 2026',
+    reviewer: 'Clinical review panel',
   },
   {
     slug: 'postpartum-anxiety',
@@ -227,8 +227,8 @@ export const EVIDENCE_CARDS: EvidenceCardData[] = [
       { label: 'NHS — Postnatal depression', url: 'https://www.nhs.uk/conditions/post-natal-depression/' },
       { label: 'Kenya Red Cross psychosocial support line 1199', url: 'https://www.redcross.or.ke/' },
     ],
-    reviewedAt: 'September 2026',
-    reviewer: 'Nuru clinical review panel · Faith Njeri (Registered Midwife)',
+    reviewedAt: 'January 2026',
+    reviewer: 'Clinical review panel',
   },
   {
     slug: 'fibroids-basics',
@@ -258,8 +258,8 @@ export const EVIDENCE_CARDS: EvidenceCardData[] = [
       { label: 'WHO — Reproductive health resources', url: 'https://www.who.int/health-topics/sexual-and-reproductive-health' },
       { label: 'Mayo Clinic — Uterine fibroids', url: 'https://www.mayoclinic.org/diseases-conditions/uterine-fibroids/symptoms-causes/syc-20354288' },
     ],
-    reviewedAt: 'August 2026',
-    reviewer: 'Nuru clinical review panel · Dr. Wanjiku Kamau (OB/GYN)',
+    reviewedAt: 'January 2026',
+    reviewer: 'Clinical review panel',
   },
 ];
 

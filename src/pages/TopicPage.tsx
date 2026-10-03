@@ -24,7 +24,7 @@ export default function TopicPage() {
   const { data: questions } = useNuruQuestions();
 
   useSeoMeta({
-    title: topic ? `${topic.name} — Nuru Commons` : 'Topic — Nuru Commons',
+    title: topic ? `${topic.name} — NuruWomen` : 'Topic — NuruWomen',
     description: topic?.blurb,
   });
 
@@ -117,7 +117,7 @@ export default function TopicPage() {
                 </div>
                 <p className="font-display text-4xl font-semibold text-clay">{formatNumber(experienceCount)}</p>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  women have shared lived experience about {topic.name.toLowerCase()} — preserved as
+                  community experiences illustrate {topic.name.toLowerCase()} — preserved as
                   experience, never presented as evidence.
                 </p>
                 <Button asChild size="sm" variant="outline" className="rounded-full bg-background border-clay/40 text-clay hover:bg-clay-soft">
