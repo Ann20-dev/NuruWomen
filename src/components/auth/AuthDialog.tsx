@@ -45,9 +45,9 @@ const validateBunkerUri = (uri: string) => uri.startsWith('bunker://');
 const connectStatusLabel = (status: NostrConnectStatus | null): string => {
   switch (status) {
     case 'awaiting-connect':
-      return 'Waiting for signer connection…';
+      return 'Waiting for the app to connect…';
     case 'getting-public-key':
-      return 'Getting public key…';
+      return 'Almost there…';
     default:
       return '';
   }
@@ -269,7 +269,7 @@ const AuthDialog: React.FC<AuthDialogProps> = ({ isOpen, onClose }) => {
   const handleLogin = () => {
     const value = loginInput.trim();
     if (!value) {
-      setLoginError('Enter your secret key or bunker URI.');
+      setLoginError('Paste the secret key you saved when you joined.');
       return;
     }
 
@@ -280,14 +280,14 @@ const AuthDialog: React.FC<AuthDialogProps> = ({ isOpen, onClose }) => {
         .bunker(value)
         .then(() => onClose())
         .catch(() => {
-          setLoginError('Failed to connect. Check the bunker URI.');
+          setLoginError('Couldn’t connect. Check the link from your signer app.');
           setIsLoggingIn(false);
         });
       return;
     }
 
     if (!validateNsec(value)) {
-      setLoginError('Enter a valid nsec1… key or bunker://… URI.');
+      setLoginError('That doesn’t look right — your key starts with “nsec1”.');
       return;
     }
 
@@ -398,7 +398,7 @@ const AuthDialog: React.FC<AuthDialogProps> = ({ isOpen, onClose }) => {
       case 'welcome':
         return 'Welcome';
       case 'generate':
-        return 'Create a Nostr account';
+        return 'Create your account';
       case 'secure':
         return 'Save your key';
       case 'profile':
@@ -429,16 +429,21 @@ const AuthDialog: React.FC<AuthDialogProps> = ({ isOpen, onClose }) => {
                 🔑
               </div>
 
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Join without an email, phone number or ID. You get a secret key — a long password
+                only you hold — and that’s your whole account.
+              </p>
+
               <div className="space-y-2">
                 <Button onClick={() => setStep('generate')} className="w-full h-12 rounded-full">
-                  Create a new Nostr account
+                  Create my private account
                 </Button>
                 <Button
                   variant="link"
                   onClick={() => setStep('login')}
                   className="w-full text-muted-foreground"
                 >
-                  Log in to an existing account
+                  I already have a key — log in
                 </Button>
               </div>
             </div>
@@ -461,18 +466,18 @@ const AuthDialog: React.FC<AuthDialogProps> = ({ isOpen, onClose }) => {
 
               <div className="space-y-1">
                 <p className="font-medium">
-                  {isGenerating ? 'Creating your key…' : 'Your key is your identity'}
+                  {isGenerating ? 'Creating your key…' : 'Your key is your account'}
                 </p>
                 <p className="text-sm text-muted-foreground">
                   {isGenerating
                     ? 'This only takes a moment.'
-                    : "We'll generate a secret key just for you. Keep it safe — it's the only way to log in."}
+                    : 'We’ll make you a secret key — like a long password only you hold. It’s the only way back in, so keep it safe.'}
                 </p>
               </div>
 
               {!isGenerating && (
                 <Button onClick={generateKey} className="w-full h-12 rounded-full">
-                  Generate key
+                  Create my key
                 </Button>
               )}
 
@@ -493,7 +498,7 @@ const AuthDialog: React.FC<AuthDialogProps> = ({ isOpen, onClose }) => {
               </div>
 
               <p className="text-sm text-muted-foreground text-center">
-                Store your key somewhere safe. You'll need it to log in again.
+                Save this key somewhere safe — like a password that can never be reset.
               </p>
 
               <div className="relative">
@@ -520,7 +525,7 @@ const AuthDialog: React.FC<AuthDialogProps> = ({ isOpen, onClose }) => {
 
               <div className="p-3 rounded-lg bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800">
                 <p className="text-xs text-amber-900 dark:text-amber-300">
-                  This key is your only way to access your account. If you lose it, you lose the account.
+                  If you lose this key, you lose the account. There is no “forgot password” — that’s what keeps it private.
                 </p>
               </div>
 
@@ -642,7 +647,7 @@ const AuthDialog: React.FC<AuthDialogProps> = ({ isOpen, onClose }) => {
                 <div className="flex flex-col items-center space-y-4 py-6 w-full">
                   <Loader2 className="w-8 h-8 animate-spin text-primary" />
                   <p className="text-sm text-muted-foreground text-center min-h-[1.25rem]">
-                    {connectStatusLabel(connectStatus) || 'Waiting for your signer…'}
+                    {connectStatusLabel(connectStatus) || 'Waiting for the app to confirm…'}
                   </p>
                   <button
                     type="button"
@@ -721,7 +726,7 @@ const NsecLoginForm: React.FC<NsecLoginFormProps> = ({
           setLoginInput(e.target.value);
           if (loginError) setLoginError('');
         }}
-        placeholder="nsec1… or bunker://…"
+        placeholder="Paste your secret key (starts with nsec1…)"
         autoComplete="off"
         className={`pr-10 ${
           loginError ? 'border-destructive focus-visible:ring-destructive' : ''
@@ -749,11 +754,11 @@ const NsecLoginForm: React.FC<NsecLoginFormProps> = ({
         <DropdownMenuContent align="end">
           <DropdownMenuItem onSelect={() => fileInputRef.current?.click()}>
             <FileUp className="h-4 w-4" />
-            Select key file
+            Use my saved key file
           </DropdownMenuItem>
           <DropdownMenuItem onSelect={onOpenSignerApp}>
             <ExternalLink className="h-4 w-4" />
-            Open signer app
+            Log in with a signer app (advanced)
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
