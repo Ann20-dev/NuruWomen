@@ -11,3 +11,36 @@ services:
     envVars:
       - key: NODE_VERSION
         value: 22.12.0
+      - key: VITE_API_BASE_URL
+        value: https://nuru-women-gateway.onrender.com
+
+  - type: pserv
+    name: nuru-ai
+    runtime: docker
+    rootDir: ai
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - fromGroup: nuru-ai-secrets
+
+  - type: web
+    name: nuru-women-gateway
+    runtime: node
+    buildCommand: npm ci --include=dev && npm run build && npm --prefix server ci --include=dev && npm --prefix server run build
+    startCommand: npm --prefix server start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: 22.12.0
+      - key: NODE_ENV
+        value: production
+      - key: AI_SERVICE_URL
+        value: http://nuru-ai:8000
+      - key: ALLOWED_ORIGINS
+        value: https://nuru-women.onrender.com,https://nuru-women-gateway.onrender.com
+      - fromGroup: nuru-ai-secrets
+
+envVarGroups:
+  - name: nuru-ai-secrets
+    envVars:
+      - key: WHC_API_KEY
+        generateValue: true

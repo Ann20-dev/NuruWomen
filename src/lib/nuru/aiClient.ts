@@ -1,5 +1,8 @@
-/** Same-origin app-backend client. Never put WHC_API_KEY or a provider key in Vite. */
+/** Browser-to-gateway client. Never put WHC_API_KEY or a provider key in Vite. */
 import { DEMO_TOPICS, type DemoTopicId, type DemoCategory } from './demoTopics';
+
+const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL ?? '').replace(/\/+$/, '');
+
 export type ResponseLanguage = 'en' | 'sw';
 export interface NuruRequest {
   title: string;
@@ -104,7 +107,7 @@ async function request(path: string, body: unknown, signal?: AbortSignal): Promi
   signal?.addEventListener('abort', abort, { once: true });
   const timer = setTimeout(abort, 10000);
   try {
-    const response = await fetch(path, { method: 'POST', credentials: 'same-origin', cache: 'no-store', redirect: 'error',
+    const response = await fetch(`${API_BASE_URL}${path}`, { method: 'POST', credentials: 'omit', cache: 'no-store', redirect: 'error',
       headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body), signal: controller.signal });
     if (!response.ok) throw new Error(`AI check unavailable (HTTP ${response.status}).`);
     return await response.json() as unknown;

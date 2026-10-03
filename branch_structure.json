@@ -1,0 +1,36 @@
+{
+  "default_branch": "main",
+  "branches": [
+    "backup/pre-final-consolidation-20261003-2045",
+    "feat/ai-five-topic-demo",
+    "feat/backend-api-gateway",
+    "feat/wire-ask-page-to-ai",
+    "feature/ui-redesign",
+    "integration/final-render-20261003-2047",
+    "main",
+    "sql",
+    "ui/ux"
+  ],
+  "parent": {
+    "backup/pre-final-consolidation-20261003-2045": "main",
+    "feat/ai-five-topic-demo": "main",
+    "feat/backend-api-gateway": "main",
+    "feat/wire-ask-page-to-ai": "main",
+    "feature/ui-redesign": "main",
+    "integration/final-render-20261003-2047": "main",
+    "main": null,
+    "sql": "main",
+    "ui/ux": "main"
+  },
+  "order": [
+    "main",
+    "backup/pre-final-consolidation-20261003-2045",
+    "feat/ai-five-topic-demo",
+    "feat/backend-api-gateway",
+    "feat/wire-ask-page-to-ai",
+    "feature/ui-redesign",
+    "integration/final-render-20261003-2047",
+    "sql",
+    "ui/ux"
+  ]
+}
