@@ -48,7 +48,7 @@ export function useNuruAnalysis() {
         setAnalysis(result);
         setStatus('ready');
       } catch {
-                setError('The privacy check could not complete. Nothing has been published.');
+        setError('The privacy check could not complete. Nothing has been published.');
         setStatus('failed');
       }
     },
