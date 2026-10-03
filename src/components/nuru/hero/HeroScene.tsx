@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
 
 /**
- * The Nuru Commons hero signature: a living "knowledge object".
+ * The NuruWomen hero signature: a living "knowledge object".
  *
  * An organic, translucent sculpture — soft membrane layers, a warm seed of
  * light, woven strands, ambient particles — that breathes slowly, follows the

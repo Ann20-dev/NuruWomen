@@ -24,22 +24,33 @@ import { AnimatedWords } from '@/components/nuru/AnimatedWords';
 import { HeroScene } from '@/components/nuru/hero/HeroScene';
 import { LottiePlayer } from '@/components/nuru/LottiePlayer';
 import { CountUp } from '@/components/nuru/CountUp';
+import { KitengeDivider } from '@/components/nuru/art/KitengeDivider';
+import { TopicArt, type TopicArtKind } from '@/components/nuru/art/TopicArt';
+import { WomenCircleArt } from '@/components/nuru/art/WomenCircleArt';
 import heartPulseAnimation from '@/assets/lottie/heart-pulse.json';
 import { SEED_QUESTIONS } from '@/data/questions';
 import { evidenceCardBySlug } from '@/data/evidenceCards';
 import { BLIND_SPOT_TOTAL } from '@/data/blindspots';
 import { timeAgo } from '@/lib/nuru/format';
 
-const DEMO_QUESTION = SEED_QUESTIONS[0];
-const DEMO_EVIDENCE = evidenceCardBySlug(DEMO_QUESTION.evidenceCard ?? '');
-const DEMO_LIVED = DEMO_QUESTION.answers.find((a) => a.type === 'lived-experience');
-const DEMO_CLINICAL = DEMO_QUESTION.answers.find((a) => a.type === 'clinical-response');
+const EXAMPLE_QUESTION = SEED_QUESTIONS[0];
+const EXAMPLE_EVIDENCE = evidenceCardBySlug(EXAMPLE_QUESTION.evidenceCard ?? '');
+const EXAMPLE_LIVED = EXAMPLE_QUESTION.answers.find((a) => a.type === 'lived-experience');
+const EXAMPLE_CLINICAL = EXAMPLE_QUESTION.answers.find((a) => a.type === 'clinical-response');
+
+const TOPIC_TILES: { art: TopicArtKind; name: string; to: string }[] = [
+  { art: 'menstrual-health', name: 'Menstrual health', to: '/library?area=menstrual-health' },
+  { art: 'sexual-health', name: 'Sexual health', to: '/library?area=sexual-health' },
+  { art: 'healthy-ageing', name: 'Healthy ageing', to: '/library?area=healthy-ageing' },
+  { art: 'postpartum', name: 'Postpartum', to: '/library?area=postpartum' },
+  { art: 'mental-health', name: 'Mental health', to: '/library?area=mental-health' },
+];
 
 export default function Index() {
   useSeoMeta({
-    title: 'Nuru Commons — Women’s Health Commons Africa',
+    title: 'NuruWomen — Women’s Health Commons Africa',
     description:
-      'A privacy-first, open women’s health knowledge commons for Africa. Anonymous questions, lived experience and clinically reviewed evidence — clearly separated, never mixed up.',
+      'A privacy-first, open women’s health knowledge commons for Africa. Anonymous questions, lived experience and evidence — clearly separated, never mixed up.',
   });
 
   const [askHover, setAskHover] = useState(false);
@@ -58,8 +69,8 @@ export default function Index() {
               <AnimatedWords text="What were you never taught about your body?" highlight={['never', 'taught']} highlightClassName="hero-word" />
             </h1>
             <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-xl animate-fade-in" style={{ animationDelay: '0.55s' }}>
-              Ask sensitive health questions anonymously. Get real stories from women who’ve lived it
-              and answers checked by clinicians — clearly labelled, never mixed up.
+              Ask sensitive health questions privately. Explore community stories
+              and clinical responses — clearly labelled, never mixed up.
             </p>
             <div className="flex flex-wrap items-center gap-3 animate-fade-in" style={{ animationDelay: '0.7s' }}>
               <Button asChild size="lg" className="rounded-full text-base px-6">
@@ -71,7 +82,7 @@ export default function Index() {
                   onBlur={() => setAskHover(false)}
                 >
                   <MessageCircleQuestion className="size-5" />
-                  Ask anonymously
+                  Ask a question
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="rounded-full text-base px-6 bg-card">
@@ -94,12 +105,14 @@ export default function Index() {
         </div>
       </section>
 
-      {/* ── Live demo thread ─────────────────────────────── */}
+      <KitengeDivider />
+
+      {/* ── Example thread ─────────────────────────────── */}
       <section className="border-y bg-secondary/40">
         <div className="container py-16 sm:py-24">
           <Reveal>
           <div className="max-w-2xl space-y-3 mb-10">
-            <p className="text-xs font-bold uppercase tracking-[0.14em] text-primary">A real thread</p>
+            <p className="text-xs font-bold uppercase tracking-[0.14em] text-primary">An example thread</p>
             <h2 className="font-display font-semibold text-3xl sm:text-4xl tracking-tight">
               One question, three kinds of answers
             </h2>
@@ -115,71 +128,71 @@ export default function Index() {
                   <div className="p-6 sm:p-7 space-y-3">
                     <div className="flex items-center justify-between gap-3 flex-wrap">
                       <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                        Anonymous question · {timeAgo(DEMO_QUESTION.createdAt)}
+                        Anonymous question · {timeAgo(EXAMPLE_QUESTION.createdAt)}
                       </span>
-                      <TopicChips slugs={DEMO_QUESTION.topics} />
+                      <TopicChips slugs={EXAMPLE_QUESTION.topics} />
                     </div>
-                    <h3 className="font-display font-semibold text-xl leading-snug">{DEMO_QUESTION.title}</h3>
-                    <p className="leading-relaxed text-[0.97rem]">{DEMO_QUESTION.content}</p>
+                    <h3 className="font-display font-semibold text-xl leading-snug">{EXAMPLE_QUESTION.title}</h3>
+                    <p className="leading-relaxed text-[0.97rem]">{EXAMPLE_QUESTION.content}</p>
                   </div>
 
                   {/* Lived experience band */}
-                  {DEMO_LIVED && (
+                  {EXAMPLE_LIVED && (
                     <div className="space-y-4 border-t border-clay/20 border-l-4 border-l-clay/70 bg-clay-soft/50 p-6 sm:p-7">
                       <LayerBadge layer="lived-experience" />
                       <AuthorLine
-                        pubkey={DEMO_LIVED.authorPubkey}
-                        name={DEMO_LIVED.authorName}
-                        role={DEMO_LIVED.role}
-                        experienceTag={DEMO_LIVED.experienceTag}
-                        createdAt={DEMO_LIVED.createdAt}
+                        pubkey={EXAMPLE_LIVED.authorPubkey}
+                        name={EXAMPLE_LIVED.authorName}
+                        role={EXAMPLE_LIVED.role}
+                        experienceTag={EXAMPLE_LIVED.experienceTag}
+                        createdAt={EXAMPLE_LIVED.createdAt}
                       />
-                      <p className="leading-relaxed text-[0.97rem] whitespace-pre-wrap">{DEMO_LIVED.text}</p>
+                      <p className="leading-relaxed text-[0.97rem] whitespace-pre-wrap">{EXAMPLE_LIVED.text}</p>
                       <div className="flex items-center justify-between gap-3 flex-wrap">
                         <LayerDisclaimer layer="lived-experience" />
                         <HelpfulButton
-                          targetId={DEMO_LIVED.id}
-                          targetPubkey={DEMO_LIVED.authorPubkey}
+                          targetId={EXAMPLE_LIVED.id}
+                          targetPubkey={EXAMPLE_LIVED.authorPubkey}
                           targetKind={1}
-                          questionId={DEMO_QUESTION.id}
-                          count={DEMO_LIVED.helpful}
+                          questionId={EXAMPLE_QUESTION.id}
+                          count={EXAMPLE_LIVED.helpful}
                         />
                       </div>
                     </div>
                   )}
 
                   {/* Clinical response band */}
-                  {DEMO_CLINICAL && (
+                  {EXAMPLE_CLINICAL && (
                     <div className="space-y-4 border-t border-clinical/20 border-l-4 border-l-clinical/70 bg-clinical-soft/50 p-6 sm:p-7">
                       <LayerBadge layer="clinical-response" />
                       <AuthorLine
-                        pubkey={DEMO_CLINICAL.authorPubkey}
-                        name={DEMO_CLINICAL.authorName}
-                        role={DEMO_CLINICAL.role}
-                        createdAt={DEMO_CLINICAL.createdAt}
+                        pubkey={EXAMPLE_CLINICAL.authorPubkey}
+                        name={EXAMPLE_CLINICAL.authorName}
+                        role={EXAMPLE_CLINICAL.role}
+                        createdAt={EXAMPLE_CLINICAL.createdAt}
                       />
-                      <p className="leading-relaxed text-[0.97rem] whitespace-pre-wrap">{DEMO_CLINICAL.text}</p>
+                      <p className="leading-relaxed text-[0.97rem] whitespace-pre-wrap">{EXAMPLE_CLINICAL.text}</p>
                       <div className="flex items-center justify-between gap-3 flex-wrap">
                         <LayerDisclaimer layer="clinical-response" />
                         <HelpfulButton
-                          targetId={DEMO_CLINICAL.id}
-                          targetPubkey={DEMO_CLINICAL.authorPubkey}
+                          targetId={EXAMPLE_CLINICAL.id}
+                          targetPubkey={EXAMPLE_CLINICAL.authorPubkey}
                           targetKind={1}
-                          questionId={DEMO_QUESTION.id}
-                          count={DEMO_CLINICAL.helpful}
+                          questionId={EXAMPLE_QUESTION.id}
+                          count={EXAMPLE_CLINICAL.helpful}
                         />
                       </div>
                     </div>
                   )}
 
                   {/* Evidence band */}
-                  {DEMO_EVIDENCE && (
+                  {EXAMPLE_EVIDENCE && (
                     <div className="space-y-3 border-t border-plum/20 border-l-4 border-l-plum/70 bg-plum-soft/50 p-6 sm:p-7">
                       <LayerBadge layer="evidence-card" />
-                      <h4 className="font-display font-semibold text-lg leading-snug">{DEMO_EVIDENCE.title}</h4>
-                      <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">{DEMO_EVIDENCE.summary}</p>
+                      <h4 className="font-display font-semibold text-lg leading-snug">{EXAMPLE_EVIDENCE.title}</h4>
+                      <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">{EXAMPLE_EVIDENCE.summary}</p>
                       <p className="text-xs text-muted-foreground">
-                        Reviewed by {DEMO_EVIDENCE.reviewer} · {DEMO_EVIDENCE.reviewedAt}
+                        Clinical review: {EXAMPLE_EVIDENCE.reviewer} · {EXAMPLE_EVIDENCE.reviewedAt}
                       </p>
                     </div>
                   )}
@@ -187,17 +200,17 @@ export default function Index() {
               </Card>
 
               <Button asChild variant="outline" className="rounded-full">
-                <Link to={`/question/${DEMO_QUESTION.id}`}>
+                <Link to={`/question/${EXAMPLE_QUESTION.id}`}>
                   Read the full thread <ArrowRight className="size-4" />
                 </Link>
               </Button>
             </Reveal>
 
             <Reveal className="space-y-5" delay={180}>
-              {DEMO_QUESTION.signal && (
+              {EXAMPLE_QUESTION.signal && (
                 <CommunitySignal
-                  similarCount={DEMO_QUESTION.signal.similarCount}
-                  insight={DEMO_QUESTION.signal.insight}
+                  similarCount={EXAMPLE_QUESTION.signal.similarCount}
+                  insight={EXAMPLE_QUESTION.signal.insight}
                 />
               )}
               <p className="text-sm text-muted-foreground leading-relaxed px-1">
@@ -209,6 +222,42 @@ export default function Index() {
         </div>
       </section>
 
+      {/* ── Five topics, illustrated ─────────────────────── */}
+      <section className="container py-16 sm:py-24">
+        <div className="grid gap-10 lg:grid-cols-2 items-center mb-12">
+          <Reveal className="space-y-3 max-w-xl">
+            <p className="text-xs font-bold uppercase tracking-[0.14em] text-primary">The five areas</p>
+            <h2 className="font-display font-semibold text-3xl sm:text-4xl tracking-tight">
+              Every stage of a woman’s life, covered
+            </h2>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              Menstrual health, sexual health, healthy ageing, postpartum and mental health —
+              each with its own shelf in the library, and its own safe corner of the commons.
+            </p>
+          </Reveal>
+          <Reveal delay={140}>
+            <WomenCircleArt className="w-full max-w-md mx-auto" />
+          </Reveal>
+        </div>
+        <div className="grid gap-4 grid-cols-2 lg:grid-cols-5">
+          {TOPIC_TILES.map((tile, i) => (
+            <Reveal key={tile.art} delay={Math.min(i * 90, 360)}>
+              <Link
+                to={tile.to}
+                className="group block rounded-xl border bg-card overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:border-primary/30"
+              >
+                <TopicArt topic={tile.art} className="block w-full aspect-[3/2]" />
+                <span className="block p-3.5 text-sm font-semibold text-center transition-colors group-hover:text-primary">
+                  {tile.name}
+                </span>
+              </Link>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      <KitengeDivider />
+
       {/* ── Blind Spots teaser ───────────────────────────── */}
       <section className="border-y bg-card">
         <Reveal className="container py-10 sm:py-12">
@@ -219,10 +268,10 @@ export default function Index() {
               </span>
               <div className="min-w-0">
                 <p className="font-display font-semibold text-xl sm:text-2xl leading-snug">
-                  <CountUp value={BLIND_SPOT_TOTAL} /> anonymous questions this month
+                  <CountUp value={BLIND_SPOT_TOTAL} /> community question counts
                 </p>
                 <p className="text-sm text-muted-foreground">
-                  Counted together, never individually — a live map of what women were never taught.
+                  Counted together, never individually — a map of knowledge gaps.
                 </p>
               </div>
             </div>
@@ -246,13 +295,13 @@ export default function Index() {
             Ask the question you’ve been carrying.
           </h2>
           <p className="relative text-lg text-primary-foreground/85 max-w-xl mx-auto leading-relaxed">
-            Anonymously, in English or Kiswahili, answered by women who’ve lived it and professionals who’ve studied it.
+            Explore questions with English or Kiswahili analysis and clearly labelled responses.
           </p>
           <div className="relative flex flex-wrap justify-center gap-3">
             <Button asChild size="lg" variant="secondary" className="rounded-full text-base px-7">
               <Link to="/ask">
                 <MessageCircleQuestion className="size-5" />
-                Ask anonymously
+                Ask a question
               </Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="rounded-full text-base px-7 bg-transparent border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground/10">

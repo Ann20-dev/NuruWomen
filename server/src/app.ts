@@ -7,6 +7,7 @@ import { errorHandler } from './middleware/errorHandler.js';
 import { originCheck } from './middleware/originCheck.js';
 import { aiRateLimit } from './middleware/rateLimit.js';
 import { aiRouter } from './routes/ai.js';
+import { config } from './config.js';
 
 /** Matches MAX_BODY_BYTES in ai/app/config.py. */
 const MAX_BODY_BYTES = 64 * 1024;
@@ -32,11 +33,20 @@ export function createApp() {
     res.setHeader('Cache-Control', 'no-store');
     res.setHeader('X-Content-Type-Options', 'nosniff');
     res.setHeader('Referrer-Policy', 'no-referrer');
+    res.setHeader('X-Frame-Options', 'DENY');
+    res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+    res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-src 'none'; frame-ancestors 'none'; form-action 'self'");
     next();
   });
 
-  app.get('/api/health', (_req, res) => {
-    res.status(200).json({ status: 'ok' });
+  app.get('/api/health', async (_req, res) => {
+    try {
+      const upstream = await fetch(`${config.aiServiceUrl}/health`, { signal: AbortSignal.timeout(1500) });
+      if (!upstream.ok) throw new Error('unready');
+      res.status(200).json({ status: 'ok', ai: 'ready', mode: 'synthetic_demo' });
+    } catch {
+      res.status(503).json({ status: 'unavailable', ai: 'unavailable' });
+    }
   });
 
   app.use(express.json({ limit: MAX_BODY_BYTES, type: 'application/json' }));

@@ -1,6 +1,6 @@
 import type { RequestHandler } from 'express';
 
-import { config } from '../config.js';
+import { config, isProduction } from '../config.js';
 
 /**
  * Allow only configured browser origins and answer their CORS preflights.
@@ -11,11 +11,11 @@ import { config } from '../config.js';
  * a browser. This middleware constrains browser behaviour only. It is not
  * authentication.
  *
- * With no ALLOWED_ORIGINS configured the check is skipped, so local
- * development works through Vite's same-origin proxy before a value is set.
+ * With no ALLOWED_ORIGINS configured, development permits the Vite proxy.
+ * Production permits only the current browser origin.
  */
 export const originCheck: RequestHandler = (req, res, next) => {
-  if (config.allowedOrigins.length === 0) {
+  if (config.allowedOrigins.length === 0 && !isProduction) {
     next();
     return;
   }
@@ -26,7 +26,9 @@ export const originCheck: RequestHandler = (req, res, next) => {
     return;
   }
 
-  if (config.allowedOrigins.includes(origin)) {
+  // Render sets the actual host; do not trust a forwarded host supplied by the caller.
+  const sameOrigin = `${req.protocol}://${req.get('host')}`;
+  if (origin === sameOrigin || config.allowedOrigins.includes(origin)) {
     res.vary('Origin');
     res.setHeader('Access-Control-Allow-Origin', origin);
 

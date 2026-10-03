@@ -20,7 +20,7 @@ export function CommunitySignal({ similarCount, insight }: { similarCount: numbe
           </p>
           {insight && <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">{insight}</p>}
           <p className="mt-2 text-xs text-muted-foreground">
-            Aggregate only — no individual question or person can be identified from this statistic.
+            Group totals only — no single person can ever be identified.
           </p>
         </div>
       </div>

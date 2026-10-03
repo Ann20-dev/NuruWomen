@@ -23,7 +23,7 @@ export function PrivacyCheckPanel({ findings, onApplyRedaction, checked }: Priva
         <div>
           <p className="font-semibold text-sm">Privacy check passed</p>
           <p className="text-sm text-muted-foreground">
-            No names, phone numbers, emails, ID numbers or locations detected. Your question is ready to anonymize.
+            No names, phone numbers, emails, ID numbers or locations detected. Patterns can miss identifiers. Review the text yourself.
           </p>
         </div>
       </div>
@@ -55,7 +55,7 @@ export function PrivacyCheckPanel({ findings, onApplyRedaction, checked }: Priva
           {onApplyRedaction && (
             <Button size="sm" variant="outline" onClick={onApplyRedaction} className="rounded-full bg-background">
               <Wand2 className="size-3.5" />
-              Suggest an anonymous version
+              Suggest a redacted version
             </Button>
           )}
         </div>

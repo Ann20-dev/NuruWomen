@@ -1,42 +1,15 @@
 import { nip19 } from 'nostr-tools';
-import { useParams } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 import NotFound from './NotFound';
 
 export function NIP19Page() {
   const { nip19: identifier } = useParams<{ nip19: string }>();
-
-  if (!identifier) {
-    return <NotFound />;
-  }
-
-  let decoded;
+  if (!identifier) return <NotFound />;
+  let questionId: string | undefined;
   try {
-    decoded = nip19.decode(identifier);
-  } catch {
-    return <NotFound />;
-  }
-
-  const { type } = decoded;
-
-  switch (type) {
-    case 'npub':
-    case 'nprofile':
-      // AI agent should implement profile view here
-      return <div>Profile placeholder</div>;
-
-    case 'note':
-      // AI agent should implement note view here
-      return <div>Note placeholder</div>;
-
-    case 'nevent':
-      // AI agent should implement event view here
-      return <div>Event placeholder</div>;
-
-    case 'naddr':
-      // AI agent should implement addressable event view here
-      return <div>Addressable event placeholder</div>;
-
-    default:
-      return <NotFound />;
-  }
-} 
+    const decoded = nip19.decode(identifier);
+    if (decoded.type === 'note') questionId = decoded.data;
+    if (decoded.type === 'nevent') questionId = decoded.data.id;
+  } catch { questionId = undefined; }
+  return questionId ? <Navigate to={`/question/${questionId}`} replace /> : <NotFound />;
+}

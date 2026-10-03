@@ -6,7 +6,6 @@ import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/useToast';
 import { useCurrentUser } from '@/hooks/useCurrentUser';
 import { useNuruPublish } from '@/hooks/useNuruPublish';
-import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { cn } from '@/lib/utils';
 
 interface HelpfulButtonProps {
@@ -26,7 +25,7 @@ export function HelpfulButton({ targetId, targetPubkey, targetKind, questionId, 
   const { markHelpful } = useNuruPublish();
   const { toast } = useToast();
   const queryClient = useQueryClient();
-  const [votedIds, setVotedIds] = useLocalStorage<string[]>('nuru:helpful-votes', []);
+  const [votedIds, setVotedIds] = useState<string[]>([]);
   const [pending, setPending] = useState(false);
 
   const voted = votedIds.includes(targetId);
@@ -65,7 +64,7 @@ export function HelpfulButton({ targetId, targetPubkey, targetKind, questionId, 
     >
       <ThumbsUp className={cn('size-3.5', voted && 'fill-current')} />
       {voted ? 'Helpful ✓' : 'Helpful'}
-      <span className="tabular-nums text-muted-foreground">{count + (voted ? 1 : 0)}</span>
+      <span className="tabular-nums text-muted-foreground">{count}</span>
     </Button>
   );
 }

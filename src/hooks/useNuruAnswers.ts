@@ -12,14 +12,17 @@ import {
 import type { Answer, SeedAnswer } from '@/lib/nuru/types';
 import { CLINICIAN_PUBKEYS, clinicianForPubkey } from '@/data/clinicians';
 import { seedQuestionById } from '@/data/questions';
+import { demoStore } from '@/lib/nuru/demoStore';
+import { isHiddenContent } from '@/lib/nuru/moderation';
 
-/** NIP-32 self-label wins; verified clinicians default to clinical; everyone else is lived experience. */
+/** Clinical authority requires the trusted registry; self-labels cannot establish it. */
 function classifyAnswer(event: NostrEvent): AnswerType {
   const label = event.tags.find(
     ([n, , ns]) => n === 'l' && (!ns || ns === ANSWER_TYPE_NAMESPACE),
   )?.[1];
 
-  if (label && (ANSWER_TYPES as string[]).includes(label)) return label as AnswerType;
+  // A self-label cannot establish clinical authority.
+  if (label === 'lived-experience' && (ANSWER_TYPES as string[]).includes(label)) return 'lived-experience';
   if (CLINICIAN_PUBKEYS.has(event.pubkey)) return 'clinical-response';
   return 'lived-experience';
 }
@@ -70,12 +73,29 @@ export function useNuruAnswers(questionId: string | undefined) {
     queryFn: async (c) => {
       if (!questionId) throw new Error('missing question id');
 
-      const replyEvents = await nostr.query(
-        [{ kinds: [ANSWER_KIND], '#e': [questionId], limit: 200 }],
-        { signal: c.signal },
-      );
+      // Relay replies first; session-memory events fill in instantly.
+      let relayReplies: NostrEvent[] = [];
+      try {
+        relayReplies = await nostr.query(
+          [{ kinds: [ANSWER_KIND], '#e': [questionId], limit: 200 }],
+          { signal: c.signal },
+        );
+      } catch {
+        relayReplies = [];
+      }
 
-      const live = replyEvents.map(eventToAnswer);
+      const replyById = new Map<string, NostrEvent>();
+      for (const e of relayReplies) replyById.set(e.id, e);
+      for (const e of demoStore.all()) {
+        if (e.kind === ANSWER_KIND && e.tags.some(([n, v]) => n === 'e' && v === questionId)) {
+          replyById.set(e.id, e);
+        }
+      }
+      for (const [key, e] of replyById) {
+        if (isHiddenContent(e)) replyById.delete(key);
+      }
+
+      const live = [...replyById.values()].map(eventToAnswer);
       const liveIds = new Set(live.map((a) => a.id));
 
       const seedAnswers = (seedQuestionById(questionId)?.answers ?? [])
@@ -84,25 +104,31 @@ export function useNuruAnswers(questionId: string | undefined) {
 
       const all = [...live, ...seedAnswers].sort((a, b) => a.createdAt - b.createdAt);
 
-      // Helpful votes for every answer (one relay round-trip)
+      // Helpful votes target answers by `e` tag — one dedupe per voter per answer.
       const ids = all.map((a) => a.id);
       const helpfulCounts: Record<string, number> = {};
       if (ids.length > 0) {
+        const idSet = new Set(ids);
+        const seen = new Set<string>();
+        const countVote = (r: NostrEvent) => {
+          const target = r.tags.find(([n]) => n === 'e')?.[1];
+          if (!target || !idSet.has(target)) return;
+          const dedupeKey = `${r.pubkey}:${target}`;
+          if (seen.has(dedupeKey)) return;
+          seen.add(dedupeKey);
+          helpfulCounts[target] = (helpfulCounts[target] ?? 0) + 1;
+        };
         try {
-          const reactions = await nostr.query(
+          const votes = await nostr.query(
             [{ kinds: [HELPFUL_KIND], '#e': ids, limit: 500 }],
             { signal: c.signal },
           );
-          const seen = new Set<string>();
-          for (const r of reactions) {
-            const target = r.tags.find(([n]) => n === 'e')?.[1];
-            const dedupeKey = `${r.pubkey}:${target}`;
-            if (!target || seen.has(dedupeKey)) continue;
-            seen.add(dedupeKey);
-            helpfulCounts[target] = (helpfulCounts[target] ?? 0) + 1;
-          }
+          for (const v of votes) countVote(v);
         } catch {
           // reaction counts are best-effort
+        }
+        for (const v of demoStore.all()) {
+          if (v.kind === HELPFUL_KIND) countVote(v);
         }
       }
 
