@@ -28,6 +28,9 @@ const EnvSchema = z.object({
     .refine((key) => /^[\x20-\x7E]+$/.test(key), {
       message: 'Must be printable ASCII only.',
     }),
+
+  /** Comma-separated browser origins permitted to call the API. */
+  ALLOWED_ORIGINS: z.string().default(''),
 });
 
 const parsed = EnvSchema.safeParse(process.env);
@@ -52,6 +55,9 @@ export const config = Object.freeze({
   port: parsed.data.PORT,
   aiServiceUrl: parsed.data.AI_SERVICE_URL.replace(/\/+$/, ''),
   aiServiceKey: parsed.data.WHC_API_KEY,
+  allowedOrigins: parsed.data.ALLOWED_ORIGINS.split(',')
+    .map((origin) => origin.trim())
+    .filter((origin) => origin.length > 0),
 });
 
 export const isProduction = config.nodeEnv === 'production';

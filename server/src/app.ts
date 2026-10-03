@@ -2,6 +2,8 @@ import { randomUUID } from 'node:crypto';
 import express from 'express';
 
 import { errorHandler } from './middleware/errorHandler.js';
+import { originCheck } from './middleware/originCheck.js';
+import { aiRateLimit } from './middleware/rateLimit.js';
 import { aiRouter } from './routes/ai.js';
 
 /** Matches MAX_BODY_BYTES in ai/app/config.py. */
@@ -12,6 +14,11 @@ export function createApp() {
 
   // Do not advertise the framework.
   app.disable('x-powered-by');
+
+  // Render terminates TLS at a proxy, so the client address arrives in
+  // X-Forwarded-For. Trust exactly one hop. Trusting all hops would let a
+  // caller forge the header and evade the rate limiter.
+  app.set('trust proxy', 1);
 
   // One id per request so a log line and a user's error report can be matched.
   app.use((_req, res, next) => {
@@ -32,7 +39,7 @@ export function createApp() {
 
   app.use(express.json({ limit: MAX_BODY_BYTES, type: 'application/json' }));
 
-  app.use('/api/ai', aiRouter);
+  app.use('/api/ai', originCheck, aiRateLimit, aiRouter);
 
   // Unknown /api path. Without this Express returns an HTML 404 page.
   app.use('/api', (_req, res) => {
