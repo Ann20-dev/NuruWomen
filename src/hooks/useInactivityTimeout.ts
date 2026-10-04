@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useQueryClient } from '@tanstack/react-query';
 import { demoStore } from '@/lib/nuru/demoStore';
@@ -9,10 +9,9 @@ const TIMEOUT_DURATION = 15 * 60 * 1000;
 export const useInactivityTimeout = () => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
-  const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  useEffect(() => {
-  const handleTimeout = () => {
+  const handleTimeout = useCallback(() => {
     demoStore.clear();
     queryClient.removeQueries({ queryKey: ['nuru-questions'] });
     queryClient.removeQueries({ queryKey: ['nuru-question'] });
@@ -23,15 +22,16 @@ export const useInactivityTimeout = () => {
 
     // Redirect to home page
     navigate('/');
-  };
+  }, [navigate, queryClient]);
 
-  const resetTimer = () => {
+  const resetTimer = useCallback(() => {
     if (timerRef.current) {
       clearTimeout(timerRef.current);
     }
     timerRef.current = setTimeout(handleTimeout, TIMEOUT_DURATION);
-  };
+  }, [handleTimeout]);
 
+  useEffect(() => {
     // Activity listeners to track user engagement
     const events = ['mousemove', 'keydown', 'click', 'scroll', 'touchstart'];
 
@@ -52,5 +52,5 @@ export const useInactivityTimeout = () => {
         window.removeEventListener(event, resetTimer);
       });
     };
-  }, [navigate, queryClient]);
+  }, [resetTimer]);
 };

@@ -9,7 +9,16 @@ import htmlEslint from "@html-eslint/eslint-plugin";
 import customRules from "./eslint-rules/index.js";
 
 export default defineConfig(
-  globalIgnores(["dist", ".agents", "server/dist", "docs/source-contributions", "node_modules"]),
+  globalIgnores([
+    "dist",
+    ".agents",
+    "server/dist",
+    "docs/source-contributions",
+    "node_modules",
+    ".python-build",
+    "ai/.python312",
+    "Nuru Commons — Knowledge Gap Dashboard.html",
+  ]),
   {
     name: "app/ts",
     files: ["**/*.{ts,tsx}"],
