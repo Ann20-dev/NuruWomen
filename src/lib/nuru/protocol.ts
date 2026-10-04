@@ -18,6 +18,8 @@ export const EVIDENCE_CARD_KIND = 35113;
 /** NIP-51 follow set listing manually verified clinician pubkeys. */
 export const CLINICIAN_LIST_KIND = 30000;
 export const CLINICIAN_LIST_DTAG = 'nuru-verified-clinicians';
+/** NIP-52 time-based calendar events — community health events. */
+export const CALENDAR_EVENT_KIND = 31923;
 
 /** NIP-32 label namespace used to classify answer types. */
 export const ANSWER_TYPE_NAMESPACE = 'nuru.answer-type';

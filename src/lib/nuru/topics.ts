@@ -23,18 +23,18 @@ export interface Topic {
 export const AREAS: Area[] = [
   { slug: 'growing-up', name: 'Growing up', swahili: 'Kukua', description: 'Puberty, first periods and body development.' },
   { slug: 'menstrual-health', name: 'Menstrual health', swahili: 'Afya ya hedhi', description: 'Cycles, pain, heavy bleeding and irregular periods.' },
-  { slug: 'hormones', name: 'Hormones', description: 'Estrogen, progesterone, thyroid and hormonal change.' },
-  { slug: 'conditions', name: 'Conditions', description: 'PCOS, endometriosis, fibroids, PID and more.' },
+  { slug: 'hormones', name: 'Hormones', swahili: 'Homoni', description: 'Estrogen, progesterone, thyroid and hormonal change.' },
+  { slug: 'conditions', name: 'Conditions', swahili: 'Magonjwa', description: 'PCOS, endometriosis, fibroids, PID and more.' },
   { slug: 'sexual-health', name: 'Sexual health', swahili: 'Afya ya kingono', description: 'Consent, STIs, contraception and painful sex.' },
-  { slug: 'fertility', name: 'Fertility', description: 'Ovulation, infertility and preconception care.' },
+  { slug: 'fertility', name: 'Fertility', swahili: 'Uzazi', description: 'Ovulation, infertility and preconception care.' },
   { slug: 'pregnancy', name: 'Pregnancy', swahili: 'Ujauzito', description: 'Pregnancy health and warning signs.' },
-  { slug: 'postpartum', name: 'Postpartum', description: 'Recovery, breastfeeding and mental health after birth.' },
-  { slug: 'cancer-prevention', name: 'Cancer prevention', description: 'Breast awareness, HPV and cervical screening.' },
+  { slug: 'postpartum', name: 'Postpartum', swahili: 'Baada ya kujifungua', description: 'Recovery, breastfeeding and mental health after birth.' },
+  { slug: 'cancer-prevention', name: 'Cancer prevention', swahili: 'Kinga ya saratani', description: 'Breast awareness, HPV and cervical screening.' },
   { slug: 'mental-health', name: 'Mental health', swahili: 'Afya ya akili', description: 'PMS/PMDD, pregnancy, postpartum and menopause wellbeing.' },
-  { slug: 'pelvic-health', name: 'Pelvic health', description: 'Pelvic floor, prolapse and urinary symptoms.' },
-  { slug: 'perimenopause', name: 'Perimenopause', description: 'The hormonal transition before menopause.' },
-  { slug: 'menopause', name: 'Menopause', description: 'Symptoms, bone and cardiovascular health.' },
-  { slug: 'healthy-ageing', name: 'Healthy ageing', description: 'Long-term health across a woman’s life.' },
+  { slug: 'pelvic-health', name: 'Pelvic health', swahili: 'Afya ya nyonga', description: 'Pelvic floor, prolapse and urinary symptoms.' },
+  { slug: 'perimenopause', name: 'Perimenopause', swahili: 'Kabla ya kukoma hedhi', description: 'The hormonal transition before menopause.' },
+  { slug: 'menopause', name: 'Menopause', swahili: 'Kukoma hedhi', description: 'Symptoms, bone and cardiovascular health.' },
+  { slug: 'healthy-ageing', name: 'Healthy ageing', swahili: 'Kuzeeka kwa afya', description: 'Long-term health across a woman’s life.' },
 ];
 
 export const TOPICS: Topic[] = [

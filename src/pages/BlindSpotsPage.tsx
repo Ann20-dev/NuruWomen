@@ -1,9 +1,12 @@
 import { useMemo, useState } from 'react';
 import { useSeoMeta } from '@unhead/react';
+import { Flame } from 'lucide-react';
 import { SiteLayout } from '@/components/nuru/SiteLayout';
 import { CoverageHeatmap } from '@/components/nuru/CoverageHeatmap';
 import { KenyaHealthChart } from '@/components/nuru/KenyaHealthChart';
 import { PhoneInfoArt } from '@/components/nuru/art/PhoneInfoArt';
+import { TrendingBoard } from '@/components/nuru/TrendingTopics';
+import { currentMonthLabel } from '@/lib/nuru/format';
 import { Card, CardContent } from '@/components/ui/card';
 import coverage from '@/data/researchCoverage.json';
 
@@ -59,6 +62,19 @@ export default function BlindSpotsPage() {
       </CardContent></Card>
     </div>
 
-    <Card><CardContent className="p-5 space-y-3"><h2 className="font-display text-xl font-semibold">What's next</h2><p className="text-sm text-muted-foreground">A privacy-first dashboard of the questions women actually ask is on the way. It will only ever show large groups — never a single person or a single question.</p></CardContent></Card>
+    <section className="space-y-5">
+      <div className="max-w-2xl space-y-3">
+        <p className="text-xs uppercase tracking-widest text-gold font-bold inline-flex items-center gap-1.5">
+          <Flame className="size-4" /> Most discussed · {currentMonthLabel()}
+        </p>
+        <h2 className="font-display text-2xl sm:text-3xl font-semibold">What the commons asks about most</h2>
+        <p className="text-muted-foreground">A monthly ranking of the topics women ask about — counted only in large aggregates, so a ranking can never point back to one person. Rising topics show where the knowledge gaps are widening fastest.</p>
+      </div>
+      <TrendingBoard />
+      <Card><CardContent className="p-5 space-y-2">
+        <h3 className="font-semibold text-sm">Why this ranking exists</h3>
+        <p className="text-sm text-muted-foreground leading-relaxed">When a topic climbs month after month, it is rarely a coincidence — it marks a place where clinics, schools and families are not answering the question either. Researchers and health workers use this ranking to decide what to write, translate and teach next. Figures are aggregate only (group sizes well above 25), with no county breakdown below threshold and no way to identify any single asker.</p>
+      </CardContent></Card>
+    </section>
   </div></SiteLayout>;
 }

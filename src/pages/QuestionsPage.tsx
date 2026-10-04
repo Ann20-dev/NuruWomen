@@ -13,6 +13,7 @@ import { Button } from '@/components/ui/button';
 import { useNuruQuestions } from '@/hooks/useNuruQuestions';
 import { SEED_QUESTIONS } from '@/data/questions';
 import { TOPICS } from '@/lib/nuru/topics';
+import { countSimilarQuestions } from '@/lib/nuru/similar';
 import { cn } from '@/lib/utils';
 
 export default function QuestionsPage() {
@@ -35,6 +36,18 @@ export default function QuestionsPage() {
     for (const q of SEED_QUESTIONS) map[q.id] = q.answers.length;
     return map;
   }, []);
+
+  // Live similar-question counts, computed on-device for live threads that
+  // carry no curated signal.
+  const similarCounts = useMemo(() => {
+    const map: Record<string, number> = {};
+    for (const q of questions ?? []) {
+      if (q.isSeed || q.signal) continue;
+      const count = countSimilarQuestions(q, questions ?? [], { excludeId: q.id });
+      if (count > 0) map[q.id] = count;
+    }
+    return map;
+  }, [questions]);
 
   return (
     <SiteLayout>
@@ -103,7 +116,7 @@ export default function QuestionsPage() {
             </p>
             {filtered.map((q, i) => (
               <Reveal key={q.id} delay={Math.min(i * 80, 400)}>
-                <QuestionCard question={q} answerCount={seedAnswerCounts[q.id]} />
+                <QuestionCard question={q} answerCount={seedAnswerCounts[q.id]} similarCount={similarCounts[q.id]} />
               </Reveal>
             ))}
           </div>

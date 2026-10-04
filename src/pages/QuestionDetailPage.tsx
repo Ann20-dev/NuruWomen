@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { BadgeCheck, Loader2, Lock, MessagesSquare, Send, Stethoscope } from 'lucide-react';
 import { useSeoMeta } from '@unhead/react';
@@ -18,15 +18,17 @@ import { Textarea } from '@/components/ui/textarea';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useToast } from '@/hooks/useToast';
 import { useCurrentUser } from '@/hooks/useCurrentUser';
-import { useNuruQuestion } from '@/hooks/useNuruQuestions';
+import { useNuruQuestion, useNuruQuestions } from '@/hooks/useNuruQuestions';
 import { useNuruAnswers } from '@/hooks/useNuruAnswers';
 import { useNuruPublish } from '@/hooks/useNuruPublish';
+import { countSimilarQuestions } from '@/lib/nuru/similar';
 import { evidenceCardBySlug } from '@/data/evidenceCards';
 import { ClinicianArt } from '@/components/nuru/art/ClinicianArt';
 import { SafetyBanner } from '@/components/nuru/SafetyBanner';
 import { RelatedReading } from '@/components/nuru/RelatedReading';
 import { retrieveForTopics } from '@/lib/nuru/retrieve';
 import { scanSafety, type SafetyFlag } from '@/lib/nuru/safety';
+import { detectKiswahili } from '@/lib/nuru/language';
 import { CLINICIAN_PUBKEYS } from '@/data/clinicians';
 import { timeAgo } from '@/lib/nuru/format';
 import NotFound from '@/pages/NotFound';
@@ -35,6 +37,7 @@ export default function QuestionDetailPage() {
   const { id } = useParams<{ id: string }>();
   const { data: question, isLoading } = useNuruQuestion(id);
   const { data: answers } = useNuruAnswers(id);
+  const { data: allQuestions } = useNuruQuestions();
   const { user } = useCurrentUser();
   const { postAnswer } = useNuruPublish();
   const { toast } = useToast();
@@ -43,10 +46,21 @@ export default function QuestionDetailPage() {
   const [draft, setDraft] = useState('');
   const [draftSafety, setDraftSafety] = useState<SafetyFlag[]>([]);
 
+  // Live questions have no curated signal — count similar threads on-device.
+  const liveSimilarCount = useMemo(() => {
+    if (!question || question.signal || !allQuestions) return undefined;
+    const count = countSimilarQuestions(
+      { title: question.title, content: question.content, topics: question.topics },
+      allQuestions,
+      { excludeId: question.id },
+    );
+    return count > 0 ? count : undefined;
+  }, [question, allQuestions]);
+
   // Warn on red-flag wording before an answer is published.
   useEffect(() => {
     const t = setTimeout(() => {
-      setDraftSafety(draft.trim().length >= 12 ? scanSafety(draft) : []);
+      setDraftSafety(draft.trim().length >= 12 ? scanSafety(draft, detectKiswahili(draft)) : []);
     }, 600);
     return () => clearTimeout(t);
   }, [draft]);
@@ -102,6 +116,19 @@ export default function QuestionDetailPage() {
                   {question.title}
                 </h1>
                 <p className="text-lg leading-relaxed whitespace-pre-wrap">{question.content}</p>
+                {question.image && (
+                  <figure className="space-y-1.5">
+                    <img
+                      src={question.image}
+                      alt="Non-graphic image attached to this anonymous question"
+                      className="max-h-96 w-auto max-w-full rounded-xl border bg-card object-contain"
+                      loading="lazy"
+                    />
+                    <figcaption className="text-xs text-muted-foreground">
+                      Community image — attached anonymously, not clinically reviewed.
+                    </figcaption>
+                  </figure>
+                )}
                 <div className="flex items-center justify-between gap-3 flex-wrap">
                   <TopicChips slugs={question.topics} />
                   <div className="flex items-center gap-2 text-xs text-muted-foreground">
@@ -110,8 +137,11 @@ export default function QuestionDetailPage() {
                 </div>
               </div>
 
-              {question.signal && (
-                <CommunitySignal similarCount={question.signal.similarCount} insight={question.signal.insight} />
+              {(question.signal || liveSimilarCount) && (
+                <CommunitySignal
+                  similarCount={question.signal?.similarCount ?? liveSimilarCount ?? 0}
+                  insight={question.signal?.insight}
+                />
               )}
 
               {/* Lived experience layer */}

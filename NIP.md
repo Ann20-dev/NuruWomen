@@ -25,7 +25,9 @@ existing NIPs and where it extends the protocol.
 | NIP-23 | Long-form, clinician-reviewed library articles (kind `30023`). |
 | NIP-32 | Self-labels classify answer type (`nuru.answer-type` namespace). |
 | NIP-51 | Verified-clinician registry as a follow set (kind `30000`). |
+| NIP-52 | Community health events as time-based calendar events (kind `31923`). |
 | NIP-25 | "Helpful" votes are kind `7` reactions with content `+`. |
+| NIP-94 | Optional question images as `imeta` file metadata (uploaded via Blossom). |
 
 ## Event schemas
 
@@ -110,6 +112,61 @@ Structured, clinician-reviewed education attached to a topic. Addressed by
 
 Clients must attribute trust via `authors` (the commons authority pubkey) —
 the `d` tag alone is not a trust boundary.
+
+### Community event — kind `31923` (NIP-52 time-based calendar event)
+
+Women's-health events (screening camps, webinars, support circles, trainings)
+published by clinics, organisers or community groups.
+
+```jsonc
+{
+  "kind": 31923,
+  "content": "Plain-language description of the event.",
+  "tags": [
+    ["d", "unique-event-slug"],
+    ["title", "Free cervical screening camp"],
+    ["start", "1798765200"],            // unix seconds
+    ["end", "1798786800"],
+    ["location", "Nairobi · Kibera, DOOR Hall"],   // or "Online (Zoom)"
+    ["t", "nuru-commons"],              // commons marker — filterable
+    ["t", "screening"],                 // one of screening|webinar|community|training|awareness
+    ["t", "cervical-screening"],        // topic tags (optional)
+    ["organizer", "AMREF Health Africa"],
+    ["cost", "Free"],
+    ["language", "English"],
+    ["language", "Kiswahili"],
+    ["r", "https://example.org/event"], // optional details/registration link
+    ["alt", "Women's health community event on NuruWomen"]
+  ]
+}
+```
+
+Query: `{ kinds: [31923], '#t': ['nuru-commons'] }`. Events whose `start` is
+invalid or missing, or without a `title`, are ignored by clients.
+
+### Question image attachment — NIP-94 `imeta` on kind `1`
+
+A question may carry **one optional, non-graphic** image (e.g. a photo of a
+product label or a clinic poster — never medical records or identifying
+documents). Files are re-encoded client-side before upload so EXIF metadata
+(device, GPS, timestamps) cannot leak, then uploaded to a Blossom server.
+
+```jsonc
+{
+  "kind": 1,
+  "content": "Anonymized question text.",
+  "tags": [
+    ["t", "nuru-commons"],
+    ["image", "https://blossom.server/<sha256>.jpg"],
+    ["imeta", "url https://blossom.server/<sha256>.jpg", "m image/jpeg", "x <sha256>", "size 84312"]
+  ]
+}
+```
+
+Clients render the image below the question text with a caption that
+community images are not clinically reviewed. Graphic or identifying images
+MUST be refused by the uploader UI; relays and clients may hide flagged
+images.
 
 ### Verified-clinician registry — kind `30000` (NIP-51 follow set)
 

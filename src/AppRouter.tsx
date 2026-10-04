@@ -11,6 +11,7 @@ const LibraryPage = lazy(() => import("./pages/LibraryPage"));
 const ResearchPage = lazy(() => import("./pages/ResearchPage"));
 const ArticlePage = lazy(() => import("./pages/ArticlePage"));
 const TopicPage = lazy(() => import("./pages/TopicPage"));
+const EventsPage = lazy(() => import("./pages/EventsPage"));
 const BlindSpotsPage = lazy(() => import("./pages/BlindSpotsPage"));
 const AboutPage = lazy(() => import("./pages/AboutPage"));
 import { NIP19Page } from "./pages/NIP19Page";
@@ -36,6 +37,7 @@ export default function AppRouter() {
         <Route path="/research" element={<ResearchPage />} />
         <Route path="/library/:slug" element={<ArticlePage />} />
         <Route path="/topics/:slug" element={<TopicPage />} />
+        <Route path="/events" element={<EventsPage />} />
         <Route path="/blind-spots" element={<BlindSpotsPage />} />
         <Route path="/about" element={<AboutPage />} />
         {/* NIP-19 route for npub1, note1, naddr1, nevent1, nprofile1 */}

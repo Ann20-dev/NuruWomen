@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 440" width="640" height="440">
+  <!-- A hand-drawn cycle-tracking calendar card, the kind of non-graphic
+       image someone might attach to a question about irregular periods. -->
+  <rect width="640" height="440" fill="#f2ddd3"/>
+  <rect x="0" y="0" width="640" height="440" fill="#b0532e" opacity="0.08"/>
+
+  <!-- paper card -->
+  <g transform="translate(70 46) rotate(-1.2 250 175)">
+    <rect x="0" y="0" width="500" height="350" rx="10" fill="#faf6f0" stroke="#d9c4b2" stroke-width="2"/>
+    <rect x="0" y="0" width="500" height="54" rx="10" fill="#7c2942"/>
+    <rect x="0" y="44" width="500" height="10" fill="#7c2942"/>
+    <text x="24" y="36" font-family="Georgia, serif" font-size="24" font-weight="bold" fill="#faf6f0">My cycle — March</text>
+
+    <!-- weekday header -->
+    <g font-family="Georgia, serif" font-size="13" fill="#6f4529" opacity="0.8">
+      <text x="38" y="82">M</text><text x="102" y="82">T</text><text x="166" y="82">W</text>
+      <text x="230" y="82">T</text><text x="294" y="82">F</text><text x="358" y="82">S</text><text x="422" y="82">S</text>
+    </g>
+
+    <!-- day grid -->
+    <g font-family="Georgia, serif" font-size="15" fill="#3d2b22">
+      <!-- row 1 -->
+      <text x="36" y="112">1</text><text x="100" y="112">2</text><text x="164" y="112">3</text><text x="228" y="112">4</text><text x="292" y="112">5</text><text x="356" y="112">6</text><text x="420" y="112">7</text>
+      <!-- row 2 -->
+      <text x="36" y="152">8</text><text x="100" y="152">9</text><text x="160" y="152">10</text><text x="224" y="152">11</text><text x="288" y="152">12</text><text x="352" y="152">13</text><text x="416" y="152">14</text>
+      <!-- row 3 -->
+      <text x="32" y="192">15</text><text x="96" y="192">16</text><text x="160" y="192">17</text><text x="224" y="192">18</text><text x="288" y="192">19</text><text x="352" y="192">20</text><text x="416" y="192">21</text>
+      <!-- row 4 -->
+      <text x="32" y="232">22</text><text x="96" y="232">23</text><text x="160" y="232">24</text><text x="224" y="232">25</text><text x="288" y="232">26</text><text x="352" y="232">27</text><text x="416" y="232">28</text>
+      <!-- row 5 -->
+      <text x="32" y="272">29</text><text x="96" y="272">30</text><text x="160" y="272">31</text>
+    </g>
+
+    <!-- circled period days (rows: day 2-6) -->
+    <g fill="none" stroke="#b0532e" stroke-width="2.6">
+      <ellipse cx="105" cy="106" rx="15" ry="12"/>
+      <ellipse cx="169" cy="106" rx="15" ry="12"/>
+      <ellipse cx="233" cy="106" rx="15" ry="12"/>
+      <ellipse cx="297" cy="106" rx="15" ry="12"/>
+      <ellipse cx="361" cy="106" rx="15" ry="12"/>
+    </g>
+    <!-- previous period, 45 days earlier, marked at top corner -->
+    <g fill="none" stroke="#b0532e" stroke-width="2.2" opacity="0.65">
+      <ellipse cx="41" cy="146" rx="15" ry="12" stroke-dasharray="4 3"/>
+      <ellipse cx="105" cy="146" rx="15" ry="12" stroke-dasharray="4 3"/>
+      <ellipse cx="169" cy="146" rx="15" ry="12" stroke-dasharray="4 3"/>
+    </g>
+
+    <!-- annotation: 45 days -->
+    <path d="M 180 236 C 240 218 330 216 396 206" fill="none" stroke="#7c2942" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arr)"/>
+    <defs>
+      <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+        <path d="M 0 0 L 6 3 L 0 6 Z" fill="#7c2942"/>
+      </marker>
+    </defs>
+    <text x="236" y="212" font-family="Georgia, serif" font-size="17" font-style="italic" fill="#7c2942">45 days this time?</text>
+
+    <!-- small sticky note -->
+    <g transform="translate(356 262) rotate(3)">
+      <rect x="0" y="0" width="118" height="64" rx="4" fill="#f7ecd4" stroke="#d9a441" stroke-width="1.6"/>
+      <text x="10" y="26" font-family="Georgia, serif" font-size="13" fill="#6f4529">last one was</text>
+      <text x="10" y="44" font-family="Georgia, serif" font-size="13" fill="#6f4529">2 months ago</text>
+    </g>
+  </g>
+</svg>

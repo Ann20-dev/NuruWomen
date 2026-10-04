@@ -47,6 +47,8 @@ export function useNuruPublish() {
       content: string;
       topics: string[];
       anonymous: boolean;
+      /** Optional non-graphic image already uploaded to a Blossom server. */
+      image?: { url: string; sha256: string; mime: string; size: number };
     }) =>
       signAndPublish(
         {
@@ -56,6 +58,18 @@ export function useNuruPublish() {
             ['t', NURU_TAG],
             ...input.topics.map((t) => ['t', t]),
             ['subject', input.title],
+            ...(input.image
+              ? [
+                  ['image', input.image.url],
+                  [
+                    'imeta',
+                    `url ${input.image.url}`,
+                    `m ${input.image.mime}`,
+                    `x ${input.image.sha256}`,
+                    `size ${String(input.image.size)}`,
+                  ],
+                ]
+              : []),
             ['alt', "Anonymous women's health question on NuruWomen"],
           ],
         },

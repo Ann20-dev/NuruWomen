@@ -11,6 +11,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { NostrLoginProvider } from '@nostrify/react/login';
 import { AppProvider } from '@/components/AppProvider';
 import { AppConfig } from '@/contexts/AppContext';
+import { UiLanguageProvider } from '@/contexts/UiLanguageContext';
 import { APP_RELAYS } from '@/lib/appRelays';
 import AppRouter from './AppRouter';
 
@@ -51,12 +52,14 @@ export function App() {
         <QueryClientProvider client={queryClient}>
           <NostrLoginProvider storageKey='nostr:login'>
             <NostrProvider>
-              <TooltipProvider>
-                <Toaster />
-                <Suspense fallback={<div role="status" className="p-8 text-center">Loading NuruWomen...</div>}>
-                  <AppRouter />
-                </Suspense>
-              </TooltipProvider>
+              <UiLanguageProvider>
+                <TooltipProvider>
+                  <Toaster />
+                  <Suspense fallback={<div role="status" className="p-8 text-center">Loading NuruWomen...</div>}>
+                    <AppRouter />
+                  </Suspense>
+                </TooltipProvider>
+              </UiLanguageProvider>
             </NostrProvider>
           </NostrLoginProvider>
         </QueryClientProvider>

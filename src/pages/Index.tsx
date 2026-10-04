@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import {
   ArrowRight,
   Fingerprint,
+  Flame,
   GitFork,
   KeyRound,
   MessageCircleQuestion,
@@ -27,10 +28,14 @@ import { CountUp } from '@/components/nuru/CountUp';
 import { KitengeDivider } from '@/components/nuru/art/KitengeDivider';
 import { TopicArt, type TopicArtKind } from '@/components/nuru/art/TopicArt';
 import { WomenCircleArt } from '@/components/nuru/art/WomenCircleArt';
+import { TrendingStrip } from '@/components/nuru/TrendingTopics';
+import { currentMonthLabel } from '@/lib/nuru/format';
 import heartPulseAnimation from '@/assets/lottie/heart-pulse.json';
 import { SEED_QUESTIONS } from '@/data/questions';
 import { evidenceCardBySlug } from '@/data/evidenceCards';
 import { BLIND_SPOT_TOTAL } from '@/data/blindspots';
+import { useUiLanguage } from '@/contexts/UiLanguageContext';
+import { getArea } from '@/lib/nuru/topics';
 import { timeAgo } from '@/lib/nuru/format';
 
 const EXAMPLE_QUESTION = SEED_QUESTIONS[0];
@@ -38,12 +43,12 @@ const EXAMPLE_EVIDENCE = evidenceCardBySlug(EXAMPLE_QUESTION.evidenceCard ?? '')
 const EXAMPLE_LIVED = EXAMPLE_QUESTION.answers.find((a) => a.type === 'lived-experience');
 const EXAMPLE_CLINICAL = EXAMPLE_QUESTION.answers.find((a) => a.type === 'clinical-response');
 
-const TOPIC_TILES: { art: TopicArtKind; name: string; to: string }[] = [
-  { art: 'menstrual-health', name: 'Menstrual health', to: '/library?area=menstrual-health' },
-  { art: 'sexual-health', name: 'Sexual health', to: '/library?area=sexual-health' },
-  { art: 'healthy-ageing', name: 'Healthy ageing', to: '/library?area=healthy-ageing' },
-  { art: 'postpartum', name: 'Postpartum', to: '/library?area=postpartum' },
-  { art: 'mental-health', name: 'Mental health', to: '/library?area=mental-health' },
+const TOPIC_TILES: { art: TopicArtKind; area: string }[] = [
+  { art: 'menstrual-health', area: 'menstrual-health' },
+  { art: 'sexual-health', area: 'sexual-health' },
+  { art: 'healthy-ageing', area: 'healthy-ageing' },
+  { art: 'postpartum', area: 'postpartum' },
+  { art: 'mental-health', area: 'mental-health' },
 ];
 
 export default function Index() {
@@ -54,6 +59,8 @@ export default function Index() {
   });
 
   const [askHover, setAskHover] = useState(false);
+  const { t, lang } = useUiLanguage();
+  const heroHighlights = t('hero.titleHighlights').split(',').map((w) => w.trim()).filter(Boolean);
 
   return (
     <SiteLayout>
@@ -63,14 +70,13 @@ export default function Index() {
           <div className="relative z-10 space-y-7">
             <p className="inline-flex items-center gap-2 rounded-full border bg-card px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-primary animate-rise">
               <ShieldCheck className="size-3.5" />
-              Private by design · Free &amp; open · Community owned
+              {t('hero.badge')}
             </p>
             <h1 className="font-display font-semibold text-[2.6rem] leading-[1.05] sm:text-6xl tracking-tight">
-              <AnimatedWords text="What were you never taught about your body?" highlight={['never', 'taught']} highlightClassName="hero-word" />
+              <AnimatedWords text={t('hero.title')} highlight={heroHighlights} highlightClassName="hero-word" />
             </h1>
             <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-xl animate-fade-in" style={{ animationDelay: '0.55s' }}>
-              Ask sensitive health questions privately. Explore community stories
-              and clinical responses — clearly labelled, never mixed up.
+              {t('hero.subtitle')}
             </p>
             <div className="flex flex-wrap items-center gap-3 animate-fade-in" style={{ animationDelay: '0.7s' }}>
               <Button asChild size="lg" className="rounded-full text-base px-6">
@@ -82,21 +88,21 @@ export default function Index() {
                   onBlur={() => setAskHover(false)}
                 >
                   <MessageCircleQuestion className="size-5" />
-                  Ask a question
+                  {t('hero.ask')}
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="rounded-full text-base px-6 bg-card">
                 <Link to="/library">
-                  Explore the library
+                  {t('hero.explore')}
                   <ArrowRight className="size-4" />
                 </Link>
               </Button>
             </div>
             {/* Quiet reassurance, not feature cards */}
             <div className="flex flex-wrap gap-x-7 gap-y-2 pt-2 text-[0.82rem] text-muted-foreground/90 animate-fade-in" style={{ animationDelay: '0.85s' }}>
-              <span className="inline-flex items-center gap-1.5"><Fingerprint className="size-3.5 text-primary/70" /> No email, phone or ID required</span>
-              <span className="inline-flex items-center gap-1.5"><KeyRound className="size-3.5 text-primary/70" /> Your identity stays yours</span>
-              <span className="inline-flex items-center gap-1.5"><GitFork className="size-3.5 text-primary/70" /> Open for anyone to build on</span>
+              <span className="inline-flex items-center gap-1.5"><Fingerprint className="size-3.5 text-primary/70" /> {t('hero.reassure1')}</span>
+              <span className="inline-flex items-center gap-1.5"><KeyRound className="size-3.5 text-primary/70" /> {t('hero.reassure2')}</span>
+              <span className="inline-flex items-center gap-1.5"><GitFork className="size-3.5 text-primary/70" /> {t('hero.reassure3')}</span>
             </div>
           </div>
 
@@ -112,9 +118,9 @@ export default function Index() {
         <div className="container py-16 sm:py-24">
           <Reveal>
           <div className="max-w-2xl space-y-3 mb-10">
-            <p className="text-xs font-bold uppercase tracking-[0.14em] text-primary">An example thread</p>
+            <p className="text-xs font-bold uppercase tracking-[0.14em] text-primary">{t('home.exampleKicker')}</p>
             <h2 className="font-display font-semibold text-3xl sm:text-4xl tracking-tight">
-              One question, three kinds of answers
+              {t('home.exampleTitle')}
             </h2>
           </div>
           </Reveal>
@@ -201,7 +207,7 @@ export default function Index() {
 
               <Button asChild variant="outline" className="rounded-full">
                 <Link to={`/question/${EXAMPLE_QUESTION.id}`}>
-                  Read the full thread <ArrowRight className="size-4" />
+                  {t('home.readThread')} <ArrowRight className="size-4" />
                 </Link>
               </Button>
             </Reveal>
@@ -214,8 +220,8 @@ export default function Index() {
                 />
               )}
               <p className="text-sm text-muted-foreground leading-relaxed px-1">
-                Stories stay stories. Clinical answers stay clinical. Evidence stays sourced.{' '}
-                <Link to="/about" className="text-primary font-medium hover:underline">How it works</Link>
+                {t('home.layersNote')}{' '}
+                <Link to="/about" className="text-primary font-medium hover:underline">{t('home.howItWorks')}</Link>
               </p>
             </Reveal>
           </div>
@@ -226,13 +232,12 @@ export default function Index() {
       <section className="container py-16 sm:py-24">
         <div className="grid gap-10 lg:grid-cols-2 items-center mb-12">
           <Reveal className="space-y-3 max-w-xl">
-            <p className="text-xs font-bold uppercase tracking-[0.14em] text-primary">The five areas</p>
+            <p className="text-xs font-bold uppercase tracking-[0.14em] text-primary">{t('home.areasKicker')}</p>
             <h2 className="font-display font-semibold text-3xl sm:text-4xl tracking-tight">
-              Every stage of a woman’s life, covered
+              {t('home.areasTitle')}
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Menstrual health, sexual health, healthy ageing, postpartum and mental health —
-              each with its own shelf in the library, and its own safe corner of the commons.
+              {t('home.areasBody')}
             </p>
           </Reveal>
           <Reveal delay={140}>
@@ -240,20 +245,53 @@ export default function Index() {
           </Reveal>
         </div>
         <div className="grid gap-4 grid-cols-2 lg:grid-cols-5">
-          {TOPIC_TILES.map((tile, i) => (
-            <Reveal key={tile.art} delay={Math.min(i * 90, 360)}>
-              <Link
-                to={tile.to}
-                className="group block rounded-xl border bg-card overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:border-primary/30"
-              >
-                <TopicArt topic={tile.art} className="block w-full aspect-[3/2]" />
-                <span className="block p-3.5 text-sm font-semibold text-center transition-colors group-hover:text-primary">
-                  {tile.name}
-                </span>
-              </Link>
-            </Reveal>
-          ))}
+          {TOPIC_TILES.map((tile, i) => {
+            const area = getArea(tile.area);
+            const name = lang === 'sw' ? (area?.swahili ?? area?.name ?? tile.area) : (area?.name ?? tile.area);
+            return (
+              <Reveal key={tile.art} delay={Math.min(i * 90, 360)}>
+                <Link
+                  to={`/library?area=${tile.area}`}
+                  className="group block rounded-xl border bg-card overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:border-primary/30"
+                >
+                  <TopicArt topic={tile.art} className="block w-full aspect-[3/2]" />
+                  <span className="block p-3.5 text-sm font-semibold text-center transition-colors group-hover:text-primary">
+                    {name}
+                  </span>
+                </Link>
+              </Reveal>
+            );
+          })}
         </div>
+      </section>
+
+      {/* ── Most discussed this month ────────────────────── */}
+      <section className="container pb-16 sm:pb-24">
+        <Reveal>
+          <div className="rounded-2xl border border-gold/30 bg-gold-soft/40 px-6 py-7 sm:px-9 sm:py-8 space-y-5">
+            <div className="flex flex-wrap items-end justify-between gap-x-8 gap-y-3">
+              <div className="space-y-1.5">
+                <p className="text-xs font-bold uppercase tracking-[0.14em] text-gold inline-flex items-center gap-1.5">
+                  <Flame className="size-4" /> {t('home.trendingKicker')} · {currentMonthLabel()}
+                </p>
+                <h2 className="font-display font-semibold text-2xl sm:text-3xl tracking-tight">
+                  {t('home.trendingTitle')}
+                </h2>
+              </div>
+              <Link
+                to="/blind-spots"
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
+              >
+                {t('home.trendingCta')}
+                <ArrowRight className="size-4" />
+              </Link>
+            </div>
+            <TrendingStrip />
+            <p className="text-xs text-muted-foreground">
+              {t('home.trendingNote')}
+            </p>
+          </div>
+        </Reveal>
       </section>
 
       <KitengeDivider />
@@ -268,15 +306,15 @@ export default function Index() {
               </span>
               <div className="min-w-0">
                 <p className="font-display font-semibold text-xl sm:text-2xl leading-snug">
-                  <CountUp value={BLIND_SPOT_TOTAL} /> community question counts
+                  <CountUp value={BLIND_SPOT_TOTAL} /> {t('home.coverageCount')}
                 </p>
                 <p className="text-sm text-muted-foreground">
-                  Counted together, never individually — a map of knowledge gaps.
+                  {t('home.coverageSub')}
                 </p>
               </div>
             </div>
             <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
-              See the Blind Spot dashboard
+              {t('home.coverageCta')}
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
             </span>
           </Link>
@@ -292,20 +330,20 @@ export default function Index() {
           <div className="absolute -bottom-48 right-[10%] size-[24rem] rounded-full bg-gold/20 blur-3xl animate-float-slow" aria-hidden />
           <LottiePlayer animationData={heartPulseAnimation} className="relative mx-auto size-16" />
           <h2 className="relative font-display font-semibold text-3xl sm:text-5xl tracking-tight max-w-2xl mx-auto leading-tight">
-            Ask the question you’ve been carrying.
+            {t('home.ctaTitle')}
           </h2>
           <p className="relative text-lg text-primary-foreground/85 max-w-xl mx-auto leading-relaxed">
-            Explore questions with English or Kiswahili analysis and clearly labelled responses.
+            {t('home.ctaBody')}
           </p>
           <div className="relative flex flex-wrap justify-center gap-3">
             <Button asChild size="lg" variant="secondary" className="rounded-full text-base px-7">
               <Link to="/ask">
                 <MessageCircleQuestion className="size-5" />
-                Ask a question
+                {t('home.ctaAsk')}
               </Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="rounded-full text-base px-7 bg-transparent border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground/10">
-              <Link to="/questions">See what women are asking</Link>
+              <Link to="/questions">{t('home.ctaBrowse')}</Link>
             </Button>
           </div>
         </div>

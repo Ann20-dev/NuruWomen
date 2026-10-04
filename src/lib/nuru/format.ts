@@ -17,3 +17,40 @@ export function timeAgo(timestamp: number): string {
 export function formatNumber(n: number): string {
   return n.toLocaleString('en-KE');
 }
+
+/** "Tue, 10 Nov 2026" */
+export function formatEventDate(timestamp: number): string {
+  return new Intl.DateTimeFormat('en-KE', {
+    weekday: 'short',
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  }).format(new Date(timestamp * 1000));
+}
+
+/** "9:00 AM" */
+export function formatEventTime(timestamp: number): string {
+  return new Intl.DateTimeFormat('en-KE', {
+    hour: 'numeric',
+    minute: '2-digit',
+  }).format(new Date(timestamp * 1000));
+}
+
+/** Grouping key "2026-11" for month sections. */
+export function eventMonthKey(timestamp: number): string {
+  const d = new Date(timestamp * 1000);
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+}
+
+/** "November 2026" from an eventMonthKey. */
+export function formatEventMonth(monthKey: string): string {
+  const [year, month] = monthKey.split('-').map(Number);
+  return new Intl.DateTimeFormat('en-KE', { month: 'long', year: 'numeric' }).format(
+    new Date(year, month - 1, 1),
+  );
+}
+
+/** "November 2026" for right now — used by the monthly trending ranking. */
+export function currentMonthLabel(): string {
+  return new Intl.DateTimeFormat('en-KE', { month: 'long', year: 'numeric' }).format(new Date());
+}

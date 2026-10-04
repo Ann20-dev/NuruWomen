@@ -26,6 +26,8 @@ export interface SeedQuestion {
   answers: SeedAnswer[];
   /** Slug of the attached evidence card, if one exists. */
   evidenceCard?: string;
+  /** Optional non-graphic image (https URL) attached to the question. */
+  image?: string;
   /** Aggregated community signal shown under the question. */
   signal?: { similarCount: number; insight?: string };
 }
@@ -80,6 +82,31 @@ export interface BlindSpotStat {
   note?: string;
 }
 
+/* ---------- Community events ---------- */
+
+export type HealthEventType = 'screening' | 'webinar' | 'community' | 'training' | 'awareness';
+
+export interface HealthEvent {
+  id: string;
+  title: string;
+  summary: string;
+  /** Unix timestamp (seconds) for the start; optional end. */
+  startsAt: number;
+  endsAt?: number;
+  /** Human-readable place — "Nairobi · Kibera" or "Online (Zoom)". */
+  location: string;
+  isOnline: boolean;
+  type: HealthEventType;
+  organizer: string;
+  cost: string;
+  languages: string[];
+  topics: string[];
+  /** Optional https link for registration or details. */
+  link?: string;
+  isSeed: boolean;
+  event?: NostrEvent;
+}
+
 /* ---------- Unified view models (seed + live Nostr events) ---------- */
 
 export interface Question {
@@ -93,6 +120,8 @@ export interface Question {
   createdAt: number;
   isSeed: boolean;
   evidenceCard?: string;
+  /** Optional non-graphic image (https URL) attached to the question. */
+  image?: string;
   signal?: { similarCount: number; insight?: string };
   event?: NostrEvent;
 }

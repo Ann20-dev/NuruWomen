@@ -323,10 +323,11 @@ export const SEED_QUESTIONS: SeedQuestion[] = [
     id: seedId('q-irregular-45-days'),
     title: 'My periods come every 45 days or even two months',
     content:
-      'I am 26. My periods have never been "monthly" — they come after 45 days, sometimes two months. I am not pregnant. Should I worry about this for the future?',
+      'I am 26. My periods have never been "monthly" — they come after 45 days, sometimes two months. I am not pregnant. Should I worry about this for the future? I attached my cycle calendar so you can see the pattern.',
     topics: ['irregular-periods', 'pcos', 'fertility'],
     ...persona('Muthoni'),
     createdAt: now - 9 * DAY,
+    image: '/images/cycle-calendar.svg',
     signal: {
       similarCount: 1482,
       insight: 'Irregular periods are the #1 question cluster in the commons — and the top gateway to undiagnosed PCOS.',

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronDown, MessageCircle, TrendingUp } from 'lucide-react';
+import { ChevronDown, Image as ImageIcon, MessageCircle, TrendingUp } from 'lucide-react';
 
 import { Card, CardContent } from '@/components/ui/card';
 import { TopicChips } from '@/components/nuru/TopicChips';
@@ -9,13 +9,24 @@ import { timeAgo } from '@/lib/nuru/format';
 import { cn } from '@/lib/utils';
 import type { Question } from '@/lib/nuru/types';
 
-export function QuestionCard({ question, answerCount }: { question: Question; answerCount?: number }) {
+export function QuestionCard({
+  question,
+  answerCount,
+  similarCount,
+}: {
+  question: Question;
+  answerCount?: number;
+  /** Live-computed count of similar threads (seed questions carry their own curated signal). */
+  similarCount?: number;
+}) {
   const [open, setOpen] = useState(false);
 
   const countLabel =
     typeof answerCount === 'number'
       ? `${answerCount} ${answerCount === 1 ? 'answer' : 'answers'}`
       : 'Answers';
+
+  const similar = question.signal?.similarCount ?? similarCount;
 
   return (
     <Card className="group transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md hover:border-primary/25">
@@ -27,6 +38,15 @@ export function QuestionCard({ question, answerCount }: { question: Question; an
             </h3>
           </Link>
           <span className="flex items-center gap-1.5 shrink-0">
+            {question.image && (
+              <span
+                className="hidden sm:inline-flex items-center gap-1 rounded-full bg-secondary/70 text-muted-foreground px-2.5 py-1 text-[0.7rem] font-semibold"
+                title="A non-graphic image is attached to this question"
+              >
+                <ImageIcon className="size-3" />
+                Photo
+              </span>
+            )}
             {!question.isSeed && (
               <span
                 className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-clinical/30 bg-clinical-soft text-clinical px-2.5 py-1 text-[0.7rem] font-semibold"
@@ -39,13 +59,13 @@ export function QuestionCard({ question, answerCount }: { question: Question; an
                 Live
               </span>
             )}
-            {question.signal && (
+            {typeof similar === 'number' && similar > 0 && (
               <span
                 className="hidden sm:inline-flex items-center gap-1 rounded-full bg-gold-soft text-gold px-2.5 py-1 text-[0.7rem] font-semibold"
                 title="Similar questions asked in the commons"
               >
                 <TrendingUp className="size-3" />
-                {question.signal.similarCount.toLocaleString()} similar
+                {similar.toLocaleString()} similar
               </span>
             )}
           </span>

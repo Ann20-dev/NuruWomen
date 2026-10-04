@@ -7,6 +7,7 @@ import type { Question } from '@/lib/nuru/types';
 import { SEED_QUESTIONS } from '@/data/questions';
 import { demoStore } from '@/lib/nuru/demoStore';
 import { isHiddenContent } from '@/lib/nuru/moderation';
+import { sanitizeUrl } from '@/lib/utils';
 
 export function eventToQuestion(event: NostrEvent): Question {
   const subject = event.tags.find(([n]) => n === 'subject')?.[1];
@@ -17,6 +18,11 @@ export function eventToQuestion(event: NostrEvent): Question {
   const firstLine = event.content.split('\n')[0];
   const title = subject ?? (firstLine.length > 72 ? `${firstLine.slice(0, 72)}…` : firstLine);
 
+  // Attached image: `image` tag first, then a NIP-94 imeta url. https only.
+  const imageRaw =
+    event.tags.find(([n]) => n === 'image')?.[1] ??
+    event.tags.find(([n]) => n === 'imeta')?.slice(1).find((v) => v.startsWith('url '))?.slice(4);
+
   return {
     id: event.id,
     title,
@@ -25,6 +31,7 @@ export function eventToQuestion(event: NostrEvent): Question {
     authorPubkey: event.pubkey,
     createdAt: event.created_at,
     isSeed: false,
+    image: sanitizeUrl(imageRaw),
     event,
   };
 }
@@ -45,6 +52,7 @@ function seedQuestions(excludeIds: Set<string>): Question[] {
     createdAt: q.createdAt,
     isSeed: true,
     evidenceCard: q.evidenceCard,
+    image: q.image,
     signal: q.signal,
   }));
 }
@@ -128,6 +136,7 @@ export function useNuruQuestion(id: string | undefined) {
         createdAt: seed.createdAt,
         isSeed: true,
         evidenceCard: seed.evidenceCard,
+        image: seed.image,
         signal: seed.signal,
       };
       return question;

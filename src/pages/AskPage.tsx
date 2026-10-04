@@ -7,6 +7,8 @@ import { SiteLayout } from '@/components/nuru/SiteLayout';
 import { SafetyBanner } from '@/components/nuru/SafetyBanner';
 import { PrivacyCheckPanel } from '@/components/nuru/PrivacyCheckPanel';
 import { AiCheckPanel } from '@/components/nuru/AiCheckPanel';
+import { ImageAttachment } from '@/components/nuru/ImageAttachment';
+import { SimilarQuestions } from '@/components/nuru/SimilarQuestions';
 import { useNuruAnalysis } from '@/hooks/useNuruAnalysis';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -15,6 +17,9 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/useToast';
 import { useNuruPublish } from '@/hooks/useNuruPublish';
+import { useNuruQuestions } from '@/hooks/useNuruQuestions';
+import type { UploadedImage } from '@/hooks/useNuruImageUpload';
+import { countSimilarQuestions, findSimilarQuestions } from '@/lib/nuru/similar';
 import { scanForPii, redactPii, type PiiFinding } from '@/lib/nuru/privacy';
 import { scanSafety, type SafetyFlag } from '@/lib/nuru/safety';
 import { classifyTopics } from '@/lib/nuru/classify';
@@ -38,6 +43,7 @@ export default function AskPage() {
   const navigate = useNavigate();
   const { toast } = useToast();
   const { askQuestion } = useNuruPublish();
+  const { data: allQuestions } = useNuruQuestions();
 
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
@@ -47,6 +53,8 @@ export default function AskPage() {
   const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
   const [privacyConfirmed, setPrivacyConfirmed] = useState(false);
   const [responseLanguage, setResponseLanguage] = useState<'en' | 'sw'>('en');
+  const [image, setImage] = useState<UploadedImage | null>(null);
+  const [imageBusy, setImageBusy] = useState(false);
   const { status: aiStatus, analysis, source: aiSource, error: aiError, analyze, invalidate } = useNuruAnalysis();
 
   // Python's len() counts codepoints; .length counts UTF-16 units and would
@@ -60,6 +68,20 @@ export default function AskPage() {
     () => retrieveForText(`${title} ${content}`),
     [title, content],
   );
+
+  // Live "similar questions" matching — on-device, against the questions
+  // already loaded for the commons. Uses the writer's current topic
+  // selection, which sharpens as they accept/edit suggestions.
+  const similar = useMemo(() => {
+    if (!allQuestions || (title.trim().length < 8 && selectedTopics.length === 0)) {
+      return { matches: [], count: 0 };
+    }
+    const target = { title, content, topics: selectedTopics };
+    return {
+      matches: findSimilarQuestions(target, allQuestions, { limit: 3 }),
+      count: countSimilarQuestions(target, allQuestions),
+    };
+  }, [title, content, selectedTopics, allQuestions]);
 
   // Kiswahili cue detection preselects the analysis language; a manual
   // toggle always wins.
@@ -85,11 +107,11 @@ export default function AskPage() {
         return;
       }
       setFindings(scanForPii(text));
-      setSafety(scanSafety(text));
+      setSafety(scanSafety(text, responseLanguage));
       setChecked(true);
     }, 600);
     return () => clearTimeout(t);
-  }, [title, content]);
+  }, [title, content, responseLanguage]);
 
   // Auto-tag every suggested topic (up to 4) until the writer edits the
   // selection manually (render-time state adjustment, see
@@ -149,6 +171,7 @@ export default function AskPage() {
     findings.length === 0 &&
     !aiIdentifiers &&
     privacyConfirmed &&
+    !imageBusy &&
     !askQuestion.isPending;
 
   const publish = async () => {
@@ -159,6 +182,7 @@ export default function AskPage() {
         content: DOMPurify.sanitize(content.trim()),
         topics: selectedTopics,
         anonymous: true,
+        image: image ?? undefined,
       });
       toast({
         title: 'Question published',
@@ -222,6 +246,8 @@ export default function AskPage() {
                 {bodyLength} / {BODY_MAX_CODEPOINTS}
               </p>
             </div>
+
+            <ImageAttachment onChange={setImage} onStatusChange={(s) => setImageBusy(s === 'busy')} />
 
             <PrivacyCheckPanel findings={findings} checked={checked} onApplyRedaction={findings.length > 0 ? applyRedaction : undefined} />
             <SafetyBanner flags={safety} />
@@ -312,6 +338,8 @@ export default function AskPage() {
                 ))}
               </div>
             </div>
+
+            <SimilarQuestions matches={similar.matches} count={similar.count} />
 
             <RelatedReading retrieval={retrieval} />
 
