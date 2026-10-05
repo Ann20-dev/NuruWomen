@@ -181,6 +181,14 @@ For a new deployment:
 5. Configure a secure `WHC_API_KEY` if it is not generated through the Blueprint.
 6. Deploy and verify `/api/health`.
 
+The Blueprint sets `autoDeployTrigger: 'off'`, so nothing deploys on its own — sync and deploy are both manual steps:
+
+1. **Sync** the Blueprint when you change `render.yaml` (Blueprint > **Sync**).
+2. **Deploy** the `nuruwomen` service when you want a commit live (Service > **Manual Deploy** > **Deploy latest commit**).
+3. Verify `/api/health` once the deploy completes.
+
+See `docs/DEPLOY_RENDER.md` for the full manual workflow and troubleshooting.
+
 ## Validation
 
 Useful project checks:
