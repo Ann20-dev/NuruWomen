@@ -89,6 +89,50 @@ const en = {
   'common.askQuestion': 'Ask a question',
   'common.askAnonymously': 'Ask anonymously',
   'common.language': 'Language',
+
+  // Knowledge-layer labels (the three-layer system)
+  'layer.lived': 'Lived experience',
+  'layer.clinical': 'Clinical response',
+  'layer.evidence': 'Draft evidence card',
+  'layer.livedDisclaimer': 'Personal experience, not medical advice.',
+  'layer.clinicalDisclaimer': 'Clinical education, not a personal consultation.',
+  'layer.evidenceDisclaimer': 'Clinically reviewed education. Not a personal diagnosis.',
+
+  // Questions page & cards
+  'questions.title': 'Community questions',
+  'questions.subtitle':
+    'Anonymous questions from women across the commons — each answered in three clearly separated layers. New questions appear here as they’re asked.',
+  'questions.allTopics': 'All topics',
+  'questions.empty':
+    'No questions in this topic yet. Be the first to ask — anonymously, in under a minute.',
+  'questions.countWord': 'questions',
+  'questions.countSingular': 'question',
+  'questions.inThisTopic': 'in this topic',
+  'questions.sortNote': 'newest first, alongside curated threads',
+  'questions.noAnswers': 'No answers yet.',
+  'questions.beFirst': 'Be the first to share an experience',
+  'questions.fullThread': 'Continue the full thread',
+  'card.answer': 'answer',
+  'card.answers': 'answers',
+  'card.answersFallback': 'Answers',
+  'card.showAnswers': 'Show answers',
+  'card.hideAnswers': 'Hide answers',
+
+  // Library page
+  'library.kicker': 'Knowledge drafts',
+  'library.title': 'The knowledge library',
+  'library.subtitle':
+    'Explore educational articles and the research catalogue, reviewed by the clinical panel. They cannot replace personal medical advice.',
+  'library.researchLink': 'Browse the research catalogue (2020 onward)',
+  'library.searchPlaceholder': 'Search a symptom, topic or question…',
+  'library.clearSearch': 'Clear search',
+  'library.all': 'All',
+  'library.articleWord': 'articles',
+  'library.ofWord': 'of',
+  'library.across': 'across',
+  'library.stagesWord': 'stages of life',
+  'library.empty':
+    'Nothing matches that search yet. Try a different word — or ask the community anonymously.',
 } as const;
 
 export type UiKey = keyof typeof en;
@@ -160,6 +204,50 @@ const sw: Record<UiKey, string> = {
   'common.askQuestion': 'Uliza swali',
   'common.askAnonymously': 'Uliza kwa faragha',
   'common.language': 'Lugha',
+
+  // Knowledge-layer labels (the three-layer system)
+  'layer.lived': 'Uzoefu binafsi',
+  'layer.clinical': 'Jibu la kliniki',
+  'layer.evidence': 'Kadi ya ushahidi',
+  'layer.livedDisclaimer': 'Uzoefu binafsi, si ushauri wa kimatibabu.',
+  'layer.clinicalDisclaimer': 'Elimu ya kliniki, si ushauri wa kibinafsi.',
+  'layer.evidenceDisclaimer': 'Elimu iliyopitishwa na wataalamu. Si uchunguzi wa kibinafsi.',
+
+  // Questions page & cards
+  'questions.title': 'Maswali ya jamii',
+  'questions.subtitle':
+    'Maswali ya faragha kutoka kwa wanawake katika jukwaa zima — kila swali linajibiwa kwa tabaka tatu zilizotengwa wazi. Maswali mapya yanaonekana hapa yanapoulizwa.',
+  'questions.allTopics': 'Mada zote',
+  'questions.empty':
+    'Bado hakuna maswali katika mada hii. Kuwa wa kwanza kuuliza — kwa faragha, ndani ya dakika moja.',
+  'questions.countWord': 'maswali',
+  'questions.countSingular': 'swali',
+  'questions.inThisTopic': 'katika mada hii',
+  'questions.sortNote': 'mapya kwanza, pamoja na mijadala iliyochaguliwa',
+  'questions.noAnswers': 'Bado hakuna majibu.',
+  'questions.beFirst': 'Kuwa wa kwanza kushiriki uzoefu',
+  'questions.fullThread': 'Endelea na mjadala wote',
+  'card.answer': 'jibu',
+  'card.answers': 'majibu',
+  'card.answersFallback': 'Majibu',
+  'card.showAnswers': 'Onyesha majibu',
+  'card.hideAnswers': 'Ficha majibu',
+
+  // Library page
+  'library.kicker': 'Rasimu za elimu',
+  'library.title': 'Maktaba ya elimu',
+  'library.subtitle':
+    'Chunguza makala za elimu na orodha ya utafiti, zilizopitishwa na wataalamu wa kliniki. Hazinaweza kuchukua nafasi ya ushauri wa kibinafsi wa kimatibabu.',
+  'library.researchLink': 'Tazama orodha ya utafiti (2020 na kuendelea)',
+  'library.searchPlaceholder': 'Tafuta dalili, mada au swali…',
+  'library.clearSearch': 'Futa utafutaji',
+  'library.all': 'Zote',
+  'library.articleWord': 'makala',
+  'library.ofWord': 'kati ya',
+  'library.across': 'katika',
+  'library.stagesWord': 'hatua za maisha',
+  'library.empty':
+    'Hakuna kinacholingana na utafutaji huo bado. Jaribu neno lingine — au uliza jamii kwa faragha.',
 };
 
 export const UI_STRINGS: Record<UiLang, Record<UiKey, string>> = { en, sw };

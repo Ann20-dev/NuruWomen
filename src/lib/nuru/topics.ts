@@ -15,6 +15,8 @@ export interface Area {
 export interface Topic {
   slug: string;
   name: string;
+  /** Kiswahili display name, shown when the interface language is Kiswahili. */
+  swahili?: string;
   area: string;
   keywords: string[];
   blurb: string;
@@ -41,6 +43,7 @@ export const TOPICS: Topic[] = [
   {
     slug: 'irregular-periods',
     name: 'Irregular periods',
+    swahili: 'Hedhi isiyo ya kawaida',
     area: 'menstrual-health',
     keywords: ['irregular period', 'late period', 'missed period', 'cycle', 'period is late', 'periods are irregular', 'skipped period'],
     blurb: 'Cycles that arrive early, late, or unpredictably, and what patterns matter.',
@@ -48,6 +51,7 @@ export const TOPICS: Topic[] = [
   {
     slug: 'severe-period-pain',
     name: 'Severe period pain',
+    swahili: 'Maumivu makali ya hedhi',
     area: 'menstrual-health',
     keywords: ['period pain', 'cramps', 'severe pain', 'painful period', 'dysmenorrhea', 'pain during my period', 'period cramps'],
     blurb: 'When period pain crosses the line from common to worth investigating.',
@@ -55,6 +59,7 @@ export const TOPICS: Topic[] = [
   {
     slug: 'heavy-bleeding',
     name: 'Heavy bleeding',
+    swahili: 'Kutokwa damu nyingi',
     area: 'menstrual-health',
     keywords: ['heavy bleeding', 'heavy period', 'flooding', 'soaking', 'clots', 'bleeding a lot', 'prolonged bleeding', 'bleeding for weeks'],
     blurb: 'How much bleeding is too much, and the causes clinicians look for.',
@@ -62,6 +67,7 @@ export const TOPICS: Topic[] = [
   {
     slug: 'pcos',
     name: 'PCOS',
+    swahili: 'PCOS',
     area: 'conditions',
     keywords: ['pcos', 'polycystic', 'cysts on ovaries', 'facial hair', 'hirsutism', 'acne and irregular'],
     blurb: 'Polycystic ovary syndrome: hormones, cycles, skin and fertility.',
@@ -69,6 +75,7 @@ export const TOPICS: Topic[] = [
   {
     slug: 'endometriosis',
     name: 'Endometriosis',
+    swahili: 'Endometriosis',
     area: 'conditions',
     keywords: ['endometriosis', 'endo', 'pain that stops me', 'painful periods and sex'],
     blurb: 'A condition where tissue like the womb lining grows elsewhere, often dismissed for years.',
@@ -76,6 +83,7 @@ export const TOPICS: Topic[] = [
   {
     slug: 'fibroids',
     name: 'Fibroids',
+    swahili: 'Fibroids',
     area: 'conditions',
     keywords: ['fibroid', 'fibroids', 'swollen stomach', 'bulky uterus'],
     blurb: 'Non-cancerous growths of the womb: very common, rarely explained.',
@@ -83,6 +91,7 @@ export const TOPICS: Topic[] = [
   {
     slug: 'painful-sex',
     name: 'Pain during sex',
+    swahili: 'Maumivu wakati wa ngono',
     area: 'sexual-health',
     keywords: ['pain during sex', 'painful sex', 'hurts when', 'pain during intercourse', 'dyspareunia', 'sex is painful'],
     blurb: 'Pain with sex is common and treatable. It is never something to simply endure.',
@@ -90,6 +99,7 @@ export const TOPICS: Topic[] = [
   {
     slug: 'contraception',
     name: 'Contraception',
+    swahili: 'Uzazi wa mpango',
     area: 'sexual-health',
     keywords: ['contraceptive', 'family planning', 'birth control', 'the pill', 'implant', 'injection', 'iud', 'coil', 'depo', 'side effects of'],
     blurb: 'Choosing a method, and making sense of side effects.',
@@ -97,6 +107,7 @@ export const TOPICS: Topic[] = [
   {
     slug: 'stis',
     name: 'STIs & infections',
+    swahili: 'Maambukizi ya zinaa',
     area: 'sexual-health',
     keywords: ['sti', 'std', 'discharge', 'itching', 'burning when', 'uti', 'infection', 'smell'],
     blurb: 'Discharge, itching, UTIs and sexually transmitted infections.',
@@ -104,6 +115,7 @@ export const TOPICS: Topic[] = [
   {
     slug: 'fertility',
     name: 'Fertility & trying to conceive',
+    swahili: 'Uzazi na kutafuta mtoto',
     area: 'fertility',
     keywords: ['pregnant', 'conceive', 'fertile', 'ovulation', 'trying for a baby', 'infertility', 'cant get pregnant', "can't get pregnant"],
     blurb: 'Understanding ovulation and when difficulty conceiving deserves assessment.',
@@ -111,6 +123,7 @@ export const TOPICS: Topic[] = [
   {
     slug: 'pregnancy-warning-signs',
     name: 'Pregnancy warning signs',
+    swahili: 'Dalili za hatari ujauzitoni',
     area: 'pregnancy',
     keywords: ['pregnant and', 'weeks pregnant', 'bleeding while pregnant', 'pregnancy', 'reduced movement', 'baby stopped moving'],
     blurb: 'The symptoms in pregnancy that should never wait.',
@@ -118,6 +131,7 @@ export const TOPICS: Topic[] = [
   {
     slug: 'postpartum-anxiety',
     name: 'Postpartum mental health',
+    swahili: 'Afya ya akili baada ya kujifungua',
     area: 'postpartum',
     keywords: ['postpartum', 'after giving birth', 'after birth', 'since i had my baby', 'new baby', 'baby blues', 'postnatal'],
     blurb: 'Anxiety and low mood after childbirth: common, real and treatable.',
@@ -125,6 +139,7 @@ export const TOPICS: Topic[] = [
   {
     slug: 'cervical-screening',
     name: 'Cervical screening',
+    swahili: 'Kuchunguza shingo ya uzazi',
     area: 'cancer-prevention',
     keywords: ['cervical', 'pap smear', 'hpv', 'screening', 'smear test', 'cervix'],
     blurb: 'HPV, screening intervals and why cervical cancer is preventable.',
@@ -132,6 +147,7 @@ export const TOPICS: Topic[] = [
   {
     slug: 'breast-health',
     name: 'Breast health',
+    swahili: 'Afya ya matiti',
     area: 'cancer-prevention',
     keywords: ['breast', 'lump', 'nipple'],
     blurb: 'Knowing what is normal for you, and what changes need checking.',
@@ -139,6 +155,7 @@ export const TOPICS: Topic[] = [
   {
     slug: 'perimenopause',
     name: 'Perimenopause',
+    swahili: 'Kabla ya kukoma hedhi',
     area: 'perimenopause',
     keywords: ['perimenopause', 'periods have started changing', 'hot flush', 'hot flash', 'night sweats', "can't sleep", '43', '44', '45', '46', '47', '48', 'brain fog'],
     blurb: 'The years before periods stop, when symptoms start but answers rarely come.',
@@ -146,6 +163,7 @@ export const TOPICS: Topic[] = [
   {
     slug: 'menopause',
     name: 'Menopause',
+    swahili: 'Kukoma hedhi',
     area: 'menopause',
     keywords: ['menopause', 'periods stopped', 'vaginal dryness', 'joint pain'],
     blurb: 'Life after the final period: symptoms, bones, heart and options.',
@@ -153,6 +171,7 @@ export const TOPICS: Topic[] = [
   {
     slug: 'pms-pmdd',
     name: 'PMS & PMDD',
+    swahili: 'PMS na PMDD',
     area: 'mental-health',
     keywords: ['pms', 'pmdd', 'mood before my period', 'angry before my period', 'crying before my period'],
     blurb: 'When premenstrual mood changes disrupt life.',
@@ -160,6 +179,7 @@ export const TOPICS: Topic[] = [
   {
     slug: 'pelvic-floor',
     name: 'Pelvic floor',
+    swahili: 'Misuli ya nyonga',
     area: 'pelvic-health',
     keywords: ['leaking urine', 'leak when', 'pelvic floor', 'prolapse', 'heaviness down there'],
     blurb: 'Leaking, heaviness and prolapse: common after birth, never “just normal”.',

@@ -14,14 +14,16 @@ import { useNuruQuestions } from '@/hooks/useNuruQuestions';
 import { SEED_QUESTIONS } from '@/data/questions';
 import { TOPICS } from '@/lib/nuru/topics';
 import { countSimilarQuestions } from '@/lib/nuru/similar';
+import { useUiLanguage } from '@/contexts/UiLanguageContext';
 import { cn } from '@/lib/utils';
 
 export default function QuestionsPage() {
   useSeoMeta({
-    title: 'Community questions · NuruWomen',
+    title: 'Community questions — NuruWomen',
     description: 'Anonymous women’s health questions answered through three separated layers: lived experience, clinical response and evidence.',
   });
 
+  const { t, lang } = useUiLanguage();
   const { data: questions, isLoading } = useNuruQuestions();
   const [topic, setTopic] = useState<string>('all');
 
@@ -55,16 +57,15 @@ export default function QuestionsPage() {
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div className="space-y-2 max-w-xl">
             <h1 className="font-display font-semibold text-3xl sm:text-4xl tracking-tight flex items-center gap-3">
-              Community questions
+              {t('questions.title')}
               <LottiePlayer animationData={questionAnimation} className="size-9 sm:size-11 shrink-0" />
             </h1>
             <p className="text-muted-foreground leading-relaxed">
-              Anonymous questions from women across the commons, each answered in three clearly separated
-              layers. New questions appear here as they’re asked.
+              {t('questions.subtitle')}
             </p>
           </div>
           <Button asChild className="rounded-full">
-            <Link to="/ask"><MessageCircleQuestion className="size-4" /> Ask anonymously</Link>
+            <Link to="/ask"><MessageCircleQuestion className="size-4" /> {t('common.askAnonymously')}</Link>
           </Button>
         </div>
 
@@ -76,18 +77,18 @@ export default function QuestionsPage() {
               topic === 'all' ? 'bg-primary text-primary-foreground border-primary' : 'bg-secondary/60 hover:bg-accent',
             )}
           >
-            All topics
+            {t('questions.allTopics')}
           </button>
-          {TOPICS.map((t) => (
+          {TOPICS.map((topicItem) => (
             <button
-              key={t.slug}
-              onClick={() => setTopic(t.slug)}
+              key={topicItem.slug}
+              onClick={() => setTopic(topicItem.slug)}
               className={cn(
                 'rounded-full border px-3 py-1 text-xs font-medium transition-colors',
-                topic === t.slug ? 'bg-primary text-primary-foreground border-primary' : 'bg-secondary/60 hover:bg-accent',
+                topic === topicItem.slug ? 'bg-primary text-primary-foreground border-primary' : 'bg-secondary/60 hover:bg-accent',
               )}
             >
-              {t.name}
+              {lang === 'sw' ? (topicItem.swahili ?? topicItem.name) : topicItem.name}
             </button>
           ))}
         </div>
@@ -100,10 +101,10 @@ export default function QuestionsPage() {
           </div>
         ) : filtered.length === 0 ? (
           <EmptyState
-            message="No questions in this topic yet. Be the first to ask, anonymously, in under a minute."
+            message={t('questions.empty')}
             action={
               <Button asChild className="rounded-full">
-                <Link to="/ask"><MessageCircleQuestion className="size-4" /> Ask anonymously</Link>
+                <Link to="/ask"><MessageCircleQuestion className="size-4" /> {t('common.askAnonymously')}</Link>
               </Button>
             }
           />
@@ -111,8 +112,8 @@ export default function QuestionsPage() {
           <div className="space-y-4">
             <p className="text-xs text-muted-foreground inline-flex items-center gap-1.5">
               <Rss className="size-3.5" />
-              {filtered.length} question{filtered.length === 1 ? '' : 's'}
-              {topic !== 'all' && ' in this topic'} · newest first, alongside curated threads
+              {filtered.length} {filtered.length === 1 ? t('questions.countSingular') : t('questions.countWord')}
+              {topic !== 'all' && ` ${t('questions.inThisTopic')}`} · {t('questions.sortNote')}
             </p>
             {filtered.map((q, i) => (
               <Reveal key={q.id} delay={Math.min(i * 80, 400)}>

@@ -14,21 +14,28 @@
         <meta name="referrer" content="no-referrer">
 
         <!-- Production CSP; no inline scripts or eval. Relay connections are
-            limited to the app's configured Nostr relays (src/lib/appRelays.ts). -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self' wss://relay.ditto.pub wss://relay.dreamith.to wss://relay.primal.net wss://nos.lol; object-src 'none'; base-uri 'self'; frame-src 'none';">
+            limited to the app's configured Nostr relays (src/lib/appRelays.ts);
+            Blossom hosts allow anonymous question-image upload and rendering. -->
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://blossom.ditto.pub https://blossom.dreamith.to https://blossom.primal.net; connect-src 'self' wss://relay.ditto.pub wss://relay.dreamith.to wss://relay.primal.net wss://nos.lol https://blossom.ditto.pub https://blossom.dreamith.to https://blossom.primal.net; object-src 'none'; base-uri 'self'; frame-src 'none';">
 
         <meta name="description" content="A privacy-first, open women's health knowledge commons for Africa. Questions, lived experience, and evidence, clearly separated, never mixed up.">
         <meta property="og:type" content="website">
+        <meta property="og:site_name" content="NuruWomen">
         <meta property="og:title" content="NuruWomen · Women's Health Commons Africa">
-        <meta property="og:description" content="Ask sensitive women's health questions anonymously. Stories, clinical responses, and evidence, clearly separated.">
-        <meta property="og:url" content="https://nuruwomen.shakespeare.wtf/">
-        <meta property="og:image" content="https://nuruwomen.shakespeare.wtf/og-image.svg">
+        <meta property="og:description" content="Ask sensitive women's health questions anonymously — no account, no email. Stories, clinical responses and evidence, clearly separated. In English and Kiswahili.">
+        <meta property="og:url" content="https://nuruwomen.onrender.com/">
+        <meta property="og:image" content="https://nuruwomen.onrender.com/og-image.svg">
+        <meta property="og:image:type" content="image/svg+xml">
         <meta property="og:image:width" content="1200">
         <meta property="og:image:height" content="630">
+        <meta property="og:image:alt" content="NuruWomen — a privacy-first women's health knowledge commons for Africa. Ask anonymously; stories, clinical responses and evidence stay clearly separated.">
+        <meta property="og:locale" content="en_KE">
+        <meta property="og:locale:alternate" content="sw_KE">
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:title" content="NuruWomen · Women's Health Commons Africa">
-        <meta name="twitter:description" content="Ask sensitive women's health questions anonymously. Stories, clinical responses, and evidence, clearly separated.">
-        <meta name="twitter:image" content="https://nuruwomen.shakespeare.wtf/og-image.svg">
+        <meta name="twitter:description" content="Ask sensitive women's health questions anonymously — no account, no email. Stories, clinical responses and evidence, clearly separated. In English and Kiswahili.">
+        <meta name="twitter:image" content="https://nuruwomen.onrender.com/og-image.svg">
+        <meta name="twitter:image:alt" content="NuruWomen — a privacy-first women's health knowledge commons for Africa.">
 
         <link rel="manifest" href="/manifest.webmanifest">
         <meta name="theme-color" content="#7c2942">
