@@ -14,6 +14,7 @@ import { CLINICIAN_PUBKEYS, clinicianForPubkey } from '@/data/clinicians';
 import { seedQuestionById } from '@/data/questions';
 import { demoStore } from '@/lib/nuru/demoStore';
 import { isHiddenContent } from '@/lib/nuru/moderation';
+import { queryWithTimeout } from '@/lib/nuru/relayQuery';
 
 /** Clinical authority requires the trusted registry; self-labels cannot establish it. */
 function classifyAnswer(event: NostrEvent): AnswerType {
@@ -63,9 +64,22 @@ export interface AnswersResult {
   helpfulCounts: Record<string, number>;
 }
 
+/** Bundled seed answers, used as instant placeholder data. */
+function seedAnswersResult(questionId: string): AnswersResult | undefined {
+  const seed = seedQuestionById(questionId);
+  if (!seed) return undefined;
+  const answers = seed.answers.map(seedToAnswer);
+  return {
+    livedExperience: answers.filter((a) => a.type === 'lived-experience'),
+    clinical: answers.filter((a) => a.type === 'clinical-response'),
+    helpfulCounts: Object.fromEntries(answers.map((a) => [a.id, a.helpful])),
+  };
+}
+
 /** All answers for a question, split into the separated knowledge layers. */
 export function useNuruAnswers(questionId: string | undefined) {
   const { nostr } = useNostr();
+  const placeholderAnswers = questionId ? seedAnswersResult(questionId) : undefined;
 
   return useQuery({
     queryKey: ['nuru-answers', questionId],
@@ -73,13 +87,12 @@ export function useNuruAnswers(questionId: string | undefined) {
     queryFn: async (c) => {
       if (!questionId) throw new Error('missing question id');
 
-      // Relay replies first; session-memory events fill in instantly.
-      const relayReplies = await nostr
-        .query(
-          [{ kinds: [ANSWER_KIND], '#e': [questionId], limit: 200 }],
-          { signal: c.signal },
-        )
-        .catch((): NostrEvent[] => []);
+      // Relay replies with a hard deadline; session-memory events fill in instantly.
+      const relayReplies = await queryWithTimeout(
+        nostr,
+        [{ kinds: [ANSWER_KIND], '#e': [questionId], limit: 200 }],
+        { signal: c.signal },
+      );
 
       const replyById = new Map<string, NostrEvent>();
       for (const e of relayReplies) replyById.set(e.id, e);
@@ -115,15 +128,13 @@ export function useNuruAnswers(questionId: string | undefined) {
           seen.add(dedupeKey);
           helpfulCounts[target] = (helpfulCounts[target] ?? 0) + 1;
         };
-        try {
-          const votes = await nostr.query(
-            [{ kinds: [HELPFUL_KIND], '#e': ids, limit: 500 }],
-            { signal: c.signal },
-          );
-          for (const v of votes) countVote(v);
-        } catch {
-          // reaction counts are best-effort
-        }
+        // Reaction counts are best-effort with the same deadline.
+        const votes = await queryWithTimeout(
+          nostr,
+          [{ kinds: [HELPFUL_KIND], '#e': ids, limit: 500 }],
+          { signal: c.signal },
+        );
+        for (const v of votes) countVote(v);
         for (const v of demoStore.all()) {
           if (v.kind === HELPFUL_KIND) countVote(v);
         }
@@ -135,6 +146,7 @@ export function useNuruAnswers(questionId: string | undefined) {
         helpfulCounts,
       } satisfies AnswersResult;
     },
+    placeholderData: placeholderAnswers,
     staleTime: 30_000,
   });
 }

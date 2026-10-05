@@ -3,10 +3,11 @@ import { useQuery } from '@tanstack/react-query';
 import type { NostrEvent } from '@nostrify/nostrify';
 
 import { NURU_TAG, QUESTION_KIND } from '@/lib/nuru/protocol';
-import type { Question } from '@/lib/nuru/types';
+import type { Question, SeedQuestion } from '@/lib/nuru/types';
 import { SEED_QUESTIONS } from '@/data/questions';
 import { demoStore } from '@/lib/nuru/demoStore';
 import { isHiddenContent } from '@/lib/nuru/moderation';
+import { queryWithTimeout } from '@/lib/nuru/relayQuery';
 import { sanitizeUrl } from '@/lib/utils';
 
 export function eventToQuestion(event: NostrEvent): Question {
@@ -41,8 +42,8 @@ function isRootQuestion(event: NostrEvent): boolean {
   return !event.tags.some(([n]) => n === 'e');
 }
 
-function seedQuestions(excludeIds: Set<string>): Question[] {
-  return SEED_QUESTIONS.filter((q) => !excludeIds.has(q.id)).map((q) => ({
+function seedToQuestion(q: SeedQuestion): Question {
+  return {
     id: q.id,
     title: q.title,
     content: q.content,
@@ -54,7 +55,11 @@ function seedQuestions(excludeIds: Set<string>): Question[] {
     evidenceCard: q.evidenceCard,
     image: q.image,
     signal: q.signal,
-  }));
+  };
+}
+
+function seedQuestions(excludeIds: Set<string>): Question[] {
+  return SEED_QUESTIONS.filter((q) => !excludeIds.has(q.id)).map(seedToQuestion);
 }
 
 const PLACEHOLDER_QUESTIONS = seedQuestions(new Set());
@@ -69,7 +74,9 @@ function mergeLive(relayEvents: NostrEvent[]): NostrEvent[] {
 
 /**
  * All commons questions: live relay events merged over the bundled seed set.
- * Relay failures degrade to session + seed content, never an error screen.
+ * The bundled seeds render instantly as placeholder data — slow or
+ * unreachable relays can never leave the page on skeletons; live questions
+ * simply merge in when (and if) the network answers within the deadline.
  */
 export function useNuruQuestions() {
   const { nostr } = useNostr();
@@ -77,12 +84,11 @@ export function useNuruQuestions() {
   return useQuery({
     queryKey: ['nuru-questions'],
     queryFn: async (c) => {
-      const relayEvents = await nostr
-        .query(
-          [{ kinds: [QUESTION_KIND], '#t': [NURU_TAG], limit: 100 }],
-          { signal: c.signal },
-        )
-        .catch((): NostrEvent[] => []);
+      const relayEvents = await queryWithTimeout(
+        nostr,
+        [{ kinds: [QUESTION_KIND], '#t': [NURU_TAG], limit: 100 }],
+        { signal: c.signal },
+      );
 
       const live = mergeLive(relayEvents)
         .filter((e) => e.kind === QUESTION_KIND && e.tags.some(([n, v]) => n === 't' && v === NURU_TAG))
@@ -98,9 +104,11 @@ export function useNuruQuestions() {
   });
 }
 
-/** A single question by id (session memory, then relays, then seeds). */
+/** A single question by id (session memory, then seeds, then relays). */
 export function useNuruQuestion(id: string | undefined) {
   const { nostr } = useNostr();
+  const seed = SEED_QUESTIONS.find((q) => q.id === id);
+  const placeholderQuestion = seed ? seedToQuestion(seed) : undefined;
 
   return useQuery({
     queryKey: ['nuru-question', id],
@@ -111,36 +119,22 @@ export function useNuruQuestion(id: string | undefined) {
       const local = demoStore.all().find((e) => e.kind === QUESTION_KIND && e.id === id);
       if (local && !isHiddenContent(local)) return eventToQuestion(local);
 
-      try {
-        const [event] = await nostr.query(
-          [{ kinds: [QUESTION_KIND], ids: [id], limit: 1 }],
-          { signal: c.signal },
-        );
-        if (event && !isHiddenContent(event) && event.tags.some(([n, v]) => n === 't' && v === NURU_TAG)) {
-          return eventToQuestion(event);
-        }
-      } catch {
-        // fall through to seeds
+      // Bundled seeds resolve without any network wait.
+      const seed = SEED_QUESTIONS.find((q) => q.id === id);
+      if (seed) return seedToQuestion(seed);
+
+      const [event] = await queryWithTimeout(
+        nostr,
+        [{ kinds: [QUESTION_KIND], ids: [id], limit: 1 }],
+        { signal: c.signal },
+      );
+      if (event && !isHiddenContent(event) && event.tags.some(([n, v]) => n === 't' && v === NURU_TAG)) {
+        return eventToQuestion(event);
       }
 
-      const seed = SEED_QUESTIONS.find((q) => q.id === id);
-      if (!seed) return undefined;
-
-      const question: Question = {
-        id: seed.id,
-        title: seed.title,
-        content: seed.content,
-        topics: seed.topics,
-        authorPubkey: seed.authorPubkey,
-        authorName: seed.authorName,
-        createdAt: seed.createdAt,
-        isSeed: true,
-        evidenceCard: seed.evidenceCard,
-        image: seed.image,
-        signal: seed.signal,
-      };
-      return question;
+      return undefined;
     },
+    placeholderData: placeholderQuestion,
     staleTime: 30_000,
   });
 }
