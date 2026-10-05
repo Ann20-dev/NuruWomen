@@ -1,6 +1,6 @@
 /**
  * On-device retrieval: matches question text to library articles and to the
- * clinically reviewed evidence catalog. Deterministic keyword/topic overlap —
+ * clinically reviewed evidence catalog. Deterministic keyword/topic overlap -
  * the same classifiable cues as the routing rules, never a diagnosis.
  */
 import { ARTICLES } from '@/data/articles';

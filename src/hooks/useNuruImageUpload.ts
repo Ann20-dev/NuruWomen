@@ -24,7 +24,7 @@ function serversFromConfig(config: {
 /**
  * Uploads a prepared (metadata-stripped, hashed) image to a Blossom media
  * server (BUD-01/02). The authorization event is signed with a fresh one-time
- * keypair that is discarded immediately — uploading never reveals an
+ * keypair that is discarded immediately - uploading never reveals an
  * identity, matching the anonymous-question model.
  *
  * Each server is tried in order until one accepts the upload.

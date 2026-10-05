@@ -1,7 +1,7 @@
 import { ART } from './palette';
 
 /**
- * A woman alone at home reading her phone by the window — calm, private,
+ * A woman alone at home reading her phone by the window - calm, private,
  * face softly turned away. Reassurance for the Ask form. Decorative.
  */
 export function AskArt({ className }: { className?: string }) {

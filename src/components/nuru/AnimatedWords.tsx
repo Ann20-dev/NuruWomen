@@ -15,7 +15,7 @@ interface AnimatedWordsProps {
 
 /**
  * Splits a headline into words that rise in one by one, masked by an
- * overflow container — a classic editorial text animation. Selected words
+ * overflow container - a classic editorial text animation. Selected words
  * get an animated gradient sweep. Full text stays available to screen
  * readers via an sr-only copy; reduced-motion users see it instantly.
  */

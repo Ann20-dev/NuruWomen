@@ -5,7 +5,7 @@
  * source, anyone can contribute a translation for their own language:
  *
  *   1. Add the language code to `UiLang`.
- *   2. Add a complete entry to `UI_STRINGS` below (every key is required —
+ *   2. Add a complete entry to `UI_STRINGS` below (every key is required -
  *      TypeScript will point at anything missing).
  *   3. Open a pull request. No other code changes are needed; the language
  *      switcher in the header picks up new languages automatically.
@@ -37,7 +37,7 @@ const en = {
   'hero.title': 'What were you never taught about your body?',
   'hero.titleHighlights': 'never,taught',
   'hero.subtitle':
-    'Ask sensitive health questions privately. Explore community stories and clinical responses — clearly labelled, never mixed up.',
+    'Ask sensitive health questions privately. Explore community stories and clinical responses, clearly labelled, never mixed up.',
   'hero.ask': 'Ask a question',
   'hero.explore': 'Explore the library',
   'hero.reassure1': 'No email, phone or ID required',
@@ -53,15 +53,15 @@ const en = {
   'home.areasKicker': 'The five areas',
   'home.areasTitle': 'Every stage of a woman’s life, covered',
   'home.areasBody':
-    'Menstrual health, sexual health, healthy ageing, postpartum and mental health — each with its own shelf in the library, and its own safe corner of the commons.',
+    'Menstrual health, sexual health, healthy ageing, postpartum and mental health, each with its own shelf in the library, and its own safe corner of the commons.',
   'home.coverageCount': 'community question counts',
-  'home.coverageSub': 'Counted together, never individually — a map of knowledge gaps.',
+  'home.coverageSub': 'Counted together, never individually. A map of knowledge gaps.',
   'home.coverageCta': 'See the Blind Spot dashboard',
   'home.trendingKicker': 'Most discussed',
   'home.trendingTitle': 'This month’s most asked-about topics',
   'home.trendingCta': 'See the full ranking',
   'home.trendingNote':
-    'Counted in large anonymous groups only — a ranking can never point back to one woman or one question.',
+    'Counted in large anonymous groups only. A ranking can never point back to one woman or one question.',
   'home.ctaTitle': 'Ask the question you’ve been carrying.',
   'home.ctaBody':
     'Explore questions with English or Kiswahili analysis and clearly labelled responses.',
@@ -69,9 +69,9 @@ const en = {
   'home.ctaBrowse': 'See what women are asking',
 
   'footer.tagline':
-    'An open, privacy-first women’s health commons for Africa. Anonymous questions, real stories and reviewed evidence — clearly separated, always.',
+    'An open, privacy-first women’s health commons for Africa. Anonymous questions, real stories and reviewed evidence, clearly separated, always.',
   'footer.emergency':
-    'Educational only — never a substitute for personal medical care. In an emergency call 999 / 112 (Kenya).',
+    'Educational only, never a substitute for personal medical care. In an emergency call 999 / 112 (Kenya).',
   'footer.exploreTitle': 'Explore',
   'footer.ask': 'Ask a question',
   'footer.questions': 'Community questions',
@@ -84,7 +84,7 @@ const en = {
   'footer.open2': 'Articles exportable as Markdown',
   'footer.open3': 'Built for Hack4Freedom',
   'footer.translate': 'Help translate the commons into your language',
-  'footer.copyright': 'NuruWomen — a digital public good for women’s health.',
+  'footer.copyright': 'NuruWomen, a digital public good for women’s health.',
 
   'common.askQuestion': 'Ask a question',
   'common.askAnonymously': 'Ask anonymously',
@@ -108,7 +108,7 @@ const sw: Record<UiKey, string> = {
   'hero.title': 'Ni nini ambacho hukufundishwa kuhusu mwili wako?',
   'hero.titleHighlights': 'hukufundishwa',
   'hero.subtitle':
-    'Uliza maswali nyeti ya afya kwa faragha. Soma hadithi za jamii na majibu ya kliniki — yametengwa wazi, hayachanganyiki.',
+    'Uliza maswali nyeti ya afya kwa faragha. Soma hadithi za jamii na majibu ya kliniki, yametengwa wazi, hayachanganyiki.',
   'hero.ask': 'Uliza swali',
   'hero.explore': 'Chunguza maktaba',
   'hero.reassure1': 'Hahitajiki barua pepe, simu wala kitambulisho',
@@ -124,25 +124,25 @@ const sw: Record<UiKey, string> = {
   'home.areasKicker': 'Maeneo matano',
   'home.areasTitle': 'Kila hatua ya maisha ya mwanamke, imefikiwa',
   'home.areasBody':
-    'Afya ya hedhi, afya ya kingono, kuzeeka kwa afya, baada ya kujifungua na afya ya akili — kila eneo lina rafu yake katika maktaba, na kona yake salama katika jukwaa.',
+    'Afya ya hedhi, afya ya kingono, kuzeeka kwa afya, baada ya kujifungua na afya ya akili, kila eneo lina rafu yake katika maktaba, na kona yake salama katika jukwaa.',
   'home.coverageCount': 'maswali ya jamii yaliyohesabiwa',
-  'home.coverageSub': 'Tunahesabu pamoja, kamwe si mmoja mmoja — ramani ya mapengo ya elimu.',
+  'home.coverageSub': 'Tunahesabu pamoja, kamwe si mmoja mmoja, ramani ya mapengo ya elimu.',
   'home.coverageCta': 'Tazama dashibodi ya mapengo',
   'home.trendingKicker': 'Yanayojadiliwa zaidi',
   'home.trendingTitle': 'Mada zinazoulizwa zaidi mwezi huu',
   'home.trendingCta': 'Tazama orodha kamili',
   'home.trendingNote':
-    'Tunahesabu katika makundi makubwa ya faragha pekee — orodha haiwezi kumdokezea mwanamke yeyote.',
+    'Tunahesabu katika makundi makubwa ya faragha pekee. Orodha haiwezi kumdokezea mwanamke yeyote.',
   'home.ctaTitle': 'Uliza lile swali ulilobeba moyoni.',
   'home.ctaBody':
-    'Uliza kwa Kiingereza au Kiswahili — uchanganuzi na majibu yaliyotengwa wazi.',
+    'Uliza kwa Kiingereza au Kiswahili, uchanganuzi na majibu yaliyotengwa wazi.',
   'home.ctaAsk': 'Uliza swali',
   'home.ctaBrowse': 'Tazama wanawake wanauliza nini',
 
   'footer.tagline':
-    'Jukwaa wazi la afya ya wanawake linaloweka faragha kwanza. Maswali ya faragha, hadithi za kweli na ushahidi uliopitishwa — vimetengwa wazi, kila wakati.',
+    'Jukwaa wazi la afya ya wanawake linaloweka faragha kwanza. Maswali ya faragha, hadithi za kweli na ushahidi uliopitishwa, vimetengwa wazi, kila wakati.',
   'footer.emergency':
-    'Elimu tu — si badala ya huduma ya kibinafsi ya afya. Kwa dharura piga 999 / 112 (Kenya).',
+    'Elimu tu, si badala ya huduma ya kibinafsi ya afya. Kwa dharura piga 999 / 112 (Kenya).',
   'footer.exploreTitle': 'Chunguza',
   'footer.ask': 'Uliza swali',
   'footer.questions': 'Maswali ya jamii',
@@ -155,7 +155,7 @@ const sw: Record<UiKey, string> = {
   'footer.open2': 'Makala yanayoweza kuhamishwa kama Markdown',
   'footer.open3': 'Imejengwa kwa Hack4Freedom',
   'footer.translate': 'Saidia kutafsiri jukwaa kwa lugha yako',
-  'footer.copyright': 'NuruWomen — rasilimali ya kidijitali ya umma kwa afya ya wanawake.',
+  'footer.copyright': 'NuruWomen, rasilimali ya kidijitali ya umma kwa afya ya wanawake.',
 
   'common.askQuestion': 'Uliza swali',
   'common.askAnonymously': 'Uliza kwa faragha',

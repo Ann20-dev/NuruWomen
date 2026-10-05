@@ -98,7 +98,7 @@ export function QuestionCard({
           </div>
         </div>
 
-        {/* Comments dropdown — answers nested under their question */}
+        {/* Comments dropdown - answers nested under their question */}
         <div
           className={cn(
             'grid transition-all duration-300 ease-out',

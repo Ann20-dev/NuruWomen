@@ -50,7 +50,7 @@ export function formatEventMonth(monthKey: string): string {
   );
 }
 
-/** "November 2026" for right now — used by the monthly trending ranking. */
+/** "November 2026" for right now - used by the monthly trending ranking. */
 export function currentMonthLabel(): string {
   return new Intl.DateTimeFormat('en-KE', { month: 'long', year: 'numeric' }).format(new Date());
 }

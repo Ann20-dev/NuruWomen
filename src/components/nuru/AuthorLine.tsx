@@ -8,7 +8,7 @@ import { genUserName } from '@/lib/genUserName';
 
 interface AuthorLineProps {
   pubkey: string;
-  /** Seed pseudonym — used instead of a metadata lookup when present. */
+  /** Seed pseudonym - used instead of a metadata lookup when present. */
   name?: string;
   role?: string;
   experienceTag?: string;

@@ -18,7 +18,7 @@ interface ImageAttachmentProps {
  * Optional image attachment for anonymous questions. The image is
  * re-encoded on-device first (stripping EXIF metadata like GPS and device
  * model), hashed, then uploaded to a Blossom server signed with a one-time
- * key — the same anonymity model as the question itself.
+ * key - the same anonymity model as the question itself.
  */
 export function ImageAttachment({ onChange, onStatusChange }: ImageAttachmentProps) {
   const inputRef = useRef<HTMLInputElement>(null);

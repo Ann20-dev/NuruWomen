@@ -112,7 +112,7 @@ export function AiCheckPanel({ status, analysis, source, error, onApplySuggestio
         </div>
       )}
 
-      {/* Topic routing — the five broad categories */}
+      {/* Topic routing - the five broad categories */}
       <div className="rounded-xl border bg-card p-4 space-y-2">
         <p className="font-semibold text-sm flex items-center gap-2">
           <Route className="size-4 text-primary" /> Where your question belongs
@@ -130,11 +130,11 @@ export function AiCheckPanel({ status, analysis, source, error, onApplySuggestio
           </div>
         ) : (
           <p className="text-sm text-muted-foreground">
-            No topic matched — our team will place it for you.
+            No topic matched. Our team will place it for you.
           </p>
         )}
         <p className="text-xs text-muted-foreground leading-relaxed">
-          This only guides where your question appears — it is never a diagnosis.
+          This only guides where your question appears. It is never a diagnosis.
           {analysis.routing.scope_status === 'mixed_scope' &&
             ' Part of your question sits outside our main topics and will be reviewed.'}
           {analysis.routing.ambiguous_pregnancy_loss_wording &&
@@ -146,7 +146,7 @@ export function AiCheckPanel({ status, analysis, source, error, onApplySuggestio
         {source === 'local'
           ? 'Checked privately on your device.'
           : 'Checked by the NuruWomen safety service.'}{' '}
-        Suggestions only — never a diagnosis.
+        Suggestions only, never a diagnosis.
       </p>
     </div>
   );

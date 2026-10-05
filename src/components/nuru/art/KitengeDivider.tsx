@@ -3,7 +3,7 @@ import { ART } from './palette';
 
 /**
  * Kitenge-inspired pattern strip used as a section divider.
- * Decorative only — carries no information.
+ * Decorative only - carries no information.
  */
 export function KitengeDivider({ className }: { className?: string }) {
   return (

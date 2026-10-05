@@ -46,7 +46,7 @@ export default function QuestionDetailPage() {
   const [draft, setDraft] = useState('');
   const [draftSafety, setDraftSafety] = useState<SafetyFlag[]>([]);
 
-  // Live questions have no curated signal — count similar threads on-device.
+  // Live questions have no curated signal - count similar threads on-device.
   const liveSimilarCount = useMemo(() => {
     if (!question || question.signal || !allQuestions) return undefined;
     const count = countSimilarQuestions(
@@ -66,7 +66,7 @@ export default function QuestionDetailPage() {
   }, [draft]);
 
   useSeoMeta({
-    title: question ? `${question.title} — NuruWomen` : 'Question — NuruWomen',
+    title: question ? `${question.title} · NuruWomen` : 'Question · NuruWomen',
     description: question?.content.slice(0, 150),
   });
 
@@ -88,7 +88,7 @@ export default function QuestionDetailPage() {
       });
       setDraft('');
       queryClient.invalidateQueries({ queryKey: ['nuru-answers', question.id] });
-      toast({ title: 'Response published', description: 'Shared as lived experience — thank you.' });
+      toast({ title: 'Response published', description: 'Shared as lived experience. Thank you.' });
     } catch {
       toast({ title: 'Could not publish', description: 'Check your connection and try again.', variant: 'destructive' });
     }
@@ -125,7 +125,7 @@ export default function QuestionDetailPage() {
                       loading="lazy"
                     />
                     <figcaption className="text-xs text-muted-foreground">
-                      Community image — attached anonymously, not clinically reviewed.
+                      Community image: attached anonymously, not clinically reviewed.
                     </figcaption>
                   </figure>
                 )}
@@ -150,7 +150,7 @@ export default function QuestionDetailPage() {
                   <div className="space-y-1">
                     <LayerBadge layer="lived-experience" />
                     <p className="text-xs text-muted-foreground">
-                      What women have lived through. Not medical advice — and never presented as such.
+                      What women have lived through. Not medical advice, and never presented as such.
                     </p>
                   </div>
                   <span className="text-sm font-semibold text-clay tabular-nums">
@@ -186,7 +186,7 @@ export default function QuestionDetailPage() {
                     <SafetyBanner flags={draftSafety} />
                     <div className="flex items-center justify-between gap-3 flex-wrap">
                         <p className="text-xs text-muted-foreground">
-                          Shared as <strong>lived experience</strong> — never as medical advice.
+                          Shared as <strong>lived experience</strong>, never as medical advice.
                         </p>
                       <Button
                         onClick={shareExperience}
@@ -207,7 +207,7 @@ export default function QuestionDetailPage() {
                   <div className="space-y-1">
                     <LayerBadge layer="clinical-response" />
                     <p className="text-xs text-muted-foreground">
-                      Clinical education reviewed by the panel — general education, not a personal consultation.
+                      Clinical education reviewed by the panel: general education, not a personal consultation.
                     </p>
                   </div>
                   <span className="text-sm font-semibold text-clinical tabular-nums">
@@ -218,7 +218,7 @@ export default function QuestionDetailPage() {
                 {!answers ? (
                   <Skeleton className="h-32 w-full" />
                 ) : answers.clinical.length === 0 ? (
-                  <EmptyState message="No clinician has responded yet. Verified professionals volunteer their time — check back soon." />
+                  <EmptyState message="No clinician has responded yet. Verified professionals volunteer their time. Check back soon." />
                 ) : (
                   <div className="space-y-4">
                     {answers.clinical.map((a) => (

@@ -2,7 +2,7 @@ import { ART } from './palette';
 
 /**
  * Women of different ages talking warmly around a kitchen table in a
- * courtyard — natural light, relaxed and trusting. The "Nuru" lamp sits
+ * courtyard - natural light, relaxed and trusting. The "Nuru" lamp sits
  * on the table between them. Decorative illustration.
  */
 export function WomenCircleArt({ className }: { className?: string }) {
@@ -41,7 +41,7 @@ export function WomenCircleArt({ className }: { className?: string }) {
         </g>
       </g>
 
-      {/* left woman — saffron wrap */}
+      {/* left woman - saffron wrap */}
       <g transform="translate(58 158)">
         <path d="M -30 0 C -30 -20 -16 -34 0 -34 C 16 -34 30 -20 30 0 Z" fill={ART.wine} />
         <circle cx="0" cy="-46" r="13.5" fill={ART.skin1} />
@@ -49,7 +49,7 @@ export function WomenCircleArt({ className }: { className?: string }) {
         <circle cx="11" cy="-56" r="4" fill={ART.saffron} />
       </g>
 
-      {/* right woman — sage wrap */}
+      {/* right woman - sage wrap */}
       <g transform="translate(242 158)">
         <path d="M -30 0 C -30 -20 -16 -34 0 -34 C 16 -34 30 -20 30 0 Z" fill={ART.sage} />
         <circle cx="0" cy="-46" r="13.5" fill={ART.skin2} />
@@ -57,7 +57,7 @@ export function WomenCircleArt({ className }: { className?: string }) {
         <circle cx="11" cy="-56" r="4" fill={ART.wineDeep} />
       </g>
 
-      {/* centre elder — silver wrap, slightly behind */}
+      {/* centre elder - silver wrap, slightly behind */}
       <g transform="translate(150 134)">
         <path d="M -27 0 C -27 -22 -14 -36 0 -36 C 14 -36 27 -22 27 0 Z" fill={ART.clay} />
         <circle cx="0" cy="-49" r="14" fill={ART.skin3} />

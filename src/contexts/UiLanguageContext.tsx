@@ -15,7 +15,7 @@ const UiLanguageContext = createContext<UiLanguageContextType | undefined>(undef
 
 /**
  * Interface language for the site chrome. Independent from the analysis
- * language chosen on the Ask page — a writer can keep the interface in
+ * language chosen on the Ask page - a writer can keep the interface in
  * English while requesting Kiswahili analysis, or the reverse.
  *
  * The choice persists in localStorage and never leaves the device.

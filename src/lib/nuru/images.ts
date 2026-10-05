@@ -2,8 +2,8 @@
  * Privacy-first image preparation for question attachments.
  *
  * Every image is decoded and re-encoded through a canvas before it leaves the
- * device. This is not a nice-to-have: phone photos carry EXIF metadata —
- * GPS coordinates, device model, timestamps — that would silently deanonymize
+ * device. This is not a nice-to-have: phone photos carry EXIF metadata -
+ * GPS coordinates, device model, timestamps - that would silently deanonymize
  * the writer. A canvas re-encode guarantees none of that survives.
  */
 
@@ -21,7 +21,7 @@ export interface PreparedImage {
   size: number;
   width: number;
   height: number;
-  /** Object URL for local preview — revoke when the attachment is removed. */
+  /** Object URL for local preview - revoke when the attachment is removed. */
   previewUrl: string;
 }
 

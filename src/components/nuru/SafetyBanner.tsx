@@ -27,7 +27,7 @@ export function SafetyBanner({ flags }: { flags: SafetyFlag[] }) {
                 </p>
               )}
               <p className="text-xs text-muted-foreground pt-1">
-                You can still post your question — the community’s experience is valuable — but please seek
+                You can still post your question. The community’s experience is valuable, but please seek
                 in-person care first.
               </p>
             </div>

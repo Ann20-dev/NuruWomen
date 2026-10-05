@@ -13,7 +13,7 @@ import coverage from '@/data/researchCoverage.json';
 const LEVEL_WORDS: Record<number, string> = { 0: 'Gap', 1: 'Some data', 2: 'Well covered' };
 
 export default function BlindSpotsPage() {
-  useSeoMeta({ title: 'Research coverage — NuruWomen', description: 'Where reliable women’s health data exists across Africa — and where the gaps are.' });
+  useSeoMeta({ title: 'Research coverage · NuruWomen', description: 'Where reliable women’s health data exists across Africa, and where the gaps are.' });
   const [country, setCountry] = useState('Kenya');
   const countries = useMemo(() => [...new Set(coverage.detail.map(r => r.country))].sort(), []);
   const totalRecords = useMemo(() => coverage.summary.reduce((sum, row) => sum + row.records, 0), []);
@@ -21,7 +21,7 @@ export default function BlindSpotsPage() {
     <div className="max-w-3xl space-y-3">
       <p className="text-xs uppercase tracking-widest text-gold font-bold">Knowledge Gap Observatory</p>
       <h1 className="font-display text-3xl sm:text-4xl font-semibold">Where the answers are missing</h1>
-      <p className="text-lg text-muted-foreground">Some health questions are easy to answer with good research. Others barely have any. This map shows how much reliable information exists for each topic, in each country — and where women are still left without answers.</p>
+      <p className="text-lg text-muted-foreground">Some health questions are easy to answer with good research. Others barely have any. This map shows how much reliable information exists for each topic, in each country, and where women are still left without answers.</p>
     </div>
 
     <PhoneInfoArt className="w-full max-w-3xl rounded-xl border" />
@@ -54,11 +54,11 @@ export default function BlindSpotsPage() {
       <Card><CardContent className="p-5 space-y-3">
         <h2 className="font-display text-xl font-semibold">How to read the map</h2>
         <ul className="text-sm text-muted-foreground space-y-1.5 list-disc pl-5">
-          <li><strong className="text-foreground">Dark:</strong> well covered — several reliable studies found</li>
+          <li><strong className="text-foreground">Dark:</strong> well covered: several reliable studies found</li>
           <li><strong className="text-foreground">Lighter:</strong> some data, but thin</li>
-          <li><strong className="text-foreground">Pale:</strong> a gap — nothing reliable found yet</li>
+          <li><strong className="text-foreground">Pale:</strong> a gap: nothing reliable found yet</li>
         </ul>
-        <p className="text-sm text-muted-foreground">Behind every cell are real records from the World Health Organization — {totalRecords.toLocaleString()} in total. Menstrual health has no global indicator at all, so it relies on research estimates. That absence is exactly the kind of blind spot this page exists to show.</p>
+        <p className="text-sm text-muted-foreground">Behind every cell are real records from the World Health Organization: {totalRecords.toLocaleString()} in total. Menstrual health has no global indicator at all, so it relies on research estimates. That absence is exactly the kind of blind spot this page exists to show.</p>
       </CardContent></Card>
     </div>
 
@@ -68,12 +68,12 @@ export default function BlindSpotsPage() {
           <Flame className="size-4" /> Most discussed · {currentMonthLabel()}
         </p>
         <h2 className="font-display text-2xl sm:text-3xl font-semibold">What the commons asks about most</h2>
-        <p className="text-muted-foreground">A monthly ranking of the topics women ask about — counted only in large aggregates, so a ranking can never point back to one person. Rising topics show where the knowledge gaps are widening fastest.</p>
+        <p className="text-muted-foreground">A monthly ranking of the topics women ask about, counted only in large aggregates, so a ranking can never point back to one person. Rising topics show where the knowledge gaps are widening fastest.</p>
       </div>
       <TrendingBoard />
       <Card><CardContent className="p-5 space-y-2">
         <h3 className="font-semibold text-sm">Why this ranking exists</h3>
-        <p className="text-sm text-muted-foreground leading-relaxed">When a topic climbs month after month, it is rarely a coincidence — it marks a place where clinics, schools and families are not answering the question either. Researchers and health workers use this ranking to decide what to write, translate and teach next. Figures are aggregate only (group sizes well above 25), with no county breakdown below threshold and no way to identify any single asker.</p>
+        <p className="text-sm text-muted-foreground leading-relaxed">When a topic climbs month after month, it is rarely a coincidence. It marks a place where clinics, schools and families are not answering the question either. Researchers and health workers use this ranking to decide what to write, translate and teach next. Figures are aggregate only (group sizes well above 25), with no county breakdown below threshold and no way to identify any single asker.</p>
       </CardContent></Card>
     </section>
   </div></SiteLayout>;

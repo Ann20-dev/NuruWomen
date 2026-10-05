@@ -1,5 +1,5 @@
 /**
- * Kenya women's health indicators — real data fetched from the WHO Global
+ * Kenya women's health indicators - real data fetched from the WHO Global
  * Health Observatory (GHO) API on 2026-10-03, the same source and indicator
  * family as the data scientist's coverage notebook (docs/source-contributions/
  * nuru-data.ipynb). Latest available year per indicator is shown with it.
@@ -20,7 +20,7 @@ export interface KenyaIndicator {
   note?: string;
 }
 
-/** Percentage indicators — rendered as the bar chart. */
+/** Percentage indicators - rendered as the bar chart. */
 export const KENYA_BARS: KenyaIndicator[] = [
   {
     id: 'family-planning',
@@ -34,7 +34,7 @@ export const KENYA_BARS: KenyaIndicator[] = [
   },
   {
     id: 'anc4',
-    label: 'Antenatal care — at least four visits',
+    label: 'Antenatal care: at least four visits',
     value: 66.0,
     unit: '%',
     year: 2022,
@@ -66,7 +66,7 @@ export const KENYA_BARS: KenyaIndicator[] = [
   },
 ];
 
-/** Non-percentage indicators — rendered as stat tiles. */
+/** Non-percentage indicators - rendered as stat tiles. */
 export const KENYA_STATS: KenyaIndicator[] = [
   {
     id: 'mmr',
@@ -101,4 +101,4 @@ export const KENYA_STATS: KenyaIndicator[] = [
 ];
 
 export const KENYA_DATA_PROVENANCE =
-  'World Health Organization Global Health Observatory, values retrieved 3 Oct 2026. Menstrual health has no WHO indicator — see the coverage methodology below.';
+  'World Health Organization Global Health Observatory, values retrieved 3 Oct 2026. Menstrual health has no WHO indicator. See the coverage methodology below.';

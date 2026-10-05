@@ -17,7 +17,7 @@ interface RevealProps {
 export function Reveal({ children, className, delay = 0 }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   // Users who prefer reduced motion (or browsers without IntersectionObserver)
-  // get the final state immediately — computed lazily during render.
+  // get the final state immediately - computed lazily during render.
   const [visible, setVisible] = useState(
     () =>
       typeof IntersectionObserver === 'undefined' ||

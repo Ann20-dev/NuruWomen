@@ -10,7 +10,7 @@ import { useLoginActions } from './useLoginActions';
  * Regression test: adding a second login while one is already logged in
  * must switch the current user to the new login (logins[0]). Without the
  * fix, addLogin appends the new login to the end of the array and
- * logins[0] remains the previously-logged-in user — leading to the
+ * logins[0] remains the previously-logged-in user - leading to the
  * destructive bug where the signup profile step signs kind 0 metadata
  * with the *original* user's signer, overwriting their profile.
  */

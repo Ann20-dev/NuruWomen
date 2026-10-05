@@ -44,14 +44,14 @@ export function LayerDisclaimer({ layer }: { layer: Layer }) {
   if (layer === 'lived-experience') {
     return (
       <p className="text-xs text-clay/90 dark:text-clay italic">
-        Personal experience — not medical advice.
+        Personal experience, not medical advice.
       </p>
     );
   }
   if (layer === 'clinical-response') {
     return (
       <p className="text-xs text-clinical/90 dark:text-clinical italic">
-        Clinical education — not a personal consultation.
+        Clinical education, not a personal consultation.
       </p>
     );
   }

@@ -104,7 +104,7 @@ export function useNuruAnswers(questionId: string | undefined) {
 
       const all = [...live, ...seedAnswers].sort((a, b) => a.createdAt - b.createdAt);
 
-      // Helpful votes target answers by `e` tag — one dedupe per voter per answer.
+      // Helpful votes target answers by `e` tag - one dedupe per voter per answer.
       const ids = all.map((a) => a.id);
       const helpfulCounts: Record<string, number> = {};
       if (ids.length > 0) {

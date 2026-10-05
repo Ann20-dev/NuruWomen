@@ -9,7 +9,7 @@ export type TopicArtKind =
   | 'postpartum'
   | 'mental-health';
 
-/** Faceless bust figure — the shared figure style across all illustrations. */
+/** Faceless bust figure - the shared figure style across all illustrations. */
 function Bust({
   x,
   y,
@@ -101,7 +101,7 @@ function SexualHealthScene() {
 
       {/* the woman */}
       <Bust x={68} y={178} skin={ART.skin2} wrap={ART.saffron} cloth={ART.clay} scale={1.05} />
-      {/* the clinician — teal uniform with a soft badge */}
+      {/* the clinician - teal uniform with a soft badge */}
       <g transform="translate(232 196) scale(1.05)">
         <path d="M -38 0 C -38 -26 -20 -40 0 -40 C 20 -40 38 -26 38 0 Z" fill="#1f7668" />
         <circle cx="0" cy="-54" r="16" fill={ART.skin3} />

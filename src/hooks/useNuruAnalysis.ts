@@ -58,7 +58,7 @@ export function useNuruAnalysis() {
         setSource('server');
         setStatus('ready');
       } catch {
-        // Gateway unreachable — run the same exported rules on-device.
+        // Gateway unreachable - run the same exported rules on-device.
         try {
           const local = analyzeLocally(payload);
           setAnalysis(local);

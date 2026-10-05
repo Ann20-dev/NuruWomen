@@ -6,7 +6,7 @@ import type { RetrievalResult } from '@/lib/nuru/retrieve';
 import { sanitizeUrl } from '@/lib/utils';
 
 /**
- * "Related reading" — articles from the library and papers from the
+ * "Related reading" - articles from the library and papers from the
  * clinically reviewed catalog, retrieved for the current question.
  */
 export function RelatedReading({ retrieval }: { retrieval: RetrievalResult }) {

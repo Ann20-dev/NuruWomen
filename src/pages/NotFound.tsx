@@ -9,7 +9,7 @@ const NotFound = () => {
   const location = useLocation();
 
   useSeoMeta({
-    title: "Page not found — NuruWomen",
+    title: "Page not found · NuruWomen",
     description: "The page you are looking for could not be found. Return home or browse community health questions.",
   });
 

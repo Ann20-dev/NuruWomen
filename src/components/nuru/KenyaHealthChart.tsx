@@ -7,7 +7,7 @@ import { KENYA_BARS, KENYA_STATS } from '@/data/kenyaHealth';
 const STAT_ICONS = [HeartPulse, Activity, LifeBuoy] as const;
 
 /**
- * "Kenya in focus" — a bar chart of real WHO indicator values for Kenyan
+ * "Kenya in focus" - a bar chart of real WHO indicator values for Kenyan
  * women, with per-100k and years-based measures as stat tiles alongside.
  * Bars animate open on first view; reduced-motion users get final values.
  */
@@ -85,7 +85,7 @@ export function KenyaHealthChart() {
 
       <p className="text-xs text-muted-foreground leading-relaxed border-t pt-3">
         Source: World Health Organization, latest available year for each indicator.
-        Menstrual health has no global indicator — one reason it stays a blind spot.
+        Menstrual health has no global indicator. One reason it stays a blind spot.
       </p>
     </div>
   );

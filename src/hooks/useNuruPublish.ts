@@ -18,7 +18,7 @@ const now = () => Math.floor(Date.now() / 1000);
  * Publishes Nostr events to the configured write relays.
  *
  * Anonymous posting signs with a fresh one-time keypair that is discarded
- * immediately — no account and no durable identity (identity-decisions.md).
+ * immediately, no account and no durable identity (identity-decisions.md).
  * The event is also mirrored in session memory so it renders instantly
  * while relay propagation catches up.
  */

@@ -155,7 +155,7 @@
   to { transform: scale(1.55); opacity: 0; }
 }
 
-/* Headline accent words — quiet editorial hover life */
+/* Headline accent words - quiet editorial hover life */
 .hero-word {
   position: relative;
   display: inline-block;
@@ -260,17 +260,17 @@
   --input: hsl(34 24% 82%);
   --ring: hsl(346 48% 36%);
 
-  /* Lived experience — warm terracotta clay */
+  /* Lived experience - warm terracotta clay */
   --clay: hsl(20 66% 40%);
   --clay-foreground: hsl(40 48% 97%);
   --clay-soft: hsl(22 62% 93%);
 
-  /* Clinical response — deep teal */
+  /* Clinical response - deep teal */
   --clinical: hsl(176 58% 28%);
   --clinical-foreground: hsl(40 48% 97%);
   --clinical-soft: hsl(175 42% 91.5%);
 
-  /* Evidence — plum */
+  /* Evidence - plum */
   --plum: hsl(272 34% 40%);
   --plum-foreground: hsl(40 48% 97%);
   --plum-soft: hsl(272 38% 93.5%);
@@ -406,7 +406,7 @@
       radial-gradient(50rem 28rem at -10% 20%, var(--accent), transparent 55%);
   }
 
-  /* Animated gradient text — warm sweep across brand colors */
+  /* Animated gradient text - warm sweep across brand colors */
   .text-shine {
     background-image: linear-gradient(
       100deg,

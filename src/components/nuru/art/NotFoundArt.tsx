@@ -1,6 +1,6 @@
 import { ART } from './palette';
 
-/** A woman with a lantern at a crossroads signpost — the lost-page scene. */
+/** A woman with a lantern at a crossroads signpost - the lost-page scene. */
 export function NotFoundArt({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 240 180" className={className} role="presentation" aria-hidden="true">

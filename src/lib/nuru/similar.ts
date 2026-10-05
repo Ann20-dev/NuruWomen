@@ -2,7 +2,7 @@ import type { Question } from './types';
 
 /**
  * On-device "similar questions" matching. Deliberately simple and
- * deterministic — the same spirit as the keyword classifiers, never a
+ * deterministic - the same spirit as the keyword classifiers, never a
  * semantic model: shared topics count double, shared significant title words
  * count once. Runs fully in the browser; nothing about the writer's draft
  * leaves the device for this.

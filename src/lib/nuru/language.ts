@@ -1,6 +1,6 @@
 /**
  * Lightweight Kiswahili detection for question text. Cue-based, same spirit
- * as the bilingual routing rules — used to preselect the analysis language.
+ * as the bilingual routing rules - used to preselect the analysis language.
  * The writer can always override it manually.
  */
 const SWAHILI_CUES = new Set([

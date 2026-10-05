@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { LottieLight } from 'lottie-react';
 
 interface LottiePlayerProps {
-  /** Parsed Lottie JSON — import from `@/assets/lottie/*.json` */
+  /** Parsed Lottie JSON - import from `@/assets/lottie/*.json` */
   animationData: object;
   className?: string;
   loop?: boolean;
@@ -12,7 +12,7 @@ interface LottiePlayerProps {
 
 /**
  * Brand-tinted Lottie illustration, rendered with the library's light SVG
- * build (no expression engine — safe under our strict CSP). Loops gently by
+ * build (no expression engine - safe under our strict CSP). Loops gently by
  * default and shows a static first frame for reduced-motion users.
  */
 export function LottiePlayer({ animationData, className, loop = true, label }: LottiePlayerProps) {

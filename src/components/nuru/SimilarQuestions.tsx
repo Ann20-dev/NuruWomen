@@ -5,7 +5,7 @@ import type { SimilarMatch } from '@/lib/nuru/similar';
 import { formatNumber } from '@/lib/nuru/format';
 
 /**
- * "You are not the first to ask this" — shown live while a question is being
+ * "You are not the first to ask this" - shown live while a question is being
  * written. Turns a private worry into evidence of a shared knowledge gap,
  * and points the writer to existing threads before they publish.
  */
@@ -42,7 +42,7 @@ export function SimilarQuestions({ matches, count }: { matches: SimilarMatch[]; 
       )}
 
       <p className="text-xs text-muted-foreground pl-12">
-        Your words are matched on this device only — nothing is sent anywhere until you publish.
+        Your words are matched on this device only. Nothing is sent anywhere until you publish.
       </p>
     </aside>
   );

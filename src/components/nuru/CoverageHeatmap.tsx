@@ -19,7 +19,7 @@ const LEVEL_NOTES: Record<number, string> = {
 };
 
 const LEVEL_LABELS: Record<number, string> = {
-  0: 'Gap — no data',
+  0: 'Gap: no data',
   1: 'Some data',
   2: 'Well covered',
 };
@@ -106,7 +106,7 @@ export function CoverageHeatmap() {
           <span className="inline-block size-3 rounded-sm bg-primary/30" /> Some data
         </span>
         <span className="inline-flex items-center gap-1.5">
-          <span className="inline-block size-3 rounded-sm bg-accent border" /> Gap — no data
+          <span className="inline-block size-3 rounded-sm bg-accent border" /> Gap: no data
         </span>
         <span className="inline-flex items-center gap-1.5">
           <span className="inline-block size-3 rounded-sm bg-gold" /> Research estimate
@@ -173,7 +173,7 @@ export function CoverageHeatmap() {
                         <button
                           type="button"
                           onClick={() => cell && setSelected(cell)}
-                          aria-label={`${topic} — ${country}: ${LEVEL_LABELS[level]}`}
+                          aria-label={`${topic}, ${country}: ${LEVEL_LABELS[level]}`}
                           aria-pressed={isSelected}
                           className={cn(
                             'block h-5 w-6 rounded-[4px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1',
@@ -203,7 +203,7 @@ export function CoverageHeatmap() {
         )}
         <p>
           <strong className="text-primary">
-            {selected.mvp_topic} — {selected.country}:
+            {selected.mvp_topic}, {selected.country}:
           </strong>{' '}
           {LEVEL_NOTES[selected.level]}
           {selected.records > 0 && ` ${selected.records.toLocaleString()} data points.`}

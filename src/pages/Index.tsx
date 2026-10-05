@@ -53,9 +53,9 @@ const TOPIC_TILES: { art: TopicArtKind; area: string }[] = [
 
 export default function Index() {
   useSeoMeta({
-    title: 'NuruWomen — Women’s Health Commons Africa',
+    title: 'NuruWomen · Women’s Health Commons Africa',
     description:
-      'A privacy-first, open women’s health knowledge commons for Africa. Anonymous questions, lived experience and evidence — clearly separated, never mixed up.',
+      'A privacy-first, open women’s health knowledge commons for Africa. Anonymous questions, lived experience and evidence, clearly separated, never mixed up.',
   });
 
   const [askHover, setAskHover] = useState(false);
@@ -106,7 +106,7 @@ export default function Index() {
             </div>
           </div>
 
-          {/* The knowledge object — slightly entering the headline's space */}
+          {/* The knowledge object - slightly entering the headline's space */}
           <HeroScene askHover={askHover} className="lg:-ml-14" />
         </div>
       </section>
@@ -127,7 +127,7 @@ export default function Index() {
 
           <div className="grid gap-8 lg:grid-cols-[1.5fr_1fr] items-start">
             <Reveal className="space-y-5">
-              {/* One card, three layers — separated by shading and labels */}
+              {/* One card, three layers - separated by shading and labels */}
               <Card className="overflow-hidden border-primary/25 shadow-md">
                 <CardContent className="p-0">
                   {/* The question */}

@@ -23,7 +23,7 @@ function CommentSkeleton() {
   );
 }
 
-/** One answer rendered as a compact threaded comment — left rule in its layer colour. */
+/** One answer rendered as a compact threaded comment - left rule in its layer colour. */
 function CommentRow({
   answer,
   questionId,
@@ -87,7 +87,7 @@ function LayerGroup({
 }
 
 /**
- * Inline comment thread for a question card. Fetches answers lazily — the
+ * Inline comment thread for a question card. Fetches answers lazily - the
  * query only runs once the comments dropdown is opened.
  */
 export function QuestionComments({ questionId }: { questionId: string }) {

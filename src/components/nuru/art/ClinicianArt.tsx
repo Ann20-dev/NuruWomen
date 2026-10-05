@@ -1,7 +1,7 @@
 import { ART } from './palette';
 
 /**
- * A female clinician in a clinic, reading a chart with a patient nearby —
+ * A female clinician in a clinic, reading a chart with a patient nearby -
  * for the clinically reviewed layer. Decorative illustration.
  */
 export function ClinicianArt({ className }: { className?: string }) {

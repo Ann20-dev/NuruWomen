@@ -8,13 +8,13 @@ import { cn } from '@/lib/utils';
 /**
  * Monthly ranking of the most-discussed health topics. Privacy rule (shared
  * with the rest of the dashboard): figures only ever appear in aggregate,
- * with group sizes far above the k-anonymity threshold — a ranking can never
+ * with group sizes far above the k-anonymity threshold - a ranking can never
  * be traced back to one woman or one question.
  */
 const RANKED = [...BLIND_SPOTS].sort((a, b) => b.count - a.count);
 const MAX = RANKED[0]?.count ?? 1;
 
-/** Full ranked leaderboard — the Coverage dashboard version. */
+/** Full ranked leaderboard - the Coverage dashboard version. */
 export function TrendingBoard({ limit = RANKED.length }: { limit?: number }) {
   return (
     <ol className="space-y-2.5">
@@ -68,7 +68,7 @@ export function TrendingBoard({ limit = RANKED.length }: { limit?: number }) {
   );
 }
 
-/** Compact ranked pills — the home-page strip version. */
+/** Compact ranked pills - the home-page strip version. */
 export function TrendingStrip({ limit = 5 }: { limit?: number }) {
   return (
     <ol className="flex flex-wrap gap-2">

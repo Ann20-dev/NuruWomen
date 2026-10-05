@@ -23,7 +23,7 @@ export const SEED_EVENTS: HealthEvent[] = [
     id: seedId('ev-cervical-screening-kibera'),
     title: 'Free cervical screening & HPV vaccination camp',
     summary:
-      'Walk-in screening with visual inspection (VIA) and HPV testing, plus vaccination for eligible girls and young women. Nurses explain every step before anything happens — no question is too small.',
+      'Walk-in screening with visual inspection (VIA) and HPV testing, plus vaccination for eligible girls and young women. Nurses explain every step before anything happens. No question is too small.',
     startsAt: at(6, 9),
     endsAt: at(6, 15),
     location: 'Nairobi · Kibera, DOOR Hall',
@@ -39,7 +39,7 @@ export const SEED_EVENTS: HealthEvent[] = [
     id: seedId('ev-menopause-webinar'),
     title: 'Perimenopause explained: the changes nobody mentions',
     summary:
-      'A live webinar with a gynaecologist and two women sharing lived experience. Sleep, anxiety, changing cycles, treatment options — followed by an anonymous Q&A where no name is ever shown.',
+      'A live webinar with a gynaecologist and two women sharing lived experience. Sleep, anxiety, changing cycles, treatment options, followed by an anonymous Q&A where no name is ever shown.',
     startsAt: at(12, 18),
     endsAt: at(12, 19.5),
     location: 'Online (Zoom)',
@@ -54,7 +54,7 @@ export const SEED_EVENTS: HealthEvent[] = [
   },
   {
     id: seedId('ev-postpartum-circle-kisumu'),
-    title: 'Postpartum support circle — tea, truth-telling and rest',
+    title: 'Postpartum support circle: tea, truth-telling and rest',
     summary:
       'A gentle, facilitated circle for mothers in the first year after birth. Baby welcome. A registered midwife and a counsellor hold the space; sharing is always optional.',
     startsAt: at(16, 10),
@@ -70,7 +70,7 @@ export const SEED_EVENTS: HealthEvent[] = [
   },
   {
     id: seedId('ev-endo-dialogue'),
-    title: 'Endometriosis: seven years to a diagnosis — an open dialogue',
+    title: 'Endometriosis: seven years to a diagnosis, an open dialogue',
     summary:
       'Women with endometriosis, a laparoscopic surgeon and a pain specialist discuss why diagnosis takes so long and what to say in a consultation when pain is dismissed. Anonymous questions collected in advance.',
     startsAt: at(23, 17),
@@ -105,7 +105,7 @@ export const SEED_EVENTS: HealthEvent[] = [
     id: seedId('ev-fibroids-qa'),
     title: 'Ask a gynaecologist: fibroids, fertility and fear of surgery',
     summary:
-      'An open online Q&A. Two gynaecologists answer the community’s most-asked fibroid questions — from watchful waiting to myomectomy — with plain-language explanations and no pressure.',
+      'An open online Q&A. Two gynaecologists answer the community’s most-asked fibroid questions, from watchful waiting to myomectomy, with plain-language explanations and no pressure.',
     startsAt: at(37, 18),
     endsAt: at(37, 19.5),
     location: 'Online (Zoom)',
@@ -136,7 +136,7 @@ export const SEED_EVENTS: HealthEvent[] = [
   },
   {
     id: seedId('ev-pmdd-peer-circle'),
-    title: 'PMS & PMDD peer circle — when the week before is the hardest',
+    title: 'PMS & PMDD peer circle: when the week before is the hardest',
     summary:
       'A small, moderated online circle for anyone whose premenstrual mood changes disrupt their life. Cameras optional. A psychologist joins for the final thirty minutes.',
     startsAt: at(51, 19),
@@ -152,7 +152,7 @@ export const SEED_EVENTS: HealthEvent[] = [
   },
   {
     id: seedId('ev-contraception-popup'),
-    title: 'Contraception choices pop-up — methods, myths and side effects',
+    title: 'Contraception choices pop-up: methods, myths and side effects',
     summary:
       'Drop-in sessions with reproductive health nurses: compare methods honestly, ask about side effects without judgement, and leave with clear next steps. Free implants and pills while stocks last.',
     startsAt: at(58, 9),
@@ -186,7 +186,7 @@ export const SEED_EVENTS: HealthEvent[] = [
     id: seedId('ev-painful-sex-webinar'),
     title: 'Pain during sex is common, treatable and not your fault',
     summary:
-      'A pelvic-health physiotherapist and a sexual-health nurse explain the most common causes of pain with sex — infections, dryness, pelvic floor tension — and the treatments that actually help.',
+      'A pelvic-health physiotherapist and a sexual-health nurse explain the most common causes of pain with sex (infections, dryness, pelvic floor tension) and the treatments that actually help.',
     startsAt: at(72, 18),
     endsAt: at(72, 19.5),
     location: 'Online (Zoom)',

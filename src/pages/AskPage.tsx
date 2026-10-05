@@ -36,7 +36,7 @@ const BODY_MAX_CODEPOINTS = 2879;
 
 export default function AskPage() {
   useSeoMeta({
-    title: 'Ask anonymously — NuruWomen',
+    title: 'Ask anonymously · NuruWomen',
     description: 'Ask a sensitive women’s health question without an account, email or phone number. Identifying details are removed before anything is published.',
   });
 
@@ -69,7 +69,7 @@ export default function AskPage() {
     [title, content],
   );
 
-  // Live "similar questions" matching — on-device, against the questions
+  // Live "similar questions" matching - on-device, against the questions
   // already loaded for the commons. Uses the writer's current topic
   // selection, which sharpens as they accept/edit suggestions.
   const similar = useMemo(() => {
@@ -299,7 +299,7 @@ export default function AskPage() {
             <div className="space-y-3">
               <div className="flex items-center gap-2">
                 <Sparkles className="size-4 text-gold" />
-                <Label className="text-sm font-semibold">Topics — suggested for you, tap to change</Label>
+                <Label className="text-sm font-semibold">Topics: suggested for you, tap to change</Label>
               </div>
               {suggestions.length > 0 && (
                 <div className="flex flex-wrap gap-1.5">
@@ -346,7 +346,7 @@ export default function AskPage() {
             <Card>
               <CardContent className="p-5 space-y-2">
                 <p className="flex items-center gap-2 font-semibold text-sm"><Fingerprint className="size-4 text-primary" /> No account needed</p>
-                <p className="text-sm text-muted-foreground">Your question is published anonymously. Nothing links it back to you — no email, no account, no trace.</p>
+                <p className="text-sm text-muted-foreground">Your question is published anonymously. Nothing links it back to you, no email, no account, no trace.</p>
               </CardContent>
             </Card>
 
@@ -396,7 +396,7 @@ export default function AskPage() {
               <CardContent className="p-5 space-y-2">
                 <h2 className="font-semibold text-sm">Keep in mind</h2>
                 <p className="text-xs text-muted-foreground leading-relaxed">
-                  Published questions are public and permanent. In an emergency, call 999 / 112 first — community answers come second.
+                  Published questions are public and permanent. In an emergency, call 999 / 112 first. Community answers come second.
                 </p>
               </CardContent>
             </Card>

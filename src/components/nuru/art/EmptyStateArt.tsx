@@ -1,6 +1,6 @@
 import { ART } from './palette';
 
-/** Open box with a butterfly finding its way out — friendly empty state. */
+/** Open box with a butterfly finding its way out - friendly empty state. */
 export function EmptyStateArt({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 200 150" className={className} role="presentation" aria-hidden="true">

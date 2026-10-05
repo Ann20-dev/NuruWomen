@@ -14,7 +14,7 @@ import { sanitizeUrl } from '@/lib/utils';
 import type { EvidenceCardData } from '@/lib/nuru/types';
 
 /**
- * The structured Evidence Card — the third knowledge layer.
+ * The structured Evidence Card - the third knowledge layer.
  * Plum-coded, clearly reviewed, sources attached.
  */
 export function EvidenceCardView({ card, compact = false }: { card: EvidenceCardData; compact?: boolean }) {
@@ -68,7 +68,7 @@ export function EvidenceCardView({ card, compact = false }: { card: EvidenceCard
 
             <div className="rounded-lg bg-card border border-destructive/30 p-4">
               <h4 className="flex items-center gap-1.5 text-sm font-semibold mb-2 text-destructive">
-                <AlertTriangle className="size-4" /> Red flags — don’t wait
+                <AlertTriangle className="size-4" /> Red flags: don’t wait
               </h4>
               <ul className="space-y-1.5 text-sm text-muted-foreground leading-relaxed list-disc pl-4">
                 {card.redFlags.map((r) => (
@@ -115,7 +115,7 @@ export function EvidenceCardView({ card, compact = false }: { card: EvidenceCard
           </div>
 
           <p className="text-xs text-plum/90 dark:text-plum italic border-t border-plum/20 pt-3">
-            Clinically reviewed educational summary. It explains patterns and options — it cannot diagnose you.
+            Clinically reviewed educational summary. It explains patterns and options. It cannot diagnose you.
           </p>
         </div>
       )}

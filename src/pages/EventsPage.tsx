@@ -130,9 +130,9 @@ function EventCard({ event }: { event: HealthEvent }) {
 
 export default function EventsPage() {
   useSeoMeta({
-    title: 'Events — NuruWomen',
+    title: 'Events · NuruWomen',
     description:
-      'Screenings, webinars, support circles and trainings on women’s health across Africa — gathered by the community, free to attend.',
+      'Screenings, webinars, support circles and trainings on women’s health across Africa, gathered by the community, free to attend.',
   });
 
   const { data: events, isLoading } = useNuruEvents();
@@ -165,7 +165,7 @@ export default function EventsPage() {
             Events for women’s health
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Screening camps, honest webinars, support circles and trainings — gathered from clinics,
+            Screening camps, honest webinars, support circles and trainings, gathered from clinics,
             community groups and the commons itself. Most are free, many are in Kiswahili and other
             African languages.
           </p>
@@ -195,7 +195,7 @@ export default function EventsPage() {
             <Skeleton className="h-32 w-full" />
           </div>
         ) : months.length === 0 ? (
-          <EmptyState message="No upcoming events of this type right now — check another category, or come back soon." />
+          <EmptyState message="No upcoming events of this type right now. Check another category, or come back soon." />
         ) : (
           <div className="space-y-12">
             {months.map(([key, list]) => (
@@ -228,7 +228,7 @@ export default function EventsPage() {
               <p className="text-sm text-muted-foreground leading-relaxed">
                 This calendar is open. Publish your event as a NIP-52 calendar event tagged{' '}
                 <code className="rounded bg-background px-1.5 py-0.5 text-xs">nuru-commons</code> from any
-                Nostr client and it appears here automatically — no account, no approval queue. Screenings,
+                Nostr client and it appears here automatically, no account, no approval queue. Screenings,
                 circles and trainings are all welcome, in any African language.
               </p>
             </CardContent>
@@ -239,7 +239,7 @@ export default function EventsPage() {
                 <Sparkles className="size-5 text-primary" /> Before you go
               </h2>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Event details come from organisers and may change — confirm times with the organiser.
+                Event details come from organisers and may change. Confirm times with the organiser.
                 For personal health concerns, a circle or webinar is a good first step, not the last one:{' '}
                 <Link to="/ask" className="text-primary font-medium hover:underline">ask the commons anonymously</Link>.
               </p>

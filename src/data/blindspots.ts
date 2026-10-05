@@ -7,7 +7,7 @@ import type { BlindSpotStat } from '@/lib/nuru/types';
  * single anyone out.
  */
 export const BLIND_SPOTS: BlindSpotStat[] = [
-  { topic: 'irregular-periods', label: 'Irregular periods', count: 1482, deltaPct: 12, note: 'The #1 cluster — and the top gateway to undiagnosed PCOS.' },
+  { topic: 'irregular-periods', label: 'Irregular periods', count: 1482, deltaPct: 12, note: 'The #1 cluster, and the top gateway to undiagnosed PCOS.' },
   { topic: 'severe-period-pain', label: 'Severe period pain', count: 1208, deltaPct: 19, note: 'Most often described as “dismissed by family or clinicians”.' },
   { topic: 'painful-sex', label: 'Pain during sex', count: 843, deltaPct: 38, note: 'Fastest-growing topic. Users often say they have never told anyone.' },
   { topic: 'pcos', label: 'PCOS', count: 721, deltaPct: 22, note: '“Just lose weight” appears in 6 of 10 PCOS consultations reported.' },
@@ -15,7 +15,7 @@ export const BLIND_SPOTS: BlindSpotStat[] = [
   { topic: 'perimenopause', label: 'Perimenopause', count: 615, deltaPct: 43, note: '82% did not know symptoms can begin before periods stop.' },
   { topic: 'fibroids', label: 'Fibroids', count: 580, deltaPct: 7, note: 'Clustered around one fear: surgery and future children.' },
   { topic: 'cervical-screening', label: 'Cervical screening', count: 512, deltaPct: 15, note: 'Most women were never told which test they received.' },
-  { topic: 'postpartum-anxiety', label: 'Postpartum anxiety', count: 472, deltaPct: 27, note: '“Can’t sleep even when the baby sleeps” — the most repeated phrase.' },
+  { topic: 'postpartum-anxiety', label: 'Postpartum anxiety', count: 472, deltaPct: 27, note: '“Can’t sleep even when the baby sleeps”, the most repeated phrase.' },
   { topic: 'contraception', label: 'Contraceptive effects', count: 451, deltaPct: 6, note: 'Dominated by the myth that stopped periods mean “collecting blood”.' },
   { topic: 'endometriosis', label: 'Endometriosis', count: 398, deltaPct: 31, note: 'Average time-to-diagnosis in community accounts: 7+ years.' },
   { topic: 'heavy-bleeding', label: 'Heavy bleeding', count: 344, deltaPct: 11, note: 'Anaemia symptoms are mentioned in a third of these questions.' },
@@ -28,17 +28,17 @@ export const SIGNALS = [
   {
     headline: '+43%',
     title: 'Perimenopause questions rising sharply',
-    body: 'Questions about perimenopause increased 43% this quarter. Four in five askers say they were never taught that symptoms — sleep loss, anxiety, cycle change — can begin years before periods stop. Midlife women’s health is the commons’ biggest uncovered gap.',
+    body: 'Questions about perimenopause increased 43% this quarter. Four in five askers say they were never taught that symptoms (sleep loss, anxiety, cycle change) can begin years before periods stop. Midlife women’s health is the commons’ biggest uncovered gap.',
   },
   {
     headline: '38%',
     title: 'Pain during sex: fastest-growing silence',
-    body: 'Pain-with-sex questions grew 38% and are the most likely to include the phrase “I have never told anyone”. A large share map to treatable causes — infections, dryness, pelvic floor tension — pointing to a straightforward education opportunity.',
+    body: 'Pain-with-sex questions grew 38% and are the most likely to include the phrase “I have never told anyone”. A large share map to treatable causes (infections, dryness, pelvic floor tension), pointing to a straightforward education opportunity.',
   },
   {
     headline: '7+ yrs',
     title: 'The endometriosis diagnosis gap',
-    body: 'Women describing eventual endometriosis diagnoses report an average of more than seven years between first symptoms and answers — most of that time spent being told severe pain is normal. Community experience data makes this delay visible.',
+    body: 'Women describing eventual endometriosis diagnoses report an average of more than seven years between first symptoms and answers, most of that time spent being told severe pain is normal. Community experience data makes this delay visible.',
   },
 ];
 

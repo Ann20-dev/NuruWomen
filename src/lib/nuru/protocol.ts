@@ -13,12 +13,12 @@ export const ANSWER_KIND = 1;
 export const HELPFUL_KIND = 7;
 /** Library articles are NIP-23 long-form. */
 export const ARTICLE_KIND = 30023;
-/** Evidence Cards — custom addressable kind (see NIP.md). */
+/** Evidence Cards - custom addressable kind (see NIP.md). */
 export const EVIDENCE_CARD_KIND = 35113;
 /** NIP-51 follow set listing manually verified clinician pubkeys. */
 export const CLINICIAN_LIST_KIND = 30000;
 export const CLINICIAN_LIST_DTAG = 'nuru-verified-clinicians';
-/** NIP-52 time-based calendar events — community health events. */
+/** NIP-52 time-based calendar events - community health events. */
 export const CALENDAR_EVENT_KIND = 31923;
 
 /** NIP-32 label namespace used to classify answer types. */

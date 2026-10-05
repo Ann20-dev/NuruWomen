@@ -23,7 +23,7 @@ export default function ArticlePage() {
   const { toast } = useToast();
 
   useSeoMeta({
-    title: article ? `${article.title} — NuruWomen` : 'Article — NuruWomen',
+    title: article ? `${article.title} · NuruWomen` : 'Article · NuruWomen',
     description: article?.summary,
   });
 
@@ -51,7 +51,7 @@ export default function ArticlePage() {
     }
     lines.push('## Sources');
     for (const s of article.sources) lines.push(`- [${s.label}](${s.url})`);
-    lines.push('', '---', 'Exported from NuruWomen — open women’s health knowledge. Educational only.');
+    lines.push('', '---', 'Exported from NuruWomen. Open women’s health knowledge. Educational only.');
 
     const blob = new Blob([lines.join('\n')], { type: 'text/markdown' });
     const url = URL.createObjectURL(blob);
@@ -153,8 +153,8 @@ export default function ArticlePage() {
                 })}
               </ul>
               <p className="text-xs text-muted-foreground border-t pt-3">
-                Educational content. It cannot replace personal medical advice —
-                if symptoms worry you, see a clinician.
+                Educational content. It cannot replace personal medical advice.
+                If symptoms worry you, see a clinician.
               </p>
             </CardContent>
           </Card>

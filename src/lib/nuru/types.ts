@@ -6,9 +6,9 @@ export interface SeedAnswer {
   type: AnswerType;
   authorName: string;
   authorPubkey: string;
-  /** Role badge — e.g. "Verified Clinician · OB/GYN" or "Peer Support Volunteer". */
+  /** Role badge - e.g. "Verified Clinician · OB/GYN" or "Peer Support Volunteer". */
   role?: string;
-  /** Extra tag for lived experience — e.g. "Endometriosis". */
+  /** Extra tag for lived experience - e.g. "Endometriosis". */
   experienceTag?: string;
   text: string;
   helpful: number;
@@ -93,7 +93,7 @@ export interface HealthEvent {
   /** Unix timestamp (seconds) for the start; optional end. */
   startsAt: number;
   endsAt?: number;
-  /** Human-readable place — "Nairobi · Kibera" or "Online (Zoom)". */
+  /** Human-readable place - "Nairobi · Kibera" or "Online (Zoom)". */
   location: string;
   isOnline: boolean;
   type: HealthEventType;

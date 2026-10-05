@@ -7,7 +7,7 @@ export function cn(...inputs: ClassValue[]) {
 
 /**
  * Allowlist-based URL sanitizer for event-sourced strings. Only https (and
- * relative) URLs are allowed — blocks javascript:, data:, vbscript: etc.
+ * relative) URLs are allowed - blocks javascript:, data:, vbscript: etc.
  */
 export function sanitizeUrl(url: string | undefined | null): string | undefined {
   if (!url) return undefined;

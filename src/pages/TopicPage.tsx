@@ -24,7 +24,7 @@ export default function TopicPage() {
   const { data: questions } = useNuruQuestions();
 
   useSeoMeta({
-    title: topic ? `${topic.name} — NuruWomen` : 'Topic — NuruWomen',
+    title: topic ? `${topic.name} · NuruWomen` : 'Topic · NuruWomen',
     description: topic?.blurb,
   });
 
@@ -91,7 +91,7 @@ export default function TopicPage() {
                 <p className="text-sm text-muted-foreground">Asked anonymously, answered in three layers.</p>
               </div>
               {related.length === 0 ? (
-                <EmptyState message="No questions on this topic yet — yours could be the first." />
+                <EmptyState message="No questions on this topic yet. Yours could be the first." />
               ) : (
                 <div className="space-y-4">
                   {related.map((q) => (
@@ -117,7 +117,7 @@ export default function TopicPage() {
                 </div>
                 <p className="font-display text-4xl font-semibold text-clay">{formatNumber(experienceCount)}</p>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  community experiences illustrate {topic.name.toLowerCase()} — preserved as
+                  community experiences illustrate {topic.name.toLowerCase()}, preserved as
                   experience, never presented as evidence.
                 </p>
                 <Button asChild size="sm" variant="outline" className="rounded-full bg-background border-clay/40 text-clay hover:bg-clay-soft">

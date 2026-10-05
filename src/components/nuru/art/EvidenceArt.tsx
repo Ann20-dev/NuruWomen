@@ -1,7 +1,7 @@
 import { ART } from './palette';
 
 /**
- * An open evidence book with a review check and a small chart — for the
+ * An open evidence book with a review check and a small chart - for the
  * evidence layer. Decorative illustration.
  */
 export function EvidenceArt({ className }: { className?: string }) {

@@ -14,8 +14,8 @@ import { cn } from '@/lib/utils';
 
 export default function LibraryPage() {
   useSeoMeta({
-    title: 'Knowledge library — NuruWomen',
-    description: 'Draft women’s health knowledge across the whole lifecycle — from first periods to healthy ageing.',
+    title: 'Knowledge library · NuruWomen',
+    description: 'Draft women’s health knowledge across the whole lifecycle, from first periods to healthy ageing.',
   });
 
   const [params, setParams] = useSearchParams();
@@ -108,7 +108,7 @@ export default function LibraryPage() {
 
         {areasWithContent.length === 0 ? (
           <EmptyState
-            message="Nothing matches that search yet. Try a different word — or ask the community anonymously."
+            message="Nothing matches that search yet. Try a different word, or ask the community anonymously."
             action={
               <Link
                 to="/ask"

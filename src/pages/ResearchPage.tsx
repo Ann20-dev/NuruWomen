@@ -8,7 +8,7 @@ import library from '@/data/researchLibrary.json';
 import { sanitizeUrl } from '@/lib/utils';
 
 export default function ResearchPage() {
-  useSeoMeta({ title: 'Research catalogue — NuruWomen', description: 'Imported research references from 2020 onward across five women’s health topics.' });
+  useSeoMeta({ title: 'Research catalogue · NuruWomen', description: 'Imported research references from 2020 onward across five women’s health topics.' });
   const [topic, setTopic] = useState('all');
   const [query, setQuery] = useState('');
   const papers = useMemo(() => library.papers.filter(p => p.year >= 2020 && (topic === 'all' || p.topic === topic) && `${p.title} ${p.journal_or_source}`.toLowerCase().includes(query.toLowerCase())), [topic, query]);

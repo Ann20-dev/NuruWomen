@@ -3,7 +3,7 @@ import { TrendingUp } from 'lucide-react';
 import { formatNumber } from '@/lib/nuru/format';
 
 /**
- * The aggregate "community signal" — turns one woman's question into
+ * The aggregate "community signal" - turns one woman's question into
  * evidence of a wider knowledge gap, without exposing anyone.
  */
 export function CommunitySignal({ similarCount, insight }: { similarCount: number; insight?: string }) {
@@ -20,7 +20,7 @@ export function CommunitySignal({ similarCount, insight }: { similarCount: numbe
           </p>
           {insight && <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">{insight}</p>}
           <p className="mt-2 text-xs text-muted-foreground">
-            Group totals only — no single person can ever be identified.
+            Group totals only, no single person can ever be identified.
           </p>
         </div>
       </div>

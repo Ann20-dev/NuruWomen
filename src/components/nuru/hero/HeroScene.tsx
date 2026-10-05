@@ -5,8 +5,8 @@ import { cn } from '@/lib/utils';
 /**
  * The NuruWomen hero signature: a living "knowledge object".
  *
- * An organic, translucent sculpture — soft membrane layers, a warm seed of
- * light, woven strands, ambient particles — that breathes slowly, follows the
+ * An organic, translucent sculpture - soft membrane layers, a warm seed of
+ * light, woven strands, ambient particles - that breathes slowly, follows the
  * cursor with magnetic parallax, and is orbited by faint floating questions
  * that sharpen as the cursor approaches them.
  *
@@ -109,7 +109,7 @@ export function HeroScene({ askHover, className }: { askHover: boolean; classNam
       const px = pointer.x * r.width;
       const py = pointer.y * r.height;
 
-      // Warm light field — reveals the object rather than glowing at you.
+      // Warm light field - reveals the object rather than glowing at you.
       if (lightRef.current) {
         lightRef.current.style.transform = `translate3d(${px - 260}px, ${py - 260}px, 0)`;
         lightRef.current.style.opacity = '0.75';
@@ -183,7 +183,7 @@ export function HeroScene({ askHover, className }: { askHover: boolean; classNam
         className,
       )}
     >
-      {/* Cursor light field — sunlight through translucent material */}
+      {/* Cursor light field - sunlight through translucent material */}
       {!staticMode && (
         <div
           ref={lightRef}
@@ -272,7 +272,7 @@ export function HeroScene({ askHover, className }: { askHover: boolean; classNam
               <path d="M150 130 C200 155 235 210 245 265" />
             </g>
 
-            {/* the seed — nuru, the light inside */}
+            {/* the seed - nuru, the light inside */}
             <path
               className="membrane m-seed"
               d="M200 148 C232 146 260 172 264 204 C268 236 250 268 218 278 C186 288 152 274 138 246 C124 218 132 184 156 166 C172 154 184 150 200 148 Z"
@@ -307,7 +307,7 @@ export function HeroScene({ askHover, className }: { askHover: boolean; classNam
         </div>
       )}
 
-      {/* floating questions — emerging from the commons */}
+      {/* floating questions - emerging from the commons */}
       {QUESTIONS.map((q, i) => {
         const isVisible = visible.includes(i);
         return (

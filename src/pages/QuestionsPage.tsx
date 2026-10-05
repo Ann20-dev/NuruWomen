@@ -18,7 +18,7 @@ import { cn } from '@/lib/utils';
 
 export default function QuestionsPage() {
   useSeoMeta({
-    title: 'Community questions — NuruWomen',
+    title: 'Community questions · NuruWomen',
     description: 'Anonymous women’s health questions answered through three separated layers: lived experience, clinical response and evidence.',
   });
 
@@ -59,7 +59,7 @@ export default function QuestionsPage() {
               <LottiePlayer animationData={questionAnimation} className="size-9 sm:size-11 shrink-0" />
             </h1>
             <p className="text-muted-foreground leading-relaxed">
-              Anonymous questions from women across the commons — each answered in three clearly separated
+              Anonymous questions from women across the commons, each answered in three clearly separated
               layers. New questions appear here as they’re asked.
             </p>
           </div>
@@ -100,7 +100,7 @@ export default function QuestionsPage() {
           </div>
         ) : filtered.length === 0 ? (
           <EmptyState
-            message="No questions in this topic yet. Be the first to ask — anonymously, in under a minute."
+            message="No questions in this topic yet. Be the first to ask, anonymously, in under a minute."
             action={
               <Button asChild className="rounded-full">
                 <Link to="/ask"><MessageCircleQuestion className="size-4" /> Ask anonymously</Link>

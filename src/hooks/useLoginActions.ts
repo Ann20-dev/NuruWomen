@@ -21,7 +21,7 @@ export function useLoginActions() {
 
   // Add a login and promote it to be the current user. Without the
   // setLogin call the new login is appended to the end of the array,
-  // leaving the prior account as logins[0] — which is what
+  // leaving the prior account as logins[0] - which is what
   // useCurrentUser / useLoggedInAccounts treat as the active user.
   // Promoting here makes "Add another account" actually switch.
   const addAndActivate = (login: NLoginType) => {
@@ -49,7 +49,7 @@ export function useLoginActions() {
     // The client displays a QR code and waits for the remote signer to connect.
     //
     // `onStatus` is forwarded from @nostrify/react so the UI can render
-    // live progress through the handshake phases — see NostrConnectStatus.
+    // live progress through the handshake phases - see NostrConnectStatus.
     async nostrconnect(
       params: NostrConnectParams,
       signal?: AbortSignal,

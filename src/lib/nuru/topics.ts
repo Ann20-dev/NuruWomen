@@ -43,7 +43,7 @@ export const TOPICS: Topic[] = [
     name: 'Irregular periods',
     area: 'menstrual-health',
     keywords: ['irregular period', 'late period', 'missed period', 'cycle', 'period is late', 'periods are irregular', 'skipped period'],
-    blurb: 'Cycles that arrive early, late, or unpredictably — and what patterns matter.',
+    blurb: 'Cycles that arrive early, late, or unpredictably, and what patterns matter.',
   },
   {
     slug: 'severe-period-pain',
@@ -64,28 +64,28 @@ export const TOPICS: Topic[] = [
     name: 'PCOS',
     area: 'conditions',
     keywords: ['pcos', 'polycystic', 'cysts on ovaries', 'facial hair', 'hirsutism', 'acne and irregular'],
-    blurb: 'Polycystic ovary syndrome — hormones, cycles, skin and fertility.',
+    blurb: 'Polycystic ovary syndrome: hormones, cycles, skin and fertility.',
   },
   {
     slug: 'endometriosis',
     name: 'Endometriosis',
     area: 'conditions',
     keywords: ['endometriosis', 'endo', 'pain that stops me', 'painful periods and sex'],
-    blurb: 'A condition where tissue like the womb lining grows elsewhere — often dismissed for years.',
+    blurb: 'A condition where tissue like the womb lining grows elsewhere, often dismissed for years.',
   },
   {
     slug: 'fibroids',
     name: 'Fibroids',
     area: 'conditions',
     keywords: ['fibroid', 'fibroids', 'swollen stomach', 'bulky uterus'],
-    blurb: 'Non-cancerous growths of the womb — very common, rarely explained.',
+    blurb: 'Non-cancerous growths of the womb: very common, rarely explained.',
   },
   {
     slug: 'painful-sex',
     name: 'Pain during sex',
     area: 'sexual-health',
     keywords: ['pain during sex', 'painful sex', 'hurts when', 'pain during intercourse', 'dyspareunia', 'sex is painful'],
-    blurb: 'Pain with sex is common and treatable — it is never something to simply endure.',
+    blurb: 'Pain with sex is common and treatable. It is never something to simply endure.',
   },
   {
     slug: 'contraception',
@@ -120,7 +120,7 @@ export const TOPICS: Topic[] = [
     name: 'Postpartum mental health',
     area: 'postpartum',
     keywords: ['postpartum', 'after giving birth', 'after birth', 'since i had my baby', 'new baby', 'baby blues', 'postnatal'],
-    blurb: 'Anxiety and low mood after childbirth — common, real and treatable.',
+    blurb: 'Anxiety and low mood after childbirth: common, real and treatable.',
   },
   {
     slug: 'cervical-screening',
@@ -141,14 +141,14 @@ export const TOPICS: Topic[] = [
     name: 'Perimenopause',
     area: 'perimenopause',
     keywords: ['perimenopause', 'periods have started changing', 'hot flush', 'hot flash', 'night sweats', "can't sleep", '43', '44', '45', '46', '47', '48', 'brain fog'],
-    blurb: 'The years before periods stop — when symptoms start but answers rarely come.',
+    blurb: 'The years before periods stop, when symptoms start but answers rarely come.',
   },
   {
     slug: 'menopause',
     name: 'Menopause',
     area: 'menopause',
     keywords: ['menopause', 'periods stopped', 'vaginal dryness', 'joint pain'],
-    blurb: 'Life after the final period — symptoms, bones, heart and options.',
+    blurb: 'Life after the final period: symptoms, bones, heart and options.',
   },
   {
     slug: 'pms-pmdd',
@@ -162,7 +162,7 @@ export const TOPICS: Topic[] = [
     name: 'Pelvic floor',
     area: 'pelvic-health',
     keywords: ['leaking urine', 'leak when', 'pelvic floor', 'prolapse', 'heaviness down there'],
-    blurb: 'Leaking, heaviness and prolapse — common after birth, never “just normal”.',
+    blurb: 'Leaking, heaviness and prolapse: common after birth, never “just normal”.',
   },
 ];
 

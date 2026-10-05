@@ -28,7 +28,7 @@ const LAYERS: { art: () => ReactElement; title: string; body: string }[] = [
 ];
 
 export default function AboutPage() {
-  useSeoMeta({ title: 'About — NuruWomen', description: 'An English and Kiswahili women’s health knowledge commons for Kenya and beyond.' });
+  useSeoMeta({ title: 'About · NuruWomen', description: 'An English and Kiswahili women’s health knowledge commons for Kenya and beyond.' });
   return <SiteLayout><div className="container py-10 sm:py-14 max-w-5xl space-y-12">
     <div className="space-y-3">
       <h1 className="font-display text-3xl sm:text-4xl font-semibold">About NuruWomen</h1>
@@ -38,8 +38,8 @@ export default function AboutPage() {
     <div className="grid md:grid-cols-3 gap-4">{LAYERS.map(({ art: Art, title, body }) => <Card key={title} className="overflow-hidden"><Art /><CardContent className="p-5 space-y-3"><h2 className="font-display text-xl font-semibold">{title}</h2><p className="text-sm text-muted-foreground">{body}</p></CardContent></Card>)}</div>
 
     <section className="space-y-3"><h2 className="font-display text-2xl font-semibold">Five areas of health</h2><p>Menstrual health, sexual health, healthy ageing, postpartum health and mental health. Every question is automatically sorted into these areas; anything unclear is reviewed by a person, not a machine.</p></section>
-    <section className="space-y-3"><h2 className="font-display text-2xl font-semibold">What NuruWomen does</h2><ul className="list-disc pl-5 space-y-2 text-muted-foreground"><li>Checks every question for privacy and safety before it is published.</li><li>Works in English and Kiswahili.</li><li>Publishes questions and answers anonymously — no accounts, ever.</li><li>Links every topic to recent clinical research.</li><li>Maps where reliable women's health data exists — and where it's missing — across 53 African countries.</li><li>Gathers upcoming women's health events — screenings, webinars and circles — on one open calendar.</li></ul></section>
-    <section className="space-y-3"><h2 className="font-display text-2xl font-semibold">Your privacy</h2><p className="text-muted-foreground">Questions are published anonymously — no account, no name, nothing stored that points back to you. Images you attach are stripped of hidden metadata (location, device) before upload. Public posts can't be taken back, and automatic scans can miss things, so please never share medical records or identifying details. No online service can promise perfect anonymity.</p></section>
+    <section className="space-y-3"><h2 className="font-display text-2xl font-semibold">What NuruWomen does</h2><ul className="list-disc pl-5 space-y-2 text-muted-foreground"><li>Checks every question for privacy and safety before it is published.</li><li>Works in English and Kiswahili.</li><li>Publishes questions and answers anonymously, no accounts, ever.</li><li>Links every topic to recent clinical research.</li><li>Maps where reliable women's health data exists, and where it's missing, across 53 African countries.</li><li>Gathers upcoming women's health events (screenings, webinars and circles) on one open calendar.</li></ul></section>
+    <section className="space-y-3"><h2 className="font-display text-2xl font-semibold">Your privacy</h2><p className="text-muted-foreground">Questions are published anonymously, no account, no name, nothing stored that points back to you. Images you attach are stripped of hidden metadata (location, device) before upload. Public posts can't be taken back, and automatic scans can miss things, so please never share medical records or identifying details. No online service can promise perfect anonymity.</p></section>
 
     {/* Verified clinical panel */}
     <section id="clinicians" className="space-y-5">
@@ -47,12 +47,12 @@ export default function AboutPage() {
         <p className="text-xs font-bold uppercase tracking-[0.14em] text-clinical inline-flex items-center gap-1.5">
           <Stethoscope className="size-4" /> Verified clinical panel
         </p>
-        <h2 className="font-display text-2xl sm:text-3xl font-semibold">Doctors must be verified — here is what that means</h2>
+        <h2 className="font-display text-2xl sm:text-3xl font-semibold">Doctors must be verified: here is what that means</h2>
         <p className="text-muted-foreground leading-relaxed">
           No one can call themselves a clinician on the commons by signing up. Every professional is
-          checked by a person against official registers — the Kenya Medical Practitioners and Dentists
+          checked by a person against official registers: the Kenya Medical Practitioners and Dentists
           Council (KMPDC), the Nursing Council of Kenya, the Pharmacy and Poisons Board, or the
-          equivalent register in their country — before their answers carry the teal clinical label.
+          equivalent register in their country, before their answers carry the teal clinical label.
           Self-declared titles, usernames and profile links are never accepted as proof.
         </p>
       </div>
@@ -92,7 +92,7 @@ export default function AboutPage() {
             their registration number privately with the review team; the team confirms it against
             the official register; only then is their public key added to the verified-clinician
             registry (a NIP-51 list published by the commons authority key). Clients treat the
-            registry — never self-labelling — as the source of the clinical badge.
+            registry, never self-labelling, as the source of the clinical badge.
           </p>
         </CardContent>
       </Card>
@@ -104,14 +104,14 @@ export default function AboutPage() {
         <p className="text-xs font-bold uppercase tracking-[0.14em] text-gold inline-flex items-center gap-1.5">
           <Languages className="size-4" /> Every African language
         </p>
-        <h2 className="font-display text-2xl sm:text-3xl font-semibold">Built in English and Kiswahili — ready for your language</h2>
+        <h2 className="font-display text-2xl sm:text-3xl font-semibold">Built in English and Kiswahili: ready for your language</h2>
         <p className="text-muted-foreground leading-relaxed">
           Today the interface and the analysis rules work in English and Kiswahili. The commons is
           open source, and translations are one of the most valuable contributions anyone can make:
           every screen string lives in one dictionary file
           (<code className="rounded bg-muted px-1.5 py-0.5 text-xs">src/lib/nuru/i18n.ts</code>),
-          and the keyword rules that sort questions live alongside it. Add your language — Yoruba,
-          Hausa, Amharic, Igbo, Shona, isiZulu, French, Arabic — and the language switcher picks it
+          and the keyword rules that sort questions live alongside it. Add your language (Yoruba,
+          Hausa, Amharic, Igbo, Shona, isiZulu, French, Arabic) and the language switcher picks it
           up automatically. No machine translation is used; every language is reviewed by a speaker.
         </p>
         <p className="text-sm text-muted-foreground inline-flex items-center gap-1.5">
@@ -121,7 +121,7 @@ export default function AboutPage() {
       </div>
     </section>
 
-    <section id="volunteer" className="space-y-3"><h2 className="font-display text-2xl font-semibold">What we're building toward</h2><p className="text-muted-foreground">Verified clinician accounts, full Kiswahili review, and careful human moderation — so every answer can one day come from someone whose training we have checked. <Link to="/research" className="text-primary underline">Browse the research</Link> that guides us today.</p></section>
+    <section id="volunteer" className="space-y-3"><h2 className="font-display text-2xl font-semibold">What we're building toward</h2><p className="text-muted-foreground">Verified clinician accounts, full Kiswahili review, and careful human moderation, so every answer can one day come from someone whose training we have checked. <Link to="/research" className="text-primary underline">Browse the research</Link> that guides us today.</p></section>
     <p><Link to="/ask" className="text-primary underline">Ask a question</Link></p>
   </div></SiteLayout>;
 }
