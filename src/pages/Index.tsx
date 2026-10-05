@@ -35,6 +35,7 @@ import { SEED_QUESTIONS } from '@/data/questions';
 import { evidenceCardBySlug } from '@/data/evidenceCards';
 import { BLIND_SPOT_TOTAL } from '@/data/blindspots';
 import { useUiLanguage } from '@/contexts/UiLanguageContext';
+import { uiLocale } from '@/lib/nuru/i18n';
 import { getArea } from '@/lib/nuru/topics';
 import { timeAgo } from '@/lib/nuru/format';
 
@@ -272,7 +273,7 @@ export default function Index() {
             <div className="flex flex-wrap items-end justify-between gap-x-8 gap-y-3">
               <div className="space-y-1.5">
                 <p className="text-xs font-bold uppercase tracking-[0.14em] text-gold inline-flex items-center gap-1.5">
-                  <Flame className="size-4" /> {t('home.trendingKicker')} · {currentMonthLabel()}
+                  <Flame className="size-4" /> {t('home.trendingKicker')} · {currentMonthLabel(uiLocale(lang))}
                 </p>
                 <h2 className="font-display font-semibold text-2xl sm:text-3xl tracking-tight">
                   {t('home.trendingTitle')}

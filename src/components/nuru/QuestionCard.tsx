@@ -5,6 +5,7 @@ import { ChevronDown, Image as ImageIcon, MessageCircle, TrendingUp } from 'luci
 import { Card, CardContent } from '@/components/ui/card';
 import { TopicChips } from '@/components/nuru/TopicChips';
 import { QuestionComments } from '@/components/nuru/QuestionComments';
+import { useUiLanguage } from '@/contexts/UiLanguageContext';
 import { timeAgo } from '@/lib/nuru/format';
 import { cn } from '@/lib/utils';
 import type { Question } from '@/lib/nuru/types';
@@ -23,11 +24,12 @@ export function QuestionCard({
 }) {
   const [open, setOpen] = useState(false);
   const Heading = headingLevel;
+  const { t } = useUiLanguage();
 
   const countLabel =
     typeof answerCount === 'number'
-      ? `${answerCount} ${answerCount === 1 ? 'answer' : 'answers'}`
-      : 'Answers';
+      ? `${answerCount} ${answerCount === 1 ? t('card.answer') : t('card.answers')}`
+      : t('card.answersFallback');
 
   const similar = question.signal?.similarCount ?? similarCount;
 
@@ -87,7 +89,7 @@ export function QuestionCard({
               type="button"
               onClick={() => setOpen((v) => !v)}
               aria-expanded={open}
-              aria-label={open ? 'Hide answers' : `Show ${countLabel}`}
+              aria-label={open ? t('card.hideAnswers') : `${t('card.showAnswers')} ${countLabel}`}
               className={cn(
                 'inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 font-semibold transition-colors',
                 open ? 'bg-accent text-accent-foreground' : 'hover:bg-muted hover:text-foreground',

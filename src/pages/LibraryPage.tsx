@@ -10,14 +10,16 @@ import { Reveal } from '@/components/nuru/Reveal';
 import { Input } from '@/components/ui/input';
 import { ARTICLES } from '@/data/articles';
 import { AREAS } from '@/lib/nuru/topics';
+import { useUiLanguage } from '@/contexts/UiLanguageContext';
 import { cn } from '@/lib/utils';
 
 export default function LibraryPage() {
   useSeoMeta({
-    title: 'Knowledge library · NuruWomen',
-    description: 'Draft women’s health knowledge across the whole lifecycle, from first periods to healthy ageing.',
+    title: 'Knowledge library — NuruWomen',
+    description: 'Draft women’s health knowledge across the whole lifecycle — from first periods to healthy ageing.',
   });
 
+  const { t, lang } = useUiLanguage();
   const [params, setParams] = useSearchParams();
   const area = params.get('area') ?? 'all';
   const [query, setQuery] = useState('');
@@ -44,22 +46,22 @@ export default function LibraryPage() {
       <div className="container py-10 sm:py-14 space-y-8">
         <div className="max-w-2xl space-y-3">
           <p className="text-xs font-bold uppercase tracking-[0.14em] text-primary inline-flex items-center gap-1.5">
-            <LibraryBig className="size-4" /> Knowledge drafts
+            <LibraryBig className="size-4" /> {t('library.kicker')}
           </p>
-          <h1 className="font-display font-semibold text-3xl sm:text-4xl tracking-tight">The knowledge library</h1>
+          <h1 className="font-display font-semibold text-3xl sm:text-4xl tracking-tight">{t('library.title')}</h1>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Explore educational articles and the research catalogue, reviewed by the clinical panel. They cannot replace personal medical advice.
+            {t('library.subtitle')}
           </p>
         </div>
 
-        <Link to="/research" className="inline-block text-primary underline font-semibold">Browse the research catalogue (2020 onward)</Link>
+        <Link to="/research" className="inline-block text-primary underline font-semibold">{t('library.researchLink')}</Link>
         <div className="space-y-4">
           <div className="relative max-w-xl">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 size-4.5 text-muted-foreground pointer-events-none" />
             <Input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search a symptom, topic or question…"
+              placeholder={t('library.searchPlaceholder')}
               className="h-12 rounded-full pl-11 pr-11 text-base shadow-sm bg-card focus-visible:shadow-md transition-shadow"
               aria-label="Search articles"
             />
@@ -67,7 +69,7 @@ export default function LibraryPage() {
               <button
                 type="button"
                 onClick={() => setQuery('')}
-                aria-label="Clear search"
+                aria-label={t('library.clearSearch')}
                 className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full p-1.5 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
               >
                 <X className="size-4" />
@@ -83,7 +85,7 @@ export default function LibraryPage() {
                 area === 'all' ? 'bg-primary text-primary-foreground border-primary' : 'bg-card hover:bg-accent',
               )}
             >
-              All
+              {t('library.all')}
             </button>
             {AREAS.map((a) => (
               <button
@@ -94,28 +96,28 @@ export default function LibraryPage() {
                   area === a.slug ? 'bg-primary text-primary-foreground border-primary' : 'bg-card hover:bg-accent',
                 )}
               >
-                {a.name}
+                {lang === 'sw' ? (a.swahili ?? a.name) : a.name}
               </button>
             ))}
           </div>
 
           <p aria-live="polite" className="text-sm text-muted-foreground">
             {query || area !== 'all'
-              ? `${visible.length} of ${ARTICLES.length} articles`
-              : `${ARTICLES.length} articles across ${AREAS.length} stages of life`}
+              ? `${visible.length} ${t('library.ofWord')} ${ARTICLES.length} ${t('library.articleWord')}`
+              : `${ARTICLES.length} ${t('library.articleWord')} ${t('library.across')} ${AREAS.length} ${t('library.stagesWord')}`}
           </p>
         </div>
 
         {areasWithContent.length === 0 ? (
           <EmptyState
-            message="Nothing matches that search yet. Try a different word, or ask the community anonymously."
+            message={t('library.empty')}
             action={
               <Link
                 to="/ask"
                 className="inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
               >
                 <MessageCircleQuestion className="size-4" />
-                Ask anonymously
+                {t('common.askAnonymously')}
               </Link>
             }
           />
@@ -126,8 +128,8 @@ export default function LibraryPage() {
               <section className="space-y-4">
                 <div className="border-b pb-2">
                   <h2 className="font-display font-semibold text-2xl">
-                    {a.name}
-                    {a.swahili && <span className="ml-2 text-sm font-sans font-medium text-gold">{a.swahili}</span>}
+                    {lang === 'sw' ? (a.swahili ?? a.name) : a.name}
+                    {a.swahili && lang !== 'sw' && <span className="ml-2 text-sm font-sans font-medium text-gold">{a.swahili}</span>}
                   </h2>
                   <p className="text-sm text-muted-foreground">{a.description}</p>
                 </div>

@@ -5,6 +5,7 @@ import { AuthorLine } from '@/components/nuru/AuthorLine';
 import { HelpfulButton } from '@/components/nuru/HelpfulButton';
 import { LayerDisclaimer } from '@/components/nuru/LayerBadge';
 import { useNuruAnswers } from '@/hooks/useNuruAnswers';
+import { useUiLanguage } from '@/contexts/UiLanguageContext';
 import { cn } from '@/lib/utils';
 import type { Answer } from '@/lib/nuru/types';
 
@@ -92,6 +93,7 @@ function LayerGroup({
  */
 export function QuestionComments({ questionId }: { questionId: string }) {
   const { data, isLoading } = useNuruAnswers(questionId);
+  const { t } = useUiLanguage();
 
   if (isLoading) {
     return (
@@ -109,22 +111,19 @@ export function QuestionComments({ questionId }: { questionId: string }) {
   if (total === 0) {
     return (
       <p className="text-sm text-muted-foreground leading-relaxed">
-        No answers yet.{' '}
+        {t('questions.noAnswers')}{' '}
         <Link to={`/question/${questionId}`} className="text-primary font-medium hover:underline">
-          Be the first to share an experience
+          {t('questions.beFirst')}
         </Link>
       </p>
     );
   }
 
-  const hidden =
-    Math.max(lived.length - MAX_PER_LAYER, 0) + Math.max(clinical.length - MAX_PER_LAYER, 0);
-
   return (
     <div className="space-y-5">
       {lived.length > 0 && (
         <LayerGroup
-          label="Lived experience"
+          label={t('layer.lived')}
           dot="bg-clay"
           answers={lived}
           questionId={questionId}
@@ -133,7 +132,7 @@ export function QuestionComments({ questionId }: { questionId: string }) {
       )}
       {clinical.length > 0 && (
         <LayerGroup
-          label="Clinical responses"
+          label={t('layer.clinical')}
           dot="bg-clinical"
           answers={clinical}
           questionId={questionId}
@@ -144,7 +143,7 @@ export function QuestionComments({ questionId }: { questionId: string }) {
         to={`/question/${questionId}`}
         className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
       >
-        {hidden > 0 ? `View all ${total} answers in the full thread` : 'Continue the full thread'}
+        {t('questions.fullThread')}
         <ArrowRight className="size-3.5" />
       </Link>
     </div>

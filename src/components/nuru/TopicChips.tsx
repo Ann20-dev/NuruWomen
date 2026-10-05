@@ -1,10 +1,13 @@
 import { Link } from 'react-router-dom';
 
+import { useUiLanguage } from '@/contexts/UiLanguageContext';
 import { getTopic } from '@/lib/nuru/topics';
 import { cn } from '@/lib/utils';
 
 export function TopicChip({ slug, className }: { slug: string; className?: string }) {
+  const { lang } = useUiLanguage();
   const topic = getTopic(slug);
+  const label = lang === 'sw' ? (topic?.swahili ?? topic?.name ?? slug) : (topic?.name ?? slug);
   return (
     <Link
       to={`/topics/${slug}`}
@@ -14,7 +17,7 @@ export function TopicChip({ slug, className }: { slug: string; className?: strin
         className,
       )}
     >
-      {topic?.name ?? slug}
+      {label}
     </Link>
   );
 }

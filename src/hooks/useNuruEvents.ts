@@ -7,6 +7,7 @@ import type { HealthEvent, HealthEventType } from '@/lib/nuru/types';
 import { SEED_EVENTS } from '@/data/events';
 import { demoStore } from '@/lib/nuru/demoStore';
 import { isHiddenContent } from '@/lib/nuru/moderation';
+import { queryWithTimeout } from '@/lib/nuru/relayQuery';
 
 const EVENT_TYPES = new Set<HealthEventType>(['screening', 'webinar', 'community', 'training', 'awareness']);
 
@@ -46,10 +47,20 @@ function eventToHealthEvent(event: NostrEvent): HealthEvent | undefined {
   };
 }
 
+function upcoming(events: HealthEvent[]): HealthEvent[] {
+  const cutoff = Math.floor(Date.now() / 1000) - 3 * 3600; // hide events that ended 3h+ ago
+  return events
+    .filter((e) => (e.endsAt ?? e.startsAt) >= cutoff)
+    .sort((a, b) => a.startsAt - b.startsAt);
+}
+
+const PLACEHOLDER_EVENTS = upcoming(SEED_EVENTS);
+
 /**
  * Upcoming women's-health events: bundled seed calendar merged with live
- * NIP-52 calendar events tagged for the commons. Relay failures degrade to
- * the seed calendar, never an error screen. Past events are hidden.
+ * NIP-52 calendar events tagged for the commons. The seed calendar renders
+ * instantly as placeholder data; live events merge in when relays answer
+ * within the deadline. Past events are hidden.
  */
 export function useNuruEvents() {
   const { nostr } = useNostr();
@@ -57,12 +68,11 @@ export function useNuruEvents() {
   return useQuery({
     queryKey: ['nuru-events'],
     queryFn: async (c) => {
-      const relayEvents = await nostr
-        .query(
-          [{ kinds: [CALENDAR_EVENT_KIND], '#t': [NURU_TAG], limit: 60 }],
-          { signal: c.signal },
-        )
-        .catch((): NostrEvent[] => []);
+      const relayEvents = await queryWithTimeout(
+        nostr,
+        [{ kinds: [CALENDAR_EVENT_KIND], '#t': [NURU_TAG], limit: 60 }],
+        { signal: c.signal },
+      );
 
       const liveById = new Map<string, NostrEvent>();
       for (const e of relayEvents) liveById.set(e.id, e);
@@ -76,11 +86,9 @@ export function useNuruEvents() {
         .filter((e): e is HealthEvent => Boolean(e));
 
       const liveIds = new Set(live.map((e) => e.id));
-      const cutoff = Math.floor(Date.now() / 1000) - 3 * 3600; // hide events that ended 3h+ ago
-      return [...live, ...SEED_EVENTS.filter((e) => !liveIds.has(e.id))]
-        .filter((e) => (e.endsAt ?? e.startsAt) >= cutoff)
-        .sort((a, b) => a.startsAt - b.startsAt);
+      return upcoming([...live, ...SEED_EVENTS.filter((e) => !liveIds.has(e.id))]);
     },
+    placeholderData: PLACEHOLDER_EVENTS,
     staleTime: 60_000,
   });
 }
