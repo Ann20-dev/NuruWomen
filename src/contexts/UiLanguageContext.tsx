@@ -40,6 +40,8 @@ export function UiLanguageProvider({ children }: { children: ReactNode }) {
   return <UiLanguageContext.Provider value={value}>{children}</UiLanguageContext.Provider>;
 }
 
+// The context hook intentionally shares this module with its provider.
+// eslint-disable-next-line react-refresh/only-export-components
 export function useUiLanguage(): UiLanguageContextType {
   const ctx = useContext(UiLanguageContext);
   if (!ctx) throw new Error('useUiLanguage must be used within UiLanguageProvider');

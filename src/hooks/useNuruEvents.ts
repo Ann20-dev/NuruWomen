@@ -57,15 +57,12 @@ export function useNuruEvents() {
   return useQuery({
     queryKey: ['nuru-events'],
     queryFn: async (c) => {
-      let relayEvents: NostrEvent[] = [];
-      try {
-        relayEvents = await nostr.query(
+      const relayEvents = await nostr
+        .query(
           [{ kinds: [CALENDAR_EVENT_KIND], '#t': [NURU_TAG], limit: 60 }],
           { signal: c.signal },
-        );
-      } catch {
-        relayEvents = [];
-      }
+        )
+        .catch((): NostrEvent[] => []);
 
       const liveById = new Map<string, NostrEvent>();
       for (const e of relayEvents) liveById.set(e.id, e);

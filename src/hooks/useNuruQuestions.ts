@@ -75,15 +75,12 @@ export function useNuruQuestions() {
   return useQuery({
     queryKey: ['nuru-questions'],
     queryFn: async (c) => {
-      let relayEvents: NostrEvent[] = [];
-      try {
-        relayEvents = await nostr.query(
+      const relayEvents = await nostr
+        .query(
           [{ kinds: [QUESTION_KIND], '#t': [NURU_TAG], limit: 100 }],
           { signal: c.signal },
-        );
-      } catch {
-        relayEvents = [];
-      }
+        )
+        .catch((): NostrEvent[] => []);
 
       const live = mergeLive(relayEvents)
         .filter((e) => e.kind === QUESTION_KIND && e.tags.some(([n, v]) => n === 't' && v === NURU_TAG))

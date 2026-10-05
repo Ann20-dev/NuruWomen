@@ -74,15 +74,12 @@ export function useNuruAnswers(questionId: string | undefined) {
       if (!questionId) throw new Error('missing question id');
 
       // Relay replies first; session-memory events fill in instantly.
-      let relayReplies: NostrEvent[] = [];
-      try {
-        relayReplies = await nostr.query(
+      const relayReplies = await nostr
+        .query(
           [{ kinds: [ANSWER_KIND], '#e': [questionId], limit: 200 }],
           { signal: c.signal },
-        );
-      } catch {
-        relayReplies = [];
-      }
+        )
+        .catch((): NostrEvent[] => []);
 
       const replyById = new Map<string, NostrEvent>();
       for (const e of relayReplies) replyById.set(e.id, e);

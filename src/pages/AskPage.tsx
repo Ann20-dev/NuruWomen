@@ -52,7 +52,7 @@ export default function AskPage() {
   const [safety, setSafety] = useState<SafetyFlag[]>([]);
   const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
   const [privacyConfirmed, setPrivacyConfirmed] = useState(false);
-  const [responseLanguage, setResponseLanguage] = useState<'en' | 'sw'>('en');
+  const [manualResponseLanguage, setManualResponseLanguage] = useState<'en' | 'sw' | null>(null);
   const [image, setImage] = useState<UploadedImage | null>(null);
   const [imageBusy, setImageBusy] = useState(false);
   const { status: aiStatus, analysis, source: aiSource, error: aiError, analyze, invalidate } = useNuruAnalysis();
@@ -89,12 +89,7 @@ export default function AskPage() {
     () => detectKiswahili(`${title} ${content}`),
     [title, content],
   );
-  const [languageTouched, setLanguageTouched] = useState(false);
-  useEffect(() => {
-    if (!languageTouched && detectedLanguage !== responseLanguage) {
-      setResponseLanguage(detectedLanguage);
-    }
-  }, [detectedLanguage, languageTouched, responseLanguage]);
+  const responseLanguage = manualResponseLanguage ?? detectedLanguage;
 
   // Debounced live scan
   useEffect(() => {
@@ -269,7 +264,7 @@ export default function AskPage() {
                     <button
                       key={lang}
                       type="button"
-                      onClick={() => { setLanguageTouched(true); setResponseLanguage(lang); invalidate(); }}
+                      onClick={() => { setManualResponseLanguage(lang); invalidate(); }}
                       className={cn(
                         'rounded-full border px-3 py-1 text-xs font-medium transition-colors',
                         responseLanguage === lang
