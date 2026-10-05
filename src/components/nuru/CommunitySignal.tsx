@@ -14,7 +14,7 @@ export function CommunitySignal({ similarCount, insight }: { similarCount: numbe
           <TrendingUp className="size-4.5" />
         </span>
         <div>
-          <p className="text-[0.7rem] font-bold uppercase tracking-[0.12em] text-gold mb-1">Community signal</p>
+          <p className="text-xs font-bold uppercase tracking-[0.12em] text-gold mb-1">Community signal</p>
           <p className="font-display font-semibold text-lg leading-snug">
             {formatNumber(similarCount)} similar questions have been asked in the commons.
           </p>

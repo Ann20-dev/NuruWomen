@@ -65,7 +65,7 @@ export function KenyaHealthChart() {
           const Icon = STAT_ICONS[i % STAT_ICONS.length];
           return (
             <div key={stat.id} className="rounded-xl border bg-secondary/50 p-4 space-y-1">
-              <p className="flex items-center gap-1.5 text-[0.7rem] font-semibold uppercase tracking-wide text-muted-foreground">
+              <p className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
                 <Icon className="size-3.5 text-primary" />
                 {stat.topic}
               </p>

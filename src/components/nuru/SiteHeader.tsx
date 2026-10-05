@@ -34,7 +34,7 @@ function LanguageToggle({ className }: { className?: string }) {
           onClick={() => setLang(code)}
           aria-pressed={lang === code}
           className={cn(
-            'rounded-full px-2.5 py-1 text-[0.7rem] font-semibold uppercase tracking-wide transition-colors',
+            'rounded-full px-2.5 py-1 text-xs font-semibold uppercase tracking-wide transition-colors',
             lang === code
               ? 'bg-primary text-primary-foreground'
               : 'text-muted-foreground hover:text-foreground',

@@ -73,7 +73,7 @@ function LayerGroup({
 }) {
   return (
     <div className="space-y-3">
-      <p className="flex items-center gap-2 text-[0.7rem] font-bold uppercase tracking-[0.12em] text-muted-foreground">
+      <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-muted-foreground">
         <span className={cn('size-2 rounded-full', dot)} />
         {label} · {answers.length}
       </p>

@@ -57,6 +57,8 @@ function seedQuestions(excludeIds: Set<string>): Question[] {
   }));
 }
 
+const PLACEHOLDER_QUESTIONS = seedQuestions(new Set());
+
 /** Live events from relays merged over session-memory events (deduped by id). */
 function mergeLive(relayEvents: NostrEvent[]): NostrEvent[] {
   const byId = new Map<string, NostrEvent>();
@@ -91,6 +93,7 @@ export function useNuruQuestions() {
       const liveIds = new Set(live.map((q) => q.id));
       return [...live, ...seedQuestions(liveIds)].sort((a, b) => b.createdAt - a.createdAt);
     },
+    placeholderData: PLACEHOLDER_QUESTIONS,
     staleTime: 30_000,
   });
 }

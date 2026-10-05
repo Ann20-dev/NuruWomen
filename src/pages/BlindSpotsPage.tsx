@@ -45,9 +45,9 @@ export default function BlindSpotsPage() {
     </CardContent></Card>
 
     <div className="grid gap-4 lg:grid-cols-2 items-start">
-      <Card><CardContent className="p-5 space-y-4">
+      <Card className="min-w-0"><CardContent className="min-w-0 p-5 space-y-4">
         <label htmlFor="coverage-country" className="font-semibold block">Explore a country</label>
-        <select id="coverage-country" value={country} onChange={e => setCountry(e.target.value)} className="rounded-lg border bg-background px-3 py-2">{countries.map(c => <option key={c}>{c}</option>)}</select>
+        <select id="coverage-country" value={country} onChange={e => setCountry(e.target.value)} className="w-full min-w-0 rounded-lg border bg-background px-3 py-2">{countries.map(c => <option key={c}>{c}</option>)}</select>
         <div className="grid sm:grid-cols-2 gap-3">{coverage.detail.filter(row => row.country === country).map(row => <div key={row.mvp_topic} className="rounded-lg border p-4"><h2 className="font-semibold">{row.mvp_topic}</h2><p className="text-sm mt-2">{row.records.toLocaleString()} data points</p><p className="text-xs text-muted-foreground mt-1">{LEVEL_WORDS[row.level] ?? 'Gap'}</p></div>)}</div>
       </CardContent></Card>
 

@@ -68,9 +68,10 @@ export default function QuestionsPage() {
           </Button>
         </div>
 
-        <div className="flex flex-wrap gap-1.5" role="tablist" aria-label="Filter by topic">
+        <div className="flex flex-wrap gap-1.5" role="group" aria-label="Filter by topic">
           <button
             onClick={() => setTopic('all')}
+            aria-pressed={topic === 'all'}
             className={cn(
               'rounded-full border px-3 py-1 text-xs font-medium transition-colors',
               topic === 'all' ? 'bg-primary text-primary-foreground border-primary' : 'bg-secondary/60 hover:bg-accent',
@@ -82,6 +83,7 @@ export default function QuestionsPage() {
             <button
               key={t.slug}
               onClick={() => setTopic(t.slug)}
+              aria-pressed={topic === t.slug}
               className={cn(
                 'rounded-full border px-3 py-1 text-xs font-medium transition-colors',
                 topic === t.slug ? 'bg-primary text-primary-foreground border-primary' : 'bg-secondary/60 hover:bg-accent',
@@ -116,7 +118,7 @@ export default function QuestionsPage() {
             </p>
             {filtered.map((q, i) => (
               <Reveal key={q.id} delay={Math.min(i * 80, 400)}>
-                <QuestionCard question={q} answerCount={seedAnswerCounts[q.id]} similarCount={similarCounts[q.id]} />
+                <QuestionCard question={q} answerCount={seedAnswerCounts[q.id]} similarCount={similarCounts[q.id]} headingLevel="h2" />
               </Reveal>
             ))}
           </div>

@@ -24,7 +24,7 @@ export function SiteFooter() {
         </div>
 
         <div>
-          <h3 className="text-sm font-semibold mb-3">{t('footer.exploreTitle')}</h3>
+          <h2 className="text-sm font-semibold mb-3">{t('footer.exploreTitle')}</h2>
           <ul className="space-y-2 text-sm text-muted-foreground">
             <li><Link className="hover:text-foreground transition-colors" to="/ask">{t('footer.ask')}</Link></li>
             <li><Link className="hover:text-foreground transition-colors" to="/questions">{t('footer.questions')}</Link></li>
@@ -36,7 +36,7 @@ export function SiteFooter() {
         </div>
 
         <div>
-          <h3 className="text-sm font-semibold mb-3">{t('footer.openTitle')}</h3>
+          <h2 className="text-sm font-semibold mb-3">{t('footer.openTitle')}</h2>
           <ul className="space-y-2 text-sm text-muted-foreground">
             <li className="flex items-center gap-1.5">
               <GitBranch className="size-3.5 shrink-0" /> {t('footer.open1')}

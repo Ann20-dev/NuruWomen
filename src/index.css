@@ -276,7 +276,7 @@
   --plum-soft: hsl(272 38% 93.5%);
 
   /* Nuru gold */
-  --gold: hsl(38 74% 44%);
+  --gold: hsl(38 74% 32%);
   --gold-soft: hsl(40 78% 92%);
 
   --chart-1: hsl(346 48% 40%);
@@ -390,6 +390,15 @@
   ::selection {
     background: var(--accent);
     color: var(--accent-foreground);
+  }
+
+  @media (max-width: 639px) {
+    a,
+    button,
+    [role="button"] {
+      min-inline-size: 44px;
+      min-block-size: 44px;
+    }
   }
 }
 

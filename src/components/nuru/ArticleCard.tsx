@@ -11,7 +11,7 @@ export function ArticleCard({ article }: { article: Article }) {
   return (
     <Card className="group h-full transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md hover:border-primary/25">
       <CardContent className="p-5 flex flex-col h-full gap-3">
-        <div className="flex items-center gap-2 text-[0.7rem] font-semibold uppercase tracking-wide text-muted-foreground">
+        <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
           <span className="text-primary">{area?.name ?? article.area}</span>
           <span aria-hidden>·</span>
           <span className="inline-flex items-center gap-1"><Clock3 className="size-3" />{article.minutes} min</span>

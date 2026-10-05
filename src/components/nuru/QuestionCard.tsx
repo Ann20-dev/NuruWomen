@@ -13,13 +13,16 @@ export function QuestionCard({
   question,
   answerCount,
   similarCount,
+  headingLevel = 'h3',
 }: {
   question: Question;
   answerCount?: number;
   /** Live-computed count of similar threads (seed questions carry their own curated signal). */
   similarCount?: number;
+  headingLevel?: 'h2' | 'h3';
 }) {
   const [open, setOpen] = useState(false);
+  const Heading = headingLevel;
 
   const countLabel =
     typeof answerCount === 'number'
@@ -33,14 +36,14 @@ export function QuestionCard({
       <CardContent className="p-5 space-y-3">
         <div className="flex items-start justify-between gap-4">
           <Link to={`/question/${question.id}`} className="min-w-0">
-            <h3 className="font-display font-semibold text-lg leading-snug group-hover:text-primary transition-colors">
+            <Heading className="font-display font-semibold text-lg leading-snug group-hover:text-primary transition-colors">
               {question.title}
-            </h3>
+            </Heading>
           </Link>
           <span className="flex items-center gap-1.5 shrink-0">
             {question.image && (
               <span
-                className="hidden sm:inline-flex items-center gap-1 rounded-full bg-secondary/70 text-muted-foreground px-2.5 py-1 text-[0.7rem] font-semibold"
+                className="hidden sm:inline-flex items-center gap-1 rounded-full bg-secondary/70 text-muted-foreground px-2.5 py-1 text-xs font-semibold"
                 title="A non-graphic image is attached to this question"
               >
                 <ImageIcon className="size-3" />
@@ -49,7 +52,7 @@ export function QuestionCard({
             )}
             {!question.isSeed && (
               <span
-                className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-clinical/30 bg-clinical-soft text-clinical px-2.5 py-1 text-[0.7rem] font-semibold"
+                className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-clinical/30 bg-clinical-soft text-clinical px-2.5 py-1 text-xs font-semibold"
                 title="Published live by the community"
               >
                 <span className="relative flex size-1.5">
@@ -61,7 +64,7 @@ export function QuestionCard({
             )}
             {typeof similar === 'number' && similar > 0 && (
               <span
-                className="hidden sm:inline-flex items-center gap-1 rounded-full bg-gold-soft text-gold px-2.5 py-1 text-[0.7rem] font-semibold"
+                className="hidden sm:inline-flex items-center gap-1 rounded-full bg-gold-soft text-gold px-2.5 py-1 text-xs font-semibold"
                 title="Similar questions asked in the commons"
               >
                 <TrendingUp className="size-3" />

@@ -27,7 +27,7 @@ export function EvidenceCardView({ card, compact = false }: { card: EvidenceCard
           <BookOpenCheck className="size-4.5" />
         </span>
         <div className="min-w-0 flex-1">
-          <p className="text-[0.7rem] font-bold uppercase tracking-[0.12em] text-plum mb-1">Evidence card</p>
+          <p className="text-xs font-bold uppercase tracking-[0.12em] text-plum mb-1">Evidence card</p>
           <h3 className="font-display font-semibold text-lg leading-snug">{card.title}</h3>
           <div className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
             <span className="inline-flex items-center gap-1">

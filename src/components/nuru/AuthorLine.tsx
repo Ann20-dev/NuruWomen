@@ -42,17 +42,17 @@ export function AuthorLine({ pubkey, name, role, experienceTag, createdAt }: Aut
         <div className="flex items-center gap-1.5 flex-wrap">
           <span className="font-medium text-sm truncate">{displayName}</span>
           {verified ? (
-            <span className="inline-flex items-center gap-1 text-[0.7rem] font-semibold text-clinical">
+            <span className="inline-flex items-center gap-1 text-xs font-semibold text-clinical">
               <BadgeCheck className="size-3.5" />
               {role}
             </span>
           ) : role ? (
-            <span className="inline-flex items-center gap-1 text-[0.7rem] font-semibold text-clay">
+            <span className="inline-flex items-center gap-1 text-xs font-semibold text-clay">
               {role}
             </span>
           ) : null}
           {!verified && !role && (
-            <span className="inline-flex items-center gap-1 text-[0.7rem] text-muted-foreground">
+            <span className="inline-flex items-center gap-1 text-xs text-muted-foreground">
               <Fingerprint className="size-3" />
               pseudonymous
             </span>

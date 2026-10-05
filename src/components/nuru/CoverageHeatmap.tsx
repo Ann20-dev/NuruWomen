@@ -84,7 +84,7 @@ export function CoverageHeatmap() {
               )}
             >
               {summary.is_proxy && (
-                <span className="absolute top-2 right-2 rounded border border-gold px-1 py-0.5 text-[0.6rem] font-bold text-gold">
+                <span className="absolute top-2 right-2 rounded border border-gold px-1 py-0.5 text-xs font-bold text-gold">
                   PROXY
                 </span>
               )}
@@ -176,7 +176,7 @@ export function CoverageHeatmap() {
                           aria-label={`${topic}, ${country}: ${LEVEL_LABELS[level]}`}
                           aria-pressed={isSelected}
                           className={cn(
-                            'block h-5 w-6 rounded-[4px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1',
+                            'block size-11 rounded-[4px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1',
                             LEVEL_CELL[level],
                             isSelected && 'ring-2 ring-foreground ring-offset-1',
                           )}

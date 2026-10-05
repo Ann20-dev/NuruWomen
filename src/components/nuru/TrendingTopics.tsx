@@ -55,7 +55,7 @@ export function TrendingBoard({ limit = RANKED.length }: { limit?: number }) {
             </span>
 
             <span
-              className="inline-flex shrink-0 items-center gap-1 rounded-full bg-gold-soft text-gold px-2 py-0.5 text-[0.7rem] font-bold"
+              className="inline-flex shrink-0 items-center gap-1 rounded-full bg-gold-soft text-gold px-2 py-0.5 text-xs font-bold"
               title="Change vs last month"
             >
               <TrendingUp className="size-3" />
@@ -88,7 +88,7 @@ export function TrendingStrip({ limit = 5 }: { limit?: number }) {
               {i + 1}
             </span>
             <span className="group-hover:text-primary transition-colors">{stat.label}</span>
-            <span className="inline-flex items-center gap-0.5 text-[0.7rem] font-bold text-gold">
+            <span className="inline-flex items-center gap-0.5 text-xs font-bold text-gold">
               <TrendingUp className="size-3" />
               {stat.deltaPct}%
             </span>

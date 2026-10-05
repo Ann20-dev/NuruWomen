@@ -19,7 +19,7 @@ export function SimilarQuestions({ matches, count }: { matches: SimilarMatch[]; 
           <TrendingUp className="size-4.5" />
         </span>
         <div className="space-y-1">
-          <p className="text-[0.7rem] font-bold uppercase tracking-[0.12em] text-gold">You are not alone in asking</p>
+          <p className="text-xs font-bold uppercase tracking-[0.12em] text-gold">You are not alone in asking</p>
           <p className="font-display font-semibold text-lg leading-snug">
             {formatNumber(count)} similar question{count === 1 ? ' has' : 's have'} been asked in the commons.
           </p>

@@ -62,7 +62,7 @@ function EventCard({ event }: { event: HealthEvent }) {
         <div className="min-w-0 flex-1 space-y-2.5">
           <div className="flex items-start justify-between gap-3 flex-wrap">
             <h3 className="font-display font-semibold text-lg leading-snug">{event.title}</h3>
-            <span className={cn('shrink-0 rounded-full border px-2.5 py-0.5 text-[0.7rem] font-semibold', styles.badge)}>
+            <span className={cn('shrink-0 rounded-full border px-2.5 py-0.5 text-xs font-semibold', styles.badge)}>
               {EVENT_TYPE_LABELS[event.type]}
             </span>
           </div>
@@ -173,11 +173,12 @@ export default function EventsPage() {
 
         <EventsArt className="w-full max-w-3xl rounded-xl border" />
 
-        <div className="flex flex-wrap gap-1.5" role="tablist" aria-label="Filter by event type">
+        <div className="flex flex-wrap gap-1.5" role="group" aria-label="Filter by event type">
           {TYPE_FILTERS.map((f) => (
             <button
               key={f}
               onClick={() => setType(f)}
+              aria-pressed={type === f}
               className={cn(
                 'rounded-full border px-3 py-1 text-xs font-medium transition-colors',
                 type === f ? 'bg-primary text-primary-foreground border-primary' : 'bg-secondary/60 hover:bg-accent',
