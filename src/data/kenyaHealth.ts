@@ -6,11 +6,15 @@
  *
  * The deprecated `fpsmo`, `anc4` and `csection` codes used by the notebook now
  * return empty datasets; the live successor codes are used instead.
+ *
+ * `labelSw`/`noteSw` are the reviewed Kiswahili renderings shown when the
+ * interface language is Kiswahili; indicator values are language-neutral.
  */
 
 export interface KenyaIndicator {
   id: string;
   label: string;
+  labelSw?: string;
   value: number;
   unit: '%' | 'per-100k' | 'years';
   year: number;
@@ -18,6 +22,7 @@ export interface KenyaIndicator {
   source: string;
   indicatorCode: string;
   note?: string;
+  noteSw?: string;
 }
 
 /** Percentage indicators - rendered as the bar chart. */
@@ -25,6 +30,7 @@ export const KENYA_BARS: KenyaIndicator[] = [
   {
     id: 'family-planning',
     label: 'Family planning need satisfied (modern methods)',
+    labelSw: 'Mahitaji ya uzazi wa mpango yaliyotimizwa (mbinu za kisasa)',
     value: 81.7,
     unit: '%',
     year: 2023,
@@ -35,6 +41,7 @@ export const KENYA_BARS: KenyaIndicator[] = [
   {
     id: 'anc4',
     label: 'Antenatal care: at least four visits',
+    labelSw: 'Huduma ya ujauzito: angalau ziara nne',
     value: 66.0,
     unit: '%',
     year: 2022,
@@ -45,6 +52,7 @@ export const KENYA_BARS: KenyaIndicator[] = [
   {
     id: 'condom-use',
     label: 'Condom use at higher-risk sex, women 15–49',
+    labelSw: 'Matumizi ya kondomu katika ngono zenye hatari zaidi, wanawake 15–49',
     value: 32.0,
     unit: '%',
     year: 2013,
@@ -52,10 +60,12 @@ export const KENYA_BARS: KenyaIndicator[] = [
     source: 'WHO GHO (MDG_0000000015)',
     indicatorCode: 'MDG_0000000015',
     note: 'No newer survey published yet',
+    noteSw: 'Hakuna utafiti mpya uliochapishwa bado',
   },
   {
     id: 'caesarean',
     label: 'Births by caesarean section',
+    labelSw: 'Kuzaliwa kwa upasuaji (kizariani)',
     value: 8.7,
     unit: '%',
     year: 2009,
@@ -63,6 +73,7 @@ export const KENYA_BARS: KenyaIndicator[] = [
     source: 'WHO GHO (WHS4_115)',
     indicatorCode: 'WHS4_115',
     note: 'Below the 10–15% level the WHO considers adequate',
+    noteSw: 'Chini ya kiwango cha 10–15% ambacho Shirika la Afya Duniani kinakubali',
   },
 ];
 
@@ -71,6 +82,7 @@ export const KENYA_STATS: KenyaIndicator[] = [
   {
     id: 'mmr',
     label: 'Maternal mortality ratio',
+    labelSw: 'Uwiano wa vifo vya akina mama',
     value: 379,
     unit: 'per-100k',
     year: 2023,
@@ -81,6 +93,7 @@ export const KENYA_STATS: KenyaIndicator[] = [
   {
     id: 'hale',
     label: 'Healthy life expectancy at birth, women',
+    labelSw: 'Makadirio ya miaka yenye afya tangu kuzaliwa, wanawake',
     value: 60.7,
     unit: 'years',
     year: 2023,
@@ -91,6 +104,7 @@ export const KENYA_STATS: KenyaIndicator[] = [
   {
     id: 'suicide',
     label: 'Age-standardized suicide rate, women',
+    labelSw: 'Kiwango cha vifo vya kujiua kilichosawazishwa kwa umri, wanawake',
     value: 4.6,
     unit: 'per-100k',
     year: 2021,

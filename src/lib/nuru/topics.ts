@@ -190,6 +190,16 @@ export function getArea(slug: string): Area | undefined {
   return AREAS.find((a) => a.slug === slug);
 }
 
+/**
+ * Display label for an area *name* (as stored in the coverage datasets),
+ * honoring the interface language via the area's Kiswahili name.
+ */
+export function areaDisplayName(name: string, lang: 'en' | 'sw'): string {
+  if (lang !== 'sw') return name;
+  const area = AREAS.find((a) => a.name === name);
+  return area?.swahili ?? name;
+}
+
 export function getTopic(slug: string): Topic | undefined {
   return TOPICS.find((t) => t.slug === slug);
 }

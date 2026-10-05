@@ -1,6 +1,9 @@
 import { useMemo, useState } from 'react';
 import { Database, Flag } from 'lucide-react';
 
+import { useUiLanguage } from '@/contexts/UiLanguageContext';
+import { areaDisplayName } from '@/lib/nuru/topics';
+import type { UiKey } from '@/lib/nuru/i18n';
 import { cn } from '@/lib/utils';
 import coverage from '@/data/researchCoverage.json';
 
@@ -12,16 +15,16 @@ import coverage from '@/data/researchCoverage.json';
  * Levels: 0 = gap, 1 = partial data, 2 = well covered.
  */
 
-const LEVEL_NOTES: Record<number, string> = {
-  0: 'No reliable data found yet for this topic in this country.',
-  1: 'Some data exists, but it is thin or out of date.',
-  2: 'Good data coverage found.',
+const LEVEL_NOTE_KEYS: Record<number, UiKey> = {
+  0: 'coverage.note0',
+  1: 'coverage.note1',
+  2: 'coverage.note2',
 };
 
-const LEVEL_LABELS: Record<number, string> = {
-  0: 'Gap: no data',
-  1: 'Some data',
-  2: 'Well covered',
+const LEVEL_LABEL_KEYS: Record<number, UiKey> = {
+  0: 'coverage.heatGap',
+  1: 'coverage.level1',
+  2: 'coverage.level2',
 };
 
 const LEVEL_CELL: Record<number, string> = {
@@ -38,6 +41,8 @@ interface DetailRow {
 }
 
 export function CoverageHeatmap() {
+  const { t, lang } = useUiLanguage();
+  const topicName = (name: string) => areaDisplayName(name, lang);
   const topics = useMemo(() => {
     const seen: string[] = [];
     for (const row of coverage.detail) {
@@ -91,7 +96,7 @@ export function CoverageHeatmap() {
               <p className="font-display text-2xl font-semibold text-primary">
                 {Math.round(summary.coverage_pct)}%
               </p>
-              <p className="text-xs text-muted-foreground mt-1">{topic}</p>
+              <p className="text-xs text-muted-foreground mt-1">{topicName(topic)}</p>
             </div>
           );
         })}
@@ -100,18 +105,18 @@ export function CoverageHeatmap() {
       {/* Legend */}
       <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-muted-foreground">
         <span className="inline-flex items-center gap-1.5">
-          <span className="inline-block size-3 rounded-sm bg-primary" /> Well covered
+          <span className="inline-block size-3 rounded-sm bg-primary" /> {t('coverage.level2')}
         </span>
         <span className="inline-flex items-center gap-1.5">
-          <span className="inline-block size-3 rounded-sm bg-primary/30" /> Some data
+          <span className="inline-block size-3 rounded-sm bg-primary/30" /> {t('coverage.level1')}
         </span>
         <span className="inline-flex items-center gap-1.5">
-          <span className="inline-block size-3 rounded-sm bg-accent border" /> Gap: no data
+          <span className="inline-block size-3 rounded-sm bg-accent border" /> {t('coverage.heatGap')}
         </span>
         <span className="inline-flex items-center gap-1.5">
-          <span className="inline-block size-3 rounded-sm bg-gold" /> Research estimate
+          <span className="inline-block size-3 rounded-sm bg-gold" /> {t('coverage.heatProxy')}
         </span>
-        <span className="ml-auto hidden sm:inline">Select a cell for detail</span>
+        <span className="ml-auto hidden sm:inline">{t('coverage.heatSelect')}</span>
       </div>
 
       {/* Heatmap grid */}
@@ -126,7 +131,7 @@ export function CoverageHeatmap() {
                 scope="col"
                 className="sticky left-0 z-10 bg-card border-b border-r p-2 text-left font-semibold whitespace-nowrap"
               >
-                Topic \ Country
+                {t('coverage.heatTopicCountry')}
               </th>
               {countries.map((country) => (
                 <th
@@ -154,11 +159,11 @@ export function CoverageHeatmap() {
                     className="sticky left-0 z-10 bg-card border-r border-t p-2 text-left font-semibold whitespace-nowrap"
                   >
                     <span className="inline-flex items-center gap-1.5">
-                      {topic}
+                      {topicName(topic)}
                       {summary?.is_proxy && (
                         <span
                           className="inline-block size-2.5 rounded-sm bg-gold"
-                          title="Research estimate"
+                          title={t('coverage.heatProxy')}
                         />
                       )}
                     </span>
@@ -173,7 +178,7 @@ export function CoverageHeatmap() {
                         <button
                           type="button"
                           onClick={() => cell && setSelected(cell)}
-                          aria-label={`${topic}, ${country}: ${LEVEL_LABELS[level]}`}
+                          aria-label={`${topicName(topic)}, ${country}: ${t(LEVEL_LABEL_KEYS[level])}`}
                           aria-pressed={isSelected}
                           className={cn(
                             'block h-5 w-6 rounded-[4px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1',
@@ -203,11 +208,11 @@ export function CoverageHeatmap() {
         )}
         <p>
           <strong className="text-primary">
-            {selected.mvp_topic}, {selected.country}:
+            {topicName(selected.mvp_topic)}, {selected.country}:
           </strong>{' '}
-          {LEVEL_NOTES[selected.level]}
-          {selected.records > 0 && ` ${selected.records.toLocaleString()} data points.`}
-          {selectedSummary?.data_source && ` Source: ${selectedSummary.is_proxy ? 'published research (Iyanda et al., 2020)' : 'World Health Organization'}.`}
+          {t(LEVEL_NOTE_KEYS[selected.level])}
+          {selected.records > 0 && ` ${selected.records.toLocaleString()} ${t('coverage.dataPoints')}.`}
+          {selectedSummary?.data_source && ` ${t('coverage.sourcePrefix')} ${selectedSummary.is_proxy ? t('coverage.sourceProxyDetail') : t('coverage.sourceWho')}.`}
         </p>
       </div>
     </section>
