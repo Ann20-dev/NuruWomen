@@ -34,6 +34,7 @@ const en = {
   'nav.coverage': 'Coverage',
   'nav.events': 'Events',
   'nav.about': 'About',
+  'nav.safety': 'Safety',
   'nav.ask': 'Ask a question',
   'header.tagline': 'Women’s Health Commons · Africa',
   'header.menu': 'Open menu',
@@ -67,11 +68,20 @@ const en = {
   'home.trendingCta': 'See the full ranking',
   'home.trendingNote':
     'Counted in large anonymous groups only. A ranking can never point back to one woman or one question.',
+  'home.trendingSubtitle':
+    'Aggregate conversation volume across the commons, with the month-over-month direction for each topic. Counted in large anonymous groups only.',
+  'home.takeawayKicker': 'What the commons is carrying',
+  'home.takeawayBody':
+    'Irregular periods, period pain and pain during sex are the most asked-about topics this month, and perimenopause is the fastest-rising silence. These are aggregate patterns from thousands of anonymous questions, never individual stories.',
   'home.ctaTitle': 'Ask the question you’ve been carrying.',
   'home.ctaBody':
     'Explore questions with English or Kiswahili analysis and clearly labelled responses.',
   'home.ctaAsk': 'Ask a question',
   'home.ctaBrowse': 'See what women are asking',
+  'home.communityKicker': 'Community & care',
+  'home.communityTitle': 'Women supporting women',
+  'home.communityBody':
+    'Real conversations, shared learning and care circles — from community mentors to clinicians walking beside you.',
 
   'footer.tagline':
     'An open, privacy-first women’s health commons for Africa. Anonymous questions, real stories and reviewed evidence, clearly separated, always.',
@@ -282,6 +292,7 @@ const sw: Record<UiKey, string> = {
   'nav.coverage': 'Data',
   'nav.events': 'Matukio',
   'nav.about': 'Kuhusu',
+  'nav.safety': 'Usalama',
   'nav.ask': 'Uliza swali',
   'header.tagline': 'Afya ya Wanawake · Afrika',
   'header.menu': 'Fungua menyu',
@@ -315,11 +326,21 @@ const sw: Record<UiKey, string> = {
   'home.trendingCta': 'Tazama orodha kamili',
   'home.trendingNote':
     'Tunahesabu katika makundi makubwa ya faragha pekee. Orodha haiwezi kumdokezea mwanamke yeyote.',
+  'home.trendingSubtitle':
+    'Aina ya mazungumzo yaliyoshirikishwa kwenye jukwaa, na mwezi uliopita mwechini kila eneo. Tunahesabu katika makundi makubwa ya faragha pekee.',
+  'home.takeawayKicker': 'Ambamba jukwaa linabeba',
+  'home.takeawayBody':
+    'Hedhi isiyo ya kawaida, maumivu ya hedhi na maumivu wakati wa ngono ni mada yaliyoulizwa zaidi mwezi huu, na perimenopause ni damu lisilojulika linapanda zaidi. Hivi ni mifumo ya kumpanga kutoka katika mafanikio maelfu ya maswali ya faragha, kamwe si hadithi za vyombo.',
+
   'home.ctaTitle': 'Uliza lile swali ulilobeba moyoni.',
   'home.ctaBody':
     'Uliza kwa Kiingereza au Kiswahili, uchanganuzi na majibu yaliyotengwa wazi.',
   'home.ctaAsk': 'Uliza swali',
   'home.ctaBrowse': 'Tazama wanawake wanauliza nini',
+  'home.communityKicker': 'Jamii na udhibiti',
+  'home.communityTitle': 'Wanawake kuweka msaada kwenye wanawake',
+  'home.communityBody':
+    'Mazungumzo ya kweli, ujifunza pamoja na vikundi v udhibiti — kutoka mwenyezi mentori wa jamii hadi madaktari wanaakufanya ndani.',
 
   'footer.tagline':
     'Jukwaa wazi la afya ya wanawake linaloweka faragha kwanza. Maswali ya faragha, hadithi za kweli na ushahidi uliopitishwa, vimetengwa wazi, kila wakati.',

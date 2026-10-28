@@ -4,11 +4,37 @@ import { ChevronDown, Image as ImageIcon, MessageCircle, TrendingUp } from 'luci
 
 import { Card, CardContent } from '@/components/ui/card';
 import { TopicChips } from '@/components/nuru/TopicChips';
+import { TopicIcon } from '@/components/nuru/icons/TopicIcon';
 import { QuestionComments } from '@/components/nuru/QuestionComments';
 import { useUiLanguage } from '@/contexts/UiLanguageContext';
 import { timeAgo } from '@/lib/nuru/format';
 import { cn } from '@/lib/utils';
 import type { Question } from '@/lib/nuru/types';
+
+const TOPIC_BORDER: Record<string, string> = {
+  'irregular-periods': 'clay',
+  'severe-period-pain': 'clay',
+  'heavy-bleeding': 'clay',
+  'pcos': 'clay',
+  'endometriosis': 'clay',
+  'fibroids': 'clay',
+  'painful-sex': 'clinical',
+  'contraception': 'clinical',
+  'stis': 'clinical',
+  'fertility': 'gold',
+  'pregnancy-warning-signs': 'gold',
+  'postpartum-anxiety': 'plum',
+  'cervical-screening': 'clinical',
+  'breast-health': 'plum',
+  'perimenopause': 'plum',
+  'menopause': 'plum',
+  'pms-pmdd': 'plum',
+  'pelvic-floor': 'clinical',
+  'growing-up': 'clay',
+  'hormones': 'clinical',
+  'pelvic-health': 'clinical',
+  'healthy-ageing': 'clay',
+};
 
 export function QuestionCard({
   question,
@@ -25,6 +51,8 @@ export function QuestionCard({
   const [open, setOpen] = useState(false);
   const Heading = headingLevel;
   const { t } = useUiLanguage();
+  const firstTopic = question.topics[0] ?? 'irregular-periods';
+  const borderName = TOPIC_BORDER[firstTopic] ?? 'primary';
 
   const countLabel =
     typeof answerCount === 'number'
@@ -34,13 +62,21 @@ export function QuestionCard({
   const similar = question.signal?.similarCount ?? similarCount;
 
   return (
-    <Card className="group transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md hover:border-primary/25">
+    <Card
+      className={cn(
+        'group transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md pattern-corner accent-' + borderName,
+      )}
+      style={{ borderColor: `var(--${borderName === 'primary' ? 'primary' : borderName})` }}
+    >
       <CardContent className="p-5 space-y-3">
         <div className="flex items-start justify-between gap-4">
-          <Link to={`/question/${question.id}`} className="min-w-0">
-            <Heading className="font-display font-semibold text-lg leading-snug group-hover:text-primary transition-colors">
-              {question.title}
-            </Heading>
+          <Link to={`/question/${question.id}`} className="min-w-0 flex flex-col gap-2">
+            <div className="flex items-center gap-2">
+              <TopicIcon slug={firstTopic} size="sm" />
+              <Heading className="font-display font-semibold text-lg leading-snug group-hover:text-primary transition-colors">
+                {question.title}
+              </Heading>
+            </div>
           </Link>
           <span className="flex items-center gap-1.5 shrink-0">
             {question.image && (

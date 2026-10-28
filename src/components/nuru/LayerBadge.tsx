@@ -1,22 +1,23 @@
-import { BookOpenCheck, MessagesSquare, ShieldCheck } from 'lucide-react';
+import { BookOpenCheck } from 'lucide-react';
 
 import { useUiLanguage } from '@/contexts/UiLanguageContext';
 import { cn } from '@/lib/utils';
+import { HandsIcon, StethoscopeIcon } from '@/components/nuru/icons/BadgeIcons';
 import type { AnswerType } from '@/lib/nuru/protocol';
 import type { UiKey } from '@/lib/nuru/i18n';
 
 type Layer = AnswerType | 'evidence-card';
 
-const LAYER_STYLES: Record<Layer, { labelKey: UiKey; className: string; Icon: typeof MessagesSquare }> = {
+const LAYER_STYLES: Record<Layer, { labelKey: UiKey; className: string; Icon: React.ElementType }> = {
   'lived-experience': {
     labelKey: 'layer.lived',
     className: 'bg-clay-soft text-clay border-clay/25',
-    Icon: MessagesSquare,
+    Icon: HandsIcon,
   },
   'clinical-response': {
     labelKey: 'layer.clinical',
     className: 'bg-clinical-soft text-clinical border-clinical/25',
-    Icon: ShieldCheck,
+    Icon: StethoscopeIcon,
   },
   'evidence-card': {
     labelKey: 'layer.evidence',
@@ -27,7 +28,7 @@ const LAYER_STYLES: Record<Layer, { labelKey: UiKey; className: string; Icon: ty
 
 export function LayerBadge({ layer, className }: { layer: Layer; className?: string }) {
   const { t } = useUiLanguage();
-  const { labelKey, className: styles, Icon } = LAYER_STYLES[layer];
+  const { labelKey, className: styles, Icon: IconComp } = LAYER_STYLES[layer];
   return (
     <span
       className={cn(
@@ -36,7 +37,7 @@ export function LayerBadge({ layer, className }: { layer: Layer; className?: str
         className,
       )}
     >
-      <Icon className="size-3" />
+      <IconComp className="size-3" />
       {t(labelKey)}
     </span>
   );

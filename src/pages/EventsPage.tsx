@@ -16,10 +16,10 @@ import {
 import { useSeoMeta } from '@unhead/react';
 
 import { SiteLayout } from '@/components/nuru/SiteLayout';
+import { PhotoFigure } from '@/components/nuru/PhotoFigure';
 import { EmptyState } from '@/components/nuru/EmptyState';
 import { Reveal } from '@/components/nuru/Reveal';
 import { TopicChips } from '@/components/nuru/TopicChips';
-import { EventsArt } from '@/components/nuru/art/EventsArt';
 import { Card, CardContent } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useNuruEvents } from '@/hooks/useNuruEvents';
@@ -179,7 +179,15 @@ export default function EventsPage() {
           </p>
         </div>
 
-        <EventsArt className="w-full max-w-3xl rounded-xl border" />
+        <PhotoFigure
+          src="/images/health-consultation.jpg"
+          alt="Healthcare professional in conversation with a patient in a clinic"
+          width={800}
+          height={533}
+          className="shadow-warm"
+          rounded-xl
+          cover
+        />
 
         <div className="flex flex-wrap gap-1.5" role="group" aria-label="Filter by event type">
           {TYPE_FILTERS.map((f) => (

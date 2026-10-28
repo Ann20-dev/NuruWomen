@@ -14,6 +14,8 @@ const TopicPage = lazy(() => import("./pages/TopicPage"));
 const EventsPage = lazy(() => import("./pages/EventsPage"));
 const BlindSpotsPage = lazy(() => import("./pages/BlindSpotsPage"));
 const AboutPage = lazy(() => import("./pages/AboutPage"));
+const SafetyPage = lazy(() => import("./pages/SafetyPage"));
+const PrivacyPage = lazy(() => import("./pages/PrivacyPage"));
 import { NIP19Page } from "./pages/NIP19Page";
 import NotFound from "./pages/NotFound";
 
@@ -40,6 +42,8 @@ export default function AppRouter() {
         <Route path="/events" element={<EventsPage />} />
         <Route path="/blind-spots" element={<BlindSpotsPage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/safety" element={<SafetyPage />} />
+        <Route path="/privacy" element={<PrivacyPage />} />
         {/* NIP-19 route for npub1, note1, naddr1, nevent1, nprofile1 */}
         <Route path="/:nip19" element={<NIP19Page />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

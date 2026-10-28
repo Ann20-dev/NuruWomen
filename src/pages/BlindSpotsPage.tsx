@@ -2,9 +2,9 @@ import { useMemo, useState } from 'react';
 import { useSeoMeta } from '@unhead/react';
 import { Flame } from 'lucide-react';
 import { SiteLayout } from '@/components/nuru/SiteLayout';
+import { PhotoFigure } from '@/components/nuru/PhotoFigure';
 import { CoverageHeatmap } from '@/components/nuru/CoverageHeatmap';
 import { KenyaHealthChart } from '@/components/nuru/KenyaHealthChart';
-import { PhoneInfoArt } from '@/components/nuru/art/PhoneInfoArt';
 import { TrendingBoard } from '@/components/nuru/TrendingTopics';
 import { currentMonthLabel } from '@/lib/nuru/format';
 import { Card, CardContent } from '@/components/ui/card';
@@ -31,7 +31,15 @@ export default function BlindSpotsPage() {
       <p className="text-lg text-muted-foreground">{t('coverage.subtitle')}</p>
     </div>
 
-    <PhoneInfoArt className="w-full max-w-3xl rounded-xl border" />
+    <PhotoFigure
+      src="/images/blindspots-phone.jpg"
+      alt="Healthcare worker checking a phone in a clinic"
+      width={1200}
+      height={900}
+      className="shadow-warm"
+      rounded-xl
+      cover
+    />
 
     <CoverageHeatmap />
 

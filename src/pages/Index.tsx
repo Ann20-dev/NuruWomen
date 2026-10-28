@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import {
   ArrowRight,
   Fingerprint,
-  Flame,
   GitFork,
   KeyRound,
   MessageCircleQuestion,
   ShieldCheck,
   TrendingUp,
+  Users,
 } from 'lucide-react';
 import { useSeoMeta } from '@unhead/react';
 
@@ -21,13 +21,15 @@ import { HelpfulButton } from '@/components/nuru/HelpfulButton';
 import { CommunitySignal } from '@/components/nuru/CommunitySignal';
 import { TopicChips } from '@/components/nuru/TopicChips';
 import { Reveal } from '@/components/nuru/Reveal';
+import { SectionHeader } from '@/components/nuru/SectionHeader';
 import { AnimatedWords } from '@/components/nuru/AnimatedWords';
 import { HeroScene } from '@/components/nuru/hero/HeroScene';
+import { PhotoFigure } from '@/components/nuru/PhotoFigure';
+import { TrendingArt } from '@/components/nuru/art/TrendingArt';
 import { LottiePlayer } from '@/components/nuru/LottiePlayer';
 import { CountUp } from '@/components/nuru/CountUp';
 import { KitengeDivider } from '@/components/nuru/art/KitengeDivider';
-import { TopicArt, type TopicArtKind } from '@/components/nuru/art/TopicArt';
-import { WomenCircleArt } from '@/components/nuru/art/WomenCircleArt';
+import { type TopicArtKind } from '@/components/nuru/art/TopicArt';
 import { TrendingStrip } from '@/components/nuru/TrendingTopics';
 import { currentMonthLabel } from '@/lib/nuru/format';
 import heartPulseAnimation from '@/assets/lottie/heart-pulse.json';
@@ -52,6 +54,29 @@ const TOPIC_TILES: { art: TopicArtKind; area: string }[] = [
   { art: 'mental-health', area: 'mental-health' },
 ];
 
+const TOPIC_PHOTOS: Record<TopicArtKind, { src: string; alt: string }> = {
+  'menstrual-health': {
+    src: '/images/topic-menstrual.jpg',
+    alt: 'A woman resting with a hot water bottle during her menstrual cycle',
+  },
+  'sexual-health': {
+    src: '/images/topic-sexual.jpg',
+    alt: 'A healthcare professional speaking with a patient in a clinic',
+  },
+  'healthy-ageing': {
+    src: '/images/topic-ageing.jpg',
+    alt: 'An older woman smiling outdoors in natural light',
+  },
+  postpartum: {
+    src: '/images/topic-postpartum.jpg',
+    alt: 'A mother holding her newborn baby close',
+  },
+  'mental-health': {
+    src: '/images/topic-mental.jpg',
+    alt: 'A woman taking a quiet moment for her mental wellbeing',
+  },
+};
+
 export default function Index() {
   useSeoMeta({
     title: 'NuruWomen · Women’s Health Commons Africa',
@@ -66,9 +91,16 @@ export default function Index() {
   return (
     <SiteLayout>
       {/* ── Hero ─────────────────────────────────────────── */}
-      <section className="relative texture-glow border-b overflow-hidden">
-        <div className="container relative py-14 sm:py-20 lg:py-24 grid gap-10 lg:grid-cols-[1.05fr_0.95fr] items-center">
-          <div className="relative z-10 space-y-7">
+      <section className="relative border-b overflow-hidden">
+        {/* Pattern backdrop - African-inspired, low opacity */}
+        <div className="absolute inset-0 pattern-bg-wine pointer-events-none" aria-hidden />
+        {/* Organic blobs behind illustration - removes flat emptiness */}
+        <div className="absolute -top-20 left-10 size-[40rem] rounded-full bg-gold/20 blur-3xl animate-drift" aria-hidden />
+        <div className="absolute -bottom-24 right-10 size-[32rem] rounded-full bg-terracotta/15 blur-2xl animate-float-slow" aria-hidden />
+        <div className="absolute -top-48 right-8 size-[48rem] rounded-full bg-plum/10 blur-4xl animate-float" aria-hidden />
+
+        <div className="container relative py-14 sm:py-20 lg:py-24 grid gap-10 lg:grid-cols-[1.05fr_0.95fr] items-center z-10">
+          <div className="relative space-y-7">
             <p className="inline-flex items-center gap-2 rounded-full border bg-card px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-primary animate-rise">
               <ShieldCheck className="size-3.5" />
               {t('hero.badge')}
@@ -108,7 +140,22 @@ export default function Index() {
           </div>
 
           {/* The knowledge object - slightly entering the headline's space */}
-          <HeroScene askHover={askHover} className="lg:-ml-14" />
+          <div className="relative">
+            <HeroScene askHover={askHover} className="lg:-ml-14" />
+            {/* Hero photograph: real women in warm conversation, with a subtle
+                 plum overlay so any overlaid text stays readable. Aligned with
+                 the content column and consistent with the rest of the UI. */}
+            <PhotoFigure
+              src="/images/hero-women.jpg"
+              alt="Two women in warm conversation, smiling in natural light"
+              width={560}
+              height={374}
+              className="shadow-warm mt-4 lg:mt-0 max-w-none"
+              rounded-xl
+              overlay
+              cover
+            />
+          </div>
         </div>
       </section>
 
@@ -242,20 +289,39 @@ export default function Index() {
             </p>
           </Reveal>
           <Reveal delay={140}>
-            <WomenCircleArt className="w-full max-w-md mx-auto" />
+            <PhotoFigure
+              src="/images/areas-hero.jpg"
+              alt="Women across life stages, standing together in natural light"
+              width={467}
+              height={350}
+              className="shadow-warm"
+              rounded-xl
+              cover
+            />
           </Reveal>
         </div>
         <div className="grid gap-4 grid-cols-2 lg:grid-cols-5">
           {TOPIC_TILES.map((tile, i) => {
             const area = getArea(tile.area);
             const name = lang === 'sw' ? (area?.swahili ?? area?.name ?? tile.area) : (area?.name ?? tile.area);
+            const photo = TOPIC_PHOTOS[tile.art];
             return (
               <Reveal key={tile.art} delay={Math.min(i * 90, 360)}>
                 <Link
                   to={`/library?area=${tile.area}`}
                   className="group block rounded-xl border bg-card overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:border-primary/30"
                 >
-                  <TopicArt topic={tile.art} className="block w-full aspect-[3/2]" />
+                  {photo && (
+                    <PhotoFigure
+                      src={photo.src}
+                      alt={photo.alt}
+                      width={400}
+                      height={267}
+                      className="shadow-sm"
+                      rounded-xl
+                      cover
+                    />
+                  )}
                   <span className="block p-3.5 text-sm font-semibold text-center transition-colors group-hover:text-primary">
                     {name}
                   </span>
@@ -266,19 +332,65 @@ export default function Index() {
         </div>
       </section>
 
+      {/* ── Community & care ────────────────────────────── */}
+      <section className="container py-16 sm:py-20 border-y">
+        <div className="space-y-3 mb-10 max-w-3xl">
+          <p className="text-xs font-bold uppercase tracking-[0.14em] text-primary inline-flex items-center gap-1.5">
+            <Users className="size-3.5" /> {t('home.communityKicker')}
+          </p>
+          <h2 className="font-display font-semibold text-3xl sm:text-4xl tracking-tight">
+            {t('home.communityTitle')}
+          </h2>
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            {t('home.communityBody')}
+          </p>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <PhotoFigure
+            src="/images/hero-group.jpg"
+            alt="Three women sharing a joyful moment together outdoors"
+            width={400}
+            height={300}
+            className="shadow-warm"
+            rounded-xl
+            cover
+          />
+          <PhotoFigure
+            src="/images/community-women.jpg"
+            alt="Four women in vibrant African dresses sharing a conversation outdoors"
+            width={400}
+            height={300}
+            className="shadow-warm"
+            rounded-xl
+            cover
+          />
+          <PhotoFigure
+            src="/images/women-learning.jpg"
+            alt="Women collaborating together on a laptop indoors"
+            width={400}
+            height={300}
+            className="shadow-warm"
+            rounded-xl
+            cover
+          />
+        </div>
+      </section>
+
       {/* ── Most discussed this month ────────────────────── */}
       <section className="container pb-16 sm:pb-24">
         <Reveal>
-          <div className="rounded-2xl border border-gold/30 bg-gold-soft/40 px-6 py-7 sm:px-9 sm:py-8 space-y-5">
-            <div className="flex flex-wrap items-end justify-between gap-x-8 gap-y-3">
-              <div className="space-y-1.5">
-                <p className="text-xs font-bold uppercase tracking-[0.14em] text-gold inline-flex items-center gap-1.5">
-                  <Flame className="size-4" /> {t('home.trendingKicker')} · {currentMonthLabel(uiLocale(lang))}
-                </p>
-                <h2 className="font-display font-semibold text-2xl sm:text-3xl tracking-tight">
-                  {t('home.trendingTitle')}
-                </h2>
-              </div>
+          <SectionHeader
+            kicker={`${t('home.trendingKicker')} · ${currentMonthLabel(uiLocale(lang))}`}
+            heading={t('home.trendingTitle')}
+            description={t('home.trendingSubtitle')}
+            illustration={<TrendingArt className="w-48 h-32 sm:w-64 sm:h-40" />}
+          />
+          <div className="mt-6 rounded-2xl border border-gold/30 bg-gold-soft/40 px-6 py-7 sm:px-9 sm:py-8 space-y-4">
+            <TrendingStrip />
+            <div className="mt-4 pt-3 border-t border-gold/40 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+              <p className="text-xs text-muted-foreground leading-relaxed sm:text-sm">
+                {t('home.trendingNote')}
+              </p>
               <Link
                 to="/blind-spots"
                 className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
@@ -287,10 +399,15 @@ export default function Index() {
                 <ArrowRight className="size-4" />
               </Link>
             </div>
-            <TrendingStrip />
-            <p className="text-xs text-muted-foreground">
-              {t('home.trendingNote')}
-            </p>
+            {/* Plain-language takeaway from aggregate signals */}
+            <div className="mt-4 rounded-xl border border-gold/30 bg-gold-soft/30 p-4 sm:p-5 space-y-2">
+              <p className="text-xs font-bold uppercase tracking-[0.14em] text-gold inline-flex items-center gap-1.5">
+                <TrendingUp className="size-3.5" /> {t('home.takeawayKicker')}
+              </p>
+              <p className="text-sm text-muted-foreground leading-relaxed sm:text-base">
+                {t('home.takeawayBody')}
+              </p>
+            </div>
           </div>
         </Reveal>
       </section>
@@ -325,25 +442,40 @@ export default function Index() {
       {/* ── Final CTA ────────────────────────────────────── */}
       <section className="container pb-4">
         <Reveal>
-        <div className="rounded-3xl bg-primary text-primary-foreground px-6 py-14 sm:px-14 text-center space-y-6 relative overflow-hidden">
-          <div className="absolute inset-0 opacity-15 texture-dots" aria-hidden />
+        <div className="relative rounded-3xl px-6 py-14 sm:px-14 text-center space-y-6 overflow-hidden">
+          {/* Richer burgundy gradient background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-primary via-[hsl(346_48%_30%)] to-[hsl(346_48%_22%)] text-primary-foreground" />
+          {/* Pattern overlay */}
+          <div className="absolute inset-0 pattern-bg-gold opacity-40 pointer-events-none" aria-hidden />
+          <div className="absolute inset-0 opacity-20 texture-dots" aria-hidden />
+          {/* Glow blobs */}
           <div className="absolute -top-40 left-1/4 size-[28rem] rounded-full bg-primary-foreground/10 blur-3xl animate-drift" aria-hidden />
           <div className="absolute -bottom-48 right-[10%] size-[24rem] rounded-full bg-gold/20 blur-3xl animate-float-slow" aria-hidden />
-          <LottiePlayer animationData={heartPulseAnimation} className="relative mx-auto size-16" />
+          <LottiePlayer animationData={heartPulseAnimation} className="relative mx-auto size-16 glow-pulse" />
           <h2 className="relative font-display font-semibold text-3xl sm:text-5xl tracking-tight max-w-2xl mx-auto leading-tight">
             {t('home.ctaTitle')}
           </h2>
-          <p className="relative text-lg text-primary-foreground/85 max-w-xl mx-auto leading-relaxed">
+          <p className="relative text-lg text-primary-foreground/90 max-w-xl mx-auto leading-relaxed">
             {t('home.ctaBody')}
           </p>
+          {/* Photograph: woman in warm, hopeful light */}
+          <PhotoFigure
+            src="/images/cta-woman.jpg"
+            alt="Woman standing in warm natural light, looking hopeful"
+            width={520}
+            height={347}
+            className="relative shadow-warm"
+            rounded-xl
+            cover
+          />
           <div className="relative flex flex-wrap justify-center gap-3">
-            <Button asChild size="lg" variant="secondary" className="rounded-full text-base px-7">
+            <Button asChild size="lg" variant="secondary" className="rounded-full text-base px-7 shadow-glow">
               <Link to="/ask">
                 <MessageCircleQuestion className="size-5" />
                 {t('home.ctaAsk')}
               </Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="rounded-full text-base px-7 bg-transparent border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground/10">
+            <Button asChild size="lg" variant="outline" className="rounded-full text-base px-7 border-primary-foreground/50 text-primary-foreground hover:bg-primary-foreground/20 shadow-glow">
               <Link to="/questions">{t('home.ctaBrowse')}</Link>
             </Button>
           </div>
