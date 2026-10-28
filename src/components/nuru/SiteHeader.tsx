@@ -7,6 +7,8 @@ import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from 
 import { useUiLanguage } from '@/contexts/UiLanguageContext';
 import { UI_LANGS, UI_LANG_NAMES } from '@/lib/nuru/i18n';
 import { cn } from '@/lib/utils';
+import { ThemeToggle } from '@/components/nuru/ThemeToggle';
+import { QuickLeaveButton } from '@/components/nuru/QuickLeaveButton';
 import type { UiKey } from '@/lib/nuru/i18n';
 
 const NAV: { to: string; labelKey: UiKey }[] = [
@@ -16,6 +18,7 @@ const NAV: { to: string; labelKey: UiKey }[] = [
   { to: '/events', labelKey: 'nav.events' },
   { to: '/blind-spots', labelKey: 'nav.coverage' },
   { to: '/about', labelKey: 'nav.about' },
+  { to: '/safety', labelKey: 'nav.safety' },
 ];
 
 function LanguageToggle({ className }: { className?: string }) {
@@ -86,6 +89,8 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-2 shrink-0">
           <LanguageToggle className="hidden sm:inline-flex" />
+          <ThemeToggle className="hidden sm:inline-flex" />
+          <QuickLeaveButton className="hidden sm:inline-flex" />
           <Button asChild size="sm" className="hidden lg:inline-flex rounded-full whitespace-nowrap">
             <Link to="/ask">
               <MessageCircleQuestion className="size-4" />
@@ -118,8 +123,10 @@ export function SiteHeader() {
                     {t(item.labelKey)}
                   </NavLink>
                 ))}
-                <div className="mt-3 px-3">
+                <div className="mt-3 px-3 flex items-center gap-2">
                   <LanguageToggle />
+                  <ThemeToggle />
+                  <QuickLeaveButton />
                 </div>
                 <Button asChild className="mt-4 rounded-full">
                   <Link to="/ask" onClick={() => setOpen(false)}>

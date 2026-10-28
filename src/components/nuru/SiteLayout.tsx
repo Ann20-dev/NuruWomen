@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 
 import { SiteHeader } from '@/components/nuru/SiteHeader';
 import { SiteFooter } from '@/components/nuru/SiteFooter';
+import { OfflineBanner } from '@/components/nuru/OfflineBanner';
 
 export function SiteLayout({ children }: { children: ReactNode }) {
   return (
@@ -13,6 +14,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
         Skip to main content
       </a>
       <SiteHeader />
+      <OfflineBanner />
       <main id="main-content" className="flex-1">{children}</main>
       <SiteFooter />
     </div>

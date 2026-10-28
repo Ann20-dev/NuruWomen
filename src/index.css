@@ -64,6 +64,12 @@
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
 
+  /* Status tokens for calm, non-alarming feedback */
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -260,6 +266,12 @@
   --input: hsl(34 24% 82%);
   --ring: hsl(346 48% 36%);
 
+  /* Calm status colors (non-alarming) */
+  --success: hsl(152 55% 32%);
+  --success-foreground: hsl(40 48% 97%);
+  --warning: hsl(38 90% 45%);
+  --warning-foreground: hsl(342 20% 10%);
+
   /* Lived experience - warm terracotta clay */
   --clay: hsl(20 66% 40%);
   --clay-foreground: hsl(40 48% 97%);
@@ -284,6 +296,36 @@
   --chart-3: hsl(20 66% 44%);
   --chart-4: hsl(272 34% 46%);
   --chart-5: hsl(38 74% 48%);
+
+  /* African textile swatch family (kente / mudcloth / Ndebele / kanga inspired) */
+  --pattern-wine: hsl(346 48% 36%);
+  --pattern-gold: hsl(38 74% 32%);
+  --pattern-terracotta: hsl(20 66% 40%);
+  --pattern-mint: hsl(176 58% 28%);
+  --pattern-cream: hsl(40 48% 98.5%);
+
+  /* Brand light motif - soft Nuru glow */
+  --glow-gold: hsl(38 74% 32% / 0.35);
+
+  /* Depth - soft, warm shadows (never heavy drop shadows) */
+  --shadow-warm: 0 10px 30px -10px hsl(346 48% 36% / 0.14);
+  --shadow-soft: 0 6px 24px -6px hsl(340 20% 15% / 0.07);
+  --shadow-card: 0 2px 10px -2px hsl(346 48% 36% / 0.06);
+
+  /* Deeper warm shadows for layered depth */
+  --shadow-glow: 0 20px 40px -12px hsl(346 48% 36% / 0.18);
+  --shadow-deep: 0 24px 48px -16px hsl(340 20% 15% / 0.12);
+  --shadow-pattern: 0 8px 24px -4px hsl(346 48% 36% / 0.10);
+
+  /* Additional glow gold intensity for light motif */
+  --glow-gold-strong: hsl(38 74% 32% / 0.55);
+  --glow-mint: hsl(176 58% 28% / 0.25);
+
+  /* Larger organic blobs for hero/section backdrops */
+  --blob-sm: 20rem;
+  --blob-md: 32rem;
+  --blob-lg: 48rem;
+  --blob-xl: 64rem;
 
   --sidebar: hsl(38 40% 94%);
   --sidebar-foreground: hsl(342 20% 18%);
@@ -324,6 +366,12 @@
   --input: hsl(340 10% 24%);
   --ring: hsl(346 58% 64%);
 
+  /* Calm status colors (non-alarming) */
+  --success: hsl(152 50% 52%);
+  --success-foreground: hsl(340 20% 10%);
+  --warning: hsl(38 85% 60%);
+  --warning-foreground: hsl(340 20% 10%);
+
   --clay: hsl(20 72% 60%);
   --clay-foreground: hsl(340 20% 10%);
   --clay-soft: hsl(20 40% 17%);
@@ -345,6 +393,30 @@
   --chart-4: hsl(272 48% 68%);
   --chart-5: hsl(38 78% 56%);
 
+  /* African textile swatch family */
+  --pattern-wine: hsl(346 58% 64%);
+  --pattern-gold: hsl(38 78% 58%);
+  --pattern-terracotta: hsl(20 72% 60%);
+  --pattern-mint: hsl(176 52% 52%);
+  --pattern-cream: hsl(340 15% 11.5%);
+
+  /* Brand light motif - soft Nuru glow */
+  --glow-gold: hsl(38 78% 58% / 0.25);
+
+  /* Depth - soft, warm shadows */
+  --shadow-warm: 0 10px 30px -10px hsl(346 58% 64% / 0.11);
+  --shadow-soft: 0 6px 24px -6px hsl(340 12% 17% / 0.22);
+  --shadow-card: 0 2px 10px -2px hsl(346 58% 64% / 0.05);
+
+  /* Deeper warm shadows for layered depth */
+  --shadow-glow: 0 20px 40px -12px hsl(346 58% 64% / 0.14);
+  --shadow-deep: 0 24px 48px -16px hsl(340 12% 17% / 0.26);
+  --shadow-pattern: 0 8px 24px -4px hsl(346 58% 64% / 0.08);
+
+  /* Additional glow gold intensity for light motif */
+  --glow-gold-strong: hsl(38 78% 58% / 0.45);
+  --glow-mint: hsl(176 52% 52% / 0.2);
+
   --sidebar: hsl(340 16% 10%);
   --sidebar-foreground: hsl(38 28% 90%);
   --sidebar-primary: hsl(346 58% 64%);
@@ -353,6 +425,18 @@
   --sidebar-accent-foreground: hsl(38 28% 90%);
   --sidebar-border: hsl(340 10% 18%);
   --sidebar-ring: hsl(346 58% 64%);
+}
+
+/* Glow pulse for the light motif */
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50% { opacity: 0.65; transform: scale(1.08); }
+}
+
+/* Slower float for below-the-fold elements */
+@keyframes float-slow {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -12px, 0); }
 }
 
 @layer base {
@@ -430,4 +514,122 @@
     color: transparent;
     animation: shine 7s linear infinite;
   }
+
+  /* Depth utilities - soft, warm shadows */
+  .shadow-warm { box-shadow: var(--shadow-warm); }
+  .shadow-soft { box-shadow: var(--shadow-soft); }
+  .shadow-card { box-shadow: var(--shadow-card); }
+
+  /* Nuru light motif - soft golden glow halo */
+  .glow-gold {
+    position: relative;
+    isolation: isolate;
+  }
+  .glow-gold::after {
+    content: "";
+    position: absolute;
+    inset: -40%;
+    z-index: -1;
+    background: radial-gradient(60rem 30rem at 50% 50%, var(--glow-gold), transparent 55%);
+    filter: blur(2rem);
+    opacity: 0.6;
+    pointer-events: none;
+  }
+  [data-motion-reduce] .glow-gold::after,
+  @media (prefers-reduced-motion: reduce) {
+    .glow-gold::after { animation: none; opacity: 0.35; }
+  }
+
+  /* Organic background blobs - layered behind illustrations to remove flat emptiness */
+  .organic-blob {
+    position: absolute;
+    border-radius: 50% 45% 52% 42% / 45% 50% 50% 55%;
+    filter: blur(1.5rem);
+    opacity: 0.55;
+    pointer-events: none;
+    z-index: -1;
+  }
+  .blob-warm { background: var(--pattern-terracotta); }
+  .blob-gold { background: var(--pattern-gold); }
+  .blob-mint { background: var(--pattern-mint); }
+  .blob-plum { background: var(--pattern-wine); }
+
+  /* Subtle textile pattern as a low-opacity page/section backdrop */
+  .pattern-kente {
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 2px, var(--pattern-wine) 2px, var(--pattern-wine) 4px),
+      repeating-linear-gradient(90deg, transparent, transparent 2px, var(--pattern-gold) 2px, var(--pattern-gold) 4px);
+    background-size: 40px 40px;
+    opacity: 0.06;
+  }
+  .pattern-mudcloth {
+    background-image: radial-gradient(var(--pattern-terracotta) 1px, transparent 1px);
+    background-size: 28px 28px;
+    opacity: 0.05;
+  }
+
+  .shadow-glow { box-shadow: var(--shadow-glow); }
+  .shadow-deep { box-shadow: var(--shadow-deep); }
+  .shadow-pattern { box-shadow: var(--shadow-pattern); }
+
+  .glow-pulse {
+    animation: glow-pulse 5s ease-in-out infinite;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .glow-pulse { animation: none; opacity: 0.35; }
+  }
+
+  .float-slow { animation: float-slow 14s ease-in-out infinite; }
+
+  /* Pattern backgrounds as low-opacity page/section textures */
+  .pattern-bg-wine {
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 3px, var(--pattern-wine) 3px, var(--pattern-wine) 6px),
+      repeating-linear-gradient(90deg, transparent, transparent 3px, var(--pattern-gold) 3px, var(--pattern-gold) 6px);
+    background-size: 48px 48px;
+    opacity: 0.04;
+  }
+  .pattern-bg-terracotta {
+    background-image: radial-gradient(var(--pattern-terracotta) 1px, transparent 1px);
+    background-size: 32px 32px;
+    opacity: 0.035;
+  }
+  .pattern-bg-mint {
+    background-image: radial-gradient(var(--pattern-mint) 1px, transparent 1px);
+    background-size: 36px 36px;
+    opacity: 0.035;
+  }
+  .pattern-bg-gold {
+    background-image:
+      repeating-linear-gradient(45deg, transparent, transparent 4px, var(--pattern-gold) 4px, var(--pattern-gold) 8px),
+      repeating-linear-gradient(-45deg, transparent, transparent 4px, var(--pattern-terracotta) 4px, var(--pattern-terracotta) 8px);
+    background-size: 40px 40px;
+    opacity: 0.03;
+  }
+
+  /* Corner pattern accent for cards */
+  .pattern-corner {
+    position: relative;
+    overflow: hidden;
+  }
+  .pattern-corner::before {
+    content: "";
+    position: absolute;
+    top: 0; right: 0;
+    width: 48px; height: 48px;
+    background-image:
+      linear-gradient(135deg, transparent 48%, currentColor 48%);
+    mask-image:
+      linear-gradient(-45deg, black 50%, transparent 50%);
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Topic-colored accent stripes */
+  .accent-clay { border-left: 4px solid var(--clay); }
+  .accent-clinical { border-left: 4px solid var(--clinical); }
+  .accent-plum { border-left: 4px solid var(--plum); }
+  .accent-gold { border-left: 4px solid var(--gold); }
+  .accent-terracotta { border-left: 4px solid var(--pattern-terracotta); }
 }

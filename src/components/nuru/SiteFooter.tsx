@@ -2,13 +2,20 @@ import { Link } from 'react-router-dom';
 import { HeartHandshake, Languages, ShieldCheck, GitBranch, Sparkles } from 'lucide-react';
 
 import { useUiLanguage } from '@/contexts/UiLanguageContext';
+import { PhotoFigure } from '@/components/nuru/PhotoFigure';
+import { PatternDivider } from '@/components/nuru/PatternDivider';
 
 export function SiteFooter() {
   const { t } = useUiLanguage();
 
   return (
-    <footer className="border-t bg-card mt-24">
-      <div className="container py-12 grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
+    <footer className="border-t bg-card mt-24 relative overflow-hidden">
+      {/* Pattern divider at top */}
+      <div className="absolute -top-1 left-0 right-0 h-1.5 z-10">
+        <PatternDivider kind="kanga" height={24} accent="hsl(var(--pattern-gold))" />
+      </div>
+
+      <div className="container py-12 grid gap-10 md:grid-cols-[1.4fr_1fr_1fr] relative z-10">
         <div className="space-y-4">
           <div className="flex items-center gap-2.5">
             <img src="/favicon.svg" alt="" className="size-8 rounded-lg" />
@@ -32,6 +39,8 @@ export function SiteFooter() {
             <li><Link className="hover:text-foreground transition-colors" to="/events">{t('footer.events')}</Link></li>
             <li><Link className="hover:text-foreground transition-colors" to="/blind-spots">{t('footer.coverage')}</Link></li>
             <li><Link className="hover:text-foreground transition-colors" to="/about">{t('footer.about')}</Link></li>
+            <li><Link className="hover:text-foreground transition-colors" to="/safety">Safety</Link></li>
+            <li><Link className="hover:text-foreground transition-colors" to="/privacy">Privacy</Link></li>
           </ul>
         </div>
 
@@ -54,7 +63,20 @@ export function SiteFooter() {
         </div>
       </div>
 
-      <div className="border-t">
+      {/* Footer photograph - ends every page with warmth */}
+      <div className="relative z-10 mt-8 flex justify-center">
+        <PhotoFigure
+          src="/images/footer-women.jpg"
+          alt="Women in warm conversation in natural light"
+          width={800}
+          height={533}
+          className="shadow-warm"
+          rounded-xl
+          cover
+        />
+      </div>
+
+      <div className="border-t relative z-10">
         <div className="container py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
           <span>{t('footer.copyright')}</span>
           <a

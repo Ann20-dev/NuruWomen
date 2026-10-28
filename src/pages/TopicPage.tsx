@@ -3,6 +3,8 @@ import { ArrowRight, BookOpen, HeartHandshake, MessageCircleQuestion, Users } fr
 import { useSeoMeta } from '@unhead/react';
 
 import { SiteLayout } from '@/components/nuru/SiteLayout';
+import { SectionHeader } from '@/components/nuru/SectionHeader';
+import { PhotoFigure } from '@/components/nuru/PhotoFigure';
 import { ArticleCard } from '@/components/nuru/ArticleCard';
 import { EvidenceCardView } from '@/components/nuru/EvidenceCardView';
 import { QuestionCard } from '@/components/nuru/QuestionCard';
@@ -42,21 +44,32 @@ export default function TopicPage() {
     <SiteLayout>
       <div className="container py-10 sm:py-14 space-y-12">
         {/* Header */}
-        <div className="space-y-4 max-w-2xl">
-          <Link to="/library" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-            ← {area?.name ?? 'Library'}
-          </Link>
-          <h1 className="font-display font-semibold text-3xl sm:text-5xl tracking-tight uppercase-wide">
-            {topic.name}
-          </h1>
-          <p className="text-lg text-muted-foreground leading-relaxed">{topic.blurb}</p>
-          {blindSpot && (
-            <p className="text-sm text-muted-foreground">
-              <span className="font-semibold text-gold">{formatNumber(blindSpot.count)} questions</span> asked
-              about this topic this month · <span className="text-gold font-semibold">+{blindSpot.deltaPct}%</span>
-            </p>
-          )}
-        </div>
+        <Link to="/library" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+          ← {area?.name ?? 'Library'}
+        </Link>
+        <SectionHeader
+          kicker={area?.name ?? 'Topic'}
+          heading={topic.name}
+          description={topic.blurb}
+          illustration={
+            <PhotoFigure
+              src="/images/topic-header.jpg"
+              alt="Women in conversation about health topics"
+              width={80}
+              height={80}
+              className="shadow-sm"
+              rounded-xl
+              cover
+            />
+          }
+          as="h1"
+        />
+        {blindSpot && (
+          <p className="text-sm text-muted-foreground">
+            <span className="font-semibold text-gold">{formatNumber(blindSpot.count)} questions</span> asked
+            about this topic this month · <span className="text-gold font-semibold">+{blindSpot.deltaPct}%</span>
+          </p>
+        )}
 
         <div className="grid gap-10 lg:grid-cols-[1.5fr_1fr] items-start">
           <div className="space-y-12">

@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { MessageCircleQuestion, Rss } from 'lucide-react';
+import { MessageCircleQuestion, Rss, Search, X } from 'lucide-react';
 import { useSeoMeta } from '@unhead/react';
 
 import { SiteLayout } from '@/components/nuru/SiteLayout';
@@ -10,6 +10,7 @@ import { Reveal } from '@/components/nuru/Reveal';
 import { LottiePlayer } from '@/components/nuru/LottiePlayer';
 import questionAnimation from '@/assets/lottie/question.json';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { useNuruQuestions } from '@/hooks/useNuruQuestions';
 import { SEED_QUESTIONS } from '@/data/questions';
 import { TOPICS } from '@/lib/nuru/topics';
@@ -26,12 +27,20 @@ export default function QuestionsPage() {
   const { t, lang } = useUiLanguage();
   const { data: questions, isLoading } = useNuruQuestions();
   const [topic, setTopic] = useState<string>('all');
+  const [query, setQuery] = useState('');
 
   const filtered = useMemo(() => {
     if (!questions) return [];
-    if (topic === 'all') return questions;
-    return questions.filter((q) => q.topics.includes(topic));
-  }, [questions, topic]);
+    const q = query.trim().toLowerCase();
+    return questions.filter((item) => {
+      const inTopic = topic === 'all' || item.topics.includes(topic);
+      const inQuery =
+        q.length === 0 ||
+        item.title.toLowerCase().includes(q) ||
+        item.content.toLowerCase().includes(q);
+      return inTopic && inQuery;
+    });
+  }, [questions, topic, query]);
 
   const seedAnswerCounts = useMemo(() => {
     const map: Record<string, number> = {};
@@ -67,6 +76,27 @@ export default function QuestionsPage() {
           <Button asChild className="rounded-full">
             <Link to="/ask"><MessageCircleQuestion className="size-4" /> {t('common.askAnonymously')}</Link>
           </Button>
+        </div>
+
+        <div className="relative max-w-xl">
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 size-4 text-muted-foreground pointer-events-none" />
+          <Input
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search questions"
+            className="h-11 rounded-full pl-11 pr-11 text-base shadow-sm bg-card focus-visible:shadow-md transition-shadow"
+            aria-label="Search questions"
+          />
+          {query && (
+            <button
+              type="button"
+              onClick={() => setQuery('')}
+              aria-label="Clear search"
+              className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full p-1.5 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+            >
+              <X className="size-4" />
+            </button>
+          )}
         </div>
 
         <div className="flex flex-wrap gap-1.5" role="group" aria-label="Filter by topic">

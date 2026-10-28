@@ -8,6 +8,7 @@ import { SafetyBanner } from '@/components/nuru/SafetyBanner';
 import { PrivacyCheckPanel } from '@/components/nuru/PrivacyCheckPanel';
 import { AiCheckPanel } from '@/components/nuru/AiCheckPanel';
 import { ImageAttachment } from '@/components/nuru/ImageAttachment';
+import { TopicChips } from '@/components/nuru/TopicChips';
 import { SimilarQuestions } from '@/components/nuru/SimilarQuestions';
 import { useNuruAnalysis } from '@/hooks/useNuruAnalysis';
 import { Button } from '@/components/ui/button';
@@ -26,7 +27,7 @@ import { classifyTopics } from '@/lib/nuru/classify';
 import { TOPICS } from '@/lib/nuru/topics';
 import { detectKiswahili } from '@/lib/nuru/language';
 import { retrieveForText } from '@/lib/nuru/retrieve';
-import { AskArt } from '@/components/nuru/art/AskArt';
+import { PhotoFigure } from '@/components/nuru/PhotoFigure';
 import { RelatedReading } from '@/components/nuru/RelatedReading';
 import { cn } from '@/lib/utils';
 import DOMPurify from 'dompurify';
@@ -55,6 +56,7 @@ export default function AskPage() {
   const [manualResponseLanguage, setManualResponseLanguage] = useState<'en' | 'sw' | null>(null);
   const [image, setImage] = useState<UploadedImage | null>(null);
   const [imageBusy, setImageBusy] = useState(false);
+  const [showPreview, setShowPreview] = useState(false);
   const { status: aiStatus, analysis, source: aiSource, error: aiError, analyze, invalidate } = useNuruAnalysis();
 
   // Python's len() counts codepoints; .length counts UTF-16 units and would
@@ -350,6 +352,16 @@ export default function AskPage() {
               I confirm this question contains no names, phone numbers or other identifying details.
             </label>
             <div className="flex items-center gap-3 flex-wrap">
+              <Button
+                type="button"
+                variant="outline"
+                size="lg"
+                className="rounded-full px-6"
+                onClick={() => setShowPreview((v) => !v)}
+                disabled={title.trim().length === 0}
+              >
+                {showPreview ? 'Hide preview' : 'Preview question'}
+              </Button>
               <Button onClick={publish} disabled={!canPublish} size="lg" className="rounded-full px-7">
                 {askQuestion.isPending ? <Loader2 className="size-4 animate-spin" /> : <Send className="size-4" />}
                 Publish question
@@ -360,11 +372,31 @@ export default function AskPage() {
                 </span>
               )}
             </div>
+
+            {showPreview && title.trim().length > 0 && (
+              <Card className="border-primary/25">
+                <CardContent className="p-5 space-y-3">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Preview (how it will appear)</p>
+                  <h2 className="font-display font-semibold text-xl leading-snug">{title.trim()}</h2>
+                  {content.trim() && <p className="leading-relaxed text-[0.97rem] whitespace-pre-wrap">{content.trim()}</p>}
+                  <TopicChips slugs={selectedTopics} />
+                  <p className="text-xs text-muted-foreground">Published anonymously. Public and permanent.</p>
+                </CardContent>
+              </Card>
+            )}
           </div>
 
           {/* Side rail: what happens next */}
           <aside className="space-y-5 lg:sticky lg:top-24">
-            <AskArt className="mx-auto w-44 sm:w-52" />
+            <PhotoFigure
+              src="/images/ask-art.jpg"
+              alt="Women collaborating and asking questions together"
+              width={176}
+              height={117}
+              className="shadow-sm mx-auto"
+              rounded-xl
+              cover
+            />
             <Card>
               <CardContent className="p-5 space-y-4">
                 <h2 className="font-display font-semibold text-lg">What happens to your question</h2>

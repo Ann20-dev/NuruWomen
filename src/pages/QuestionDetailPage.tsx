@@ -9,6 +9,7 @@ import { AnswerCard } from '@/components/nuru/AnswerCard';
 import { CommunitySignal } from '@/components/nuru/CommunitySignal';
 import { EvidenceCardView } from '@/components/nuru/EvidenceCardView';
 import { LayerBadge } from '@/components/nuru/LayerBadge';
+import { PhotoFigure } from '@/components/nuru/PhotoFigure';
 import { TopicChips } from '@/components/nuru/TopicChips';
 import { EmptyState } from '@/components/nuru/EmptyState';
 import { AuthorLine } from '@/components/nuru/AuthorLine';
@@ -23,7 +24,6 @@ import { useNuruAnswers } from '@/hooks/useNuruAnswers';
 import { useNuruPublish } from '@/hooks/useNuruPublish';
 import { countSimilarQuestions } from '@/lib/nuru/similar';
 import { evidenceCardBySlug } from '@/data/evidenceCards';
-import { ClinicianArt } from '@/components/nuru/art/ClinicianArt';
 import { SafetyBanner } from '@/components/nuru/SafetyBanner';
 import { RelatedReading } from '@/components/nuru/RelatedReading';
 import { retrieveForTopics } from '@/lib/nuru/retrieve';
@@ -228,7 +228,15 @@ export default function QuestionDetailPage() {
                 )}
 
                 <Card className="border-clinical/30 bg-clinical-soft/40 overflow-hidden">
-                  <ClinicianArt className="w-full aspect-[3/2] max-h-44 border-b border-clinical/20" />
+                  <PhotoFigure
+                    src="/images/question-clinical.jpg"
+                    alt="Verified clinician consulting with a patient"
+                    width={400}
+                    height={267}
+                    className="shadow-sm"
+                    rounded-xl
+                    cover
+                  />
                   <CardContent className="p-5 flex items-start gap-3">
                     {isClinician ? (
                       <>

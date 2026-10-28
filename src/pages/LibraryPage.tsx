@@ -5,6 +5,7 @@ import { useSeoMeta } from '@unhead/react';
 
 import { SiteLayout } from '@/components/nuru/SiteLayout';
 import { ArticleCard } from '@/components/nuru/ArticleCard';
+import { PhotoFigure } from '@/components/nuru/PhotoFigure';
 import { EmptyState } from '@/components/nuru/EmptyState';
 import { Reveal } from '@/components/nuru/Reveal';
 import { Input } from '@/components/ui/input';
@@ -12,6 +13,65 @@ import { ARTICLES } from '@/data/articles';
 import { AREAS } from '@/lib/nuru/topics';
 import { useUiLanguage } from '@/contexts/UiLanguageContext';
 import { cn } from '@/lib/utils';
+
+const LIBRARY_AREA_PHOTOS: Record<string, { src: string; alt: string }> = {
+  'growing-up': {
+    src: '/images/lib-growing-up.jpg',
+    alt: 'Young woman growing up, looking confident in natural light',
+  },
+  'menstrual-health': {
+    src: '/images/topic-menstrual.jpg',
+    alt: 'Woman resting during her menstrual cycle',
+  },
+  'hormones': {
+    src: '/images/lib-hormones.jpg',
+    alt: 'Woman in thoughtful moment, hormonal health',
+  },
+  'conditions': {
+    src: '/images/lib-conditions.jpg',
+    alt: 'Healthcare professional consulting with a patient',
+  },
+  'sexual-health': {
+    src: '/images/lib-sexual-health.jpg',
+    alt: 'Healthcare conversation in a clinical setting',
+  },
+  'fertility': {
+    src: '/images/lib-fertility.jpg',
+    alt: 'Mother holding her newborn baby',
+  },
+  'pregnancy': {
+    src: '/images/lib-pregnancy.jpg',
+    alt: 'Pregnant woman in warm, reassuring light',
+  },
+  'postpartum': {
+    src: '/images/topic-postpartum.jpg',
+    alt: 'Mother with her newborn baby after birth',
+  },
+  'cancer-prevention': {
+    src: '/images/lib-cancer.jpg',
+    alt: 'Breast health awareness and screening',
+  },
+  'mental-health': {
+    src: '/images/topic-mental.jpg',
+    alt: 'Woman taking a quiet moment for her mental wellbeing',
+  },
+  'pelvic-health': {
+    src: '/images/lib-conditions.jpg',
+    alt: 'Pelvic health consultation with a healthcare professional',
+  },
+  'perimenopause': {
+    src: '/images/lib-perimenopause.jpg',
+    alt: 'Woman navigating perimenopause transition',
+  },
+  'menopause': {
+    src: '/images/lib-perimenopause.jpg',
+    alt: 'Woman in menopause, embracing the transition',
+  },
+  'healthy-ageing': {
+    src: '/images/topic-ageing.jpg',
+    alt: 'Older woman smiling outdoors in natural light',
+  },
+};
 
 export default function LibraryPage() {
   useSeoMeta({
@@ -133,6 +193,17 @@ export default function LibraryPage() {
                   </h2>
                   <p className="text-sm text-muted-foreground">{a.description}</p>
                 </div>
+                {LIBRARY_AREA_PHOTOS[a.slug] && (
+                  <PhotoFigure
+                    src={LIBRARY_AREA_PHOTOS[a.slug].src}
+                    alt={LIBRARY_AREA_PHOTOS[a.slug].alt}
+                    width={400}
+                    height={300}
+                    className="shadow-sm mb-4"
+                    rounded-xl
+                    cover
+                  />
+                )}
                 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                   {a.articles.map((art) => (
                     <ArticleCard key={art.slug} article={art} />
